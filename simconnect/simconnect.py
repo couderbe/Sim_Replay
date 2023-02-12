@@ -1,3 +1,5 @@
+import threading
+
 from ctypes import *
 from ctypes import _SimpleCData
 from ctypes.wintypes import HANDLE, DWORD
@@ -13,10 +15,15 @@ class Parameter():
         self.refresh_rate = refresh_rate
         self.define_id = define_id
         self.request_id = request_id
-        self.last_value = None
+        self._last_value = None
+        self._lock = threading.Lock()
 
     def value(self):
-        return self.last_value
+        return self._last_value
+
+    def set_value(self, value):
+        with self._lock:
+            self._last_value = value
 
     def __repr__(self) -> str:
         return str(self.__dict__)
@@ -124,16 +131,16 @@ class Sim():
                 case SIMCONNECT_RECV_ID.SIMCONNECT_RECV_ID_SIMOBJECT_DATA.value:
                     pObjData = cast(pData, POINTER(
                         SIMCONNECT_RECV_SIMOBJECT_DATA))
-                    print(f"RequetsID {pObjData.contents.dwRequestID}")
+                    # print(f"RequetsID {pObjData.contents.dwRequestID}")
                     # How does ObjectID parameter work ?
-                    print(f"ObjectID {pObjData.contents.dwObjectID}")
-                    print(f"DefineID {pObjData.contents.dwDefineID}")
+                    # print(f"ObjectID {pObjData.contents.dwObjectID}")
+                    # print(f"DefineID {pObjData.contents.dwDefineID}")
                     # Access parameter using DefinedID or RequestID is equivalent as they are always the same in the current implementation
-                    param: Parameter = self._listened_parameters[pObjData.contents.dwDefineID]
+                    param = self._listened_parameters[pObjData.contents.dwDefineID]
                     print(cast(pObjData.contents.dwData,
                           POINTER(param.ctype)).contents.value)
-                    param.last_value = cast(pObjData.contents.dwData,
-                                            POINTER(param.ctype)).contents.value
+                    param.set_value(cast(pObjData.contents.dwData,
+                                            POINTER(param.ctype)).contents.value)
             return 0
 
         return my_dispatch_proc
