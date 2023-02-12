@@ -10,5 +10,6 @@ if __name__ == "__main__":
     sim.add_listened_parameter("Plane Altitude","feet", c_double)
     while True:
         sim.update()
-        time.sleep(0.1)
-        print(sim.get_param("Plane Altitude"))
+        time.sleep(1)
+        print(sim.get_param_value("Plane Altitude"))
+        print(sim.set_param_value_from_name("Plane Altitude", 1000))

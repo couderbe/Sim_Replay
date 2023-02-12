@@ -5,6 +5,21 @@ from simconnect.structs import *
 from simconnect.enums import *
 from simconnect.consts import *
 
+class Parameter():
+    def __init__(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD, define_id: int, request_id: int) -> None:
+        self.name = name
+        self.unit = unit
+        self.ctype = ctype
+        self.refresh_rate = refresh_rate
+        self.define_id = define_id
+        self.request_id = request_id
+        self.last_value = None
+
+    def value(self):
+        return self.last_value
+
+    def __repr__(self) -> str:
+        return str(self.__dict__)
 
 class Sim():
 
@@ -66,22 +81,33 @@ class Sim():
         # TO IMPLEMENT
         self._opened = False
 
-    def get_param(self, name: str):
+    def get_param_value(self, name: str):
         """
         Shorter call
         """
-        return self.get_param_from_name(name)
+        return self.get_param_value_from_name(name)
 
-    def get_param_from_name(self, name: str):
+    def get_param_value_from_name(self, name: str):
+        return self._get_param_from_name(name).value()
+
+    def _get_param_from_name(self, name: str):
         for param in self._listened_parameters:
             if param.name == name:
-                return param.last_value
+                return param.value()
+        return None
 
-    def _get_param_from_id(self, id: int):
-        """
-        Useful ? 
-        """
-        return self._listened_parameters[id].last_value
+    def _get_param_from_name(self, name: str) -> Parameter:
+        for param in self._listened_parameters:
+            if param.name == name:
+                return param
+        return None
+
+    def set_param_value_from_name(self, name: str, value) -> None:
+        if (param := self._get_param_from_name(name)) == None:
+            print("Parameter must be listened before being settable")
+            return None
+        else:
+            self._simconnect.SimConnect_SetDataOnSimObject(self._hSimConnect, param.define_id, SIMCONNECT_OBJECT_ID_USER, 0,0, sizeof(param.ctype), byref(param.ctype(value)))
 
     def _get_disptach_proc(self):
         """
@@ -111,17 +137,3 @@ class Sim():
             return 0
 
         return my_dispatch_proc
-
-
-class Parameter():
-    def __init__(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD, define_id: int, request_id: int) -> None:
-        self.name = name
-        self.unit = unit
-        self.ctype = ctype
-        self.refresh_rate = refresh_rate
-        self.define_id = define_id
-        self.request_id = request_id
-        self.last_value = None
-
-    def __repr__(self) -> str:
-        return str(self.__dict__)
