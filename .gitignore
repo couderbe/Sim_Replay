@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 
 SimConnect.dll
+
+# vscode config
+.vscode
