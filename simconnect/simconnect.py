@@ -75,14 +75,15 @@ class Sim():
         self._listened_parameters.append(
             Parameter(name, unit, ctype, refresh_rate, define_id, request_id))
 
-    def open(self) -> None:
+    def open(self) -> int:
         err = self._simconnect.SimConnect_Open(
             byref(self._hSimConnect), b"Sim Replay", None, 0, 0, 0)
         if err != 0:
             print("Error connecting to the simulation")
-            return
+            return err
         print("Connected to simulation")
         self._opened = True
+        return 0
 
     def close(self) -> None:
         # TO IMPLEMENT
