@@ -86,7 +86,8 @@ class Sim():
         return 0
 
     def close(self) -> None:
-        # TO IMPLEMENT
+        # TODO : test the method
+        self._hSimConnect.SimConnect_Close(self._hSimConnect)
         self._opened = False
 
     def get_param_value(self, name: str):
@@ -142,6 +143,9 @@ class Sim():
                           POINTER(param.ctype)).contents.value)
                     param.set_value(cast(pObjData.contents.dwData,
                                             POINTER(param.ctype)).contents.value)
+                case SIMCONNECT_RECV_ID.SIMCONNECT_RECV_ID_QUIT.value:
+                    print("Sim has just closed")
+                    self._opened = False
             return 0
 
         return my_dispatch_proc
