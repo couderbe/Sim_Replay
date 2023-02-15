@@ -39,13 +39,14 @@ class Sim():
     def update(self) -> None:
         if not (self._opened):
             print("Open communication before updating")
-            return
+            return -1
         err = self._simconnect.SimConnect_CallDispatch(
             self._hSimConnect, self._get_disptach_proc(), None)
 
         if err != 0:
             print(f"Unable to CallDispatch ErrorCode{err}")
-            return
+            return 1
+        return 0
 
     def add_listened_parameter(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD = SIMCONNECT_PERIOD.SIMCONNECT_PERIOD_SECOND) -> None:
         """
@@ -139,8 +140,8 @@ class Sim():
                     # print(f"DefineID {pObjData.contents.dwDefineID}")
                     # Access parameter using DefinedID or RequestID is equivalent as they are always the same in the current implementation
                     param = self._listened_parameters[pObjData.contents.dwDefineID]
-                    print(cast(pObjData.contents.dwData,
-                          POINTER(param.ctype)).contents.value)
+                 #   print(cast(pObjData.contents.dwData,
+                 #         POINTER(param.ctype)).contents.value)
                     param.set_value(cast(pObjData.contents.dwData,
                                             POINTER(param.ctype)).contents.value)
                 case SIMCONNECT_RECV_ID.SIMCONNECT_RECV_ID_QUIT.value:

@@ -5,10 +5,12 @@ import time
 import threading
 
 def sim_connect_thread(sim:Sim):
-    while True:
-        sim.update()
+    sim_opened = 0
+    while sim_opened >= 0 :
+        sim_opened = sim.update()
         time.sleep(0.1)
-        print("Plane Altitude : {}".format(sim.get_param_value("Plane Altitude")))
+        print("Plane Altitude : {}\r".format(sim.get_param_value("Plane Altitude")),end="")
+    return
 
 def mocking_thread(mock:Mock):
     while True:
