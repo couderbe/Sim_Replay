@@ -25,9 +25,17 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(906, 570)
+        MainWindow.resize(906, 565)
         self.actionOpen = QAction(MainWindow)
         self.actionOpen.setObjectName(u"actionOpen")
+        self.actionConnect_to_sim = QAction(MainWindow)
+        self.actionConnect_to_sim.setObjectName(u"actionConnect_to_sim")
+        self.actionStart_Recording = QAction(MainWindow)
+        self.actionStart_Recording.setObjectName(u"actionStart_Recording")
+        self.actionStop_Recording = QAction(MainWindow)
+        self.actionStop_Recording.setObjectName(u"actionStop_Recording")
+        self.actionSave = QAction(MainWindow)
+        self.actionSave.setObjectName(u"actionSave")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -70,13 +78,20 @@ class Ui_MainWindow(object):
         self.menubar.setGeometry(QRect(0, 0, 906, 21))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
+        self.menuRecording = QMenu(self.menubar)
+        self.menuRecording.setObjectName(u"menuRecording")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.menubar.addAction(self.menuFile.menuAction())
+        self.menubar.addAction(self.menuRecording.menuAction())
         self.menuFile.addAction(self.actionOpen)
+        self.menuFile.addAction(self.actionSave)
+        self.menuFile.addAction(self.actionConnect_to_sim)
+        self.menuRecording.addAction(self.actionStart_Recording)
+        self.menuRecording.addAction(self.actionStop_Recording)
 
         self.retranslateUi(MainWindow)
 
@@ -86,8 +101,13 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.actionOpen.setText(QCoreApplication.translate("MainWindow", u"Open", None))
+        self.actionConnect_to_sim.setText(QCoreApplication.translate("MainWindow", u"Connect to sim", None))
+        self.actionStart_Recording.setText(QCoreApplication.translate("MainWindow", u"Start Recording", None))
+        self.actionStop_Recording.setText(QCoreApplication.translate("MainWindow", u"Stop Recording", None))
+        self.actionSave.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.playPausePushButton.setText(QCoreApplication.translate("MainWindow", u"Play", None))
         self.timeLabel.setText(QCoreApplication.translate("MainWindow", u"00:00:00", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
+        self.menuRecording.setTitle(QCoreApplication.translate("MainWindow", u"Recording", None))
     # retranslateUi
 

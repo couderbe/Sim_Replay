@@ -89,6 +89,9 @@ class Sim():
         # TO IMPLEMENT
         self._opened = False
 
+    def is_opened(self) -> bool:
+        return self._opened
+
     def get_param_value(self, name: str):
         """
         Shorter call
