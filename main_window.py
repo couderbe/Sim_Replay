@@ -91,7 +91,6 @@ class Ui_MainWindow(object):
         self.menuFile.addAction(self.actionSave)
         self.menuFile.addAction(self.actionConnect_to_sim)
         self.menuRecording.addAction(self.actionStart_Recording)
-        self.menuRecording.addAction(self.actionStop_Recording)
 
         self.retranslateUi(MainWindow)
 

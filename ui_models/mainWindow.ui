@@ -74,7 +74,6 @@
      <string>Recording</string>
     </property>
     <addaction name="actionStart_Recording"/>
-    <addaction name="actionStop_Recording"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuRecording"/>
