@@ -6,6 +6,7 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBo
 from PySide6.QtGui import QStandardItemModel, QStandardItem
 from PySide6.QtCore import Qt, QModelIndex, QThread
 from main_window import Ui_MainWindow
+from player import Player
 from recorder import Recorder
 from simconnect.simconnect import Sim
 from ctypes import c_double
@@ -27,6 +28,7 @@ class MainWindow(QMainWindow):
 
         self._sim = Sim()
         self._recording = False
+        self._playing = False
 
         self.ui.actionOpen.setShortcut('Ctrl+O')
         self.ui.actionOpen.triggered.connect(self.open_dialog)
@@ -39,9 +41,41 @@ class MainWindow(QMainWindow):
         self.ui.actionStart_Recording.setShortcut('Ctrl+R')
         self.ui.actionStart_Recording.triggered.connect(self.record)
 
+        self.ui.playPausePushButton.clicked.connect(self.play_pause)
+
         self._mainTableModel = QStandardItemModel(self)
         self.ui.mainTableView.setModel(self._mainTableModel)
         self.ui.mainTableView.clicked.connect(self.on_item_clicked)
+
+    def play_pause(self) -> None:
+        if self._playing:
+            self._player.stop()
+            self._playing = False
+            self.ui.playPausePushButton.setText("Play")
+        else:
+            if self._sim.is_opened():
+                if not (self._recording):
+                    # TODO Allow user to choose which parameters to record
+                    # TODO Check that all parameters are registered by the sim
+                    parameters_to_play = [
+                        "ZULU TIME", "Plane Longitude", "Plane Latitude", "Plane Altitude"]
+
+                    # Create a Player object that runs in another thread
+                    self._player_thread = QThread()
+                    self._player = Player(
+                        self._sim, self._mainTableModel, parameters_to_play)
+                    self._player.moveToThread(self._player_thread)
+                    self._player_thread.started.connect(self._player.task)
+                    self._player.time_changed.connect(self.set_time)
+                    self._player_thread.start()
+                    self._playing = True
+                    self.ui.playPausePushButton.setText("Stop")
+                else:
+                    _ = QMessageBox.critical(
+                        self, "Cannot play while recording", "You cannot play a record while recording")
+            else:
+                _ = QMessageBox.critical(
+                    self, "Not connected to the sim", "You must be connected to the sim before playing a record")
 
     def record(self) -> None:
         if self._recording:
@@ -68,7 +102,7 @@ class MainWindow(QMainWindow):
                 # Create a Recorder object that runs in another thread
                 self._recorder_thread = QThread()
                 self._recorder = Recorder(
-                    self._sim, parameters_to_record, 0.01)
+                    self._sim, parameters_to_record, 1)
                 self._recorder.moveToThread(self._recorder_thread)
                 self._recorder_thread.started.connect(self._recorder.task)
                 self._recorder.new_record.connect(self.add_record)
@@ -122,8 +156,10 @@ class MainWindow(QMainWindow):
                     writer.writerow(row_data)
 
     def on_item_clicked(self, index: QModelIndex):
-        self.ui.timeLabel.setText(
-            str(index.siblingAtColumn(self._time_column_id).data()))
+        self.set_time(index.siblingAtColumn(self._time_column_id).data())
+
+    def set_time(self, time: str | int | float):
+        self.ui.timeLabel.setText(str(time))
 
     def open_dialog(self) -> None:
         """
@@ -143,7 +179,7 @@ class MainWindow(QMainWindow):
                 for i, header in enumerate(headers):
                     self._mainTableModel.setHeaderData(
                         i, Qt.Orientation.Horizontal, header)
-                    if header == "time":
+                    if header == "ZULU TIME":
                         self._time_column_id = i
             # Set time label initial value
             self.ui.timeLabel.setText(
