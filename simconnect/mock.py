@@ -1,3 +1,4 @@
+import math
 import threading
 
 class Mock_Value():
@@ -31,7 +32,7 @@ class Mock():
             print("(Mock) Open communication before updating")
             return
         for v in self._listened_parameters:
-            v.set_value(v.value()+5)
+            v.set_value(v.value()+5/100*math.fabs(v.max_val-v.min_val))
             if v.value()>v.max_val:
                 v.set_value(v.min_val)
         
@@ -53,6 +54,9 @@ class Mock():
         # TO IMPLEMENT
         self._opened = False
 
+    def get_all_param_values(self):
+        return self._listened_parameters.copy()
+        
     def get_param_value(self, name: str):
         """
         Shorter call

@@ -91,6 +91,9 @@ class Sim():
         self._hSimConnect.SimConnect_Close(self._hSimConnect)
         self._opened = False
 
+    def get_all_param_values(self):
+        return self._listened_parameters.copy()
+    
     def get_param_value(self, name: str):
         """
         Shorter call
