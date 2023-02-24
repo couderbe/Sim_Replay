@@ -94,6 +94,9 @@ class Sim():
     def get_all_param_values(self):
         return self._listened_parameters.copy()
     
+    def is_opened(self) -> bool:
+        return self._opened
+
     def get_param_value(self, name: str):
         """
         Shorter call
