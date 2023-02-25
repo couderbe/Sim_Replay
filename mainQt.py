@@ -58,7 +58,13 @@ class MainWindow(QMainWindow):
                     # TODO Allow user to choose which parameters to record
                     # TODO Check that all parameters are registered by the sim
                     parameters_to_play = [
-                        "ZULU TIME", "Plane Longitude", "Plane Latitude", "Plane Altitude"]
+                        "ZULU TIME",
+                        "Plane Longitude",
+                        "Plane Latitude",
+                        "Plane Altitude",
+                        "Plane Bank Degrees",
+                        "Plane Pitch Degrees",
+                        "Plane Heading Degrees True"]
 
                     # Create a Player object that runs in another thread
                     self._player_thread = QThread()
@@ -89,7 +95,13 @@ class MainWindow(QMainWindow):
                 # TODO Allow user to choose which parameters to record
                 # TODO Check that all parameters are listened by the sim
                 parameters_to_record = [
-                    "ZULU TIME", "Plane Longitude", "Plane Latitude", "Plane Altitude"]
+                    "ZULU TIME",
+                    "Plane Longitude",
+                    "Plane Latitude",
+                    "Plane Altitude",
+                    "Plane Bank Degrees",
+                    "Plane Pitch Degrees",
+                    "Plane Heading Degrees True"]
 
                 # Random row is added to allow header to be set
                 self._mainTableModel.appendRow(
@@ -97,6 +109,7 @@ class MainWindow(QMainWindow):
                 for i, header in enumerate(parameters_to_record):
                     self._mainTableModel.setHeaderData(
                         i, Qt.Orientation.Horizontal, header)
+#                         i, Qt.Orientation.Horizontal, header + (" (°)" if i!=0  else " (s)"))
                 self._mainTableModel.removeRow(0)
 
                 # Create a Recorder object that runs in another thread
@@ -127,7 +140,12 @@ class MainWindow(QMainWindow):
                     "Plane Latitude", "degrees latitude", c_double)
                 self._sim.add_listened_parameter(
                     "ZULU TIME", "seconds", c_double)
-
+                self._sim.add_listened_parameter(
+                    "Plane Bank Degrees", "degrees", c_double)
+                self._sim.add_listened_parameter(
+                    "Plane Pitch Degrees", "degrees", c_double)
+                self._sim.add_listened_parameter(
+                    "Plane Heading Degrees True", "degrees", c_double)
                 # deamon = True forces the thread to close when the parent is closed
                 sim_thread = threading.Thread(
                     target=sim_connect_thread, args=(self._sim,), daemon=True)
