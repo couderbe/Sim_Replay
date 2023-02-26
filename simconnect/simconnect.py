@@ -3,6 +3,7 @@ import threading
 from ctypes import *
 from ctypes import _SimpleCData
 from ctypes.wintypes import HANDLE, DWORD
+from simconnect.source import Source
 from simconnect.structs import *
 from simconnect.enums import *
 from simconnect.consts import *
@@ -28,7 +29,7 @@ class Parameter():
     def __repr__(self) -> str:
         return str(self.__dict__)
 
-class Sim():
+class Sim(Source):
 
     def __init__(self, dll_path: str = "./SimConnect.dll") -> None:
         self._simconnect = WinDLL(dll_path)
@@ -36,7 +37,7 @@ class Sim():
         self._opened: bool = False
         self._listened_parameters: list[Parameter] = []
 
-    def update(self) -> None:
+    def update(self) -> int:
         if not (self._opened):
             print("Open communication before updating")
             return -1
