@@ -4,13 +4,15 @@ from ctypes import c_double
 import time
 import threading
 
-def sim_connect_thread(sim):
-    while True:
-        sim.update()
+def sim_connect_thread(sim:Sim):
+    sim_opened = 0
+    while sim_opened >= 0 :
+        sim_opened = sim.update()
         time.sleep(0.1)
-        print("Plane Altitude : {}".format(sim.get_param_value("Plane Altitude")))
+        print("Plane Altitude : {}\r".format(sim.get_param_value("Plane Altitude")),end="")
+    return
 
-def mocking_thread(mock):
+def mocking_thread(mock:Mock):
     while True:
         mock.update()
         time.sleep(0.1)
