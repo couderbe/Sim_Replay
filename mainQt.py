@@ -29,7 +29,8 @@ class MainWindow(QMainWindow):
         self._sim = Sim()
         self._recording = False
         self._playing = False
-
+        self._time_column_id = None
+        
         self.ui.actionOpen.setShortcut('Ctrl+O')
         self.ui.actionOpen.triggered.connect(self.open_dialog)
 
@@ -86,10 +87,23 @@ class MainWindow(QMainWindow):
             self.ui.actionStart_Recording.setText("Start Recording")
         else:
             if self._sim.is_opened():
+
+                # Reset Model
+                if self._mainTableModel.rowCount() > 0:
+                    ret = QMessageBox.warning(self, "Warning",
+                                            "You are going to start recording. All the current data will be lost\n"
+                                            "Do you want to continue ?",
+                                            QMessageBox.Yes | QMessageBox.No)
+                    if ret == QMessageBox.No:
+                        return
+
+
                 # TODO Allow user to choose which parameters to record
                 # TODO Check that all parameters are listened by the sim
                 parameters_to_record = [
                     "ZULU TIME", "Plane Longitude", "Plane Latitude", "Plane Altitude"]
+
+                self._mainTableModel.clear()
 
                 # Random row is added to allow header to be set
                 self._mainTableModel.appendRow(
@@ -156,7 +170,8 @@ class MainWindow(QMainWindow):
                     writer.writerow(row_data)
 
     def on_item_clicked(self, index: QModelIndex):
-        self.set_time(index.siblingAtColumn(self._time_column_id).data())
+        if self._time_column_id != None:
+            self.set_time(index.siblingAtColumn(self._time_column_id).data())
 
     def set_time(self, time: str | int | float):
         self.ui.timeLabel.setText(str(time))

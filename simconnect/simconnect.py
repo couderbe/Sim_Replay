@@ -88,7 +88,7 @@ class Sim():
 
     def close(self) -> None:
         # TODO : test the method
-        self._hSimConnect.SimConnect_Close(self._hSimConnect)
+        self._simconnect.SimConnect_Close(self._hSimConnect)
         self._opened = False
 
     def is_opened(self) -> bool:
