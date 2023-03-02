@@ -127,6 +127,8 @@ class MainWindow(QMainWindow):
 
                 self._mainTableModel.clear()
 
+                self._mainTableModel.clear()
+
                 # Random row is added to allow header to be set
                 self._mainTableModel.appendRow(
                     [QStandardItem("a") for _ in range(len(parameters_to_record))])
