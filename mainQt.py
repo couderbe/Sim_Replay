@@ -127,8 +127,6 @@ class MainWindow(QMainWindow):
 
                 self._mainTableModel.clear()
 
-                self._mainTableModel.clear()
-
                 # Random row is added to allow header to be set
                 self._mainTableModel.appendRow(
                     [QStandardItem("a") for _ in range(len(parameters_to_record))])
@@ -232,7 +230,7 @@ class MainWindow(QMainWindow):
                 self.ui.actionConnect_to_sim.setDisabled(True)
         else:
             self.ui.actionConnect_to_mock.setText("Connect to mock")
-            self.ui.actionConnect_to_sim.setEnabled(False)
+            self.ui.actionConnect_to_sim.setEnabled(True)
             self._mock.close()
 
     def save_dialog(self) -> None:
