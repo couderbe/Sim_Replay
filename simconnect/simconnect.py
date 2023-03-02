@@ -89,7 +89,7 @@ class Sim(Source):
 
     def close(self) -> None:
         # TODO : test the method
-        self._hSimConnect.SimConnect_Close(self._hSimConnect)
+        self._simconnect.SimConnect_Close(self._hSimConnect)
         self._opened = False
 
     def get_all_param_values(self):
