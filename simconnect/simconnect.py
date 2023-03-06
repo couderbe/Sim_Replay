@@ -92,7 +92,7 @@ class Sim(Source):
         self._simconnect.SimConnect_Close(self._hSimConnect)
         self._opened = False
 
-    def get_all_param_values(self):
+    def get_all_params(self):
         return self._listened_parameters.copy()
     
     def is_opened(self) -> bool:

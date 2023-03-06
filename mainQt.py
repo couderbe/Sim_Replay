@@ -12,6 +12,8 @@ from simconnect.simconnect import Sim
 from simconnect.mock import Mock, Mock_Value
 from ctypes import c_double
 
+from simconnect.source import Source
+
 def sim_connect_thread(sim:Sim):
     sim_opened = 0
     while sim_opened>=0:
@@ -102,84 +104,59 @@ class MainWindow(QMainWindow):
             self._recording = False
             self.ui.actionStart_Recording.setText("Start Recording")
         else:
-            if self._sim.is_opened():
-
-                # Reset Model
-                if self._mainTableModel.rowCount() > 0:
-                    ret = QMessageBox.warning(self, "Warning",
-                                            "You are going to start recording. All the current data will be lost\n"
-                                            "Do you want to continue ?",
-                                            QMessageBox.Yes | QMessageBox.No)
-                    if ret == QMessageBox.No:
-                        return
-
-
-                # TODO Allow user to choose which parameters to record
-                # TODO Check that all parameters are listened by the sim
-                parameters_to_record = [
-                    "ZULU TIME",
-                    "Plane Longitude",
-                    "Plane Latitude",
-                    "Plane Altitude",
-                    "Plane Bank Degrees",
-                    "Plane Pitch Degrees",
-                    "Plane Heading Degrees True"]
-
-                self._mainTableModel.clear()
-
-                # Random row is added to allow header to be set
-                self._mainTableModel.appendRow(
-                    [QStandardItem("a") for _ in range(len(parameters_to_record))])
-                for i, header in enumerate(parameters_to_record):
-                    self._mainTableModel.setHeaderData(
-                        i, Qt.Orientation.Horizontal, header)
-                self._mainTableModel.removeRow(0)
-
-                # Create a Recorder object that runs in another thread
-                self._recorder_thread = QThread()
-                self._recorder = Recorder(
-                    self._sim, parameters_to_record, 1)
-                self._recorder.moveToThread(self._recorder_thread)
-                self._recorder_thread.started.connect(self._recorder.task)
-                self._recorder.new_record.connect(self.add_record)
-                self._recorder_thread.start()
-                self._recording = True
-                self.ui.actionStart_Recording.setText("Stop Recording")
+            if self._sim.is_opened():   
+                self.start_src_record(self._sim)
 
             elif self._mock.is_opened():
-                # TODO Allow user to choose which parameters to record
-                # TODO Check that all parameters are listened by the sim
-                parameters_to_record = [
-                    "ZULU TIME",
-                    "Plane Longitude",
-                    "Plane Latitude",
-                    "Plane Altitude",
-                    "Plane Bank Degrees",
-                    "Plane Pitch Degrees",
-                    "Plane Heading Degrees True"]
-
-                # Random row is added to allow header to be set
-                self._mainTableModel.appendRow(
-                    [QStandardItem("a") for _ in range(len(parameters_to_record))])
-                for i, header in enumerate(parameters_to_record):
-                    self._mainTableModel.setHeaderData(
-                        i, Qt.Orientation.Horizontal, header)
-                self._mainTableModel.removeRow(0)
-
-                # Create a Recorder object that runs in another thread
-                self._recorder_thread = QThread()
-                self._recorder = Recorder(
-                    self._mock, parameters_to_record, 1)
-                self._recorder.moveToThread(self._recorder_thread)
-                self._recorder_thread.started.connect(self._recorder.task)
-                self._recorder.new_record.connect(self.add_record)
-                self._recorder_thread.start()
-                self._recording = True
-                self.ui.actionStart_Recording.setText("Stop Recording")
+                self.start_src_record(self._mock)
             else:
                 _ = QMessageBox.critical(
                     self, "Not connected to the sim/mock", "You must be connected to the sim or the mock before recording")
 
+    def start_src_record(self,src:Source):
+        # TODO Allow user to choose which parameters to record
+        # TODO Check that all parameters are listened by the sim
+
+        # Reset Model
+        if self._mainTableModel.rowCount() > 0:
+            ret = QMessageBox.warning(self, "Warning",
+                                    "You are going to start recording. All the current data will be lost\n"
+                                    "Do you want to continue ?",
+                                    QMessageBox.Yes | QMessageBox.No)
+            if ret == QMessageBox.No:
+                return
+
+        parameters_to_record = [
+                    "ZULU TIME",
+                    "Plane Longitude",
+                    "Plane Latitude",
+                    "Plane Altitude",
+                    "Plane Bank Degrees",
+                    "Plane Pitch Degrees",
+                    "Plane Heading Degrees True"]
+
+        self._mainTableModel.clear()
+
+                # Random row is added to allow header to be set
+        self._mainTableModel.appendRow(
+                    [QStandardItem("a") for _ in range(len(parameters_to_record))])
+        for i, header in enumerate(parameters_to_record):
+            self._mainTableModel.setHeaderData(
+                        i, Qt.Orientation.Horizontal, header)
+        self._mainTableModel.removeRow(0)
+
+                # Create a Recorder object that runs in another thread
+        self._recorder_thread = QThread()
+        self._recorder = Recorder(
+                    src, parameters_to_record, 1)
+        self._recorder.moveToThread(self._recorder_thread)
+        self._recorder_thread.started.connect(self._recorder.task)
+        self._recorder.new_record.connect(self.add_record)
+        self._recorder_thread.start()
+        self._recording = True
+        self.ui.actionStart_Recording.setText("Stop Recording")
+
+    
     def add_record(self, record: list[str]):
         self._mainTableModel.appendRow([QStandardItem(elt) for elt in record])
 

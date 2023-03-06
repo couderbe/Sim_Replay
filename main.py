@@ -10,7 +10,7 @@ def sim_connect_thread(sim:Sim):
         sim_opened = sim.update()
         time.sleep(0.1)
         print("------------------------------")
-        for param_value in sim.get_all_param_values():
+        for param_value in sim.get_all_params():
             print("Sim {} : {} {}\n".format(param_value.name, param_value.value(),param_value.unit),end="")
         print("------------------------------")
     return
@@ -20,7 +20,7 @@ def mocking_thread(mock:Mock):
         mock.update()
         time.sleep(0.2)
         print("------------------------------")
-        for param_value in mock.get_all_param_values():
+        for param_value in mock.get_all_params():
             print("Mocked {} : {} {}\n".format(param_value.name, param_value.val,param_value.unit),end="")
         print("------------------------------")
 

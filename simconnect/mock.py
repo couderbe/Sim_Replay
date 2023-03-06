@@ -66,7 +66,7 @@ class Mock(Source):
         # TO IMPLEMENT
         self._opened = False
 
-    def get_all_param_values(self):
+    def get_all_params(self):
         return self._listened_parameters.copy()
         
     def get_param_value(self, name: str):
