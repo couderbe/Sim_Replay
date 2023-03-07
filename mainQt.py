@@ -9,15 +9,22 @@ from main_window import Ui_MainWindow
 from player import Player
 from recorder import Recorder
 from simconnect.simconnect import Sim
+from simconnect.mock import Mock, Mock_Value
 from ctypes import c_double
 
-from simconnect.simconnect import Sim
+from simconnect.source import Source
 
-
-def sim_connect_thread(sim):
-    while True:
-        sim.update()
+def sim_connect_thread(sim:Sim):
+    sim_opened = 0
+    while sim_opened>=0:
+        sim_opened = sim.update()
         time.sleep(0.1)
+
+def mocking_thread(mock:Mock):
+    mock_opened = 0
+    while mock_opened>=0:
+        mock_opened = mock.update()
+        time.sleep(0.2)
 
 
 class MainWindow(QMainWindow):
@@ -29,12 +36,17 @@ class MainWindow(QMainWindow):
         self._sim = Sim()
         self._recording = False
         self._playing = False
+
+        self._mock = Mock()
+
         self._time_column_id = None
         
         self.ui.actionOpen.setShortcut('Ctrl+O')
         self.ui.actionOpen.triggered.connect(self.open_dialog)
 
         self.ui.actionConnect_to_sim.triggered.connect(self.connect)
+        self.ui.actionConnect_to_mock.triggered.connect(self.connect_mock)
+
 
         self.ui.actionSave.setShortcut('Ctrl+S')
         self.ui.actionSave.triggered.connect(self.save_dialog)
@@ -59,7 +71,13 @@ class MainWindow(QMainWindow):
                     # TODO Allow user to choose which parameters to record
                     # TODO Check that all parameters are registered by the sim
                     parameters_to_play = [
-                        "ZULU TIME", "Plane Longitude", "Plane Latitude", "Plane Altitude"]
+                        "ZULU TIME",
+                        "Plane Longitude",
+                        "Plane Latitude",
+                        "Plane Altitude",
+                        "Plane Bank Degrees",
+                        "Plane Pitch Degrees",
+                        "Plane Heading Degrees True"]
 
                     # Create a Player object that runs in another thread
                     self._player_thread = QThread()
@@ -86,47 +104,59 @@ class MainWindow(QMainWindow):
             self._recording = False
             self.ui.actionStart_Recording.setText("Start Recording")
         else:
-            if self._sim.is_opened():
+            if self._sim.is_opened():   
+                self.start_src_record(self._sim)
 
-                # Reset Model
-                if self._mainTableModel.rowCount() > 0:
-                    ret = QMessageBox.warning(self, "Warning",
-                                            "You are going to start recording. All the current data will be lost\n"
-                                            "Do you want to continue ?",
-                                            QMessageBox.Yes | QMessageBox.No)
-                    if ret == QMessageBox.No:
-                        return
-
-
-                # TODO Allow user to choose which parameters to record
-                # TODO Check that all parameters are listened by the sim
-                parameters_to_record = [
-                    "ZULU TIME", "Plane Longitude", "Plane Latitude", "Plane Altitude"]
-
-                self._mainTableModel.clear()
-
-                # Random row is added to allow header to be set
-                self._mainTableModel.appendRow(
-                    [QStandardItem("a") for _ in range(len(parameters_to_record))])
-                for i, header in enumerate(parameters_to_record):
-                    self._mainTableModel.setHeaderData(
-                        i, Qt.Orientation.Horizontal, header)
-                self._mainTableModel.removeRow(0)
-
-                # Create a Recorder object that runs in another thread
-                self._recorder_thread = QThread()
-                self._recorder = Recorder(
-                    self._sim, parameters_to_record, 1)
-                self._recorder.moveToThread(self._recorder_thread)
-                self._recorder_thread.started.connect(self._recorder.task)
-                self._recorder.new_record.connect(self.add_record)
-                self._recorder_thread.start()
-                self._recording = True
-                self.ui.actionStart_Recording.setText("Stop Recording")
+            elif self._mock.is_opened():
+                self.start_src_record(self._mock)
             else:
                 _ = QMessageBox.critical(
-                    self, "Not connected to the sim", "You must be connected to the sim before recording")
+                    self, "Not connected to the sim/mock", "You must be connected to the sim or the mock before recording")
 
+    def start_src_record(self,src:Source):
+        # TODO Allow user to choose which parameters to record
+        # TODO Check that all parameters are listened by the sim
+
+        # Reset Model
+        if self._mainTableModel.rowCount() > 0:
+            ret = QMessageBox.warning(self, "Warning",
+                                    "You are going to start recording. All the current data will be lost\n"
+                                    "Do you want to continue ?",
+                                    QMessageBox.Yes | QMessageBox.No)
+            if ret == QMessageBox.No:
+                return
+
+        parameters_to_record = [
+                    "ZULU TIME",
+                    "Plane Longitude",
+                    "Plane Latitude",
+                    "Plane Altitude",
+                    "Plane Bank Degrees",
+                    "Plane Pitch Degrees",
+                    "Plane Heading Degrees True"]
+
+        self._mainTableModel.clear()
+
+                # Random row is added to allow header to be set
+        self._mainTableModel.appendRow(
+                    [QStandardItem("a") for _ in range(len(parameters_to_record))])
+        for i, header in enumerate(parameters_to_record):
+            self._mainTableModel.setHeaderData(
+                        i, Qt.Orientation.Horizontal, header)
+        self._mainTableModel.removeRow(0)
+
+                # Create a Recorder object that runs in another thread
+        self._recorder_thread = QThread()
+        self._recorder = Recorder(
+                    src, parameters_to_record, 1)
+        self._recorder.moveToThread(self._recorder_thread)
+        self._recorder_thread.started.connect(self._recorder.task)
+        self._recorder.new_record.connect(self.add_record)
+        self._recorder_thread.start()
+        self._recording = True
+        self.ui.actionStart_Recording.setText("Stop Recording")
+
+    
     def add_record(self, record: list[str]):
         self._mainTableModel.appendRow([QStandardItem(elt) for elt in record])
 
@@ -141,15 +171,44 @@ class MainWindow(QMainWindow):
                     "Plane Latitude", "degrees latitude", c_double)
                 self._sim.add_listened_parameter(
                     "ZULU TIME", "seconds", c_double)
-
+                self._sim.add_listened_parameter(
+                    "Plane Bank Degrees", "degrees", c_double)
+                self._sim.add_listened_parameter(
+                    "Plane Pitch Degrees", "degrees", c_double)
+                self._sim.add_listened_parameter(
+                    "Plane Heading Degrees True", "degrees", c_double)
                 # deamon = True forces the thread to close when the parent is closed
                 sim_thread = threading.Thread(
                     target=sim_connect_thread, args=(self._sim,), daemon=True)
                 sim_thread.start()
                 self.ui.actionConnect_to_sim.setText("Disconnect from sim")
+                self.ui.actionConnect_to_mock.setDisabled(True)
+
         else:
             self.ui.actionConnect_to_sim.setText("Connect to sim")
+            self.ui.actionConnect_to_mock.setEnabled(True)
             self._sim.close()
+
+    def connect_mock(self) -> None:
+        if not (self._mock.is_opened()):
+            if self._mock.open() == 0:
+                self._mock.add_listened_parameter(Mock_Value("ZULU TIME","s",1,1,1000000,False))
+                self._mock.add_listened_parameter(Mock_Value("Plane Latitude","°",40,40,60))
+                self._mock.add_listened_parameter(Mock_Value("Plane Longitude","°",0,0,10))
+                self._mock.add_listened_parameter(Mock_Value("Plane Altitude","ft",1000,1000,2000))
+                self._mock.add_listened_parameter(Mock_Value("Plane Bank Degrees","°",-60,-60,60))
+                self._mock.add_listened_parameter(Mock_Value("Plane Pitch Degrees","°",-20,-20,20))
+                self._mock.add_listened_parameter(Mock_Value("Plane Heading Degrees True","°",10,10,355))
+                # deamon = True forces the thread to close when the parent is closed
+                mock_thread = threading.Thread(
+                    target=mocking_thread, args=(self._mock,), daemon=True)
+                mock_thread.start()
+                self.ui.actionConnect_to_mock.setText("Disconnect from mock")
+                self.ui.actionConnect_to_sim.setDisabled(True)
+        else:
+            self.ui.actionConnect_to_mock.setText("Connect to mock")
+            self.ui.actionConnect_to_sim.setEnabled(True)
+            self._mock.close()
 
     def save_dialog(self) -> None:
         fileName, _ = QFileDialog.getSaveFileName(
