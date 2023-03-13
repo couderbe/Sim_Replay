@@ -3,6 +3,7 @@ import threading
 from ctypes import *
 from ctypes import _SimpleCData
 from ctypes.wintypes import HANDLE, DWORD
+import time
 from simconnect.source import Source
 from simconnect.structs import *
 from simconnect.enums import *
@@ -157,3 +158,18 @@ class Sim(Source):
             return 0
 
         return my_dispatch_proc
+    
+    def start(self):
+        self._thread = threading.Thread(
+        target=self._sim_connect_thread, daemon=True)
+        self._thread.start()
+    
+    def stop(self):
+        self.close()
+        self._thread.join()
+
+    def _sim_connect_thread(self):
+        sim_opened = 0
+        while sim_opened>=0:
+            sim_opened = self.update()
+            time.sleep(0.1)
