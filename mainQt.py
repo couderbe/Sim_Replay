@@ -14,19 +14,6 @@ from ctypes import c_double
 
 from simconnect.source import Source
 
-def sim_connect_thread(sim:Sim):
-    sim_opened = 0
-    while sim_opened>=0:
-        sim_opened = sim.update()
-        time.sleep(0.1)
-
-def mocking_thread(mock:Mock):
-    mock_opened = 0
-    while mock_opened>=0:
-        mock_opened = mock.update()
-        time.sleep(0.2)
-
-
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
@@ -178,9 +165,7 @@ class MainWindow(QMainWindow):
                 self._sim.add_listened_parameter(
                     "Plane Heading Degrees True", "degrees", c_double)
                 # deamon = True forces the thread to close when the parent is closed
-                sim_thread = threading.Thread(
-                    target=sim_connect_thread, args=(self._sim,), daemon=True)
-                sim_thread.start()
+                self._sim.start()
                 self.ui.actionConnect_to_sim.setText("Disconnect from sim")
                 self.ui.actionConnect_to_mock.setDisabled(True)
 
@@ -200,15 +185,13 @@ class MainWindow(QMainWindow):
                 self._mock.add_listened_parameter(Mock_Value("Plane Pitch Degrees","°",-20,-20,20))
                 self._mock.add_listened_parameter(Mock_Value("Plane Heading Degrees True","°",10,10,355))
                 # deamon = True forces the thread to close when the parent is closed
-                mock_thread = threading.Thread(
-                    target=mocking_thread, args=(self._mock,), daemon=True)
-                mock_thread.start()
+                self._mock.start()
                 self.ui.actionConnect_to_mock.setText("Disconnect from mock")
                 self.ui.actionConnect_to_sim.setDisabled(True)
         else:
             self.ui.actionConnect_to_mock.setText("Connect to mock")
             self.ui.actionConnect_to_sim.setEnabled(True)
-            self._mock.close()
+            self._mock.stop()
 
     def save_dialog(self) -> None:
         fileName, _ = QFileDialog.getSaveFileName(

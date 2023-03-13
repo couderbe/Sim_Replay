@@ -1,5 +1,6 @@
 import math
 import threading
+import time
 
 from simconnect.source import Source
 
@@ -25,7 +26,6 @@ class Mock_Value():
 
     def __repr__(self) -> str:
         return str(self.__dict__)
-
 
 class Mock(Source):
 
@@ -63,8 +63,8 @@ class Mock(Source):
         return self._opened
     
     def close(self) -> None:
-        # TO IMPLEMENT
         self._opened = False
+        self._thread.join()
 
     def get_all_params(self):
         return self._listened_parameters.copy()
@@ -80,3 +80,17 @@ class Mock(Source):
 
     def _get_param_from_name(self, name: str):
         return next((x for x in self._listened_parameters if (x.name==name)), None)
+    
+    def start(self):
+        self._thread = threading.Thread(
+        target=self._mocking_thread, daemon=True)
+        self._thread.start()
+    
+    def stop(self):
+        self.close()
+   
+    def _mocking_thread(self):
+        mock_opened = 0
+        while mock_opened>=0:
+            mock_opened = self.update()
+            time.sleep(0.2)
