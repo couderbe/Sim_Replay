@@ -7,6 +7,7 @@ from PySide6.QtGui import QStandardItemModel, QStandardItem
 from PySide6.QtCore import Qt, QModelIndex, QThread
 from main_window import Ui_MainWindow
 from player import Player
+from record_table import ListenableRecordTable
 from recorder import Recorder
 from simconnect.simconnect import Sim
 from simconnect.mock import Mock, Mock_Value
@@ -47,6 +48,8 @@ class MainWindow(QMainWindow):
         self.ui.mainTableView.setModel(self._mainTableModel)
         self.ui.mainTableView.clicked.connect(self.on_item_clicked)
 
+        self._record_table = ListenableRecordTable([])
+
     def play_pause(self) -> None:
         if self._playing:
             self._player.stop()
@@ -86,8 +89,8 @@ class MainWindow(QMainWindow):
     def record(self) -> None:
         if self._recording:
             self._recorder.stop()
-            self._recorder_thread.exit(0)
-            self._recorder_thread.wait()
+          #  self._recorder_thread.exit(0)
+          #  self._recorder_thread.wait()
             self._recording = False
             self.ui.actionStart_Recording.setText("Start Recording")
         else:
@@ -105,6 +108,7 @@ class MainWindow(QMainWindow):
         # TODO Check that all parameters are listened by the sim
 
         # Reset Model
+       
         if self._mainTableModel.rowCount() > 0:
             ret = QMessageBox.warning(self, "Warning",
                                     "You are going to start recording. All the current data will be lost\n"
@@ -122,6 +126,7 @@ class MainWindow(QMainWindow):
                     "Plane Pitch Degrees",
                     "Plane Heading Degrees True"]
 
+        # TODO : sync refresh with record table
         self._mainTableModel.clear()
 
                 # Random row is added to allow header to be set
@@ -132,14 +137,14 @@ class MainWindow(QMainWindow):
                         i, Qt.Orientation.Horizontal, header)
         self._mainTableModel.removeRow(0)
 
-                # Create a Recorder object that runs in another thread
-        self._recorder_thread = QThread()
+        self._record_table.set_record_header(parameters_to_record)
+
+        # Create a Recorder object that runs in another thread
         self._recorder = Recorder(
-                    src, parameters_to_record, 1)
-        self._recorder.moveToThread(self._recorder_thread)
-        self._recorder_thread.started.connect(self._recorder.task)
-        self._recorder.new_record.connect(self.add_record)
-        self._recorder_thread.start()
+                    src, self._record_table,parameters_to_record, 1)
+
+        self._record_table._proxy.resized.connect(self.add_record)
+        self._recorder.start() 
         self._recording = True
         self.ui.actionStart_Recording.setText("Stop Recording")
 
@@ -189,7 +194,7 @@ class MainWindow(QMainWindow):
                 self.ui.actionConnect_to_mock.setText("Disconnect from mock")
                 self.ui.actionConnect_to_sim.setDisabled(True)
         else:
-            self.ui.actionConnect_to_mock.setText("Connect to mock")
+            self.ui.actionConnect_to_mock.setText("Connect to mock (Dev)")
             self.ui.actionConnect_to_sim.setEnabled(True)
             self._mock.stop()
 
