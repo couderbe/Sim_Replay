@@ -12,6 +12,12 @@ class RecordTable:
     
     def cleanRows(self):
         self.records.clear()
+    
+    def rowCount(self):
+        return len(self.records)
+    
+    def item(self,row,column):
+        return self.records[row][column]
 
 class RecordTableProxy(QObject):
     resized = Signal(list)

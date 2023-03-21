@@ -70,13 +70,10 @@ class MainWindow(QMainWindow):
                         "Plane Heading Degrees True"]
 
                     # Create a Player object that runs in another thread
-                    self._player_thread = QThread()
                     self._player = Player(
-                        self._sim, self._mainTableModel, parameters_to_play)
-                    self._player.moveToThread(self._player_thread)
-                    self._player_thread.started.connect(self._player.task)
+                        self._sim,self._record_table, parameters_to_play)
                     self._player.time_changed.connect(self.set_time)
-                    self._player_thread.start()
+                    self._player.start()
                     self._playing = True
                     self.ui.playPausePushButton.setText("Stop")
                 else:
@@ -231,16 +228,20 @@ class MainWindow(QMainWindow):
             self, 'Open file', '', 'Csv files (*.csv);;All files (*.*)')
         if fileName:
             self._mainTableModel.clear()
+            # TODO : sync View with RecordTable
             with open(fileName, 'r') as csvfile:
                 reader = csv.reader(csvfile, delimiter=";",
                                     lineterminator="\n")
                 headers = reader.__next__()
+                self._record_table.header=headers
                 for row in reader:
                     items = [QStandardItem(field) for field in row]
                     self._mainTableModel.appendRow(items)
+                    self._record_table.addRow([float(field) for field in row])
                 for i, header in enumerate(headers):
                     self._mainTableModel.setHeaderData(
                         i, Qt.Orientation.Horizontal, header)
+                    
                     if header == "ZULU TIME":
                         self._time_column_id = i
             # Set time label initial value
