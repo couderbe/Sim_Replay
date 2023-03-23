@@ -1,31 +1,17 @@
 import sys
 import csv
-import time
-import threading
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItemModel, QStandardItem
-from PySide6.QtCore import Qt, QModelIndex, QThread
+from PySide6.QtCore import Qt, QModelIndex
 from main_window import Ui_MainWindow
 from player import Player
+from record_table import ListenableRecordTable
 from recorder import Recorder
 from simconnect.simconnect import Sim
 from simconnect.mock import Mock, Mock_Value
 from ctypes import c_double
 
 from simconnect.source import Source
-
-def sim_connect_thread(sim:Sim):
-    sim_opened = 0
-    while sim_opened>=0:
-        sim_opened = sim.update()
-        time.sleep(0.1)
-
-def mocking_thread(mock:Mock):
-    mock_opened = 0
-    while mock_opened>=0:
-        mock_opened = mock.update()
-        time.sleep(0.2)
-
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -80,13 +66,10 @@ class MainWindow(QMainWindow):
                         "Plane Heading Degrees True"]
 
                     # Create a Player object that runs in another thread
-                    self._player_thread = QThread()
                     self._player = Player(
-                        self._sim, self._mainTableModel, parameters_to_play)
-                    self._player.moveToThread(self._player_thread)
-                    self._player_thread.started.connect(self._player.task)
+                        self._sim,self._mainTableModel, parameters_to_play)
                     self._player.time_changed.connect(self.set_time)
-                    self._player_thread.start()
+                    self._player.start()
                     self._playing = True
                     self.ui.playPausePushButton.setText("Stop")
                 else:
@@ -99,8 +82,8 @@ class MainWindow(QMainWindow):
     def record(self) -> None:
         if self._recording:
             self._recorder.stop()
-            self._recorder_thread.exit(0)
-            self._recorder_thread.wait()
+          #  self._recorder_thread.exit(0)
+          #  self._recorder_thread.wait()
             self._recording = False
             self.ui.actionStart_Recording.setText("Start Recording")
         else:
@@ -118,6 +101,7 @@ class MainWindow(QMainWindow):
         # TODO Check that all parameters are listened by the sim
 
         # Reset Model
+       
         if self._mainTableModel.rowCount() > 0:
             ret = QMessageBox.warning(self, "Warning",
                                     "You are going to start recording. All the current data will be lost\n"
@@ -135,6 +119,7 @@ class MainWindow(QMainWindow):
                     "Plane Pitch Degrees",
                     "Plane Heading Degrees True"]
 
+        # TODO : sync refresh with record table
         self._mainTableModel.clear()
 
                 # Random row is added to allow header to be set
@@ -145,14 +130,11 @@ class MainWindow(QMainWindow):
                         i, Qt.Orientation.Horizontal, header)
         self._mainTableModel.removeRow(0)
 
-                # Create a Recorder object that runs in another thread
-        self._recorder_thread = QThread()
+        # Create a Recorder object that runs in another thread
         self._recorder = Recorder(
-                    src, parameters_to_record, 1)
-        self._recorder.moveToThread(self._recorder_thread)
-        self._recorder_thread.started.connect(self._recorder.task)
-        self._recorder.new_record.connect(self.add_record)
-        self._recorder_thread.start()
+                    src, self._mainTableModel,parameters_to_record, 1)
+
+        self._recorder.start() 
         self._recording = True
         self.ui.actionStart_Recording.setText("Stop Recording")
 
@@ -178,9 +160,7 @@ class MainWindow(QMainWindow):
                 self._sim.add_listened_parameter(
                     "Plane Heading Degrees True", "degrees", c_double)
                 # deamon = True forces the thread to close when the parent is closed
-                sim_thread = threading.Thread(
-                    target=sim_connect_thread, args=(self._sim,), daemon=True)
-                sim_thread.start()
+                self._sim.start()
                 self.ui.actionConnect_to_sim.setText("Disconnect from sim")
                 self.ui.actionConnect_to_mock.setDisabled(True)
 
@@ -200,15 +180,13 @@ class MainWindow(QMainWindow):
                 self._mock.add_listened_parameter(Mock_Value("Plane Pitch Degrees","°",-20,-20,20))
                 self._mock.add_listened_parameter(Mock_Value("Plane Heading Degrees True","°",10,10,355))
                 # deamon = True forces the thread to close when the parent is closed
-                mock_thread = threading.Thread(
-                    target=mocking_thread, args=(self._mock,), daemon=True)
-                mock_thread.start()
+                self._mock.start()
                 self.ui.actionConnect_to_mock.setText("Disconnect from mock")
                 self.ui.actionConnect_to_sim.setDisabled(True)
         else:
-            self.ui.actionConnect_to_mock.setText("Connect to mock")
+            self.ui.actionConnect_to_mock.setText("Connect to mock (Dev)")
             self.ui.actionConnect_to_sim.setEnabled(True)
-            self._mock.close()
+            self._mock.stop()
 
     def save_dialog(self) -> None:
         fileName, _ = QFileDialog.getSaveFileName(
@@ -243,6 +221,7 @@ class MainWindow(QMainWindow):
             self, 'Open file', '', 'Csv files (*.csv);;All files (*.*)')
         if fileName:
             self._mainTableModel.clear()
+            # TODO : sync View with RecordTable
             with open(fileName, 'r') as csvfile:
                 reader = csv.reader(csvfile, delimiter=";",
                                     lineterminator="\n")
@@ -253,6 +232,7 @@ class MainWindow(QMainWindow):
                 for i, header in enumerate(headers):
                     self._mainTableModel.setHeaderData(
                         i, Qt.Orientation.Horizontal, header)
+                    
                     if header == "ZULU TIME":
                         self._time_column_id = i
             # Set time label initial value
