@@ -2,7 +2,6 @@ import threading
 import time
 from PySide6.QtCore import Signal, QObject, Qt
 from PySide6.QtGui import QStandardItemModel
-from record_table import RecordTable
 from simconnect.simconnect import Sim
 
 class PlayerProxy(QObject):
@@ -12,7 +11,7 @@ class PlayerProxy(QObject):
     
 class Player():
 
-    def __init__(self, sim: Sim, record_table:RecordTable, parameters_to_play: list[str], time_column_id: int = 0) -> None:
+    def __init__(self, sim: Sim, record_table:QStandardItemModel, parameters_to_play: list[str], time_column_id: int = 0) -> None:
         super().__init__()
         self._sim = sim
         self._record_table = record_table
@@ -26,7 +25,8 @@ class Player():
         self.time_changed = self._proxy.time_changed
 
     def player_thread(self):
-        headers = self._record_table.header
+        headers = [self._record_table.headerData(
+            i, Qt.Orientation.Horizontal, Qt.ItemDataRole.DisplayRole) for i in range(self._record_table.columnCount())]
         for row in range(self._record_table.rowCount()):
             while self._pause_flag:
                 time.sleep(1)
@@ -35,13 +35,13 @@ class Player():
             for column, header in enumerate(headers):
                 if header in self._parameters_to_play:
                     self._sim.set_param_value_from_name(
-                        header, float(self._record_table.item(row, column)))
+                        header, float(self._record_table.item(row, column).data(Qt.ItemDataRole.DisplayRole)))
                 if column == self._time_column_id:
                     self._current_time = float(self._record_table.item(
-                        row, column))
+                        row, column).data(Qt.ItemDataRole.DisplayRole))
                     if row<self._record_table.rowCount()-1:
                         self._next_time = float(self._record_table.item(
-                            row + 1, column))
+                            row + 1, column).data(Qt.ItemDataRole.DisplayRole))
 
             # TODO Consider time may not be in seconds
             self.time_changed.emit(self._current_time)

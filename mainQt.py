@@ -1,10 +1,8 @@
 import sys
 import csv
-import time
-import threading
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItemModel, QStandardItem
-from PySide6.QtCore import Qt, QModelIndex, QThread
+from PySide6.QtCore import Qt, QModelIndex
 from main_window import Ui_MainWindow
 from player import Player
 from record_table import ListenableRecordTable
@@ -48,8 +46,6 @@ class MainWindow(QMainWindow):
         self.ui.mainTableView.setModel(self._mainTableModel)
         self.ui.mainTableView.clicked.connect(self.on_item_clicked)
 
-        self._record_table = ListenableRecordTable([])
-
     def play_pause(self) -> None:
         if self._playing:
             self._player.stop()
@@ -71,7 +67,7 @@ class MainWindow(QMainWindow):
 
                     # Create a Player object that runs in another thread
                     self._player = Player(
-                        self._sim,self._record_table, parameters_to_play)
+                        self._sim,self._mainTableModel, parameters_to_play)
                     self._player.time_changed.connect(self.set_time)
                     self._player.start()
                     self._playing = True
@@ -134,13 +130,10 @@ class MainWindow(QMainWindow):
                         i, Qt.Orientation.Horizontal, header)
         self._mainTableModel.removeRow(0)
 
-        self._record_table.set_record_header(parameters_to_record)
-
         # Create a Recorder object that runs in another thread
         self._recorder = Recorder(
-                    src, self._record_table,parameters_to_record, 1)
+                    src, self._mainTableModel,parameters_to_record, 1)
 
-        self._record_table._proxy.resized.connect(self.add_record)
         self._recorder.start() 
         self._recording = True
         self.ui.actionStart_Recording.setText("Stop Recording")
@@ -233,11 +226,9 @@ class MainWindow(QMainWindow):
                 reader = csv.reader(csvfile, delimiter=";",
                                     lineterminator="\n")
                 headers = reader.__next__()
-                self._record_table.header=headers
                 for row in reader:
                     items = [QStandardItem(field) for field in row]
                     self._mainTableModel.appendRow(items)
-                    self._record_table.addRow([float(field) for field in row])
                 for i, header in enumerate(headers):
                     self._mainTableModel.setHeaderData(
                         i, Qt.Orientation.Horizontal, header)
