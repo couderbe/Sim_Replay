@@ -50,7 +50,7 @@ class Sim(Source):
             return 1
         return 0
 
-    def add_listened_parameter(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD = SIMCONNECT_PERIOD.SIMCONNECT_PERIOD_SECOND) -> None:
+    def add_listened_parameter(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD = SIMCONNECT_PERIOD.SIMCONNECT_PERIOD_SIM_FRAME) -> None:
         """
         All parameters must exist and be consistent with SimConnect APÏ reference
         """

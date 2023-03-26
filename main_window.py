@@ -38,6 +38,8 @@ class Ui_MainWindow(object):
         self.actionSave.setObjectName(u"actionSave")
         self.actionConnect_to_mock = QAction(MainWindow)
         self.actionConnect_to_mock.setObjectName(u"actionConnect_to_mock")
+        self.actionView_Charts = QAction(MainWindow)
+        self.actionView_Charts.setObjectName(u"actionView_Charts")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -82,6 +84,8 @@ class Ui_MainWindow(object):
         self.menuFile.setObjectName(u"menuFile")
         self.menuRecording = QMenu(self.menubar)
         self.menuRecording.setObjectName(u"menuRecording")
+        self.menuView = QMenu(self.menubar)
+        self.menuView.setObjectName(u"menuView")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -89,11 +93,13 @@ class Ui_MainWindow(object):
 
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuRecording.menuAction())
+        self.menubar.addAction(self.menuView.menuAction())
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave)
         self.menuFile.addAction(self.actionConnect_to_sim)
         self.menuFile.addAction(self.actionConnect_to_mock)
         self.menuRecording.addAction(self.actionStart_Recording)
+        self.menuView.addAction(self.actionView_Charts)
 
         self.retranslateUi(MainWindow)
 
@@ -108,9 +114,11 @@ class Ui_MainWindow(object):
         self.actionStop_Recording.setText(QCoreApplication.translate("MainWindow", u"Stop Recording", None))
         self.actionSave.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.actionConnect_to_mock.setText(QCoreApplication.translate("MainWindow", u"Connect to mock (Dev)", None))
+        self.actionView_Charts.setText(QCoreApplication.translate("MainWindow", u"View Charts", None))
         self.playPausePushButton.setText(QCoreApplication.translate("MainWindow", u"Play", None))
         self.timeLabel.setText(QCoreApplication.translate("MainWindow", u"00:00:00", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.menuRecording.setTitle(QCoreApplication.translate("MainWindow", u"Recording", None))
+        self.menuView.setTitle(QCoreApplication.translate("MainWindow", u"View", None))
     # retranslateUi
 
