@@ -40,9 +40,11 @@ class Ui_RecordWindow(object):
         self.avalaibleListView.setAcceptDrops(True)
         self.avalaibleListView.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.avalaibleListView.setDragEnabled(True)
-        self.avalaibleListView.setDragDropMode(QAbstractItemView.InternalMove)
+        self.avalaibleListView.setDragDropMode(QAbstractItemView.DragDrop)
         self.avalaibleListView.setDefaultDropAction(Qt.MoveAction)
         self.avalaibleListView.setAlternatingRowColors(True)
+        self.avalaibleListView.setSelectionMode(QAbstractItemView.ExtendedSelection)
+        self.avalaibleListView.setSelectionBehavior(QAbstractItemView.SelectItems)
 
         self.verticalLayout_4.addWidget(self.avalaibleListView)
 
@@ -79,6 +81,8 @@ class Ui_RecordWindow(object):
         self.recordedListView.setDragDropMode(QAbstractItemView.DragDrop)
         self.recordedListView.setDefaultDropAction(Qt.MoveAction)
         self.recordedListView.setAlternatingRowColors(True)
+        self.recordedListView.setSelectionMode(QAbstractItemView.ExtendedSelection)
+        self.recordedListView.setSelectionBehavior(QAbstractItemView.SelectItems)
 
         self.verticalLayout_2.addWidget(self.recordedListView)
 
@@ -101,7 +105,7 @@ class Ui_RecordWindow(object):
     # setupUi
 
     def retranslateUi(self, RecordWindow):
-        RecordWindow.setWindowTitle(QCoreApplication.translate("RecordWindow", u"Form", None))
+        RecordWindow.setWindowTitle(QCoreApplication.translate("RecordWindow", u"Recording configuration", None))
         self.label.setText(QCoreApplication.translate("RecordWindow", u"Available Parameters", None))
         self.addButton.setText(QCoreApplication.translate("RecordWindow", u"Add >>>", None))
         self.removeButton.setText(QCoreApplication.translate("RecordWindow", u"<<< Remove", None))
