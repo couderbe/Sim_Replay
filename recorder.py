@@ -1,5 +1,7 @@
+from ctypes import c_double
 import threading
 import time
+import utils
 
 from simconnect.source import Source
 from PySide6.QtGui import QStandardItemModel,QStandardItem
@@ -13,6 +15,10 @@ class Recorder():
         self._record_table = record_table
         self._parameters_to_record = parameters_to_record
         self._stop_flag = False
+
+        for param_name in self._parameters_to_record:
+            if not(self._src.is_param_listened(param_name)):
+                self._src.add_listened_parameter(param_name, utils.get_var_unit(param_name), c_double)
 
     def start(self):
         self._thread = threading.Thread(

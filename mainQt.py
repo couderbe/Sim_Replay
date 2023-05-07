@@ -81,13 +81,8 @@ class MainWindow(QMainWindow):
 
     def record(self) -> None:
 
-        self._record_window = RecordWindow()
-        self._record_window.show()
-        return
         if self._recording:
             self._recorder.stop()
-          #  self._recorder_thread.exit(0)
-          #  self._recorder_thread.wait()
             self._recording = False
             self.ui.actionStart_Recording.setText("Start Recording")
         else:
@@ -113,7 +108,7 @@ class MainWindow(QMainWindow):
                                     QMessageBox.Yes | QMessageBox.No)
             if ret == QMessageBox.No:
                 return
-
+            
         parameters_to_record = [
                     "ZULU TIME",
                     "Plane Longitude",
@@ -123,6 +118,10 @@ class MainWindow(QMainWindow):
                     "Plane Pitch Degrees",
                     "Plane Heading Degrees True"]
 
+        self._record_window = RecordWindow(parent=self, f=Qt.WindowType.Dialog)
+        self._record_window.accepted.connect(lambda data: parameters_to_record.extend([item['name'] for item in data]))
+        self._record_window.exec()
+        
         # TODO : sync refresh with record table
         self._mainTableModel.clear()
 

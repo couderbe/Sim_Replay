@@ -1,20 +1,27 @@
 import json
-from typing import Any, List, Sequence, Union
-from PySide6.QtCore import QModelIndex, QObject, QPersistentModelIndex, Qt, QMimeData
-from PySide6.QtWidgets import QWidget
+from typing import Any, List, Sequence
+from PySide6.QtCore import QModelIndex, QObject, QPersistentModelIndex, Qt, QMimeData, Signal
+from PySide6.QtWidgets import QDialog, QWidget
 from PySide6.QtCore import QAbstractListModel
 from ui.record_window_ui import Ui_RecordWindow
 from qt_user_roles import UserRoles
 
 
-class RecordWindow(QWidget):
+class RecordWindow(QDialog):
 
     VARS_FILE_PATH = "data\\vars.json"
 
-    def __init__(self):
-        super(RecordWindow, self).__init__()
+    accepted = Signal(list)
+
+    def __init__(self, parent: QWidget | None = ..., f: Qt.WindowType = ...) -> None:
+        super().__init__(parent, f)
         self.ui = Ui_RecordWindow()
         self.ui.setupUi(self)
+
+        self.setWindowModality(Qt.WindowModality.ApplicationModal)
+
+        self.ui.buttonBox.accepted.connect(self.accept)
+        self.ui.buttonBox.rejected.connect(self.reject)
 
         self.load_avalaible_vars()
 
@@ -29,6 +36,11 @@ class RecordWindow(QWidget):
             self.add_recorded_value)
         self.ui.recordedListView.doubleClicked.connect(
             self.remove_recorded_value)
+
+    def accept(self) -> None:
+        self.setResult(QDialog.Accepted)
+        self.hide()
+        self.accepted.emit(self._recordedListModel._data)
 
     def load_avalaible_vars(self) -> None:
         """Loads available variables for recording from vars json file 

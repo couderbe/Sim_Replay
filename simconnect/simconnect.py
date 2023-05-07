@@ -107,6 +107,9 @@ class Sim(Source):
 
     def get_param_value_from_name(self, name: str):
         return self._get_param_from_name(name).value()
+    
+    def is_param_listened(self, name:str):
+        return name in [param.name for param in self._listened_parameters]
 
     def _get_param_from_name(self, name: str):
         for param in self._listened_parameters:
