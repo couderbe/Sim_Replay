@@ -3,9 +3,9 @@ import csv
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItemModel, QStandardItem
 from PySide6.QtCore import Qt, QModelIndex
-from main_window import Ui_MainWindow
+from record_window import RecordWindow
+from ui.main_window_ui import Ui_MainWindow
 from player import Player
-from record_table import ListenableRecordTable
 from recorder import Recorder
 from simconnect.simconnect import Sim
 from simconnect.mock import Mock, Mock_Value
@@ -80,6 +80,10 @@ class MainWindow(QMainWindow):
                     self, "Not connected to the sim", "You must be connected to the sim before playing a record")
 
     def record(self) -> None:
+
+        self._record_window = RecordWindow()
+        self._record_window.show()
+        return
         if self._recording:
             self._recorder.stop()
           #  self._recorder_thread.exit(0)
