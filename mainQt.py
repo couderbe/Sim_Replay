@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBo
 from PySide6.QtGui import QStandardItemModel, QStandardItem
 from PySide6.QtCore import Qt, QModelIndex
 from importer import import_gpx_file
+from linechart import LineChart
 from main_window import Ui_MainWindow
 from player import Player
 from recorder import Recorder
@@ -42,6 +43,7 @@ class MainWindow(QMainWindow):
 
         self.ui.actionImport.setShortcut('Ctrl+I')
         self.ui.actionImport.triggered.connect(self.import_dialog)
+        self.ui.actionView_Charts.triggered.connect(self.open_charts)
 
         self.ui.playPausePushButton.clicked.connect(self.play_pause)
 
@@ -135,7 +137,7 @@ class MainWindow(QMainWindow):
 
         # Create a Recorder object that runs in another thread
         self._recorder = Recorder(
-                    src, self._mainTableModel,parameters_to_record, 1)
+                    src, self._mainTableModel,parameters_to_record,0.1)
 
         self._recorder.start() 
         self._recording = True
@@ -255,6 +257,11 @@ class MainWindow(QMainWindow):
             self.ui.timeLabel.setText(
                 self._mainTableModel.item(0, self._time_column_id).text())
 
+    
+    def open_charts(self):
+        window2 = LineChart(self._mainTableModel,self)
+        window2.show()
+        window2.setGeometry(30,30,1720,920)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
