@@ -132,3 +132,6 @@ SimConnect.dll
 
 # vscode config
 .vscode
+
+# intelliJ
+.idea

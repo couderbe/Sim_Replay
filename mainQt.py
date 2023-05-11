@@ -3,9 +3,9 @@ import csv
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItemModel, QStandardItem
 from PySide6.QtCore import Qt, QModelIndex
+from importer import import_gpx_file
 from main_window import Ui_MainWindow
 from player import Player
-from record_table import ListenableRecordTable
 from recorder import Recorder
 from simconnect.simconnect import Sim
 from simconnect.mock import Mock, Mock_Value
@@ -39,6 +39,9 @@ class MainWindow(QMainWindow):
 
         self.ui.actionStart_Recording.setShortcut('Ctrl+R')
         self.ui.actionStart_Recording.triggered.connect(self.record)
+
+        self.ui.actionImport.setShortcut('Ctrl+I')
+        self.ui.actionImport.triggered.connect(self.import_dialog)
 
         self.ui.playPausePushButton.clicked.connect(self.play_pause)
 
@@ -236,6 +239,19 @@ class MainWindow(QMainWindow):
                     if header == "ZULU TIME":
                         self._time_column_id = i
             # Set time label initial value
+            self.ui.timeLabel.setText(
+                self._mainTableModel.item(0, self._time_column_id).text())
+            
+    def import_dialog(self) -> None:
+        """
+        Manage file import
+        """
+        fileName, _ = QFileDialog.getOpenFileName(
+            self, 'Import file', '', 'gps files (*.gpx);;All files (*.*)')
+        if fileName:
+            self._mainTableModel.clear()
+            import_gpx_file(self._mainTableModel,fileName)
+            self._time_column_id = 0
             self.ui.timeLabel.setText(
                 self._mainTableModel.item(0, self._time_column_id).text())
 
