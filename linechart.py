@@ -7,6 +7,7 @@ from tools.geometry import Point
 
 
 class LineChart(QMainWindow):
+    """Class that displays a set of charts based on the values defined in the table"""
     def __init__(self,table:QStandardItemModel,parent=None):
         super().__init__(parent)
 
@@ -38,6 +39,7 @@ class LineChart(QMainWindow):
         self.setCentralWidget(self.win)
     
     def create_XY_line_chart(self,table:QStandardItemModel,indX,indY):
+        """method that returns a chart with the trajectory of the plane relative to its initial position"""
         series = QSplineSeries()
         pt0 = Point(float(table.item(0, indX).data(Qt.ItemDataRole.DisplayRole)),float(table.item(0, indY).data(Qt.ItemDataRole.DisplayRole)))
         for row in range(1,table.rowCount()):

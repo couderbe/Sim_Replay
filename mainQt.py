@@ -40,7 +40,7 @@ class MainWindow(QMainWindow):
         self.ui.actionStart_Recording.setShortcut('Ctrl+R')
         self.ui.actionStart_Recording.triggered.connect(self.record)
 
-        self.ui.actionView_Charts.triggered.connect(self.open_charts)
+        self.ui.actionView_Charts.triggered.connect(self.open_charts_window)
 
         self.ui.playPausePushButton.clicked.connect(self.play_pause)
 
@@ -241,7 +241,8 @@ class MainWindow(QMainWindow):
             self.ui.timeLabel.setText(
                 self._mainTableModel.item(0, self._time_column_id).text())
     
-    def open_charts(self):
+    def open_charts_window(self):
+        """method that opens the Window that contains charts"""
         window2 = LineChart(self._mainTableModel,self)
         window2.show()
         window2.setGeometry(30,30,1720,920)
