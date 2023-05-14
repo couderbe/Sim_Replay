@@ -3,7 +3,7 @@ import csv
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItemModel, QStandardItem
 from PySide6.QtCore import Qt, QModelIndex
-from importer import import_gpx_file
+from importer import import_gpx_file, import_gpx_file_interp, import_gpx_file_module
 from linechart import LineChart
 from main_window import Ui_MainWindow
 from player import Player

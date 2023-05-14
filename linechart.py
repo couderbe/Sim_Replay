@@ -1,7 +1,7 @@
 from PySide6.QtCore import Qt, QRectF
 from PySide6.QtGui import QPainter, QStandardItemModel
 from PySide6.QtWidgets import QMainWindow, QGridLayout, QWidget
-from PySide6.QtCharts import QChart, QChartView, QSplineSeries
+from PySide6.QtCharts import QChart, QChartView, QSplineSeries, QLineSeries,QXYSeries,QScatterSeries
 
 from tools.geometry import Point
 
@@ -38,10 +38,12 @@ class LineChart(QMainWindow):
         self.setCentralWidget(self.win)
     
     def create_XY_line_chart(self,table:QStandardItemModel,indX,indY):
-        series = QSplineSeries()
-        pt0 = Point(float(table.item(0, indX).data(Qt.ItemDataRole.DisplayRole)),float(table.item(0, indY).data(Qt.ItemDataRole.DisplayRole)))
+        series = QLineSeries()
+      #  series.setMarkerSize(5.0)
+
+        pt0 = Point(float(table.item(0, indY).data(Qt.ItemDataRole.DisplayRole)),float(table.item(0, indX).data(Qt.ItemDataRole.DisplayRole)))
         for row in range(1,table.rowCount()):
-            pt = Point(float(table.item(row, indX).data(Qt.ItemDataRole.DisplayRole)),float(table.item(row, indY).data(Qt.ItemDataRole.DisplayRole))).spherical_to_carthesian(pt0)
+            pt = Point(float(table.item(row, indY).data(Qt.ItemDataRole.DisplayRole)),float(table.item(row, indX).data(Qt.ItemDataRole.DisplayRole))).spherical_to_carthesian(pt0)
             series.append(pt[0],pt[1])
 
         chart = QChart()
