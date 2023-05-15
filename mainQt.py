@@ -3,9 +3,9 @@ import csv
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItemModel, QStandardItem
 from PySide6.QtCore import Qt, QModelIndex
+from linechart import LineChart
 from main_window import Ui_MainWindow
 from player import Player
-from record_table import ListenableRecordTable
 from recorder import Recorder
 from simconnect.simconnect import Sim
 from simconnect.mock import Mock, Mock_Value
@@ -39,6 +39,8 @@ class MainWindow(QMainWindow):
 
         self.ui.actionStart_Recording.setShortcut('Ctrl+R')
         self.ui.actionStart_Recording.triggered.connect(self.record)
+
+        self.ui.actionView_Charts.triggered.connect(self.open_charts_window)
 
         self.ui.playPausePushButton.clicked.connect(self.play_pause)
 
@@ -132,7 +134,7 @@ class MainWindow(QMainWindow):
 
         # Create a Recorder object that runs in another thread
         self._recorder = Recorder(
-                    src, self._mainTableModel,parameters_to_record, 1)
+                    src, self._mainTableModel,parameters_to_record,0.1)
 
         self._recorder.start() 
         self._recording = True
@@ -238,7 +240,12 @@ class MainWindow(QMainWindow):
             # Set time label initial value
             self.ui.timeLabel.setText(
                 self._mainTableModel.item(0, self._time_column_id).text())
-
+    
+    def open_charts_window(self):
+        """method that opens the Window that contains charts"""
+        window2 = LineChart(self._mainTableModel,self)
+        window2.show()
+        window2.setGeometry(30,30,1720,920)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
