@@ -10,42 +10,60 @@ from tools.gpx_interpolate import GPXData, gpx_interpolate, gpx_read
 from tools.geometry import DEG_2_RAD
 
 def import_gpx_file(_mainTableModel:QStandardItemModel, fileName):
-        with open(fileName, 'r') as gpxfile:
-            reader_gpx = gpxpy.parse(gpxfile)
-            headers = [
-                    "ZULU TIME",
-                    "Plane Longitude",
-                    "Plane Latitude",
-                    "Plane Altitude",
-                    "Plane Bank Degrees",
-                    "Plane Pitch Degrees",
-                    "Plane Heading Degrees True"]
-            first_point = reader_gpx.tracks[0].segments[0].points[0]
-            previous_point = first_point
-            for track in reader_gpx.tracks:
-                for segment in track.segments:
-                    for i,point in enumerate(segment.points):
-                        if i > 0:
-                            attitude = compute_attitude(previous_point,point)
-                            row = [
-                                QStandardItem(str(previous_point.time_difference(first_point))),
-                                QStandardItem(str(previous_point.longitude)),
-                                QStandardItem(str(previous_point.latitude)),
-                                QStandardItem(str(previous_point.elevation)),
-                                QStandardItem(str(attitude["bank"])),
-                                QStandardItem(str(attitude["pitch"])),
-                                QStandardItem(str(attitude["heading"]))
-                            ]
-                            _mainTableModel.appendRow(row)
-                        previous_point = point
-                            
-            for i, header in enumerate(headers):
-                _mainTableModel.setHeaderData(
-                    i, Qt.Orientation.Horizontal, header)
-            # Set time label initial value
+    """Updates the main table with the trajectory found in a given .gpx file
+
+    Args:
+        _mainTableModel (QStandardItemModel): the main table that displays the trajectory 
+        fileName (String): the file name of the imported .gpx file
+
+    Returns:
+        Any: null
+    """
+    with open(fileName, 'r') as gpxfile:
+        reader_gpx = gpxpy.parse(gpxfile)
+        headers = [
+                "ZULU TIME",
+                "Plane Longitude",
+                "Plane Latitude",
+                "Plane Altitude",
+                "Plane Bank Degrees",
+                "Plane Pitch Degrees",
+                "Plane Heading Degrees True"]
+        first_point = reader_gpx.tracks[0].segments[0].points[0]
+        previous_point = first_point
+        for track in reader_gpx.tracks:
+            for segment in track.segments:
+                for i,point in enumerate(segment.points):
+                    if i > 0:
+                        attitude = compute_attitude(previous_point,point)
+                        row = [
+                            QStandardItem(str(previous_point.time_difference(first_point))),
+                            QStandardItem(str(previous_point.longitude)),
+                            QStandardItem(str(previous_point.latitude)),
+                            QStandardItem(str(previous_point.elevation)),
+                            QStandardItem(str(attitude["bank"])),
+                            QStandardItem(str(attitude["pitch"])),
+                            QStandardItem(str(attitude["heading"]))
+                        ]
+                        _mainTableModel.appendRow(row)
+                    previous_point = point
+                        
+        for i, header in enumerate(headers):
+            _mainTableModel.setHeaderData(
+                i, Qt.Orientation.Horizontal, header)
+        # Set time label initial value
 
 def import_gpx_file_interp(_mainTableModel:QStandardItemModel, fileName):
-        
+    """Updates the main table with the trajectory found in a given .gpx file with interpolation
+    computed individually between points
+
+    Args:
+        _mainTableModel (QStandardItemModel): the main table that displays the trajectory 
+        fileName (String): the file name of the imported .gpx file
+
+    Returns:
+        Any: null
+    """ 
     with open(fileName, 'r') as gpxfile:
         reader_gpx = gpxpy.parse(gpxfile)
         headers = [
@@ -94,6 +112,16 @@ def import_gpx_file_interp(_mainTableModel:QStandardItemModel, fileName):
         # Set time label initial value
 
 def import_gpx_file_module(_mainTableModel:QStandardItemModel, fileName):
+    """Updates the main table with the trajectory found in a given .gpx file with interpolation
+    computed globally by module
+
+    Args:
+        _mainTableModel (QStandardItemModel): the main table that displays the trajectory 
+        fileName (String): the file name of the imported .gpx file
+
+    Returns:
+        Any: null
+    """ 
     gpx_datas = gpx_interpolate(gpx_read(fileName),50,5000)
     first_interp_point_time =  GPXTrackPoint(gpx_datas['lat'][0],gpx_datas['lon'][0],gpx_datas['ele'][0],gpx_datas['tstamp'][0])
     previous_interp_point = first_interp_point_time
