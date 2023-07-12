@@ -4,7 +4,8 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBo
 from PySide6.QtGui import QStandardItemModel, QStandardItem
 from PySide6.QtCore import Qt, QModelIndex
 from linechart import LineChart
-from main_window import Ui_MainWindow
+from record_window import RecordWindow
+from ui.main_window_ui import Ui_MainWindow
 from player import Player
 from recorder import Recorder
 from simconnect.simconnect import Sim
@@ -82,10 +83,9 @@ class MainWindow(QMainWindow):
                     self, "Not connected to the sim", "You must be connected to the sim before playing a record")
 
     def record(self) -> None:
+
         if self._recording:
             self._recorder.stop()
-          #  self._recorder_thread.exit(0)
-          #  self._recorder_thread.wait()
             self._recording = False
             self.ui.actionStart_Recording.setText("Start Recording")
         else:
@@ -111,7 +111,7 @@ class MainWindow(QMainWindow):
                                     QMessageBox.Yes | QMessageBox.No)
             if ret == QMessageBox.No:
                 return
-
+            
         parameters_to_record = [
                     "ZULU TIME",
                     "Plane Longitude",
@@ -121,6 +121,10 @@ class MainWindow(QMainWindow):
                     "Plane Pitch Degrees",
                     "Plane Heading Degrees True"]
 
+        self._record_window = RecordWindow(parent=self, f=Qt.WindowType.Dialog)
+        self._record_window.accepted.connect(lambda data: parameters_to_record.extend([item['name'] for item in data]))
+        self._record_window.exec()
+        
         # TODO : sync refresh with record table
         self._mainTableModel.clear()
 
@@ -174,14 +178,13 @@ class MainWindow(QMainWindow):
     def connect_mock(self) -> None:
         if not (self._mock.is_opened()):
             if self._mock.open() == 0:
-                self._mock.add_listened_parameter(Mock_Value("ZULU TIME","s",1,1,1000000,False))
-                self._mock.add_listened_parameter(Mock_Value("Plane Latitude","°",40,40,60))
-                self._mock.add_listened_parameter(Mock_Value("Plane Longitude","°",0,0,10))
-                self._mock.add_listened_parameter(Mock_Value("Plane Altitude","ft",1000,1000,2000))
-                self._mock.add_listened_parameter(Mock_Value("Plane Bank Degrees","°",-60,-60,60))
-                self._mock.add_listened_parameter(Mock_Value("Plane Pitch Degrees","°",-20,-20,20))
-                self._mock.add_listened_parameter(Mock_Value("Plane Heading Degrees True","°",10,10,355))
-                # deamon = True forces the thread to close when the parent is closed
+                self._mock.add_listened_parameter("ZULU TIME","s",None,None,1,1,1000000,False)
+                self._mock.add_listened_parameter("Plane Latitude","°",None,None,40,40,60)
+                self._mock.add_listened_parameter("Plane Longitude","°",None,None,0,0,10)
+                self._mock.add_listened_parameter("Plane Altitude","ft",None,None,1000,1000,2000)
+                self._mock.add_listened_parameter("Plane Bank Degrees","°",None,None,-60,-60,60)
+                self._mock.add_listened_parameter("Plane Pitch Degrees","°",None,None,-20,-20,20)
+                self._mock.add_listened_parameter("Plane Heading Degrees True","°",None,None,10,10,355)
                 self._mock.start()
                 self.ui.actionConnect_to_mock.setText("Disconnect from mock")
                 self.ui.actionConnect_to_sim.setDisabled(True)
