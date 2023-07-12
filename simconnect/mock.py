@@ -2,7 +2,11 @@ import math
 import threading
 import time
 
+from ctypes import _SimpleCData
 from simconnect.source import Source
+from simconnect.structs import *
+from simconnect.enums import *
+from simconnect.consts import *
 
 class Mock_Value():
     def __init__(self, name: str, unit: str, val: float, min_val: float, max_val: float,is_loop=True) -> None:
@@ -46,13 +50,14 @@ class Mock(Source):
                 v.set_value(v.value()+0.1)
         return 0
 
-    def add_listened_parameter(self, mock_value:Mock_Value) -> None:
+    def add_listened_parameter(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD = SIMCONNECT_PERIOD.SIMCONNECT_PERIOD_SECOND, *args) -> None:
         """
-        All parameters must exist and be consistent with SimConnect APÏ reference
+        All parameters must exist and be consistent with SimConnect API reference
         """
-
         # Considering no parameter is ever removed from _listened_parameters
-        self._listened_parameters.append(mock_value)
+        if len(args) < 3:
+            args = (20, 0, 1000)
+        self._listened_parameters.append(Mock_Value(name, unit, *args))
 
     def open(self) -> int:
         print("Mock activated")
@@ -94,3 +99,6 @@ class Mock(Source):
         while mock_opened>=0:
             mock_opened = self.update()
             time.sleep(0.2)
+
+    def is_param_listened(self, name:str):
+        return name in [param.name for param in self._listened_parameters]

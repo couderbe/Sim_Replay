@@ -175,14 +175,13 @@ class MainWindow(QMainWindow):
     def connect_mock(self) -> None:
         if not (self._mock.is_opened()):
             if self._mock.open() == 0:
-                self._mock.add_listened_parameter(Mock_Value("ZULU TIME","s",1,1,1000000,False))
-                self._mock.add_listened_parameter(Mock_Value("Plane Latitude","°",40,40,60))
-                self._mock.add_listened_parameter(Mock_Value("Plane Longitude","°",0,0,10))
-                self._mock.add_listened_parameter(Mock_Value("Plane Altitude","ft",1000,1000,2000))
-                self._mock.add_listened_parameter(Mock_Value("Plane Bank Degrees","°",-60,-60,60))
-                self._mock.add_listened_parameter(Mock_Value("Plane Pitch Degrees","°",-20,-20,20))
-                self._mock.add_listened_parameter(Mock_Value("Plane Heading Degrees True","°",10,10,355))
-                # deamon = True forces the thread to close when the parent is closed
+                self._mock.add_listened_parameter("ZULU TIME","s",None,None,1,1,1000000,False)
+                self._mock.add_listened_parameter("Plane Latitude","°",None,None,40,40,60)
+                self._mock.add_listened_parameter("Plane Longitude","°",None,None,0,0,10)
+                self._mock.add_listened_parameter("Plane Altitude","ft",None,None,1000,1000,2000)
+                self._mock.add_listened_parameter("Plane Bank Degrees","°",None,None,-60,-60,60)
+                self._mock.add_listened_parameter("Plane Pitch Degrees","°",None,None,-20,-20,20)
+                self._mock.add_listened_parameter("Plane Heading Degrees True","°",None,None,10,10,355)
                 self._mock.start()
                 self.ui.actionConnect_to_mock.setText("Disconnect from mock")
                 self.ui.actionConnect_to_sim.setDisabled(True)
