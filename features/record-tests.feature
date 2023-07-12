@@ -5,5 +5,6 @@ Feature: User requests to record
 		And The Mock is connected
 		And A Record has started
 		And "5S" has passed
-		When The user request to stop the record
+		When The user requests to stop the record
+		And The user requests to save the record
 		Then A correct record is saved
