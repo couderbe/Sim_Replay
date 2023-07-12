@@ -17,20 +17,13 @@ def step_application_started(context):
 @given('The Mock is connected')
 def step_mock_connected(context):
     context.mock.open()
-    context.mock.add_listened_parameter(
-        Mock_Value("ZULU TIME", "s", 1, 1, 1000000, False))
-    context.mock.add_listened_parameter(
-        Mock_Value("Plane Latitude", "°", 40, 40, 60))
-    context.mock.add_listened_parameter(
-        Mock_Value("Plane Longitude", "°", 0, 0, 10))
-    context.mock.add_listened_parameter(
-        Mock_Value("Plane Altitude", "ft", 1000, 1000, 2000))
-    context.mock.add_listened_parameter(
-        Mock_Value("Plane Bank Degrees", "°", -60, -60, 60))
-    context.mock.add_listened_parameter(
-        Mock_Value("Plane Pitch Degrees", "°", -20, -20, 20))
-    context.mock.add_listened_parameter(Mock_Value(
-        "Plane Heading Degrees True", "°", 10, 10, 355))
+    context.mock.add_listened_parameter("ZULU TIME","s",None,None,1,1,1000000,False)
+    context.mock.add_listened_parameter("Plane Latitude","°",None,None,40,40,60)
+    context.mock.add_listened_parameter("Plane Longitude","°",None,None,0,0,10)
+    context.mock.add_listened_parameter("Plane Altitude","ft",None,None,1000,1000,2000)
+    context.mock.add_listened_parameter("Plane Bank Degrees","°",None,None,-60,-60,60)
+    context.mock.add_listened_parameter("Plane Pitch Degrees","°",None,None,-20,-20,20)
+    context.mock.add_listened_parameter("Plane Heading Degrees True","°",None,None,10,10,355)        
     context.mock.start()
     assert context.mock._opened is True
 
