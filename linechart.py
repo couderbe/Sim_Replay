@@ -67,6 +67,10 @@ class LineChart(QMainWindow):
         chart.addSeries(series)
         # chart.createDefaultAxes()
 
+        # add margin in chart
+        min_axis = (1.05 if min_axis < 0 else 0.95) * min_axis
+        max_axis = (0.95 if max_axis < 0 else 1.05) * max_axis
+
         xAxis = QValueAxis()
         xAxis.setRange(min_axis, max_axis)
         xAxis.setTickCount(4)
