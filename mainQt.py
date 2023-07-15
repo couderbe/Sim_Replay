@@ -71,6 +71,7 @@ class MainWindow(QMainWindow):
                     self._player = Player(
                         self._sim,self._mainTableModel, parameters_to_play)
                     self._player.time_changed.connect(self.set_time)
+                    self._player.record_changed.connect(self.set_record_number)
                     self._player.start()
                     self._playing = True
                     self.ui.playPausePushButton.setText("Stop")
@@ -109,15 +110,19 @@ class MainWindow(QMainWindow):
         if self._recording:
             self._recorder.stop()
             self._recording = False
+            self._time_column_id = 0
             self.ui.actionStart_Recording.setText("Start Recording")
-            self.ui.horizontalSlider.setMinimum(0)
+            self.ui.horizontalSlider.setDisabled(False)
+            self.ui.horizontalSlider.setMinimum(1)
             self.ui.horizontalSlider.setMaximum(self._mainTableModel.rowCount())
+            self.set_record_number(1)
         else:
             if self._sim.is_opened():   
                 self.start_src_record(self._sim)
-
+                self.ui.horizontalSlider.setDisabled(True)
             elif self._mock.is_opened():
                 self.start_src_record(self._mock)
+                self.ui.horizontalSlider.setDisabled(True)
             else:
                 _ = QMessageBox.critical(
                     self, "Not connected to the sim/mock", "You must be connected to the sim or the mock before recording")
@@ -152,7 +157,7 @@ class MainWindow(QMainWindow):
         # TODO : sync refresh with record table
         self._mainTableModel.clear()
 
-                # Random row is added to allow header to be set
+        # Random row is added to allow header to be set
         self._mainTableModel.appendRow(
                     [QStandardItem("a") for _ in range(len(parameters_to_record))])
         for i, header in enumerate(parameters_to_record):
@@ -237,12 +242,14 @@ class MainWindow(QMainWindow):
 
     def on_item_clicked(self, index: QModelIndex):
         if self._time_column_id != None:
-            self.set_time(index.siblingAtColumn(self._time_column_id).data())
+            #self.set_time(index.siblingAtColumn(self._time_column_id).data())
+            self.set_record_number(index.row()+1)
 
     def set_time(self, time: str | int | float):
-        self.ui.timeLabel.setText(str(time))
+        return
 
     def set_record_number(self, rec: int):
+        self.ui.timeLabel.setText(str(rec)+"/"+str(self._mainTableModel.rowCount()))
         self.ui.horizontalSlider.setValue(rec)
 
     def open_dialog(self) -> None:
@@ -268,10 +275,9 @@ class MainWindow(QMainWindow):
                     if header == "ZULU TIME":
                         self._time_column_id = i
             # Set time label initial value
-            self.ui.timeLabel.setText(
-                self._mainTableModel.item(0, self._time_column_id).text())
-            self.ui.horizontalSlider.setMinimum(0)
-            self.ui.horizontalSlider.setMaximum(self._mainTableModel.rowCount())    
+            self.ui.horizontalSlider.setMinimum(1)
+            self.ui.horizontalSlider.setMaximum(self._mainTableModel.rowCount())
+            self.set_record_number(1)
     def open_charts_window(self):
         """method that opens the Window that contains charts"""
         window2 = LineChart(self._mainTableModel,self)
