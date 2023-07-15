@@ -57,7 +57,6 @@ class MainWindow(QMainWindow):
         else:
             if self._sim.is_opened():
                 if not (self._recording):
-                    # TODO Allow user to choose which parameters to record
                     # TODO Check that all parameters are registered by the sim
                     parameters_to_play = [
                         "ZULU TIME",
@@ -78,6 +77,29 @@ class MainWindow(QMainWindow):
                 else:
                     _ = QMessageBox.critical(
                         self, "Cannot play while recording", "You cannot play a record while recording")
+            elif self._mock.is_opened():
+                if not (self._recording):
+                    # TODO Check that all parameters are registered by the sim
+                    parameters_to_play = [
+                        "ZULU TIME",
+                        "Plane Longitude",
+                        "Plane Latitude",
+                        "Plane Altitude",
+                        "Plane Bank Degrees",
+                        "Plane Pitch Degrees",
+                        "Plane Heading Degrees True"]
+
+                    # Create a Player object that runs in another thread
+                    self._player = Player(
+                        self._mock,self._mainTableModel, parameters_to_play)
+                    self._player.time_changed.connect(self.set_time)
+                    self._player.record_changed.connect(self.set_record_number)
+                    self._player.start()
+                    self._playing = True
+                    self.ui.playPausePushButton.setText("Stop")
+                else:
+                    _ = QMessageBox.critical(
+                        self, "Cannot play while recording", "You cannot play a record while recording")
             else:
                 _ = QMessageBox.critical(
                     self, "Not connected to the sim", "You must be connected to the sim before playing a record")
@@ -88,6 +110,8 @@ class MainWindow(QMainWindow):
             self._recorder.stop()
             self._recording = False
             self.ui.actionStart_Recording.setText("Start Recording")
+            self.ui.horizontalSlider.setMinimum(0)
+            self.ui.horizontalSlider.setMaximum(self._mainTableModel.rowCount())
         else:
             if self._sim.is_opened():   
                 self.start_src_record(self._sim)
@@ -218,6 +242,9 @@ class MainWindow(QMainWindow):
     def set_time(self, time: str | int | float):
         self.ui.timeLabel.setText(str(time))
 
+    def set_record_number(self, rec: int):
+        self.ui.horizontalSlider.setValue(rec)
+
     def open_dialog(self) -> None:
         """
         Manage file opening
@@ -243,7 +270,8 @@ class MainWindow(QMainWindow):
             # Set time label initial value
             self.ui.timeLabel.setText(
                 self._mainTableModel.item(0, self._time_column_id).text())
-    
+            self.ui.horizontalSlider.setMinimum(0)
+            self.ui.horizontalSlider.setMaximum(self._mainTableModel.rowCount())    
     def open_charts_window(self):
         """method that opens the Window that contains charts"""
         window2 = LineChart(self._mainTableModel,self)

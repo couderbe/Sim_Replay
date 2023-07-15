@@ -3,6 +3,7 @@ import threading
 import time
 
 from ctypes import _SimpleCData
+from typing_extensions import override
 from simconnect.source import Source
 from simconnect.structs import *
 from simconnect.enums import *
@@ -80,12 +81,17 @@ class Mock(Source):
         """
         return self.get_param_value_from_name(name)
 
+    @override
     def get_param_value_from_name(self, name: str):
         return self._get_param_from_name(name).value()
 
     def _get_param_from_name(self, name: str):
         return next((x for x in self._listened_parameters if (x.name==name)), None)
     
+    @override
+    def set_param_value_from_name(self, name: str, value: float) -> None:
+        return
+
     def start(self):
         self._thread = threading.Thread(
         target=self._mocking_thread, daemon=True)

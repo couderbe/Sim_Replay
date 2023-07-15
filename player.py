@@ -2,18 +2,19 @@ import threading
 import time
 from PySide6.QtCore import Signal, QObject, Qt
 from PySide6.QtGui import QStandardItemModel
-from simconnect.simconnect import Sim
+from simconnect.source import Source
 
 class PlayerProxy(QObject):
     # TODO Consider that time may not be in seconds
     # Signal Emited when time change. The current time is sent as float in seconds
     time_changed = Signal(float)
+    record_changed = Signal(int)
     
 class Player():
 
-    def __init__(self, sim: Sim, record_table:QStandardItemModel, parameters_to_play: list[str], time_column_id: int = 0) -> None:
+    def __init__(self, src: Source, record_table:QStandardItemModel, parameters_to_play: list[str], time_column_id: int = 0) -> None:
         super().__init__()
-        self._sim = sim
+        self._src = src
         self._record_table = record_table
         self._parameters_to_play = parameters_to_play
         self._time_column_id = time_column_id
@@ -23,6 +24,7 @@ class Player():
 
         self._proxy = PlayerProxy()
         self.time_changed = self._proxy.time_changed
+        self.record_changed = self._proxy.record_changed
 
     def player_thread(self):
         headers = [self._record_table.headerData(
@@ -34,7 +36,7 @@ class Player():
                 break
             for column, header in enumerate(headers):
                 if header in self._parameters_to_play:
-                    self._sim.set_param_value_from_name(
+                    self._src.set_param_value_from_name(
                         header, float(self._record_table.item(row, column).data(Qt.ItemDataRole.DisplayRole)))
                 if column == self._time_column_id:
                     self._current_time = float(self._record_table.item(
@@ -45,6 +47,7 @@ class Player():
 
             # TODO Consider time may not be in seconds
             self.time_changed.emit(self._current_time)
+            self.record_changed.emit(row+1)
             time.sleep(self._next_time - self._current_time)
 
     def pause(self):
