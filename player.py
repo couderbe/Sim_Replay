@@ -25,38 +25,50 @@ class Player():
         self._proxy = PlayerProxy()
         self.time_changed = self._proxy.time_changed
         self.record_changed = self._proxy.record_changed
+        self.current_record = 0
 
     def player_thread(self):
         headers = [self._record_table.headerData(
             i, Qt.Orientation.Horizontal, Qt.ItemDataRole.DisplayRole) for i in range(self._record_table.columnCount())]
-        for row in range(self._record_table.rowCount()):
+        while not self._stop_flag:
             while self._pause_flag:
                 time.sleep(1)
-            if self._stop_flag:
-                break
             for column, header in enumerate(headers):
                 if header in self._parameters_to_play:
                     self._src.set_param_value_from_name(
-                        header, float(self._record_table.item(row, column).data(Qt.ItemDataRole.DisplayRole)))
+                        header, float(self._record_table.item(self.current_record, column).data(Qt.ItemDataRole.DisplayRole)))
                 if column == self._time_column_id:
                     self._current_time = float(self._record_table.item(
-                        row, column).data(Qt.ItemDataRole.DisplayRole))
-                    if row<self._record_table.rowCount()-1:
+                        self.current_record, column).data(Qt.ItemDataRole.DisplayRole))
+                    if self.current_record<self._record_table.rowCount()-1:
                         self._next_time = float(self._record_table.item(
-                            row + 1, column).data(Qt.ItemDataRole.DisplayRole))
+                            self.current_record + 1, column).data(Qt.ItemDataRole.DisplayRole))
+                    else:
+                        self.stop()
 
             # TODO Consider time may not be in seconds
             self.time_changed.emit(self._current_time)
-            self.record_changed.emit(row+1)
+            self.record_changed.emit(self.current_record+1)
+            
+            self.current_record+=1
             time.sleep(self._next_time - self._current_time)
 
     def pause(self):
         self._pause_flag = True
     
     def start(self):
-        self._thread = threading.Thread(
-            target=self.player_thread, daemon=True)
-        self._thread.start()
+        self._pause_flag = False
+        self._stop_flag = False
+        if self.current_record >= self._record_table.rowCount()-1:
+            self.current_record = 0
+
+        if not hasattr(self, '_thread') or not self._thread.is_alive():
+            self._thread = threading.Thread(
+                target=self.player_thread, daemon=True)
+            self._thread.start()
 
     def stop(self):
         self._stop_flag = True
+
+    def go_to(self, rec: int):
+        self.current_record = rec

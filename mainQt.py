@@ -49,6 +49,24 @@ class MainWindow(QMainWindow):
         self.ui.mainTableView.setModel(self._mainTableModel)
         self.ui.mainTableView.clicked.connect(self.on_item_clicked)
 
+        self.ui.horizontalSlider.setDisabled(True)
+
+        self.ui.horizontalSlider.sliderPressed.connect(self.on_slider_pressed)
+        self.ui.horizontalSlider.sliderMoved.connect(self.on_slider_moved)
+        self.ui.horizontalSlider.sliderReleased.connect(self.on_slider_released)
+
+    def on_slider_pressed(self):
+        self._player.pause()
+    
+    def on_slider_moved(self, val):
+        self._player.go_to(val)
+        self.ui.timeLabel.setText(
+            str(val)+"/"+str(self._mainTableModel.rowCount()))
+    
+    def on_slider_released(self):
+        if self._playing:
+            self._player.start()
+
     def play_pause(self) -> None:
         if self._playing:
             self._player.stop()
@@ -57,21 +75,6 @@ class MainWindow(QMainWindow):
         else:
             if self._sim.is_opened():
                 if not (self._recording):
-                    # TODO Check that all parameters are registered by the sim
-                    parameters_to_play = [
-                        "ZULU TIME",
-                        "Plane Longitude",
-                        "Plane Latitude",
-                        "Plane Altitude",
-                        "Plane Bank Degrees",
-                        "Plane Pitch Degrees",
-                        "Plane Heading Degrees True"]
-
-                    # Create a Player object that runs in another thread
-                    self._player = Player(
-                        self._sim, self._mainTableModel, parameters_to_play)
-                    self._player.time_changed.connect(self.set_time)
-                    self._player.record_changed.connect(self.set_record_number)
                     self._player.start()
                     self._playing = True
                     self.ui.playPausePushButton.setText("Stop")
@@ -80,21 +83,6 @@ class MainWindow(QMainWindow):
                         self, "Cannot play while recording", "You cannot play a record while recording")
             elif self._mock.is_opened():
                 if not (self._recording):
-                    # TODO Check that all parameters are registered by the sim
-                    parameters_to_play = [
-                        "ZULU TIME",
-                        "Plane Longitude",
-                        "Plane Latitude",
-                        "Plane Altitude",
-                        "Plane Bank Degrees",
-                        "Plane Pitch Degrees",
-                        "Plane Heading Degrees True"]
-
-                    # Create a Player object that runs in another thread
-                    self._player = Player(
-                        self._mock, self._mainTableModel, parameters_to_play)
-                    self._player.time_changed.connect(self.set_time)
-                    self._player.record_changed.connect(self.set_record_number)
                     self._player.start()
                     self._playing = True
                     self.ui.playPausePushButton.setText("Stop")
@@ -116,13 +104,15 @@ class MainWindow(QMainWindow):
             self.ui.horizontalSlider.setMinimum(1)
             self.ui.horizontalSlider.setMaximum(
                 self._mainTableModel.rowCount())
-            self.set_record_number(1)
+            self.change_player_record(0)
         else:
             if self._sim.is_opened():
                 self.start_src_record(self._sim)
+                self.stop_playing()
                 self.ui.horizontalSlider.setDisabled(True)
             elif self._mock.is_opened():
                 self.start_src_record(self._mock)
+                self.stop_playing()
                 self.ui.horizontalSlider.setDisabled(True)
             else:
                 _ = QMessageBox.critical(
@@ -179,6 +169,7 @@ class MainWindow(QMainWindow):
         self._mainTableModel.appendRow([QStandardItem(elt) for elt in record])
 
     def connect(self) -> None:
+        self.stop_playing()
         if not (self._sim.is_opened()):
             if self._sim.open() == 0:
                 self._sim.add_listened_parameter(
@@ -197,15 +188,36 @@ class MainWindow(QMainWindow):
                     "Plane Heading Degrees True", "degrees", c_double)
                 # deamon = True forces the thread to close when the parent is closed
                 self._sim.start()
+
+                # TODO Check that all parameters are registered by the sim
+                parameters_to_play = [
+                        "ZULU TIME",
+                        "Plane Longitude",
+                        "Plane Latitude",
+                        "Plane Altitude",
+                        "Plane Bank Degrees",
+                        "Plane Pitch Degrees",
+                        "Plane Heading Degrees True"]
+
+                # Create a Player object that runs in another thread
+                self._player = Player(
+                    self._sim, self._mainTableModel, parameters_to_play)
+                self._player.record_changed.connect(self.change_ui_record_number)
+
+                self.ui.horizontalSlider.setDisabled(False)
+
                 self.ui.actionConnect_to_sim.setText("Disconnect from sim")
                 self.ui.actionConnect_to_mock.setDisabled(True)
 
         else:
             self.ui.actionConnect_to_sim.setText("Connect to sim")
             self.ui.actionConnect_to_mock.setEnabled(True)
+            self.ui.horizontalSlider.setDisabled(True)
+
             self._sim.close()
 
     def connect_mock(self) -> None:
+        self.stop_playing()
         if not (self._mock.is_opened()):
             if self._mock.open() == 0:
                 self._mock.add_listened_parameter(
@@ -223,11 +235,31 @@ class MainWindow(QMainWindow):
                 self._mock.add_listened_parameter(
                     "Plane Heading Degrees True", "°", None, None, 10, 10, 355)
                 self._mock.start()
+
+                # TODO Check that all parameters are registered by the sim
+                parameters_to_play = [
+                        "ZULU TIME",
+                        "Plane Longitude",
+                        "Plane Latitude",
+                        "Plane Altitude",
+                        "Plane Bank Degrees",
+                        "Plane Pitch Degrees",
+                        "Plane Heading Degrees True"]
+
+                # Create a Player object that runs in another thread
+                self._player = Player(
+                    self._mock, self._mainTableModel, parameters_to_play)
+                self._player.record_changed.connect(self.change_ui_record_number)
+
+                self.ui.horizontalSlider.setDisabled(False)
+
                 self.ui.actionConnect_to_mock.setText("Disconnect from mock")
                 self.ui.actionConnect_to_sim.setDisabled(True)
         else:
             self.ui.actionConnect_to_mock.setText("Connect to mock (Dev)")
             self.ui.actionConnect_to_sim.setEnabled(True)
+            self.ui.horizontalSlider.setDisabled(True)
+
             self._mock.stop()
 
     def save_dialog(self) -> None:
@@ -248,15 +280,17 @@ class MainWindow(QMainWindow):
                             self._mainTableModel.index(row, column))
                     writer.writerow(row_data)
 
-    def on_item_clicked(self, index: QModelIndex):
-        if self._time_column_id != None:
+    
+    def change_player_record(self, index: int):
+        if self._time_column_id != None and (self._sim.is_opened() or self._mock.is_opened()):
             # self.set_time(index.siblingAtColumn(self._time_column_id).data())
-            self.set_record_number(index.row()+1)
+            self._player.go_to(index)
+        self.change_ui_record_number(index+1)
+    
+    def on_item_clicked(self, index: QModelIndex):
+        self.change_player_record(index.row())
 
-    def set_time(self, time: str | int | float):
-        return
-
-    def set_record_number(self, rec: int):
+    def change_ui_record_number(self, rec: int):
         self.ui.timeLabel.setText(
             str(rec)+"/"+str(self._mainTableModel.rowCount()))
         self.ui.horizontalSlider.setValue(rec)
@@ -268,6 +302,7 @@ class MainWindow(QMainWindow):
         fileName, _ = QFileDialog.getOpenFileName(
             self, 'Open file', '', 'Csv files (*.csv);;All files (*.*)')
         if fileName:
+            self.stop_playing()
             self._mainTableModel.clear()
             # TODO : sync View with RecordTable
             with open(fileName, 'r') as csvfile:
@@ -287,7 +322,12 @@ class MainWindow(QMainWindow):
             self.ui.horizontalSlider.setMinimum(1)
             self.ui.horizontalSlider.setMaximum(
                 self._mainTableModel.rowCount())
-            self.set_record_number(1)
+            self.change_player_record(0)
+
+    def stop_playing(self):
+        if self._playing:
+            self._player.stop()
+            self._playing = False
 
     def open_charts_window(self):
         """method that opens the Window that contains charts"""
