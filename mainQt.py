@@ -14,6 +14,7 @@ from ctypes import c_double
 
 from simconnect.source import Source
 
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
@@ -27,13 +28,12 @@ class MainWindow(QMainWindow):
         self._mock = Mock()
 
         self._time_column_id = None
-        
+
         self.ui.actionOpen.setShortcut('Ctrl+O')
         self.ui.actionOpen.triggered.connect(self.open_dialog)
 
         self.ui.actionConnect_to_sim.triggered.connect(self.connect)
         self.ui.actionConnect_to_mock.triggered.connect(self.connect_mock)
-
 
         self.ui.actionSave.setShortcut('Ctrl+S')
         self.ui.actionSave.triggered.connect(self.save_dialog)
@@ -69,7 +69,7 @@ class MainWindow(QMainWindow):
 
                     # Create a Player object that runs in another thread
                     self._player = Player(
-                        self._sim,self._mainTableModel, parameters_to_play)
+                        self._sim, self._mainTableModel, parameters_to_play)
                     self._player.time_changed.connect(self.set_time)
                     self._player.record_changed.connect(self.set_record_number)
                     self._player.start()
@@ -92,7 +92,7 @@ class MainWindow(QMainWindow):
 
                     # Create a Player object that runs in another thread
                     self._player = Player(
-                        self._mock,self._mainTableModel, parameters_to_play)
+                        self._mock, self._mainTableModel, parameters_to_play)
                     self._player.time_changed.connect(self.set_time)
                     self._player.record_changed.connect(self.set_record_number)
                     self._player.start()
@@ -114,10 +114,11 @@ class MainWindow(QMainWindow):
             self.ui.actionStart_Recording.setText("Start Recording")
             self.ui.horizontalSlider.setDisabled(False)
             self.ui.horizontalSlider.setMinimum(1)
-            self.ui.horizontalSlider.setMaximum(self._mainTableModel.rowCount())
+            self.ui.horizontalSlider.setMaximum(
+                self._mainTableModel.rowCount())
             self.set_record_number(1)
         else:
-            if self._sim.is_opened():   
+            if self._sim.is_opened():
                 self.start_src_record(self._sim)
                 self.ui.horizontalSlider.setDisabled(True)
             elif self._mock.is_opened():
@@ -127,53 +128,53 @@ class MainWindow(QMainWindow):
                 _ = QMessageBox.critical(
                     self, "Not connected to the sim/mock", "You must be connected to the sim or the mock before recording")
 
-    def start_src_record(self,src:Source):
+    def start_src_record(self, src: Source):
         # TODO Allow user to choose which parameters to record
         # TODO Check that all parameters are listened by the sim
 
         # Reset Model
-       
+
         if self._mainTableModel.rowCount() > 0:
             ret = QMessageBox.warning(self, "Warning",
-                                    "You are going to start recording. All the current data will be lost\n"
-                                    "Do you want to continue ?",
-                                    QMessageBox.Yes | QMessageBox.No)
+                                      "You are going to start recording. All the current data will be lost\n"
+                                      "Do you want to continue ?",
+                                      QMessageBox.Yes | QMessageBox.No)
             if ret == QMessageBox.No:
                 return
-            
+
         parameters_to_record = [
-                    "ZULU TIME",
-                    "Plane Longitude",
-                    "Plane Latitude",
-                    "Plane Altitude",
-                    "Plane Bank Degrees",
-                    "Plane Pitch Degrees",
-                    "Plane Heading Degrees True"]
+            "ZULU TIME",
+            "Plane Longitude",
+            "Plane Latitude",
+            "Plane Altitude",
+            "Plane Bank Degrees",
+            "Plane Pitch Degrees",
+            "Plane Heading Degrees True"]
 
         self._record_window = RecordWindow(parent=self, f=Qt.WindowType.Dialog)
-        self._record_window.accepted.connect(lambda data: parameters_to_record.extend([item['name'] for item in data]))
+        self._record_window.accepted.connect(
+            lambda data: parameters_to_record.extend([item['name'] for item in data]))
         self._record_window.exec()
-        
+
         # TODO : sync refresh with record table
         self._mainTableModel.clear()
 
         # Random row is added to allow header to be set
         self._mainTableModel.appendRow(
-                    [QStandardItem("a") for _ in range(len(parameters_to_record))])
+            [QStandardItem("a") for _ in range(len(parameters_to_record))])
         for i, header in enumerate(parameters_to_record):
             self._mainTableModel.setHeaderData(
-                        i, Qt.Orientation.Horizontal, header)
+                i, Qt.Orientation.Horizontal, header)
         self._mainTableModel.removeRow(0)
 
         # Create a Recorder object that runs in another thread
         self._recorder = Recorder(
-                    src, self._mainTableModel,parameters_to_record,0.1)
+            src, self._mainTableModel, parameters_to_record, 0.1)
 
-        self._recorder.start() 
+        self._recorder.start()
         self._recording = True
         self.ui.actionStart_Recording.setText("Stop Recording")
 
-    
     def add_record(self, record: list[str]):
         self._mainTableModel.appendRow([QStandardItem(elt) for elt in record])
 
@@ -207,13 +208,20 @@ class MainWindow(QMainWindow):
     def connect_mock(self) -> None:
         if not (self._mock.is_opened()):
             if self._mock.open() == 0:
-                self._mock.add_listened_parameter("ZULU TIME","s",None,None,1,1,1000000,False)
-                self._mock.add_listened_parameter("Plane Latitude","°",None,None,40,40,60)
-                self._mock.add_listened_parameter("Plane Longitude","°",None,None,0,0,10)
-                self._mock.add_listened_parameter("Plane Altitude","ft",None,None,1000,1000,2000)
-                self._mock.add_listened_parameter("Plane Bank Degrees","°",None,None,-60,-60,60)
-                self._mock.add_listened_parameter("Plane Pitch Degrees","°",None,None,-20,-20,20)
-                self._mock.add_listened_parameter("Plane Heading Degrees True","°",None,None,10,10,355)
+                self._mock.add_listened_parameter(
+                    "ZULU TIME", "s", None, None, 1, 1, 1000000, False)
+                self._mock.add_listened_parameter(
+                    "Plane Latitude", "°", None, None, 40, 40, 60)
+                self._mock.add_listened_parameter(
+                    "Plane Longitude", "°", None, None, 0, 0, 10)
+                self._mock.add_listened_parameter(
+                    "Plane Altitude", "ft", None, None, 1000, 1000, 2000)
+                self._mock.add_listened_parameter(
+                    "Plane Bank Degrees", "°", None, None, -60, -60, 60)
+                self._mock.add_listened_parameter(
+                    "Plane Pitch Degrees", "°", None, None, -20, -20, 20)
+                self._mock.add_listened_parameter(
+                    "Plane Heading Degrees True", "°", None, None, 10, 10, 355)
                 self._mock.start()
                 self.ui.actionConnect_to_mock.setText("Disconnect from mock")
                 self.ui.actionConnect_to_sim.setDisabled(True)
@@ -242,14 +250,15 @@ class MainWindow(QMainWindow):
 
     def on_item_clicked(self, index: QModelIndex):
         if self._time_column_id != None:
-            #self.set_time(index.siblingAtColumn(self._time_column_id).data())
+            # self.set_time(index.siblingAtColumn(self._time_column_id).data())
             self.set_record_number(index.row()+1)
 
     def set_time(self, time: str | int | float):
         return
 
     def set_record_number(self, rec: int):
-        self.ui.timeLabel.setText(str(rec)+"/"+str(self._mainTableModel.rowCount()))
+        self.ui.timeLabel.setText(
+            str(rec)+"/"+str(self._mainTableModel.rowCount()))
         self.ui.horizontalSlider.setValue(rec)
 
     def open_dialog(self) -> None:
@@ -271,18 +280,21 @@ class MainWindow(QMainWindow):
                 for i, header in enumerate(headers):
                     self._mainTableModel.setHeaderData(
                         i, Qt.Orientation.Horizontal, header)
-                    
+
                     if header == "ZULU TIME":
                         self._time_column_id = i
             # Set time label initial value
             self.ui.horizontalSlider.setMinimum(1)
-            self.ui.horizontalSlider.setMaximum(self._mainTableModel.rowCount())
+            self.ui.horizontalSlider.setMaximum(
+                self._mainTableModel.rowCount())
             self.set_record_number(1)
+
     def open_charts_window(self):
         """method that opens the Window that contains charts"""
-        window2 = LineChart(self._mainTableModel,self)
+        window2 = LineChart(self._mainTableModel, self)
         window2.show()
-        window2.setGeometry(30,30,1720,920)
+        window2.setGeometry(30, 30, 1720, 920)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
