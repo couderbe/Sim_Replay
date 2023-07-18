@@ -69,9 +69,7 @@ class MainWindow(QMainWindow):
 
     def play_pause(self) -> None:
         if self._playing:
-            self._player.stop()
-            self._playing = False
-            self.ui.playPausePushButton.setText("Play")
+            self.stop_playing()
         else:
             if self._sim.is_opened():
                 if not (self._recording):
@@ -328,6 +326,7 @@ class MainWindow(QMainWindow):
         if self._playing:
             self._player.stop()
             self._playing = False
+            self.ui.playPausePushButton.setText("Play")
 
     def open_charts_window(self):
         """method that opens the Window that contains charts"""
