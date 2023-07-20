@@ -6,6 +6,7 @@ from PySide6.QtCore import Qt, QModelIndex
 from linechart import LineChart
 from record_window import RecordWindow
 from ui.main_window_ui import Ui_MainWindow
+from outputs import save_datas
 from player import Player
 from recorder import Recorder
 from simconnect.simconnect import Sim
@@ -197,19 +198,7 @@ class MainWindow(QMainWindow):
         fileName, _ = QFileDialog.getSaveFileName(
             self, 'Save record', '', 'Csv files (*.csv);;All files (*.*)')
         if fileName:
-            with open(fileName, 'w') as csvfile:
-                headers = [self._mainTableModel.headerData(
-                    i, Qt.Orientation.Horizontal, Qt.ItemDataRole.DisplayRole) for i in range(self._mainTableModel.columnCount())]
-                writer = csv.DictWriter(csvfile, fieldnames=headers, delimiter=";",
-                                        lineterminator="\n")
-                writer.writeheader()
-                # Optimization ?
-                for row in range(self._mainTableModel.rowCount()):
-                    row_data = {}
-                    for column in range(self._mainTableModel.columnCount()):
-                        row_data[headers[column]] = self._mainTableModel.data(
-                            self._mainTableModel.index(row, column))
-                    writer.writerow(row_data)
+            save_datas(fileName,self._mainTableModel)
 
     def on_item_clicked(self, index: QModelIndex):
         if self._time_column_id != None:
