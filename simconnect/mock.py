@@ -90,6 +90,8 @@ class Mock(Source):
     
     @override
     def set_param_value_from_name(self, name: str, value: float) -> None:
+        if(name == "ZULU TIME"):
+            print("\rmock has sent value : "+name +" with : "+ str(value))
         return
 
     def start(self):

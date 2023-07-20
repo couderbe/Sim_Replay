@@ -24,6 +24,7 @@ class MainWindow(QMainWindow):
         self._sim = Sim()
         self._recording = False
         self._playing = False
+        self._slider_dragging = False
 
         self._mock = Mock()
 
@@ -53,17 +54,20 @@ class MainWindow(QMainWindow):
 
         self.ui.horizontalSlider.sliderPressed.connect(self.on_slider_pressed)
         self.ui.horizontalSlider.sliderMoved.connect(self.on_slider_moved)
-        self.ui.horizontalSlider.sliderReleased.connect(self.on_slider_released)
+        self.ui.horizontalSlider.sliderReleased.connect(
+            self.on_slider_released)
 
     def on_slider_pressed(self):
+        self._slider_dragging = True
         self._player.pause()
-    
+
     def on_slider_moved(self, val):
         self._player.go_to(val)
         self.ui.timeLabel.setText(
             str(val)+"/"+str(self._mainTableModel.rowCount()))
-    
+
     def on_slider_released(self):
+        self._slider_dragging = False
         if self._playing:
             self._player.start()
 
@@ -189,18 +193,19 @@ class MainWindow(QMainWindow):
 
                 # TODO Check that all parameters are registered by the sim
                 parameters_to_play = [
-                        "ZULU TIME",
-                        "Plane Longitude",
-                        "Plane Latitude",
-                        "Plane Altitude",
-                        "Plane Bank Degrees",
-                        "Plane Pitch Degrees",
-                        "Plane Heading Degrees True"]
+                    "ZULU TIME",
+                    "Plane Longitude",
+                    "Plane Latitude",
+                    "Plane Altitude",
+                    "Plane Bank Degrees",
+                    "Plane Pitch Degrees",
+                    "Plane Heading Degrees True"]
 
                 # Create a Player object that runs in another thread
                 self._player = Player(
                     self._sim, self._mainTableModel, parameters_to_play)
-                self._player.record_changed.connect(self.change_ui_record_number)
+                self._player.record_changed.connect(
+                    self.change_ui_record_number)
 
                 self.ui.horizontalSlider.setDisabled(False)
 
@@ -236,18 +241,19 @@ class MainWindow(QMainWindow):
 
                 # TODO Check that all parameters are registered by the sim
                 parameters_to_play = [
-                        "ZULU TIME",
-                        "Plane Longitude",
-                        "Plane Latitude",
-                        "Plane Altitude",
-                        "Plane Bank Degrees",
-                        "Plane Pitch Degrees",
-                        "Plane Heading Degrees True"]
+                    "ZULU TIME",
+                    "Plane Longitude",
+                    "Plane Latitude",
+                    "Plane Altitude",
+                    "Plane Bank Degrees",
+                    "Plane Pitch Degrees",
+                    "Plane Heading Degrees True"]
 
                 # Create a Player object that runs in another thread
                 self._player = Player(
                     self._mock, self._mainTableModel, parameters_to_play)
-                self._player.record_changed.connect(self.change_ui_record_number)
+                self._player.record_changed.connect(
+                    self.change_ui_record_number)
 
                 self.ui.horizontalSlider.setDisabled(False)
 
@@ -278,20 +284,20 @@ class MainWindow(QMainWindow):
                             self._mainTableModel.index(row, column))
                     writer.writerow(row_data)
 
-    
     def change_player_record(self, index: int):
         if self._time_column_id != None and (self._sim.is_opened() or self._mock.is_opened()):
             # self.set_time(index.siblingAtColumn(self._time_column_id).data())
             self._player.go_to(index)
         self.change_ui_record_number(index+1)
-    
+
     def on_item_clicked(self, index: QModelIndex):
         self.change_player_record(index.row())
 
     def change_ui_record_number(self, rec: int):
         self.ui.timeLabel.setText(
             str(rec)+"/"+str(self._mainTableModel.rowCount()))
-        self.ui.horizontalSlider.setValue(rec)
+        if not self._slider_dragging:
+            self.ui.horizontalSlider.setValue(rec)
 
     def open_dialog(self) -> None:
         """
