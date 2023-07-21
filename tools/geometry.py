@@ -4,11 +4,13 @@ import math
 DEG_2_RAD = math.pi/180
 
 class Point:
-    def __init__(self, lat:float, lon:float):
-        self.lat = lat
-        self.lon = lon
+    """Class that defines a geographic point with a latitude and a longitude in degrees"""
 
-    def spherical_to_carthesian(self,other):
+    def __init__(self, lon: float, lat: float):
+        self.lon = lon
+        self.lat = lat
+
+    def spherical_to_carthesian(self, other):
         """Returns a tuple containing a relative displacement with carthesian X Y coordinates between two points 
 
         Args:
@@ -17,4 +19,4 @@ class Point:
         Returns:
             Tuple: 2 floats as XY relative position
         """
-        return (math.cos((other.lat+self.lat)*DEG_2_RAD/2)*(self.lon-other.lon)*60,(self.lat-other.lat)*60)
+        return (math.cos((other.lat+self.lat)*DEG_2_RAD/2)*(self.lon-other.lon)*60, (self.lat-other.lat)*60)
