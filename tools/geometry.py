@@ -30,3 +30,7 @@ class Point3D(Point):
     
     def spherical_to_carthesian(self, other):
         return (super().spherical_to_carthesian(other)+(self.altitude-other.altitude,))
+
+
+def bound(x,m,M):
+    return min(max(x,m),M)

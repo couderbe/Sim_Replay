@@ -10,6 +10,8 @@ from flight_model.flight_model import Attitude, compute_attitude_from_gpx
 from tools.gpx_interpolate import GPXData, gpx_interpolate, gpx_read
 from tools.geometry import DEG_2_RAD
 
+M_TO_FT = 1/0.3048
+
 def import_gpx_file(_mainTableModel:QStandardItemModel, fileName):
     """Updates the main table with the trajectory found in a given .gpx file
 
@@ -101,9 +103,9 @@ def import_gpx_file_interp(_mainTableModel:QStandardItemModel, fileName):
                                 QStandardItem(str(previous_interp_point.longitude)),
                                 QStandardItem(str(previous_interp_point.latitude)),
                                 QStandardItem(str(previous_interp_point.elevation)),
-                                QStandardItem(str(attitude["bank"])),
-                                QStandardItem(str(attitude["pitch"])),
-                                QStandardItem(str(attitude["heading"]))
+                                QStandardItem(str(attitude.phi)),
+                                QStandardItem(str(attitude.theta)),
+                                QStandardItem(str(attitude.psi))
                             ]
                             _mainTableModel.appendRow(row)
                             previous_interp_point = interp_point
@@ -126,7 +128,7 @@ def import_gpx_file_module(_mainTableModel:QStandardItemModel, fileName):
     Returns:
         Any: null
     """ 
-    gpx_datas = gpx_interpolate(gpx_read(fileName),50)
+    gpx_datas = gpx_interpolate(gpx_read(fileName),5) # resolution to be defined 
     first_interp_point_time =  GPXTrackPoint(gpx_datas['lat'][0],gpx_datas['lon'][0],gpx_datas['ele'][0],gpx_datas['tstamp'][0])
     previous_interp_point = first_interp_point_time
     previous_attitude = Attitude(0,0,0)
@@ -137,10 +139,10 @@ def import_gpx_file_module(_mainTableModel:QStandardItemModel, fileName):
             QStandardItem(str(previous_interp_point.time)),
             QStandardItem(str(previous_interp_point.longitude)),
             QStandardItem(str(previous_interp_point.latitude)),
-            QStandardItem(str(previous_interp_point.elevation)),
-            QStandardItem(str(attitude["bank"])),
-            QStandardItem(str(attitude["pitch"])),
-            QStandardItem(str(attitude["heading"]))
+            QStandardItem(str(previous_interp_point.elevation*M_TO_FT)),
+            QStandardItem(str(attitude.phi if(j>1) else 0)),
+            QStandardItem(str(attitude.theta)),
+            QStandardItem(str( attitude.psi  ))
         ]
         _mainTableModel.appendRow(row)
         previous_interp_point = interp_point

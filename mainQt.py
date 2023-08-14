@@ -255,7 +255,7 @@ class MainWindow(QMainWindow):
             self, 'Import file', '', 'gps files (*.gpx);;All files (*.*)')
         if fileName:
             self._mainTableModel.clear()
-            import_gpx_file(self._mainTableModel,fileName)
+            import_gpx_file_module(self._mainTableModel,fileName)
             self._time_column_id = 0
             self.ui.timeLabel.setText(
                 self._mainTableModel.item(0, self._time_column_id).text())
