@@ -21,7 +21,7 @@ class LineChart(QMainWindow):
             i, Qt.Orientation.Horizontal, Qt.ItemDataRole.DisplayRole) for i in range(table.columnCount())]
 
         for column in range(table.columnCount()):
-            series = QSplineSeries()
+            series = QLineSeries()
             for row in range(table.rowCount()):
                 series.append(row, float(table.item(
                     row, column).data(Qt.ItemDataRole.DisplayRole)))
@@ -44,7 +44,7 @@ class LineChart(QMainWindow):
 
     def create_XY_line_chart(self, table: QStandardItemModel, indX, indY) -> QChartView:
         """method that returns a chart with the trajectory of the plane relative to its initial position"""
-        series = QSplineSeries()
+        series = QLineSeries()
         pt0 = Point(float(table.item(0, indX).data(Qt.ItemDataRole.DisplayRole)), float(
             table.item(0, indY).data(Qt.ItemDataRole.DisplayRole)))
         min_axis = math.inf

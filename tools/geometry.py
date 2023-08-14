@@ -20,3 +20,13 @@ class Point:
             Tuple: 2 floats as XY relative position
         """
         return (math.cos((other.lat+self.lat)*DEG_2_RAD/2)*(self.lon-other.lon)*60, (self.lat-other.lat)*60)
+    
+
+class Point3D(Point):
+    
+    def __init__(self, lon: float, lat: float,altitude: float):
+        super().__init__(lon, lat)
+        self.altitude = altitude
+    
+    def spherical_to_carthesian(self, other):
+        return (super().spherical_to_carthesian(other)+(self.altitude-other.altitude,))
