@@ -1,0 +1,5143 @@
+<gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="SkyDreamSoft">
+	<metadata>
+		<name>06/05/2023 LFCL (14:27) LFCL (15:55)</name>
+		<author>
+			<name>SkyDreamSoft</name>
+		</author>
+		<time>2023-05-10T22:22:17.608Z</time>
+	</metadata>
+	<trk>
+		<trkseg>
+			<trkpt lat="43.59129732" lon="1.49696058">
+				<ele>143.6580</ele>
+				<time>2023-05-06T12:27:32Z</time>
+				<desc>Vitesse : 6 kmh
+					Altitude : 471 ft
+					Latitude : 43.591297
+					Longitude : 1.496961
+					Cap : 248°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.59117186" lon="1.49659991">
+				<ele>143.5634</ele>
+				<time>2023-05-06T12:27:44Z</time>
+				<desc>Vitesse : 10 kmh
+					Altitude : 471 ft
+					Latitude : 43.591172
+					Longitude : 1.496600
+					Cap : 227°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.59090372" lon="1.49664600">
+				<ele>143.5243</ele>
+				<time>2023-05-06T12:28:05Z</time>
+				<desc>Vitesse : 0 kmh
+					Altitude : 471 ft
+					Latitude : 43.590904
+					Longitude : 1.496646
+					Cap : 000°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.59067770" lon="1.49679882">
+				<ele>142.2583</ele>
+				<time>2023-05-06T12:28:18Z</time>
+				<desc>Vitesse : 32 kmh
+					Altitude : 467 ft
+					Latitude : 43.590678
+					Longitude : 1.496799
+					Cap : 156°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.58563639" lon="1.49998547">
+				<ele>154.5082</ele>
+				<time>2023-05-06T12:28:43Z</time>
+				<desc>Vitesse : 124 kmh
+					Altitude : 507 ft
+					Latitude : 43.585636
+					Longitude : 1.499985
+					Cap : 156°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.58141754" lon="1.50248359">
+				<ele>203.6309</ele>
+				<time>2023-05-06T12:28:58Z</time>
+				<desc>Vitesse : 123 kmh
+					Altitude : 668 ft
+					Latitude : 43.581418
+					Longitude : 1.502484
+					Cap : 157°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.57672168" lon="1.50506856">
+				<ele>249.7707</ele>
+				<time>2023-05-06T12:29:15Z</time>
+				<desc>Vitesse : 126 kmh
+					Altitude : 819 ft
+					Latitude : 43.576722
+					Longitude : 1.505069
+					Cap : 159°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.57222153" lon="1.50781697">
+				<ele>276.9620</ele>
+				<time>2023-05-06T12:29:30Z</time>
+				<desc>Vitesse : 131 kmh
+					Altitude : 909 ft
+					Latitude : 43.572222
+					Longitude : 1.507817
+					Cap : 153°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56965278" lon="1.50982042">
+				<ele>304.9813</ele>
+				<time>2023-05-06T12:29:39Z</time>
+				<desc>Vitesse : 136 kmh
+					Altitude : 1001 ft
+					Latitude : 43.569653
+					Longitude : 1.509820
+					Cap : 147°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56765324" lon="1.51180564">
+				<ele>333.4023</ele>
+				<time>2023-05-06T12:29:46Z</time>
+				<desc>Vitesse : 141 kmh
+					Altitude : 1094 ft
+					Latitude : 43.567653
+					Longitude : 1.511806
+					Cap : 140°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56713369" lon="1.51246806">
+				<ele>345.4609</ele>
+				<time>2023-05-06T12:29:48Z</time>
+				<desc>Vitesse : 139 kmh
+					Altitude : 1133 ft
+					Latitude : 43.567134
+					Longitude : 1.512468
+					Cap : 134°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56667054" lon="1.51319051">
+				<ele>357.5797</ele>
+				<time>2023-05-06T12:29:50Z</time>
+				<desc>Vitesse : 138 kmh
+					Altitude : 1173 ft
+					Latitude : 43.566671
+					Longitude : 1.513191
+					Cap : 129°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56627518" lon="1.51396138">
+				<ele>368.1561</ele>
+				<time>2023-05-06T12:29:52Z</time>
+				<desc>Vitesse : 137 kmh
+					Altitude : 1208 ft
+					Latitude : 43.566275
+					Longitude : 1.513961
+					Cap : 123°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56593677" lon="1.51477086">
+				<ele>379.7996</ele>
+				<time>2023-05-06T12:29:54Z</time>
+				<desc>Vitesse : 135 kmh
+					Altitude : 1246 ft
+					Latitude : 43.565937
+					Longitude : 1.514771
+					Cap : 117°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56566307" lon="1.51560567">
+				<ele>390.4591</ele>
+				<time>2023-05-06T12:29:56Z</time>
+				<desc>Vitesse : 132 kmh
+					Altitude : 1281 ft
+					Latitude : 43.565663
+					Longitude : 1.515606
+					Cap : 111°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56547388" lon="1.51647534">
+				<ele>398.3374</ele>
+				<time>2023-05-06T12:29:58Z</time>
+				<desc>Vitesse : 129 kmh
+					Altitude : 1307 ft
+					Latitude : 43.565474
+					Longitude : 1.516475
+					Cap : 103°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56536167" lon="1.51735592">
+				<ele>403.7120</ele>
+				<time>2023-05-06T12:30:00Z</time>
+				<desc>Vitesse : 129 kmh
+					Altitude : 1325 ft
+					Latitude : 43.565362
+					Longitude : 1.517356
+					Cap : 097°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56529482" lon="1.51867357">
+				<ele>409.7443</ele>
+				<time>2023-05-06T12:30:03Z</time>
+				<desc>Vitesse : 131 kmh
+					Altitude : 1344 ft
+					Latitude : 43.565295
+					Longitude : 1.518674
+					Cap : 091°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56553652" lon="1.52617028">
+				<ele>452.6797</ele>
+				<time>2023-05-06T12:30:19Z</time>
+				<desc>Vitesse : 137 kmh
+					Altitude : 1485 ft
+					Latitude : 43.565537
+					Longitude : 1.526170
+					Cap : 087°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56591230" lon="1.53235020">
+				<ele>491.2009</ele>
+				<time>2023-05-06T12:30:32Z</time>
+				<desc>Vitesse : 136 kmh
+					Altitude : 1612 ft
+					Latitude : 43.565912
+					Longitude : 1.532350
+					Cap : 082°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56654033" lon="1.53973502">
+				<ele>532.1685</ele>
+				<time>2023-05-06T12:30:48Z</time>
+				<desc>Vitesse : 137 kmh
+					Altitude : 1746 ft
+					Latitude : 43.566540
+					Longitude : 1.539735
+					Cap : 087°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56656393" lon="1.54457762">
+				<ele>547.5234</ele>
+				<time>2023-05-06T12:30:58Z</time>
+				<desc>Vitesse : 145 kmh
+					Altitude : 1796 ft
+					Latitude : 43.566564
+					Longitude : 1.544578
+					Cap : 093°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56646117" lon="1.54606263">
+				<ele>554.0642</ele>
+				<time>2023-05-06T12:31:01Z</time>
+				<desc>Vitesse : 143 kmh
+					Altitude : 1818 ft
+					Latitude : 43.566461
+					Longitude : 1.546063
+					Cap : 100°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56590302" lon="1.54936983">
+				<ele>576.0115</ele>
+				<time>2023-05-06T12:31:08Z</time>
+				<desc>Vitesse : 138 kmh
+					Altitude : 1890 ft
+					Latitude : 43.565903
+					Longitude : 1.549370
+					Cap : 105°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56425002" lon="1.55634162">
+				<ele>623.6367</ele>
+				<time>2023-05-06T12:31:24Z</time>
+				<desc>Vitesse : 135 kmh
+					Altitude : 2046 ft
+					Latitude : 43.564250
+					Longitude : 1.556342
+					Cap : 107°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56268767" lon="1.56354847">
+				<ele>668.6501</ele>
+				<time>2023-05-06T12:31:40Z</time>
+				<desc>Vitesse : 142 kmh
+					Altitude : 2194 ft
+					Latitude : 43.562688
+					Longitude : 1.563548
+					Cap : 107°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56118076" lon="1.56941608">
+				<ele>674.5483</ele>
+				<time>2023-05-06T12:31:52Z</time>
+				<desc>Vitesse : 156 kmh
+					Altitude : 2213 ft
+					Latitude : 43.561181
+					Longitude : 1.569416
+					Cap : 113°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.55876026" lon="1.57659435">
+				<ele>666.4523</ele>
+				<time>2023-05-06T12:32:06Z</time>
+				<desc>Vitesse : 176 kmh
+					Altitude : 2187 ft
+					Latitude : 43.558760
+					Longitude : 1.576594
+					Cap : 115°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.55633201" lon="1.58364603">
+				<ele>669.3391</ele>
+				<time>2023-05-06T12:32:19Z</time>
+				<desc>Vitesse : 173 kmh
+					Altitude : 2196 ft
+					Latitude : 43.556332
+					Longitude : 1.583646
+					Cap : 115°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.55399555" lon="1.59069632">
+				<ele>669.0106</ele>
+				<time>2023-05-06T12:32:32Z</time>
+				<desc>Vitesse : 176 kmh
+					Altitude : 2195 ft
+					Latitude : 43.553996
+					Longitude : 1.590696
+					Cap : 115°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.55157621" lon="1.59804807">
+				<ele>658.1104</ele>
+				<time>2023-05-06T12:32:45Z</time>
+				<desc>Vitesse : 186 kmh
+					Altitude : 2159 ft
+					Latitude : 43.551576
+					Longitude : 1.598048
+					Cap : 116°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.54939194" lon="1.60370912">
+				<ele>659.6113</ele>
+				<time>2023-05-06T12:32:55Z</time>
+				<desc>Vitesse : 187 kmh
+					Altitude : 2164 ft
+					Latitude : 43.549392
+					Longitude : 1.603709
+					Cap : 121°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.54810048" lon="1.60639917">
+				<ele>652.2754</ele>
+				<time>2023-05-06T12:33:00Z</time>
+				<desc>Vitesse : 189 kmh
+					Altitude : 2140 ft
+					Latitude : 43.548100
+					Longitude : 1.606399
+					Cap : 126°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.54601649" lon="1.60994169">
+				<ele>643.5361</ele>
+				<time>2023-05-06T12:33:07Z</time>
+				<desc>Vitesse : 189 kmh
+					Altitude : 2111 ft
+					Latitude : 43.546016
+					Longitude : 1.609942
+					Cap : 132°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.54371127" lon="1.61317859">
+				<ele>647.9662</ele>
+				<time>2023-05-06T12:33:14Z</time>
+				<desc>Vitesse : 189 kmh
+					Altitude : 2126 ft
+					Latitude : 43.543711
+					Longitude : 1.613179
+					Cap : 137°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.53933135" lon="1.61840883">
+				<ele>640.1624</ele>
+				<time>2023-05-06T12:33:26Z</time>
+				<desc>Vitesse : 195 kmh
+					Altitude : 2100 ft
+					Latitude : 43.539331
+					Longitude : 1.618409
+					Cap : 139°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.53515750" lon="1.62315220">
+				<ele>642.9419</ele>
+				<time>2023-05-06T12:33:37Z</time>
+				<desc>Vitesse : 197 kmh
+					Altitude : 2109 ft
+					Latitude : 43.535158
+					Longitude : 1.623152
+					Cap : 142°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.53048350" lon="1.62797841">
+				<ele>637.6843</ele>
+				<time>2023-05-06T12:33:49Z</time>
+				<desc>Vitesse : 195 kmh
+					Altitude : 2092 ft
+					Latitude : 43.530484
+					Longitude : 1.627978
+					Cap : 145°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.52718024" lon="1.63084260">
+				<ele>625.7222</ele>
+				<time>2023-05-06T12:33:57Z</time>
+				<desc>Vitesse : 197 kmh
+					Altitude : 2053 ft
+					Latitude : 43.527180
+					Longitude : 1.630843
+					Cap : 151°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.52236090" lon="1.63422987">
+				<ele>612.4143</ele>
+				<time>2023-05-06T12:34:08Z</time>
+				<desc>Vitesse : 196 kmh
+					Altitude : 2009 ft
+					Latitude : 43.522361
+					Longitude : 1.634230
+					Cap : 155°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.51702418" lon="1.63746493">
+				<ele>601.7900</ele>
+				<time>2023-05-06T12:34:20Z</time>
+				<desc>Vitesse : 193 kmh
+					Altitude : 1974 ft
+					Latitude : 43.517024
+					Longitude : 1.637465
+					Cap : 157°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.51164743" lon="1.64043921">
+				<ele>576.3196</ele>
+				<time>2023-05-06T12:34:32Z</time>
+				<desc>Vitesse : 194 kmh
+					Altitude : 1891 ft
+					Latitude : 43.511647
+					Longitude : 1.640439
+					Cap : 159°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.50625043" lon="1.64338393">
+				<ele>562.6663</ele>
+				<time>2023-05-06T12:34:44Z</time>
+				<desc>Vitesse : 189 kmh
+					Altitude : 1846 ft
+					Latitude : 43.506250
+					Longitude : 1.643384
+					Cap : 158°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.50123229" lon="1.64622926">
+				<ele>565.7129</ele>
+				<time>2023-05-06T12:34:56Z</time>
+				<desc>Vitesse : 178 kmh
+					Altitude : 1856 ft
+					Latitude : 43.501232
+					Longitude : 1.646229
+					Cap : 157°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.49601564" lon="1.64905688">
+				<ele>579.1760</ele>
+				<time>2023-05-06T12:35:09Z</time>
+				<desc>Vitesse : 170 kmh
+					Altitude : 1900 ft
+					Latitude : 43.496016
+					Longitude : 1.649057
+					Cap : 159°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.49075692" lon="1.65175214">
+				<ele>582.5239</ele>
+				<time>2023-05-06T12:35:22Z</time>
+				<desc>Vitesse : 173 kmh
+					Altitude : 1911 ft
+					Latitude : 43.490757
+					Longitude : 1.651752
+					Cap : 160°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.48864137" lon="1.65269176">
+				<ele>582.5786</ele>
+				<time>2023-05-06T12:35:27Z</time>
+				<desc>Vitesse : 182 kmh
+					Altitude : 1911 ft
+					Latitude : 43.488641
+					Longitude : 1.652692
+					Cap : 166°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.48773097" lon="1.65294062">
+				<ele>582.4564</ele>
+				<time>2023-05-06T12:35:29Z</time>
+				<desc>Vitesse : 186 kmh
+					Altitude : 1911 ft
+					Latitude : 43.487731
+					Longitude : 1.652941
+					Cap : 172°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.48678954" lon="1.65306971">
+				<ele>578.0217</ele>
+				<time>2023-05-06T12:35:31Z</time>
+				<desc>Vitesse : 190 kmh
+					Altitude : 1896 ft
+					Latitude : 43.486790
+					Longitude : 1.653070
+					Cap : 177°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.48583301" lon="1.65304095">
+				<ele>577.5995</ele>
+				<time>2023-05-06T12:35:33Z</time>
+				<desc>Vitesse : 193 kmh
+					Altitude : 1895 ft
+					Latitude : 43.485833
+					Longitude : 1.653041
+					Cap : 185°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.48487680" lon="1.65285767">
+				<ele>578.8037</ele>
+				<time>2023-05-06T12:35:35Z</time>
+				<desc>Vitesse : 195 kmh
+					Altitude : 1899 ft
+					Latitude : 43.484877
+					Longitude : 1.652858
+					Cap : 192°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.48393184" lon="1.65251066">
+				<ele>578.4994</ele>
+				<time>2023-05-06T12:35:37Z</time>
+				<desc>Vitesse : 193 kmh
+					Altitude : 1898 ft
+					Latitude : 43.483932
+					Longitude : 1.652511
+					Cap : 198°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.48301035" lon="1.65200456">
+				<ele>576.3080</ele>
+				<time>2023-05-06T12:35:39Z</time>
+				<desc>Vitesse : 201 kmh
+					Altitude : 1891 ft
+					Latitude : 43.483010
+					Longitude : 1.652005
+					Cap : 204°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.48210185" lon="1.65137627">
+				<ele>571.9899</ele>
+				<time>2023-05-06T12:35:41Z</time>
+				<desc>Vitesse : 206 kmh
+					Altitude : 1877 ft
+					Latitude : 43.482102
+					Longitude : 1.651376
+					Cap : 209°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.48077904" lon="1.65021278">
+				<ele>564.7373</ele>
+				<time>2023-05-06T12:35:44Z</time>
+				<desc>Vitesse : 214 kmh
+					Altitude : 1853 ft
+					Latitude : 43.480779
+					Longitude : 1.650213
+					Cap : 217°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.47995043" lon="1.64927291">
+				<ele>565.6250</ele>
+				<time>2023-05-06T12:35:46Z</time>
+				<desc>Vitesse : 215 kmh
+					Altitude : 1856 ft
+					Latitude : 43.479950
+					Longitude : 1.649273
+					Cap : 222°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.47882681" lon="1.64770933">
+				<ele>572.0930</ele>
+				<time>2023-05-06T12:35:49Z</time>
+				<desc>Vitesse : 214 kmh
+					Altitude : 1877 ft
+					Latitude : 43.478827
+					Longitude : 1.647709
+					Cap : 229°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.47649501" lon="1.64354954">
+				<ele>573.0298</ele>
+				<time>2023-05-06T12:35:56Z</time>
+				<desc>Vitesse : 221 kmh
+					Altitude : 1880 ft
+					Latitude : 43.476495
+					Longitude : 1.643550
+					Cap : 234°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.47405633" lon="1.63848605">
+				<ele>576.8667</ele>
+				<time>2023-05-06T12:36:04Z</time>
+				<desc>Vitesse : 219 kmh
+					Altitude : 1893 ft
+					Latitude : 43.474056
+					Longitude : 1.638486
+					Cap : 239°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.47145859" lon="1.63179969">
+				<ele>580.7388</ele>
+				<time>2023-05-06T12:36:14Z</time>
+				<desc>Vitesse : 224 kmh
+					Altitude : 1905 ft
+					Latitude : 43.471459
+					Longitude : 1.631800
+					Cap : 244°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.46902820" lon="1.62486060">
+				<ele>581.4872</ele>
+				<time>2023-05-06T12:36:24Z</time>
+				<desc>Vitesse : 224 kmh
+					Altitude : 1908 ft
+					Latitude : 43.469028
+					Longitude : 1.624861
+					Cap : 244°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.46666448" lon="1.61778504">
+				<ele>587.4614</ele>
+				<time>2023-05-06T12:36:34Z</time>
+				<desc>Vitesse : 225 kmh
+					Altitude : 1927 ft
+					Latitude : 43.466664
+					Longitude : 1.617785
+					Cap : 246°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.46430009" lon="1.61082093">
+				<ele>588.0869</ele>
+				<time>2023-05-06T12:36:44Z</time>
+				<desc>Vitesse : 225 kmh
+					Altitude : 1929 ft
+					Latitude : 43.464300
+					Longitude : 1.610821
+					Cap : 245°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.46174861" lon="1.60393942">
+				<ele>587.4573</ele>
+				<time>2023-05-06T12:36:54Z</time>
+				<desc>Vitesse : 223 kmh
+					Altitude : 1927 ft
+					Latitude : 43.461749
+					Longitude : 1.603939
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.45902159" lon="1.59744380">
+				<ele>594.1389</ele>
+				<time>2023-05-06T12:37:04Z</time>
+				<desc>Vitesse : 216 kmh
+					Altitude : 1949 ft
+					Latitude : 43.459022
+					Longitude : 1.597444
+					Cap : 238°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.45616284" lon="1.59102007">
+				<ele>581.3102</ele>
+				<time>2023-05-06T12:37:14Z</time>
+				<desc>Vitesse : 223 kmh
+					Altitude : 1907 ft
+					Latitude : 43.456163
+					Longitude : 1.591020
+					Cap : 240°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.45432013" lon="1.58621630">
+				<ele>583.4287</ele>
+				<time>2023-05-06T12:37:21Z</time>
+				<desc>Vitesse : 228 kmh
+					Altitude : 1914 ft
+					Latitude : 43.454320
+					Longitude : 1.586216
+					Cap : 246°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.45218040" lon="1.57888521">
+				<ele>590.9387</ele>
+				<time>2023-05-06T12:37:31Z</time>
+				<desc>Vitesse : 232 kmh
+					Altitude : 1939 ft
+					Latitude : 43.452180
+					Longitude : 1.578885
+					Cap : 250°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.45022123" lon="1.57134804">
+				<ele>595.8407</ele>
+				<time>2023-05-06T12:37:41Z</time>
+				<desc>Vitesse : 233 kmh
+					Altitude : 1955 ft
+					Latitude : 43.450221
+					Longitude : 1.571348
+					Cap : 250°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.44824252" lon="1.56382722">
+				<ele>598.6533</ele>
+				<time>2023-05-06T12:37:51Z</time>
+				<desc>Vitesse : 232 kmh
+					Altitude : 1964 ft
+					Latitude : 43.448243
+					Longitude : 1.563827
+					Cap : 250°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.44633473" lon="1.55640354">
+				<ele>605.3843</ele>
+				<time>2023-05-06T12:38:01Z</time>
+				<desc>Vitesse : 230 kmh
+					Altitude : 1986 ft
+					Latitude : 43.446335
+					Longitude : 1.556404
+					Cap : 253°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.44460619" lon="1.54881762">
+				<ele>601.7755</ele>
+				<time>2023-05-06T12:38:11Z</time>
+				<desc>Vitesse : 232 kmh
+					Altitude : 1974 ft
+					Latitude : 43.444606
+					Longitude : 1.548818
+					Cap : 253°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.44284778" lon="1.54114698">
+				<ele>587.2902</ele>
+				<time>2023-05-06T12:38:21Z</time>
+				<desc>Vitesse : 240 kmh
+					Altitude : 1927 ft
+					Latitude : 43.442848
+					Longitude : 1.541147
+					Cap : 252°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.44100972" lon="1.53334899">
+				<ele>592.6887</ele>
+				<time>2023-05-06T12:38:31Z</time>
+				<desc>Vitesse : 236 kmh
+					Altitude : 1945 ft
+					Latitude : 43.441010
+					Longitude : 1.533349
+					Cap : 252°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.43929610" lon="1.52564438">
+				<ele>599.6958</ele>
+				<time>2023-05-06T12:38:41Z</time>
+				<desc>Vitesse : 234 kmh
+					Altitude : 1968 ft
+					Latitude : 43.439296
+					Longitude : 1.525644
+					Cap : 255°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.43806705" lon="1.51782043">
+				<ele>595.1653</ele>
+				<time>2023-05-06T12:38:51Z</time>
+				<desc>Vitesse : 236 kmh
+					Altitude : 1953 ft
+					Latitude : 43.438067
+					Longitude : 1.517820
+					Cap : 260°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.43697726" lon="1.50972762">
+				<ele>589.6250</ele>
+				<time>2023-05-06T12:39:01Z</time>
+				<desc>Vitesse : 240 kmh
+					Altitude : 1934 ft
+					Latitude : 43.436977
+					Longitude : 1.509728
+					Cap : 259°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.43584566" lon="1.50243243">
+				<ele>591.0715</ele>
+				<time>2023-05-06T12:39:10Z</time>
+				<desc>Vitesse : 240 kmh
+					Altitude : 1939 ft
+					Latitude : 43.435846
+					Longitude : 1.502432
+					Cap : 259°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.43520449" lon="1.49843804">
+				<ele>589.7325</ele>
+				<time>2023-05-06T12:39:15Z</time>
+				<desc>Vitesse : 239 kmh
+					Altitude : 1935 ft
+					Latitude : 43.435204
+					Longitude : 1.498438
+					Cap : 254°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.43340734" lon="1.49140236">
+				<ele>577.9988</ele>
+				<time>2023-05-06T12:39:24Z</time>
+				<desc>Vitesse : 243 kmh
+					Altitude : 1896 ft
+					Latitude : 43.433407
+					Longitude : 1.491402
+					Cap : 249°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.43151838" lon="1.48443474">
+				<ele>582.6906</ele>
+				<time>2023-05-06T12:39:33Z</time>
+				<desc>Vitesse : 237 kmh
+					Altitude : 1912 ft
+					Latitude : 43.431518
+					Longitude : 1.484435
+					Cap : 250°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.42944040" lon="1.47676184">
+				<ele>579.6694</ele>
+				<time>2023-05-06T12:39:43Z</time>
+				<desc>Vitesse : 239 kmh
+					Altitude : 1902 ft
+					Latitude : 43.429440
+					Longitude : 1.476762
+					Cap : 250°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.42764055" lon="1.46972960">
+				<ele>576.2622</ele>
+				<time>2023-05-06T12:39:52Z</time>
+				<desc>Vitesse : 244 kmh
+					Altitude : 1891 ft
+					Latitude : 43.427641
+					Longitude : 1.469730
+					Cap : 251°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.42579848" lon="1.46259005">
+				<ele>573.5952</ele>
+				<time>2023-05-06T12:40:01Z</time>
+				<desc>Vitesse : 245 kmh
+					Altitude : 1882 ft
+					Latitude : 43.425798
+					Longitude : 1.462590
+					Cap : 251°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.42409632" lon="1.45547288">
+				<ele>578.9866</ele>
+				<time>2023-05-06T12:40:10Z</time>
+				<desc>Vitesse : 244 kmh
+					Altitude : 1900 ft
+					Latitude : 43.424096
+					Longitude : 1.455473
+					Cap : 253°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.42267650" lon="1.44825511">
+				<ele>573.4214</ele>
+				<time>2023-05-06T12:40:19Z</time>
+				<desc>Vitesse : 245 kmh
+					Altitude : 1881 ft
+					Latitude : 43.422677
+					Longitude : 1.448255
+					Cap : 256°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.42133550" lon="1.44086846">
+				<ele>568.4670</ele>
+				<time>2023-05-06T12:40:28Z</time>
+				<desc>Vitesse : 245 kmh
+					Altitude : 1865 ft
+					Latitude : 43.421336
+					Longitude : 1.440868
+					Cap : 256°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.41986592" lon="1.43362954">
+				<ele>571.5774</ele>
+				<time>2023-05-06T12:40:37Z</time>
+				<desc>Vitesse : 238 kmh
+					Altitude : 1875 ft
+					Latitude : 43.419866
+					Longitude : 1.433630
+					Cap : 254°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.41816068" lon="1.42682082">
+				<ele>572.3162</ele>
+				<time>2023-05-06T12:40:46Z</time>
+				<desc>Vitesse : 233 kmh
+					Altitude : 1878 ft
+					Latitude : 43.418161
+					Longitude : 1.426821
+					Cap : 248°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.41589236" lon="1.41941065">
+				<ele>557.9600</ele>
+				<time>2023-05-06T12:40:56Z</time>
+				<desc>Vitesse : 234 kmh
+					Altitude : 1831 ft
+					Latitude : 43.415892
+					Longitude : 1.419411
+					Cap : 246°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.41338243" lon="1.41230670">
+				<ele>567.3636</ele>
+				<time>2023-05-06T12:41:06Z</time>
+				<desc>Vitesse : 225 kmh
+					Altitude : 1861 ft
+					Latitude : 43.413382
+					Longitude : 1.412307
+					Cap : 243°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.41076716" lon="1.40541387">
+				<ele>560.5547</ele>
+				<time>2023-05-06T12:41:16Z</time>
+				<desc>Vitesse : 231 kmh
+					Altitude : 1839 ft
+					Latitude : 43.410767
+					Longitude : 1.405414
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.40806527" lon="1.39851197">
+				<ele>564.2729</ele>
+				<time>2023-05-06T12:41:26Z</time>
+				<desc>Vitesse : 226 kmh
+					Altitude : 1851 ft
+					Latitude : 43.408065
+					Longitude : 1.398512
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.40551261" lon="1.39162625">
+				<ele>566.3340</ele>
+				<time>2023-05-06T12:41:36Z</time>
+				<desc>Vitesse : 225 kmh
+					Altitude : 1858 ft
+					Latitude : 43.405513
+					Longitude : 1.391626
+					Cap : 244°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.40307358" lon="1.38471377">
+				<ele>561.4010</ele>
+				<time>2023-05-06T12:41:46Z</time>
+				<desc>Vitesse : 226 kmh
+					Altitude : 1842 ft
+					Latitude : 43.403074
+					Longitude : 1.384714
+					Cap : 245°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.40066235" lon="1.37784082">
+				<ele>559.9027</ele>
+				<time>2023-05-06T12:41:56Z</time>
+				<desc>Vitesse : 222 kmh
+					Altitude : 1837 ft
+					Latitude : 43.400662
+					Longitude : 1.377841
+					Cap : 244°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.39824870" lon="1.37108410">
+				<ele>558.9973</ele>
+				<time>2023-05-06T12:42:06Z</time>
+				<desc>Vitesse : 217 kmh
+					Altitude : 1834 ft
+					Latitude : 43.398249
+					Longitude : 1.371084
+					Cap : 245°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.39591890" lon="1.36427502">
+				<ele>549.7828</ele>
+				<time>2023-05-06T12:42:16Z</time>
+				<desc>Vitesse : 225 kmh
+					Altitude : 1804 ft
+					Latitude : 43.395919
+					Longitude : 1.364275
+					Cap : 245°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.39346341" lon="1.35732147">
+				<ele>550.4055</ele>
+				<time>2023-05-06T12:42:26Z</time>
+				<desc>Vitesse : 221 kmh
+					Altitude : 1806 ft
+					Latitude : 43.393463
+					Longitude : 1.357321
+					Cap : 245°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.39126346" lon="1.35044342">
+				<ele>552.7102</ele>
+				<time>2023-05-06T12:42:36Z</time>
+				<desc>Vitesse : 218 kmh
+					Altitude : 1813 ft
+					Latitude : 43.391263
+					Longitude : 1.350443
+					Cap : 247°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.38912689" lon="1.34349894">
+				<ele>557.2129</ele>
+				<time>2023-05-06T12:42:46Z</time>
+				<desc>Vitesse : 222 kmh
+					Altitude : 1828 ft
+					Latitude : 43.389127
+					Longitude : 1.343499
+					Cap : 248°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.38704507" lon="1.33630523">
+				<ele>553.8650</ele>
+				<time>2023-05-06T12:42:56Z</time>
+				<desc>Vitesse : 230 kmh
+					Altitude : 1817 ft
+					Latitude : 43.387045
+					Longitude : 1.336305
+					Cap : 249°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.38515141" lon="1.32875979">
+				<ele>542.1528</ele>
+				<time>2023-05-06T12:43:06Z</time>
+				<desc>Vitesse : 233 kmh
+					Altitude : 1779 ft
+					Latitude : 43.385151
+					Longitude : 1.328760
+					Cap : 252°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.38345380" lon="1.32114406">
+				<ele>546.9380</ele>
+				<time>2023-05-06T12:43:16Z</time>
+				<desc>Vitesse : 223 kmh
+					Altitude : 1794 ft
+					Latitude : 43.383454
+					Longitude : 1.321144
+					Cap : 255°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.38212702" lon="1.31381153">
+				<ele>552.6727</ele>
+				<time>2023-05-06T12:43:26Z</time>
+				<desc>Vitesse : 218 kmh
+					Altitude : 1813 ft
+					Latitude : 43.382127
+					Longitude : 1.313812
+					Cap : 258°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.38097913" lon="1.30650568">
+				<ele>547.7231</ele>
+				<time>2023-05-06T12:43:36Z</time>
+				<desc>Vitesse : 219 kmh
+					Altitude : 1797 ft
+					Latitude : 43.380979
+					Longitude : 1.306506
+					Cap : 257°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.37963021" lon="1.29909369">
+				<ele>538.0812</ele>
+				<time>2023-05-06T12:43:46Z</time>
+				<desc>Vitesse : 224 kmh
+					Altitude : 1765 ft
+					Latitude : 43.379630
+					Longitude : 1.299094
+					Cap : 256°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.37817456" lon="1.29167893">
+				<ele>528.3608</ele>
+				<time>2023-05-06T12:43:56Z</time>
+				<desc>Vitesse : 227 kmh
+					Altitude : 1733 ft
+					Latitude : 43.378175
+					Longitude : 1.291679
+					Cap : 254°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.37644437" lon="1.28437438">
+				<ele>540.3948</ele>
+				<time>2023-05-06T12:44:06Z</time>
+				<desc>Vitesse : 222 kmh
+					Altitude : 1773 ft
+					Latitude : 43.376444
+					Longitude : 1.284374
+					Cap : 249°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.37438690" lon="1.27742966">
+				<ele>556.7434</ele>
+				<time>2023-05-06T12:44:16Z</time>
+				<desc>Vitesse : 215 kmh
+					Altitude : 1827 ft
+					Latitude : 43.374387
+					Longitude : 1.277430
+					Cap : 248°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.37218322" lon="1.27004603">
+				<ele>572.1489</ele>
+				<time>2023-05-06T12:44:27Z</time>
+				<desc>Vitesse : 213 kmh
+					Altitude : 1877 ft
+					Latitude : 43.372183
+					Longitude : 1.270046
+					Cap : 247°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.36968469" lon="1.26269954">
+				<ele>579.5439</ele>
+				<time>2023-05-06T12:44:38Z</time>
+				<desc>Vitesse : 217 kmh
+					Altitude : 1901 ft
+					Latitude : 43.369685
+					Longitude : 1.262700
+					Cap : 243°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.36726836" lon="1.25596323">
+				<ele>582.3342</ele>
+				<time>2023-05-06T12:44:48Z</time>
+				<desc>Vitesse : 217 kmh
+					Altitude : 1911 ft
+					Latitude : 43.367268
+					Longitude : 1.255963
+					Cap : 244°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.36488846" lon="1.24926775">
+				<ele>594.7024</ele>
+				<time>2023-05-06T12:44:58Z</time>
+				<desc>Vitesse : 218 kmh
+					Altitude : 1951 ft
+					Latitude : 43.364888
+					Longitude : 1.249268
+					Cap : 245°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.36250548" lon="1.24257318">
+				<ele>611.6327</ele>
+				<time>2023-05-06T12:45:08Z</time>
+				<desc>Vitesse : 217 kmh
+					Altitude : 2007 ft
+					Latitude : 43.362505
+					Longitude : 1.242573
+					Cap : 243°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.35991039" lon="1.23540841">
+				<ele>630.9507</ele>
+				<time>2023-05-06T12:45:19Z</time>
+				<desc>Vitesse : 212 kmh
+					Altitude : 2070 ft
+					Latitude : 43.359910
+					Longitude : 1.235408
+					Cap : 245°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.35737400" lon="1.22822986">
+				<ele>642.0701</ele>
+				<time>2023-05-06T12:45:30Z</time>
+				<desc>Vitesse : 215 kmh
+					Altitude : 2107 ft
+					Latitude : 43.357374
+					Longitude : 1.228230
+					Cap : 244°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.35474626" lon="1.22105637">
+				<ele>659.1108</ele>
+				<time>2023-05-06T12:45:41Z</time>
+				<desc>Vitesse : 212 kmh
+					Altitude : 2162 ft
+					Latitude : 43.354746
+					Longitude : 1.221056
+					Cap : 241°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.35215181" lon="1.21428511">
+				<ele>709.6831</ele>
+				<time>2023-05-06T12:45:52Z</time>
+				<desc>Vitesse : 193 kmh
+					Altitude : 2328 ft
+					Latitude : 43.352152
+					Longitude : 1.214285
+					Cap : 243°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.34947040" lon="1.20717482">
+				<ele>736.4189</ele>
+				<time>2023-05-06T12:46:04Z</time>
+				<desc>Vitesse : 199 kmh
+					Altitude : 2416 ft
+					Latitude : 43.349470
+					Longitude : 1.207175
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.34669332" lon="1.20015791">
+				<ele>776.1531</ele>
+				<time>2023-05-06T12:46:16Z</time>
+				<desc>Vitesse : 193 kmh
+					Altitude : 2546 ft
+					Latitude : 43.346693
+					Longitude : 1.200158
+					Cap : 241°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.34388037" lon="1.19341993">
+				<ele>811.0959</ele>
+				<time>2023-05-06T12:46:28Z</time>
+				<desc>Vitesse : 188 kmh
+					Altitude : 2661 ft
+					Latitude : 43.343880
+					Longitude : 1.193420
+					Cap : 240°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.34105013" lon="1.18661647">
+				<ele>838.5710</ele>
+				<time>2023-05-06T12:46:40Z</time>
+				<desc>Vitesse : 192 kmh
+					Altitude : 2751 ft
+					Latitude : 43.341050
+					Longitude : 1.186616
+					Cap : 240°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.33818284" lon="1.17979459">
+				<ele>879.8459</ele>
+				<time>2023-05-06T12:46:52Z</time>
+				<desc>Vitesse : 192 kmh
+					Altitude : 2887 ft
+					Latitude : 43.338183
+					Longitude : 1.179795
+					Cap : 241°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.33542383" lon="1.17286024">
+				<ele>914.5100</ele>
+				<time>2023-05-06T12:47:04Z</time>
+				<desc>Vitesse : 190 kmh
+					Altitude : 3000 ft
+					Latitude : 43.335424
+					Longitude : 1.172860
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.33275059" lon="1.16601477">
+				<ele>941.7522</ele>
+				<time>2023-05-06T12:47:16Z</time>
+				<desc>Vitesse : 189 kmh
+					Altitude : 3090 ft
+					Latitude : 43.332751
+					Longitude : 1.166015
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.33004551" lon="1.15915732">
+				<ele>957.5837</ele>
+				<time>2023-05-06T12:47:28Z</time>
+				<desc>Vitesse : 191 kmh
+					Altitude : 3142 ft
+					Latitude : 43.330046
+					Longitude : 1.159157
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.32725716" lon="1.15228526">
+				<ele>986.1271</ele>
+				<time>2023-05-06T12:47:40Z</time>
+				<desc>Vitesse : 191 kmh
+					Altitude : 3235 ft
+					Latitude : 43.327257
+					Longitude : 1.152285
+					Cap : 240°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.32444539" lon="1.14536662">
+				<ele>1025.3075</ele>
+				<time>2023-05-06T12:47:52Z</time>
+				<desc>Vitesse : 192 kmh
+					Altitude : 3364 ft
+					Latitude : 43.324445
+					Longitude : 1.145367
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.32185751" lon="1.13835699">
+				<ele>1061.6040</ele>
+				<time>2023-05-06T12:48:04Z</time>
+				<desc>Vitesse : 191 kmh
+					Altitude : 3483 ft
+					Latitude : 43.321858
+					Longitude : 1.138357
+					Cap : 243°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.31921305" lon="1.13148236">
+				<ele>1097.6169</ele>
+				<time>2023-05-06T12:48:16Z</time>
+				<desc>Vitesse : 187 kmh
+					Altitude : 3601 ft
+					Latitude : 43.319213
+					Longitude : 1.131482
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.31643564" lon="1.12485145">
+				<ele>1122.9929</ele>
+				<time>2023-05-06T12:48:28Z</time>
+				<desc>Vitesse : 186 kmh
+					Altitude : 3684 ft
+					Latitude : 43.316436
+					Longitude : 1.124851
+					Cap : 240°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.31365950" lon="1.11825781">
+				<ele>1148.6388</ele>
+				<time>2023-05-06T12:48:40Z</time>
+				<desc>Vitesse : 188 kmh
+					Altitude : 3768 ft
+					Latitude : 43.313660
+					Longitude : 1.118258
+					Cap : 241°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.31088315" lon="1.11153540">
+				<ele>1179.0073</ele>
+				<time>2023-05-06T12:48:52Z</time>
+				<desc>Vitesse : 186 kmh
+					Altitude : 3868 ft
+					Latitude : 43.310883
+					Longitude : 1.111535
+					Cap : 241°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.30823469" lon="1.10478088">
+				<ele>1200.8392</ele>
+				<time>2023-05-06T12:49:04Z</time>
+				<desc>Vitesse : 189 kmh
+					Altitude : 3940 ft
+					Latitude : 43.308235
+					Longitude : 1.104781
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.30555093" lon="1.09799566">
+				<ele>1226.5040</ele>
+				<time>2023-05-06T12:49:16Z</time>
+				<desc>Vitesse : 186 kmh
+					Altitude : 4024 ft
+					Latitude : 43.305551
+					Longitude : 1.097996
+					Cap : 241°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.30286739" lon="1.09140676">
+				<ele>1252.8817</ele>
+				<time>2023-05-06T12:49:28Z</time>
+				<desc>Vitesse : 183 kmh
+					Altitude : 4111 ft
+					Latitude : 43.302867
+					Longitude : 1.091407
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.30019969" lon="1.08475166">
+				<ele>1278.6278</ele>
+				<time>2023-05-06T12:49:40Z</time>
+				<desc>Vitesse : 184 kmh
+					Altitude : 4195 ft
+					Latitude : 43.300200
+					Longitude : 1.084752
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.29755175" lon="1.07812186">
+				<ele>1306.3656</ele>
+				<time>2023-05-06T12:49:52Z</time>
+				<desc>Vitesse : 184 kmh
+					Altitude : 4286 ft
+					Latitude : 43.297552
+					Longitude : 1.078122
+					Cap : 241°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.29466634" lon="1.07120511">
+				<ele>1337.1373</ele>
+				<time>2023-05-06T12:50:05Z</time>
+				<desc>Vitesse : 179 kmh
+					Altitude : 4387 ft
+					Latitude : 43.294666
+					Longitude : 1.071205
+					Cap : 239°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.29166382" lon="1.06435424">
+				<ele>1362.7407</ele>
+				<time>2023-05-06T12:50:18Z</time>
+				<desc>Vitesse : 179 kmh
+					Altitude : 4471 ft
+					Latitude : 43.291664
+					Longitude : 1.064354
+					Cap : 240°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.28876122" lon="1.05740930">
+				<ele>1392.0886</ele>
+				<time>2023-05-06T12:50:31Z</time>
+				<desc>Vitesse : 180 kmh
+					Altitude : 4567 ft
+					Latitude : 43.288761
+					Longitude : 1.057409
+					Cap : 240°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.28576146" lon="1.05056763">
+				<ele>1412.8695</ele>
+				<time>2023-05-06T12:50:44Z</time>
+				<desc>Vitesse : 181 kmh
+					Altitude : 4635 ft
+					Latitude : 43.285761
+					Longitude : 1.050568
+					Cap : 239°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.28280095" lon="1.04379562">
+				<ele>1458.0964</ele>
+				<time>2023-05-06T12:50:57Z</time>
+				<desc>Vitesse : 167 kmh
+					Altitude : 4784 ft
+					Latitude : 43.282801
+					Longitude : 1.043796
+					Cap : 238°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.27987727" lon="1.03704729">
+				<ele>1466.9146</ele>
+				<time>2023-05-06T12:51:10Z</time>
+				<desc>Vitesse : 188 kmh
+					Altitude : 4813 ft
+					Latitude : 43.279877
+					Longitude : 1.037047
+					Cap : 243°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.27825473" lon="1.03337419">
+				<ele>1492.9885</ele>
+				<time>2023-05-06T12:51:17Z</time>
+				<desc>Vitesse : 175 kmh
+					Altitude : 4898 ft
+					Latitude : 43.278255
+					Longitude : 1.033374
+					Cap : 237°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.27511574" lon="1.02681441">
+				<ele>1522.4199</ele>
+				<time>2023-05-06T12:51:30Z</time>
+				<desc>Vitesse : 177 kmh
+					Altitude : 4995 ft
+					Latitude : 43.275116
+					Longitude : 1.026814
+					Cap : 236°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.27253453" lon="1.02113842">
+				<ele>1545.3115</ele>
+				<time>2023-05-06T12:51:41Z</time>
+				<desc>Vitesse : 177 kmh
+					Altitude : 5070 ft
+					Latitude : 43.272535
+					Longitude : 1.021138
+					Cap : 241°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.26965013" lon="1.01442275">
+				<ele>1578.2620</ele>
+				<time>2023-05-06T12:51:54Z</time>
+				<desc>Vitesse : 176 kmh
+					Altitude : 5178 ft
+					Latitude : 43.269650
+					Longitude : 1.014423
+					Cap : 237°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.26663907" lon="1.00785273">
+				<ele>1605.5400</ele>
+				<time>2023-05-06T12:52:07Z</time>
+				<desc>Vitesse : 175 kmh
+					Altitude : 5268 ft
+					Latitude : 43.266639
+					Longitude : 1.007853
+					Cap : 240°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.26391603" lon="1.00100648">
+				<ele>1629.5508</ele>
+				<time>2023-05-06T12:52:20Z</time>
+				<desc>Vitesse : 177 kmh
+					Altitude : 5346 ft
+					Latitude : 43.263916
+					Longitude : 1.001006
+					Cap : 240°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.26067987" lon="0.99436250">
+				<ele>1654.5347</ele>
+				<time>2023-05-06T12:52:33Z</time>
+				<desc>Vitesse : 181 kmh
+					Altitude : 5428 ft
+					Latitude : 43.260680
+					Longitude : 0.994363
+					Cap : 236°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.25763012" lon="0.98817373">
+				<ele>1668.4600</ele>
+				<time>2023-05-06T12:52:45Z</time>
+				<desc>Vitesse : 185 kmh
+					Altitude : 5474 ft
+					Latitude : 43.257630
+					Longitude : 0.988174
+					Cap : 237°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.25468610" lon="0.98188058">
+				<ele>1694.1890</ele>
+				<time>2023-05-06T12:52:57Z</time>
+				<desc>Vitesse : 177 kmh
+					Altitude : 5558 ft
+					Latitude : 43.254686
+					Longitude : 0.981881
+					Cap : 238°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.25164502" lon="0.97532413">
+				<ele>1723.1477</ele>
+				<time>2023-05-06T12:53:10Z</time>
+				<desc>Vitesse : 176 kmh
+					Altitude : 5653 ft
+					Latitude : 43.251645
+					Longitude : 0.975324
+					Cap : 238°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.24870532" lon="0.96852441">
+				<ele>1744.5356</ele>
+				<time>2023-05-06T12:53:23Z</time>
+				<desc>Vitesse : 180 kmh
+					Altitude : 5724 ft
+					Latitude : 43.248705
+					Longitude : 0.968524
+					Cap : 241°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.24576421" lon="0.96174349">
+				<ele>1775.8735</ele>
+				<time>2023-05-06T12:53:36Z</time>
+				<desc>Vitesse : 178 kmh
+					Altitude : 5826 ft
+					Latitude : 43.245764
+					Longitude : 0.961743
+					Cap : 238°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.24278097" lon="0.95492077">
+				<ele>1799.7314</ele>
+				<time>2023-05-06T12:53:49Z</time>
+				<desc>Vitesse : 179 kmh
+					Altitude : 5905 ft
+					Latitude : 43.242781
+					Longitude : 0.954921
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.24015221" lon="0.94788521">
+				<ele>1826.2041</ele>
+				<time>2023-05-06T12:54:02Z</time>
+				<desc>Vitesse : 176 kmh
+					Altitude : 5991 ft
+					Latitude : 43.240152
+					Longitude : 0.947885
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.23737048" lon="0.94107342">
+				<ele>1855.9600</ele>
+				<time>2023-05-06T12:54:15Z</time>
+				<desc>Vitesse : 171 kmh
+					Altitude : 6089 ft
+					Latitude : 43.237370
+					Longitude : 0.941073
+					Cap : 240°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.23457878" lon="0.93431880">
+				<ele>1856.8208</ele>
+				<time>2023-05-06T12:54:28Z</time>
+				<desc>Vitesse : 182 kmh
+					Altitude : 6092 ft
+					Latitude : 43.234579
+					Longitude : 0.934319
+					Cap : 241°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.23178127" lon="0.92794423">
+				<ele>1868.1497</ele>
+				<time>2023-05-06T12:54:40Z</time>
+				<desc>Vitesse : 179 kmh
+					Altitude : 6129 ft
+					Latitude : 43.231781
+					Longitude : 0.927944
+					Cap : 238°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.22872147" lon="0.92137163">
+				<ele>1886.9644</ele>
+				<time>2023-05-06T12:54:53Z</time>
+				<desc>Vitesse : 175 kmh
+					Altitude : 6191 ft
+					Latitude : 43.228721
+					Longitude : 0.921372
+					Cap : 239°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.22581742" lon="0.91474267">
+				<ele>1897.7490</ele>
+				<time>2023-05-06T12:55:06Z</time>
+				<desc>Vitesse : 175 kmh
+					Altitude : 6226 ft
+					Latitude : 43.225817
+					Longitude : 0.914743
+					Cap : 239°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.22299900" lon="0.90796518">
+				<ele>1908.0728</ele>
+				<time>2023-05-06T12:55:19Z</time>
+				<desc>Vitesse : 175 kmh
+					Altitude : 6260 ft
+					Latitude : 43.222999
+					Longitude : 0.907965
+					Cap : 243°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.22026346" lon="0.90118407">
+				<ele>1934.2903</ele>
+				<time>2023-05-06T12:55:32Z</time>
+				<desc>Vitesse : 175 kmh
+					Altitude : 6346 ft
+					Latitude : 43.220263
+					Longitude : 0.901184
+					Cap : 239°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.21741468" lon="0.89436691">
+				<ele>1946.2192</ele>
+				<time>2023-05-06T12:55:45Z</time>
+				<desc>Vitesse : 178 kmh
+					Altitude : 6385 ft
+					Latitude : 43.217415
+					Longitude : 0.894367
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.21470760" lon="0.88745128">
+				<ele>1969.7681</ele>
+				<time>2023-05-06T12:55:58Z</time>
+				<desc>Vitesse : 175 kmh
+					Altitude : 6462 ft
+					Latitude : 43.214708
+					Longitude : 0.887451
+					Cap : 241°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.21208534" lon="0.88051744">
+				<ele>1974.7007</ele>
+				<time>2023-05-06T12:56:11Z</time>
+				<desc>Vitesse : 174 kmh
+					Altitude : 6479 ft
+					Latitude : 43.212085
+					Longitude : 0.880517
+					Cap : 243°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.21010456" lon="0.87578442">
+				<ele>1980.9932</ele>
+				<time>2023-05-06T12:56:20Z</time>
+				<desc>Vitesse : 177 kmh
+					Altitude : 6499 ft
+					Latitude : 43.210105
+					Longitude : 0.875784
+					Cap : 238°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.20708808" lon="0.86963308">
+				<ele>1990.4268</ele>
+				<time>2023-05-06T12:56:32Z</time>
+				<desc>Vitesse : 180 kmh
+					Altitude : 6530 ft
+					Latitude : 43.207088
+					Longitude : 0.869633
+					Cap : 236°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.20382339" lon="0.86306866">
+				<ele>2009.2239</ele>
+				<time>2023-05-06T12:56:45Z</time>
+				<desc>Vitesse : 179 kmh
+					Altitude : 6592 ft
+					Latitude : 43.203823
+					Longitude : 0.863069
+					Cap : 236°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.20077867" lon="0.85689461">
+				<ele>2014.2988</ele>
+				<time>2023-05-06T12:56:57Z</time>
+				<desc>Vitesse : 184 kmh
+					Altitude : 6609 ft
+					Latitude : 43.200779
+					Longitude : 0.856895
+					Cap : 236°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.19751612" lon="0.85032505">
+				<ele>2043.2253</ele>
+				<time>2023-05-06T12:57:10Z</time>
+				<desc>Vitesse : 168 kmh
+					Altitude : 6703 ft
+					Latitude : 43.197516
+					Longitude : 0.850325
+					Cap : 235°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.19408542" lon="0.84411120">
+				<ele>2052.6460</ele>
+				<time>2023-05-06T12:57:23Z</time>
+				<desc>Vitesse : 176 kmh
+					Altitude : 6734 ft
+					Latitude : 43.194085
+					Longitude : 0.844111
+					Cap : 232°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.19049515" lon="0.83809824">
+				<ele>2066.4207</ele>
+				<time>2023-05-06T12:57:36Z</time>
+				<desc>Vitesse : 178 kmh
+					Altitude : 6780 ft
+					Latitude : 43.190495
+					Longitude : 0.838098
+					Cap : 234°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.18728402" lon="0.83211106">
+				<ele>2066.3479</ele>
+				<time>2023-05-06T12:57:48Z</time>
+				<desc>Vitesse : 180 kmh
+					Altitude : 6779 ft
+					Latitude : 43.187284
+					Longitude : 0.832111
+					Cap : 235°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.18411300" lon="0.82575460">
+				<ele>2095.5264</ele>
+				<time>2023-05-06T12:58:01Z</time>
+				<desc>Vitesse : 167 kmh
+					Altitude : 6875 ft
+					Latitude : 43.184113
+					Longitude : 0.825755
+					Cap : 234°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.18091587" lon="0.81951118">
+				<ele>2095.4487</ele>
+				<time>2023-05-06T12:58:14Z</time>
+				<desc>Vitesse : 175 kmh
+					Altitude : 6875 ft
+					Latitude : 43.180916
+					Longitude : 0.819511
+					Cap : 236°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.17767309" lon="0.81293687">
+				<ele>2104.6377</ele>
+				<time>2023-05-06T12:58:27Z</time>
+				<desc>Vitesse : 177 kmh
+					Altitude : 6905 ft
+					Latitude : 43.177673
+					Longitude : 0.812937
+					Cap : 238°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.17474540" lon="0.80614136">
+				<ele>2118.2192</ele>
+				<time>2023-05-06T12:58:40Z</time>
+				<desc>Vitesse : 178 kmh
+					Altitude : 6950 ft
+					Latitude : 43.174745
+					Longitude : 0.806141
+					Cap : 240°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.17194249" lon="0.79926285">
+				<ele>2125.0679</ele>
+				<time>2023-05-06T12:58:53Z</time>
+				<desc>Vitesse : 177 kmh
+					Altitude : 6972 ft
+					Latitude : 43.171942
+					Longitude : 0.799263
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.16939929" lon="0.79225931">
+				<ele>2136.1807</ele>
+				<time>2023-05-06T12:59:06Z</time>
+				<desc>Vitesse : 176 kmh
+					Altitude : 7008 ft
+					Latitude : 43.169399
+					Longitude : 0.792259
+					Cap : 244°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.16711273" lon="0.78517936">
+				<ele>2155.1433</ele>
+				<time>2023-05-06T12:59:19Z</time>
+				<desc>Vitesse : 175 kmh
+					Altitude : 7071 ft
+					Latitude : 43.167113
+					Longitude : 0.785179
+					Cap : 248°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.16487416" lon="0.77790490">
+				<ele>2164.5925</ele>
+				<time>2023-05-06T12:59:32Z</time>
+				<desc>Vitesse : 179 kmh
+					Altitude : 7102 ft
+					Latitude : 43.164874
+					Longitude : 0.777905
+					Cap : 246°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.16253700" lon="0.77079067">
+				<ele>2181.5156</ele>
+				<time>2023-05-06T12:59:45Z</time>
+				<desc>Vitesse : 175 kmh
+					Altitude : 7157 ft
+					Latitude : 43.162537
+					Longitude : 0.770791
+					Cap : 246°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.16007836" lon="0.76385066">
+				<ele>2203.4063</ele>
+				<time>2023-05-06T12:59:58Z</time>
+				<desc>Vitesse : 173 kmh
+					Altitude : 7229 ft
+					Latitude : 43.160078
+					Longitude : 0.763851
+					Cap : 243°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.15778779" lon="0.75690523">
+				<ele>2220.7942</ele>
+				<time>2023-05-06T13:00:11Z</time>
+				<desc>Vitesse : 172 kmh
+					Altitude : 7286 ft
+					Latitude : 43.157788
+					Longitude : 0.756905
+					Cap : 247°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.15549602" lon="0.74976487">
+				<ele>2226.4036</ele>
+				<time>2023-05-06T13:00:24Z</time>
+				<desc>Vitesse : 176 kmh
+					Altitude : 7304 ft
+					Latitude : 43.155496
+					Longitude : 0.749765
+					Cap : 247°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.15332688" lon="0.74276070">
+				<ele>2227.1353</ele>
+				<time>2023-05-06T13:00:37Z</time>
+				<desc>Vitesse : 173 kmh
+					Altitude : 7307 ft
+					Latitude : 43.153327
+					Longitude : 0.742761
+					Cap : 247°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.15114911" lon="0.73569517">
+				<ele>2221.2412</ele>
+				<time>2023-05-06T13:00:50Z</time>
+				<desc>Vitesse : 174 kmh
+					Altitude : 7288 ft
+					Latitude : 43.151149
+					Longitude : 0.735695
+					Cap : 247°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.14900332" lon="0.72832025">
+				<ele>2215.2175</ele>
+				<time>2023-05-06T13:01:03Z</time>
+				<desc>Vitesse : 179 kmh
+					Altitude : 7268 ft
+					Latitude : 43.149003
+					Longitude : 0.728320
+					Cap : 248°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.14679489" lon="0.72129724">
+				<ele>2229.6321</ele>
+				<time>2023-05-06T13:01:16Z</time>
+				<desc>Vitesse : 170 kmh
+					Altitude : 7315 ft
+					Latitude : 43.146795
+					Longitude : 0.721297
+					Cap : 246°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.14442518" lon="0.71436200">
+				<ele>2236.9006</ele>
+				<time>2023-05-06T13:01:29Z</time>
+				<desc>Vitesse : 174 kmh
+					Altitude : 7339 ft
+					Latitude : 43.144425
+					Longitude : 0.714362
+					Cap : 245°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.14201777" lon="0.70737504">
+				<ele>2248.9114</ele>
+				<time>2023-05-06T13:01:42Z</time>
+				<desc>Vitesse : 172 kmh
+					Altitude : 7378 ft
+					Latitude : 43.142018
+					Longitude : 0.707375
+					Cap : 245°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.13951986" lon="0.70039411">
+				<ele>2261.0627</ele>
+				<time>2023-05-06T13:01:55Z</time>
+				<desc>Vitesse : 177 kmh
+					Altitude : 7418 ft
+					Latitude : 43.139520
+					Longitude : 0.700394
+					Cap : 244°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.13698401" lon="0.69341361">
+				<ele>2280.7932</ele>
+				<time>2023-05-06T13:02:08Z</time>
+				<desc>Vitesse : 172 kmh
+					Altitude : 7483 ft
+					Latitude : 43.136984
+					Longitude : 0.693414
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.13429407" lon="0.68661048">
+				<ele>2294.2241</ele>
+				<time>2023-05-06T13:02:21Z</time>
+				<desc>Vitesse : 176 kmh
+					Altitude : 7527 ft
+					Latitude : 43.134294
+					Longitude : 0.686610
+					Cap : 242°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.13125297" lon="0.67991364">
+				<ele>2301.6760</ele>
+				<time>2023-05-06T13:02:34Z</time>
+				<desc>Vitesse : 181 kmh
+					Altitude : 7551 ft
+					Latitude : 43.131253
+					Longitude : 0.679914
+					Cap : 236°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.12814922" lon="0.67380953">
+				<ele>2314.5396</ele>
+				<time>2023-05-06T13:02:46Z</time>
+				<desc>Vitesse : 180 kmh
+					Altitude : 7594 ft
+					Latitude : 43.128149
+					Longitude : 0.673810
+					Cap : 235°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.12505112" lon="0.66772088">
+				<ele>2328.1289</ele>
+				<time>2023-05-06T13:02:58Z</time>
+				<desc>Vitesse : 182 kmh
+					Altitude : 7638 ft
+					Latitude : 43.125051
+					Longitude : 0.667721
+					Cap : 236°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.12200317" lon="0.66152430">
+				<ele>2338.4712</ele>
+				<time>2023-05-06T13:03:10Z</time>
+				<desc>Vitesse : 183 kmh
+					Altitude : 7672 ft
+					Latitude : 43.122003
+					Longitude : 0.661524
+					Cap : 236°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.11880728" lon="0.65543399">
+				<ele>2350.9131</ele>
+				<time>2023-05-06T13:03:22Z</time>
+				<desc>Vitesse : 184 kmh
+					Altitude : 7713 ft
+					Latitude : 43.118807
+					Longitude : 0.655434
+					Cap : 232°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.11552869" lon="0.64945628">
+				<ele>2362.6416</ele>
+				<time>2023-05-06T13:03:34Z</time>
+				<desc>Vitesse : 174 kmh
+					Altitude : 7751 ft
+					Latitude : 43.115529
+					Longitude : 0.649456
+					Cap : 234°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.11228465" lon="0.64335625">
+				<ele>2372.3948</ele>
+				<time>2023-05-06T13:03:46Z</time>
+				<desc>Vitesse : 184 kmh
+					Altitude : 7783 ft
+					Latitude : 43.112285
+					Longitude : 0.643356
+					Cap : 235°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.10917468" lon="0.63699679">
+				<ele>2378.0613</ele>
+				<time>2023-05-06T13:03:58Z</time>
+				<desc>Vitesse : 188 kmh
+					Altitude : 7802 ft
+					Latitude : 43.109175
+					Longitude : 0.636997
+					Cap : 236°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.10617199" lon="0.63126150">
+				<ele>2388.1838</ele>
+				<time>2023-05-06T13:04:09Z</time>
+				<desc>Vitesse : 190 kmh
+					Altitude : 7835 ft
+					Latitude : 43.106172
+					Longitude : 0.631262
+					Cap : 230°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.10520438" lon="0.62983515">
+				<ele>2385.5635</ele>
+				<time>2023-05-06T13:04:12Z</time>
+				<desc>Vitesse : 193 kmh
+					Altitude : 7827 ft
+					Latitude : 43.105204
+					Longitude : 0.629835
+					Cap : 224°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.10448045" lon="0.62895475">
+				<ele>2385.5039</ele>
+				<time>2023-05-06T13:04:14Z</time>
+				<desc>Vitesse : 194 kmh
+					Altitude : 7826 ft
+					Latitude : 43.104480
+					Longitude : 0.628955
+					Cap : 219°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.10369721" lon="0.62818085">
+				<ele>2385.5728</ele>
+				<time>2023-05-06T13:04:16Z</time>
+				<desc>Vitesse : 195 kmh
+					Altitude : 7827 ft
+					Latitude : 43.103697
+					Longitude : 0.628181
+					Cap : 213°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.10243569" lon="0.62720707">
+				<ele>2387.3579</ele>
+				<time>2023-05-06T13:04:19Z</time>
+				<desc>Vitesse : 194 kmh
+					Altitude : 7833 ft
+					Latitude : 43.102436
+					Longitude : 0.627207
+					Cap : 206°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.10109239" lon="0.62644174">
+				<ele>2389.9041</ele>
+				<time>2023-05-06T13:04:22Z</time>
+				<desc>Vitesse : 195 kmh
+					Altitude : 7841 ft
+					Latitude : 43.101092
+					Longitude : 0.626442
+					Cap : 199°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.09968080" lon="0.62587823">
+				<ele>2391.6934</ele>
+				<time>2023-05-06T13:04:25Z</time>
+				<desc>Vitesse : 196 kmh
+					Altitude : 7847 ft
+					Latitude : 43.099681
+					Longitude : 0.625878
+					Cap : 193°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.09823387" lon="0.62551702">
+				<ele>2393.2205</ele>
+				<time>2023-05-06T13:04:28Z</time>
+				<desc>Vitesse : 197 kmh
+					Altitude : 7852 ft
+					Latitude : 43.098234
+					Longitude : 0.625517
+					Cap : 188°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.09625862" lon="0.62524483">
+				<ele>2393.3506</ele>
+				<time>2023-05-06T13:04:32Z</time>
+				<desc>Vitesse : 194 kmh
+					Altitude : 7852 ft
+					Latitude : 43.096259
+					Longitude : 0.625245
+					Cap : 182°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.09085508" lon="0.62517420">
+				<ele>2392.2703</ele>
+				<time>2023-05-06T13:04:43Z</time>
+				<desc>Vitesse : 200 kmh
+					Altitude : 7849 ft
+					Latitude : 43.090855
+					Longitude : 0.625174
+					Cap : 179°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.08578671" lon="0.62563409">
+				<ele>2386.8130</ele>
+				<time>2023-05-06T13:04:53Z</time>
+				<desc>Vitesse : 206 kmh
+					Altitude : 7831 ft
+					Latitude : 43.085787
+					Longitude : 0.625634
+					Cap : 174°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.08014442" lon="0.62632239">
+				<ele>2379.1223</ele>
+				<time>2023-05-06T13:05:04Z</time>
+				<desc>Vitesse : 206 kmh
+					Altitude : 7806 ft
+					Latitude : 43.080144
+					Longitude : 0.626322
+					Cap : 175°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.07451533" lon="0.62742968">
+				<ele>2371.1199</ele>
+				<time>2023-05-06T13:05:15Z</time>
+				<desc>Vitesse : 208 kmh
+					Altitude : 7779 ft
+					Latitude : 43.074515
+					Longitude : 0.627430
+					Cap : 170°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.06885703" lon="0.62892477">
+				<ele>2376.4810</ele>
+				<time>2023-05-06T13:05:26Z</time>
+				<desc>Vitesse : 206 kmh
+					Altitude : 7797 ft
+					Latitude : 43.068857
+					Longitude : 0.628925
+					Cap : 169°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.06321376" lon="0.63035247">
+				<ele>2377.2068</ele>
+				<time>2023-05-06T13:05:37Z</time>
+				<desc>Vitesse : 208 kmh
+					Altitude : 7799 ft
+					Latitude : 43.063214
+					Longitude : 0.630352
+					Cap : 170°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.05770409" lon="0.63201215">
+				<ele>2387.3894</ele>
+				<time>2023-05-06T13:05:48Z</time>
+				<desc>Vitesse : 204 kmh
+					Altitude : 7833 ft
+					Latitude : 43.057704
+					Longitude : 0.632012
+					Cap : 165°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.05236330" lon="0.63423011">
+				<ele>2388.3931</ele>
+				<time>2023-05-06T13:05:59Z</time>
+				<desc>Vitesse : 204 kmh
+					Altitude : 7836 ft
+					Latitude : 43.052363
+					Longitude : 0.634230
+					Cap : 160°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.04719563" lon="0.63717438">
+				<ele>2384.5994</ele>
+				<time>2023-05-06T13:06:10Z</time>
+				<desc>Vitesse : 203 kmh
+					Altitude : 7823 ft
+					Latitude : 43.047196
+					Longitude : 0.637174
+					Cap : 154°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.04223429" lon="0.64080258">
+				<ele>2384.5967</ele>
+				<time>2023-05-06T13:06:21Z</time>
+				<desc>Vitesse : 204 kmh
+					Altitude : 7823 ft
+					Latitude : 43.042234
+					Longitude : 0.640803
+					Cap : 150°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.03794087" lon="0.64454952">
+				<ele>2390.2734</ele>
+				<time>2023-05-06T13:06:31Z</time>
+				<desc>Vitesse : 204 kmh
+					Altitude : 7842 ft
+					Latitude : 43.037941
+					Longitude : 0.644550
+					Cap : 144°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.03595036" lon="0.64671315">
+				<ele>2394.4429</ele>
+				<time>2023-05-06T13:06:36Z</time>
+				<desc>Vitesse : 204 kmh
+					Altitude : 7856 ft
+					Latitude : 43.035950
+					Longitude : 0.646713
+					Cap : 139°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.03409843" lon="0.64915286">
+				<ele>2391.3027</ele>
+				<time>2023-05-06T13:06:41Z</time>
+				<desc>Vitesse : 207 kmh
+					Altitude : 7845 ft
+					Latitude : 43.034098
+					Longitude : 0.649153
+					Cap : 134°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.03034625" lon="0.65495759">
+				<ele>2396.7180</ele>
+				<time>2023-05-06T13:06:52Z</time>
+				<desc>Vitesse : 205 kmh
+					Altitude : 7863 ft
+					Latitude : 43.030346
+					Longitude : 0.654958
+					Cap : 131°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.02669818" lon="0.66082706">
+				<ele>2398.6528</ele>
+				<time>2023-05-06T13:07:03Z</time>
+				<desc>Vitesse : 205 kmh
+					Altitude : 7870 ft
+					Latitude : 43.026698
+					Longitude : 0.660827
+					Cap : 130°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.02318267" lon="0.66676456">
+				<ele>2405.6636</ele>
+				<time>2023-05-06T13:07:14Z</time>
+				<desc>Vitesse : 204 kmh
+					Altitude : 7893 ft
+					Latitude : 43.023183
+					Longitude : 0.666765
+					Cap : 128°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01980027" lon="0.67276371">
+				<ele>2410.6350</ele>
+				<time>2023-05-06T13:07:25Z</time>
+				<desc>Vitesse : 201 kmh
+					Altitude : 7909 ft
+					Latitude : 43.019800
+					Longitude : 0.672764
+					Cap : 125°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01816639" lon="0.67624406">
+				<ele>2405.2473</ele>
+				<time>2023-05-06T13:07:31Z</time>
+				<desc>Vitesse : 205 kmh
+					Altitude : 7891 ft
+					Latitude : 43.018166
+					Longitude : 0.676244
+					Cap : 120°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01651904" lon="0.68057075">
+				<ele>2404.5134</ele>
+				<time>2023-05-06T13:07:38Z</time>
+				<desc>Vitesse : 204 kmh
+					Altitude : 7889 ft
+					Latitude : 43.016519
+					Longitude : 0.680571
+					Cap : 115°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01464800" lon="0.68694371">
+				<ele>2407.9973</ele>
+				<time>2023-05-06T13:07:48Z</time>
+				<desc>Vitesse : 201 kmh
+					Altitude : 7900 ft
+					Latitude : 43.014648
+					Longitude : 0.686944
+					Cap : 109°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01297297" lon="0.69430955">
+				<ele>2391.3916</ele>
+				<time>2023-05-06T13:07:59Z</time>
+				<desc>Vitesse : 209 kmh
+					Altitude : 7846 ft
+					Latitude : 43.012973
+					Longitude : 0.694310
+					Cap : 106°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01171468" lon="0.70197337">
+				<ele>2387.2122</ele>
+				<time>2023-05-06T13:08:10Z</time>
+				<desc>Vitesse : 207 kmh
+					Altitude : 7832 ft
+					Latitude : 43.011715
+					Longitude : 0.701973
+					Cap : 100°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01073644" lon="0.70951112">
+				<ele>2401.0464</ele>
+				<time>2023-05-06T13:08:21Z</time>
+				<desc>Vitesse : 199 kmh
+					Altitude : 7877 ft
+					Latitude : 43.010736
+					Longitude : 0.709511
+					Cap : 100°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.00996679" lon="0.71687833">
+				<ele>2403.3372</ele>
+				<time>2023-05-06T13:08:32Z</time>
+				<desc>Vitesse : 199 kmh
+					Altitude : 7885 ft
+					Latitude : 43.009967
+					Longitude : 0.716878
+					Cap : 094°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.00986220" lon="0.72367257">
+				<ele>2403.7791</ele>
+				<time>2023-05-06T13:08:42Z</time>
+				<desc>Vitesse : 201 kmh
+					Altitude : 7886 ft
+					Latitude : 43.009862
+					Longitude : 0.723673
+					Cap : 089°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01007015" lon="0.73129873">
+				<ele>2392.6865</ele>
+				<time>2023-05-06T13:08:53Z</time>
+				<desc>Vitesse : 207 kmh
+					Altitude : 7850 ft
+					Latitude : 43.010070
+					Longitude : 0.731299
+					Cap : 087°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01057608" lon="0.73915739">
+				<ele>2380.2412</ele>
+				<time>2023-05-06T13:09:04Z</time>
+				<desc>Vitesse : 211 kmh
+					Altitude : 7809 ft
+					Latitude : 43.010576
+					Longitude : 0.739157
+					Cap : 084°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01134697" lon="0.74688436">
+				<ele>2379.3623</ele>
+				<time>2023-05-06T13:09:15Z</time>
+				<desc>Vitesse : 207 kmh
+					Altitude : 7806 ft
+					Latitude : 43.011347
+					Longitude : 0.746884
+					Cap : 082°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01219461" lon="0.75451403">
+				<ele>2378.6077</ele>
+				<time>2023-05-06T13:09:26Z</time>
+				<desc>Vitesse : 206 kmh
+					Altitude : 7804 ft
+					Latitude : 43.012195
+					Longitude : 0.754514
+					Cap : 080°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01328620" lon="0.76214431">
+				<ele>2379.7339</ele>
+				<time>2023-05-06T13:09:37Z</time>
+				<desc>Vitesse : 206 kmh
+					Altitude : 7808 ft
+					Latitude : 43.013286
+					Longitude : 0.762144
+					Cap : 078°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01457424" lon="0.76965004">
+				<ele>2381.5066</ele>
+				<time>2023-05-06T13:09:48Z</time>
+				<desc>Vitesse : 204 kmh
+					Altitude : 7813 ft
+					Latitude : 43.014574
+					Longitude : 0.769650
+					Cap : 076°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01598151" lon="0.77703333">
+				<ele>2381.9893</ele>
+				<time>2023-05-06T13:09:59Z</time>
+				<desc>Vitesse : 203 kmh
+					Altitude : 7815 ft
+					Latitude : 43.015982
+					Longitude : 0.777033
+					Cap : 075°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01749234" lon="0.78439722">
+				<ele>2385.1328</ele>
+				<time>2023-05-06T13:10:10Z</time>
+				<desc>Vitesse : 204 kmh
+					Altitude : 7825 ft
+					Latitude : 43.017492
+					Longitude : 0.784397
+					Cap : 074°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.01921682" lon="0.79173104">
+				<ele>2382.7546</ele>
+				<time>2023-05-06T13:10:21Z</time>
+				<desc>Vitesse : 208 kmh
+					Altitude : 7817 ft
+					Latitude : 43.019217
+					Longitude : 0.791731
+					Cap : 072°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.02102296" lon="0.79916011">
+				<ele>2383.1970</ele>
+				<time>2023-05-06T13:10:32Z</time>
+				<desc>Vitesse : 209 kmh
+					Altitude : 7819 ft
+					Latitude : 43.021023
+					Longitude : 0.799160
+					Cap : 072°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.02284494" lon="0.80663656">
+				<ele>2374.3599</ele>
+				<time>2023-05-06T13:10:43Z</time>
+				<desc>Vitesse : 212 kmh
+					Altitude : 7790 ft
+					Latitude : 43.022845
+					Longitude : 0.806637
+					Cap : 071°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.02473791" lon="0.81417345">
+				<ele>2375.9570</ele>
+				<time>2023-05-06T13:10:54Z</time>
+				<desc>Vitesse : 212 kmh
+					Altitude : 7795 ft
+					Latitude : 43.024738
+					Longitude : 0.814173
+					Cap : 071°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.02679089" lon="0.82167356">
+				<ele>2370.6638</ele>
+				<time>2023-05-06T13:11:05Z</time>
+				<desc>Vitesse : 213 kmh
+					Altitude : 7778 ft
+					Latitude : 43.026791
+					Longitude : 0.821674
+					Cap : 071°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.02847163" lon="0.82923107">
+				<ele>2373.9202</ele>
+				<time>2023-05-06T13:11:16Z</time>
+				<desc>Vitesse : 210 kmh
+					Altitude : 7788 ft
+					Latitude : 43.028472
+					Longitude : 0.829231
+					Cap : 075°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.03016429" lon="0.83672651">
+				<ele>2370.6575</ele>
+				<time>2023-05-06T13:11:27Z</time>
+				<desc>Vitesse : 209 kmh
+					Altitude : 7778 ft
+					Latitude : 43.030164
+					Longitude : 0.836727
+					Cap : 071°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.03195150" lon="0.84404402">
+				<ele>2373.0520</ele>
+				<time>2023-05-06T13:11:38Z</time>
+				<desc>Vitesse : 206 kmh
+					Altitude : 7786 ft
+					Latitude : 43.031952
+					Longitude : 0.844044
+					Cap : 073°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.03345501" lon="0.85150828">
+				<ele>2364.4153</ele>
+				<time>2023-05-06T13:11:49Z</time>
+				<desc>Vitesse : 207 kmh
+					Altitude : 7757 ft
+					Latitude : 43.033455
+					Longitude : 0.851508
+					Cap : 075°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.03489796" lon="0.85908182">
+				<ele>2360.8552</ele>
+				<time>2023-05-06T13:12:00Z</time>
+				<desc>Vitesse : 210 kmh
+					Altitude : 7746 ft
+					Latitude : 43.034898
+					Longitude : 0.859082
+					Cap : 076°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.03631848" lon="0.86673334">
+				<ele>2356.5493</ele>
+				<time>2023-05-06T13:12:11Z</time>
+				<desc>Vitesse : 212 kmh
+					Altitude : 7731 ft
+					Latitude : 43.036318
+					Longitude : 0.866733
+					Cap : 075°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.03781287" lon="0.87442965">
+				<ele>2342.4441</ele>
+				<time>2023-05-06T13:12:22Z</time>
+				<desc>Vitesse : 213 kmh
+					Altitude : 7685 ft
+					Latitude : 43.037813
+					Longitude : 0.874430
+					Cap : 075°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.03944503" lon="0.88206377">
+				<ele>2337.4033</ele>
+				<time>2023-05-06T13:12:33Z</time>
+				<desc>Vitesse : 212 kmh
+					Altitude : 7669 ft
+					Latitude : 43.039445
+					Longitude : 0.882064
+					Cap : 072°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.04128607" lon="0.88955525">
+				<ele>2325.6204</ele>
+				<time>2023-05-06T13:12:44Z</time>
+				<desc>Vitesse : 211 kmh
+					Altitude : 7630 ft
+					Latitude : 43.041286
+					Longitude : 0.889555
+					Cap : 071°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.04321117" lon="0.89659116">
+				<ele>2346.9927</ele>
+				<time>2023-05-06T13:12:55Z</time>
+				<desc>Vitesse : 192 kmh
+					Altitude : 7700 ft
+					Latitude : 43.043211
+					Longitude : 0.896591
+					Cap : 068°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.04548918" lon="0.90374566">
+				<ele>2334.6509</ele>
+				<time>2023-05-06T13:13:07Z</time>
+				<desc>Vitesse : 199 kmh
+					Altitude : 7660 ft
+					Latitude : 43.045489
+					Longitude : 0.903746
+					Cap : 065°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.04797756" lon="0.91046006">
+				<ele>2328.1462</ele>
+				<time>2023-05-06T13:13:18Z</time>
+				<desc>Vitesse : 199 kmh
+					Altitude : 7638 ft
+					Latitude : 43.047978
+					Longitude : 0.910460
+					Cap : 062°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.05083223" lon="0.91744673">
+				<ele>2327.8721</ele>
+				<time>2023-05-06T13:13:30Z</time>
+				<desc>Vitesse : 194 kmh
+					Altitude : 7637 ft
+					Latitude : 43.050832
+					Longitude : 0.917447
+					Cap : 059°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.05393143" lon="0.92415743">
+				<ele>2328.4497</ele>
+				<time>2023-05-06T13:13:42Z</time>
+				<desc>Vitesse : 192 kmh
+					Altitude : 7639 ft
+					Latitude : 43.053931
+					Longitude : 0.924157
+					Cap : 057°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.05689099" lon="0.93034881">
+				<ele>2328.4402</ele>
+				<time>2023-05-06T13:13:53Z</time>
+				<desc>Vitesse : 197 kmh
+					Altitude : 7639 ft
+					Latitude : 43.056891
+					Longitude : 0.930349
+					Cap : 058°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.05931762" lon="0.93610543">
+				<ele>2338.3477</ele>
+				<time>2023-05-06T13:14:03Z</time>
+				<desc>Vitesse : 194 kmh
+					Altitude : 7672 ft
+					Latitude : 43.059318
+					Longitude : 0.936105
+					Cap : 063°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.06172139" lon="0.94320969">
+				<ele>2350.2124</ele>
+				<time>2023-05-06T13:14:15Z</time>
+				<desc>Vitesse : 189 kmh
+					Altitude : 7711 ft
+					Latitude : 43.061721
+					Longitude : 0.943210
+					Cap : 069°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.06352997" lon="0.95054520">
+				<ele>2357.8430</ele>
+				<time>2023-05-06T13:14:27Z</time>
+				<desc>Vitesse : 189 kmh
+					Altitude : 7736 ft
+					Latitude : 43.063530
+					Longitude : 0.950545
+					Cap : 071°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.06550796" lon="0.95781943">
+				<ele>2365.1912</ele>
+				<time>2023-05-06T13:14:39Z</time>
+				<desc>Vitesse : 192 kmh
+					Altitude : 7760 ft
+					Latitude : 43.065508
+					Longitude : 0.957819
+					Cap : 069°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.06751840" lon="0.96525078">
+				<ele>2374.1865</ele>
+				<time>2023-05-06T13:14:51Z</time>
+				<desc>Vitesse : 191 kmh
+					Altitude : 7789 ft
+					Latitude : 43.067518
+					Longitude : 0.965251
+					Cap : 070°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.06957591" lon="0.97252689">
+				<ele>2381.8862</ele>
+				<time>2023-05-06T13:15:03Z</time>
+				<desc>Vitesse : 193 kmh
+					Altitude : 7815 ft
+					Latitude : 43.069576
+					Longitude : 0.972527
+					Cap : 067°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.07176988" lon="0.97983877">
+				<ele>2389.2207</ele>
+				<time>2023-05-06T13:15:15Z</time>
+				<desc>Vitesse : 193 kmh
+					Altitude : 7839 ft
+					Latitude : 43.071770
+					Longitude : 0.979839
+					Cap : 069°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.07396960" lon="0.98717820">
+				<ele>2394.3992</ele>
+				<time>2023-05-06T13:15:27Z</time>
+				<desc>Vitesse : 194 kmh
+					Altitude : 7856 ft
+					Latitude : 43.073970
+					Longitude : 0.987178
+					Cap : 067°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.07632147" lon="0.99443888">
+				<ele>2393.0444</ele>
+				<time>2023-05-06T13:15:39Z</time>
+				<desc>Vitesse : 197 kmh
+					Altitude : 7851 ft
+					Latitude : 43.076321
+					Longitude : 0.994439
+					Cap : 065°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.07865669" lon="1.00119162">
+				<ele>2392.8994</ele>
+				<time>2023-05-06T13:15:50Z</time>
+				<desc>Vitesse : 199 kmh
+					Altitude : 7851 ft
+					Latitude : 43.078657
+					Longitude : 1.001192
+					Cap : 065°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.08097037" lon="1.00808450">
+				<ele>2391.0896</ele>
+				<time>2023-05-06T13:16:01Z</time>
+				<desc>Vitesse : 203 kmh
+					Altitude : 7845 ft
+					Latitude : 43.080970
+					Longitude : 1.008085
+					Cap : 066°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.08317061" lon="1.01509811">
+				<ele>2393.6033</ele>
+				<time>2023-05-06T13:16:12Z</time>
+				<desc>Vitesse : 204 kmh
+					Altitude : 7853 ft
+					Latitude : 43.083171
+					Longitude : 1.015098
+					Cap : 069°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.08508997" lon="1.02234826">
+				<ele>2392.4895</ele>
+				<time>2023-05-06T13:16:23Z</time>
+				<desc>Vitesse : 208 kmh
+					Altitude : 7849 ft
+					Latitude : 43.085090
+					Longitude : 1.022348
+					Cap : 070°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.08715940" lon="1.02978903">
+				<ele>2381.6069</ele>
+				<time>2023-05-06T13:16:34Z</time>
+				<desc>Vitesse : 214 kmh
+					Altitude : 7814 ft
+					Latitude : 43.087159
+					Longitude : 1.029789
+					Cap : 069°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.08943689" lon="1.03720291">
+				<ele>2380.9500</ele>
+				<time>2023-05-06T13:16:45Z</time>
+				<desc>Vitesse : 217 kmh
+					Altitude : 7812 ft
+					Latitude : 43.089437
+					Longitude : 1.037203
+					Cap : 066°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.09155970" lon="1.04406169">
+				<ele>2376.5796</ele>
+				<time>2023-05-06T13:16:55Z</time>
+				<desc>Vitesse : 218 kmh
+					Altitude : 7797 ft
+					Latitude : 43.091560
+					Longitude : 1.044062
+					Cap : 067°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.09369456" lon="1.05091398">
+				<ele>2378.1313</ele>
+				<time>2023-05-06T13:17:05Z</time>
+				<desc>Vitesse : 216 kmh
+					Altitude : 7802 ft
+					Latitude : 43.093695
+					Longitude : 1.050914
+					Cap : 067°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.09617721" lon="1.05821137">
+				<ele>2379.3901</ele>
+				<time>2023-05-06T13:17:16Z</time>
+				<desc>Vitesse : 214 kmh
+					Altitude : 7806 ft
+					Latitude : 43.096177
+					Longitude : 1.058211
+					Cap : 064°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.09872678" lon="1.06541906">
+				<ele>2379.1414</ele>
+				<time>2023-05-06T13:17:27Z</time>
+				<desc>Vitesse : 214 kmh
+					Altitude : 7806 ft
+					Latitude : 43.098727
+					Longitude : 1.065419
+					Cap : 064°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.10121591" lon="1.07268457">
+				<ele>2376.1414</ele>
+				<time>2023-05-06T13:17:38Z</time>
+				<desc>Vitesse : 213 kmh
+					Altitude : 7796 ft
+					Latitude : 43.101216
+					Longitude : 1.072685
+					Cap : 066°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.10349018" lon="1.08004700">
+				<ele>2374.4402</ele>
+				<time>2023-05-06T13:17:49Z</time>
+				<desc>Vitesse : 213 kmh
+					Altitude : 7790 ft
+					Latitude : 43.103490
+					Longitude : 1.080047
+					Cap : 069°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.10559397" lon="1.08751863">
+				<ele>2367.4080</ele>
+				<time>2023-05-06T13:18:00Z</time>
+				<desc>Vitesse : 217 kmh
+					Altitude : 7767 ft
+					Latitude : 43.105594
+					Longitude : 1.087519
+					Cap : 069°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.10749799" lon="1.09449232">
+				<ele>2361.2791</ele>
+				<time>2023-05-06T13:18:10Z</time>
+				<desc>Vitesse : 217 kmh
+					Altitude : 7747 ft
+					Latitude : 43.107498
+					Longitude : 1.094492
+					Cap : 070°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.10928107" lon="1.10156337">
+				<ele>2353.2310</ele>
+				<time>2023-05-06T13:18:20Z</time>
+				<desc>Vitesse : 220 kmh
+					Altitude : 7721 ft
+					Latitude : 43.109281
+					Longitude : 1.101563
+					Cap : 072°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.11107957" lon="1.10929602">
+				<ele>2347.2817</ele>
+				<time>2023-05-06T13:18:31Z</time>
+				<desc>Vitesse : 215 kmh
+					Altitude : 7701 ft
+					Latitude : 43.111080
+					Longitude : 1.109296
+					Cap : 073°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.11283459" lon="1.11703221">
+				<ele>2337.8821</ele>
+				<time>2023-05-06T13:18:42Z</time>
+				<desc>Vitesse : 216 kmh
+					Altitude : 7670 ft
+					Latitude : 43.112835
+					Longitude : 1.117032
+					Cap : 074°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.11434188" lon="1.12484625">
+				<ele>2327.4392</ele>
+				<time>2023-05-06T13:18:53Z</time>
+				<desc>Vitesse : 215 kmh
+					Altitude : 7636 ft
+					Latitude : 43.114342
+					Longitude : 1.124846
+					Cap : 076°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.11568502" lon="1.13113158">
+				<ele>2328.3506</ele>
+				<time>2023-05-06T13:19:02Z</time>
+				<desc>Vitesse : 211 kmh
+					Altitude : 7639 ft
+					Latitude : 43.115685
+					Longitude : 1.131132
+					Cap : 071°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.11769775" lon="1.13851107">
+				<ele>2326.9409</ele>
+				<time>2023-05-06T13:19:13Z</time>
+				<desc>Vitesse : 209 kmh
+					Altitude : 7634 ft
+					Latitude : 43.117698
+					Longitude : 1.138511
+					Cap : 068°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.12007465" lon="1.14572281">
+				<ele>2318.1494</ele>
+				<time>2023-05-06T13:19:24Z</time>
+				<desc>Vitesse : 212 kmh
+					Altitude : 7605 ft
+					Latitude : 43.120075
+					Longitude : 1.145723
+					Cap : 065°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.12258494" lon="1.15286338">
+				<ele>2320.3140</ele>
+				<time>2023-05-06T13:19:35Z</time>
+				<desc>Vitesse : 207 kmh
+					Altitude : 7613 ft
+					Latitude : 43.122585
+					Longitude : 1.152863
+					Cap : 065°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.12496489" lon="1.15998548">
+				<ele>2328.3550</ele>
+				<time>2023-05-06T13:19:46Z</time>
+				<desc>Vitesse : 207 kmh
+					Altitude : 7639 ft
+					Latitude : 43.124965
+					Longitude : 1.159985
+					Cap : 066°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.12728998" lon="1.16702879">
+				<ele>2337.4736</ele>
+				<time>2023-05-06T13:19:57Z</time>
+				<desc>Vitesse : 206 kmh
+					Altitude : 7669 ft
+					Latitude : 43.127290
+					Longitude : 1.167029
+					Cap : 066°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.12947917" lon="1.17429514">
+				<ele>2330.3030</ele>
+				<time>2023-05-06T13:20:08Z</time>
+				<desc>Vitesse : 213 kmh
+					Altitude : 7645 ft
+					Latitude : 43.129479
+					Longitude : 1.174295
+					Cap : 069°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.13167846" lon="1.18154032">
+				<ele>2343.3887</ele>
+				<time>2023-05-06T13:20:19Z</time>
+				<desc>Vitesse : 208 kmh
+					Altitude : 7688 ft
+					Latitude : 43.131678
+					Longitude : 1.181540
+					Cap : 067°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.13399270" lon="1.18869210">
+				<ele>2346.5669</ele>
+				<time>2023-05-06T13:20:30Z</time>
+				<desc>Vitesse : 209 kmh
+					Altitude : 7699 ft
+					Latitude : 43.133993
+					Longitude : 1.188692
+					Cap : 065°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.13663354" lon="1.19570929">
+				<ele>2343.8450</ele>
+				<time>2023-05-06T13:20:41Z</time>
+				<desc>Vitesse : 211 kmh
+					Altitude : 7690 ft
+					Latitude : 43.136634
+					Longitude : 1.195709
+					Cap : 061°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.13933498" lon="1.20272741">
+				<ele>2345.4688</ele>
+				<time>2023-05-06T13:20:52Z</time>
+				<desc>Vitesse : 210 kmh
+					Altitude : 7695 ft
+					Latitude : 43.139335
+					Longitude : 1.202727
+					Cap : 065°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.14166835" lon="1.20989580">
+				<ele>2351.2129</ele>
+				<time>2023-05-06T13:21:03Z</time>
+				<desc>Vitesse : 210 kmh
+					Altitude : 7714 ft
+					Latitude : 43.141668
+					Longitude : 1.209896
+					Cap : 066°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.14405367" lon="1.21698843">
+				<ele>2361.0330</ele>
+				<time>2023-05-06T13:21:14Z</time>
+				<desc>Vitesse : 209 kmh
+					Altitude : 7746 ft
+					Latitude : 43.144054
+					Longitude : 1.216988
+					Cap : 066°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.14618960" lon="1.22427213">
+				<ele>2367.1843</ele>
+				<time>2023-05-06T13:21:25Z</time>
+				<desc>Vitesse : 208 kmh
+					Altitude : 7766 ft
+					Latitude : 43.146190
+					Longitude : 1.224272
+					Cap : 071°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.14814469" lon="1.23169205">
+				<ele>2369.4248</ele>
+				<time>2023-05-06T13:21:36Z</time>
+				<desc>Vitesse : 210 kmh
+					Altitude : 7774 ft
+					Latitude : 43.148145
+					Longitude : 1.231692
+					Cap : 069°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.15037258" lon="1.23899312">
+				<ele>2373.7444</ele>
+				<time>2023-05-06T13:21:47Z</time>
+				<desc>Vitesse : 211 kmh
+					Altitude : 7788 ft
+					Latitude : 43.150373
+					Longitude : 1.238993
+					Cap : 066°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.15274994" lon="1.24611936">
+				<ele>2380.0259</ele>
+				<time>2023-05-06T13:21:58Z</time>
+				<desc>Vitesse : 208 kmh
+					Altitude : 7808 ft
+					Latitude : 43.152750
+					Longitude : 1.246119
+					Cap : 064°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.15546518" lon="1.25303034">
+				<ele>2371.2634</ele>
+				<time>2023-05-06T13:22:09Z</time>
+				<desc>Vitesse : 211 kmh
+					Altitude : 7780 ft
+					Latitude : 43.155465
+					Longitude : 1.253030
+					Cap : 060°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.15745099" lon="1.25818007">
+				<ele>2366.3130</ele>
+				<time>2023-05-06T13:22:17Z</time>
+				<desc>Vitesse : 213 kmh
+					Altitude : 7763 ft
+					Latitude : 43.157451
+					Longitude : 1.258180
+					Cap : 065°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.15979592" lon="1.26543771">
+				<ele>2374.1914</ele>
+				<time>2023-05-06T13:22:28Z</time>
+				<desc>Vitesse : 209 kmh
+					Altitude : 7789 ft
+					Latitude : 43.159796
+					Longitude : 1.265438
+					Cap : 067°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.16205912" lon="1.27267145">
+				<ele>2375.4368</ele>
+				<time>2023-05-06T13:22:39Z</time>
+				<desc>Vitesse : 210 kmh
+					Altitude : 7793 ft
+					Latitude : 43.162059
+					Longitude : 1.272671
+					Cap : 067°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.16437527" lon="1.27980708">
+				<ele>2379.5530</ele>
+				<time>2023-05-06T13:22:50Z</time>
+				<desc>Vitesse : 207 kmh
+					Altitude : 7807 ft
+					Latitude : 43.164375
+					Longitude : 1.279807
+					Cap : 066°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.16669510" lon="1.28698201">
+				<ele>2376.4153</ele>
+				<time>2023-05-06T13:23:01Z</time>
+				<desc>Vitesse : 210 kmh
+					Altitude : 7797 ft
+					Latitude : 43.166695
+					Longitude : 1.286982
+					Cap : 067°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.16891494" lon="1.29423147">
+				<ele>2379.1914</ele>
+				<time>2023-05-06T13:23:12Z</time>
+				<desc>Vitesse : 211 kmh
+					Altitude : 7806 ft
+					Latitude : 43.168915
+					Longitude : 1.294231
+					Cap : 068°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.17099333" lon="1.30146450">
+				<ele>2378.9124</ele>
+				<time>2023-05-06T13:23:23Z</time>
+				<desc>Vitesse : 207 kmh
+					Altitude : 7805 ft
+					Latitude : 43.170993
+					Longitude : 1.301465
+					Cap : 069°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.17306538" lon="1.30868051">
+				<ele>2380.3179</ele>
+				<time>2023-05-06T13:23:34Z</time>
+				<desc>Vitesse : 208 kmh
+					Altitude : 7809 ft
+					Latitude : 43.173065
+					Longitude : 1.308681
+					Cap : 068°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.17515746" lon="1.31604777">
+				<ele>2373.9207</ele>
+				<time>2023-05-06T13:23:45Z</time>
+				<desc>Vitesse : 212 kmh
+					Altitude : 7788 ft
+					Latitude : 43.175157
+					Longitude : 1.316048
+					Cap : 069°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.17729922" lon="1.32346284">
+				<ele>2375.6841</ele>
+				<time>2023-05-06T13:23:56Z</time>
+				<desc>Vitesse : 212 kmh
+					Altitude : 7794 ft
+					Latitude : 43.177299
+					Longitude : 1.323463
+					Cap : 068°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.17961084" lon="1.33083481">
+				<ele>2373.4565</ele>
+				<time>2023-05-06T13:24:07Z</time>
+				<desc>Vitesse : 215 kmh
+					Altitude : 7787 ft
+					Latitude : 43.179611
+					Longitude : 1.330835
+					Cap : 065°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.18195653" lon="1.33755114">
+				<ele>2366.6311</ele>
+				<time>2023-05-06T13:24:17Z</time>
+				<desc>Vitesse : 218 kmh
+					Altitude : 7765 ft
+					Latitude : 43.181957
+					Longitude : 1.337551
+					Cap : 064°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.18434125" lon="1.34435094">
+				<ele>2350.4182</ele>
+				<time>2023-05-06T13:24:27Z</time>
+				<desc>Vitesse : 223 kmh
+					Altitude : 7711 ft
+					Latitude : 43.184341
+					Longitude : 1.344351
+					Cap : 064°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.18679105" lon="1.35119796">
+				<ele>2330.5554</ele>
+				<time>2023-05-06T13:24:37Z</time>
+				<desc>Vitesse : 223 kmh
+					Altitude : 7646 ft
+					Latitude : 43.186791
+					Longitude : 1.351198
+					Cap : 063°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.18923071" lon="1.35806102">
+				<ele>2307.2192</ele>
+				<time>2023-05-06T13:24:47Z</time>
+				<desc>Vitesse : 224 kmh
+					Altitude : 7570 ft
+					Latitude : 43.189231
+					Longitude : 1.358061
+					Cap : 065°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.19164240" lon="1.36513234">
+				<ele>2271.0796</ele>
+				<time>2023-05-06T13:24:57Z</time>
+				<desc>Vitesse : 234 kmh
+					Altitude : 7451 ft
+					Latitude : 43.191642
+					Longitude : 1.365132
+					Cap : 065°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.19402767" lon="1.37240941">
+				<ele>2252.9060</ele>
+				<time>2023-05-06T13:25:07Z</time>
+				<desc>Vitesse : 232 kmh
+					Altitude : 7391 ft
+					Latitude : 43.194028
+					Longitude : 1.372409
+					Cap : 067°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.19633828" lon="1.37966556">
+				<ele>2234.3455</ele>
+				<time>2023-05-06T13:25:17Z</time>
+				<desc>Vitesse : 232 kmh
+					Altitude : 7331 ft
+					Latitude : 43.196338
+					Longitude : 1.379666
+					Cap : 066°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.19877311" lon="1.38680627">
+				<ele>2214.1157</ele>
+				<time>2023-05-06T13:25:27Z</time>
+				<desc>Vitesse : 232 kmh
+					Altitude : 7264 ft
+					Latitude : 43.198773
+					Longitude : 1.386806
+					Cap : 065°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.20115544" lon="1.39410585">
+				<ele>2186.1023</ele>
+				<time>2023-05-06T13:25:37Z</time>
+				<desc>Vitesse : 236 kmh
+					Altitude : 7172 ft
+					Latitude : 43.201155
+					Longitude : 1.394106
+					Cap : 068°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.20326865" lon="1.40165356">
+				<ele>2159.9912</ele>
+				<time>2023-05-06T13:25:47Z</time>
+				<desc>Vitesse : 238 kmh
+					Altitude : 7087 ft
+					Latitude : 43.203269
+					Longitude : 1.401654
+					Cap : 070°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.20528099" lon="1.40924955">
+				<ele>2137.8325</ele>
+				<time>2023-05-06T13:25:57Z</time>
+				<desc>Vitesse : 235 kmh
+					Altitude : 7014 ft
+					Latitude : 43.205281
+					Longitude : 1.409250
+					Cap : 071°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.20720661" lon="1.41687342">
+				<ele>2107.6882</ele>
+				<time>2023-05-06T13:26:07Z</time>
+				<desc>Vitesse : 237 kmh
+					Altitude : 6915 ft
+					Latitude : 43.207207
+					Longitude : 1.416873
+					Cap : 071°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.20919317" lon="1.42449499">
+				<ele>2084.3083</ele>
+				<time>2023-05-06T13:26:17Z</time>
+				<desc>Vitesse : 236 kmh
+					Altitude : 6838 ft
+					Latitude : 43.209193
+					Longitude : 1.424495
+					Cap : 070°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.21126248" lon="1.43206085">
+				<ele>2061.4177</ele>
+				<time>2023-05-06T13:26:27Z</time>
+				<desc>Vitesse : 235 kmh
+					Altitude : 6763 ft
+					Latitude : 43.211262
+					Longitude : 1.432061
+					Cap : 069°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.21338837" lon="1.43960794">
+				<ele>2040.6716</ele>
+				<time>2023-05-06T13:26:37Z</time>
+				<desc>Vitesse : 236 kmh
+					Altitude : 6695 ft
+					Latitude : 43.213388
+					Longitude : 1.439608
+					Cap : 070°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.21546304" lon="1.44714407">
+				<ele>2017.0366</ele>
+				<time>2023-05-06T13:26:47Z</time>
+				<desc>Vitesse : 234 kmh
+					Altitude : 6618 ft
+					Latitude : 43.215463
+					Longitude : 1.447144
+					Cap : 070°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.21765338" lon="1.45458601">
+				<ele>1993.3511</ele>
+				<time>2023-05-06T13:26:57Z</time>
+				<desc>Vitesse : 235 kmh
+					Altitude : 6540 ft
+					Latitude : 43.217653
+					Longitude : 1.454586
+					Cap : 067°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.22000807" lon="1.46194001">
+				<ele>1965.8137</ele>
+				<time>2023-05-06T13:27:07Z</time>
+				<desc>Vitesse : 233 kmh
+					Altitude : 6450 ft
+					Latitude : 43.220008
+					Longitude : 1.461940
+					Cap : 066°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.22230691" lon="1.46929949">
+				<ele>1942.1316</ele>
+				<time>2023-05-06T13:27:17Z</time>
+				<desc>Vitesse : 234 kmh
+					Altitude : 6372 ft
+					Latitude : 43.222307
+					Longitude : 1.469299
+					Cap : 068°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.22460406" lon="1.47659628">
+				<ele>1921.1753</ele>
+				<time>2023-05-06T13:27:27Z</time>
+				<desc>Vitesse : 232 kmh
+					Altitude : 6303 ft
+					Latitude : 43.224604
+					Longitude : 1.476596
+					Cap : 067°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.22669569" lon="1.48403960">
+				<ele>1893.8875</ele>
+				<time>2023-05-06T13:27:37Z</time>
+				<desc>Vitesse : 234 kmh
+					Altitude : 6214 ft
+					Latitude : 43.226696
+					Longitude : 1.484040
+					Cap : 070°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.22863739" lon="1.49161187">
+				<ele>1866.8733</ele>
+				<time>2023-05-06T13:27:47Z</time>
+				<desc>Vitesse : 233 kmh
+					Altitude : 6125 ft
+					Latitude : 43.228637
+					Longitude : 1.491612
+					Cap : 071°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.23046919" lon="1.49919686">
+				<ele>1840.5625</ele>
+				<time>2023-05-06T13:27:57Z</time>
+				<desc>Vitesse : 233 kmh
+					Altitude : 6039 ft
+					Latitude : 43.230469
+					Longitude : 1.499197
+					Cap : 072°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.23219089" lon="1.50669867">
+				<ele>1812.9314</ele>
+				<time>2023-05-06T13:28:07Z</time>
+				<desc>Vitesse : 225 kmh
+					Altitude : 5948 ft
+					Latitude : 43.232191
+					Longitude : 1.506699
+					Cap : 074°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.23373888" lon="1.51409769">
+				<ele>1783.0562</ele>
+				<time>2023-05-06T13:28:17Z</time>
+				<desc>Vitesse : 221 kmh
+					Altitude : 5850 ft
+					Latitude : 43.233739
+					Longitude : 1.514098
+					Cap : 074°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.23529459" lon="1.52125654">
+				<ele>1747.9248</ele>
+				<time>2023-05-06T13:28:27Z</time>
+				<desc>Vitesse : 219 kmh
+					Altitude : 5735 ft
+					Latitude : 43.235295
+					Longitude : 1.521257
+					Cap : 073°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.23684581" lon="1.52837206">
+				<ele>1718.8918</ele>
+				<time>2023-05-06T13:28:37Z</time>
+				<desc>Vitesse : 216 kmh
+					Altitude : 5639 ft
+					Latitude : 43.236846
+					Longitude : 1.528372
+					Cap : 074°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.23846089" lon="1.53616422">
+				<ele>1682.8623</ele>
+				<time>2023-05-06T13:28:48Z</time>
+				<desc>Vitesse : 215 kmh
+					Altitude : 5521 ft
+					Latitude : 43.238461
+					Longitude : 1.536164
+					Cap : 074°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.23994713" lon="1.54403709">
+				<ele>1651.0728</ele>
+				<time>2023-05-06T13:28:59Z</time>
+				<desc>Vitesse : 216 kmh
+					Altitude : 5417 ft
+					Latitude : 43.239947
+					Longitude : 1.544037
+					Cap : 077°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.24120990" lon="1.55189012">
+				<ele>1628.8364</ele>
+				<time>2023-05-06T13:29:10Z</time>
+				<desc>Vitesse : 212 kmh
+					Altitude : 5344 ft
+					Latitude : 43.241210
+					Longitude : 1.551890
+					Cap : 079°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.24246511" lon="1.55971077">
+				<ele>1599.2153</ele>
+				<time>2023-05-06T13:29:21Z</time>
+				<desc>Vitesse : 210 kmh
+					Altitude : 5247 ft
+					Latitude : 43.242465
+					Longitude : 1.559711
+					Cap : 077°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.24374605" lon="1.56746300">
+				<ele>1558.8687</ele>
+				<time>2023-05-06T13:29:32Z</time>
+				<desc>Vitesse : 210 kmh
+					Altitude : 5114 ft
+					Latitude : 43.243746
+					Longitude : 1.567463
+					Cap : 078°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.24498633" lon="1.57504935">
+				<ele>1526.1753</ele>
+				<time>2023-05-06T13:29:43Z</time>
+				<desc>Vitesse : 204 kmh
+					Altitude : 5007 ft
+					Latitude : 43.244986
+					Longitude : 1.575049
+					Cap : 077°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.24641041" lon="1.58243100">
+				<ele>1490.7623</ele>
+				<time>2023-05-06T13:29:54Z</time>
+				<desc>Vitesse : 204 kmh
+					Altitude : 4891 ft
+					Latitude : 43.246410
+					Longitude : 1.582431
+					Cap : 074°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.24791247" lon="1.58965580">
+				<ele>1464.5425</ele>
+				<time>2023-05-06T13:30:05Z</time>
+				<desc>Vitesse : 199 kmh
+					Altitude : 4805 ft
+					Latitude : 43.247912
+					Longitude : 1.589656
+					Cap : 074°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.24939873" lon="1.59681270">
+				<ele>1436.0042</ele>
+				<time>2023-05-06T13:30:16Z</time>
+				<desc>Vitesse : 196 kmh
+					Altitude : 4711 ft
+					Latitude : 43.249399
+					Longitude : 1.596813
+					Cap : 075°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.25090296" lon="1.60447580">
+				<ele>1408.0308</ele>
+				<time>2023-05-06T13:30:28Z</time>
+				<desc>Vitesse : 193 kmh
+					Altitude : 4620 ft
+					Latitude : 43.250903
+					Longitude : 1.604476
+					Cap : 075°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.25235288" lon="1.61166477">
+				<ele>1366.5736</ele>
+				<time>2023-05-06T13:30:39Z</time>
+				<desc>Vitesse : 201 kmh
+					Altitude : 4484 ft
+					Latitude : 43.252353
+					Longitude : 1.611665
+					Cap : 074°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.25382241" lon="1.61894152">
+				<ele>1340.8258</ele>
+				<time>2023-05-06T13:30:50Z</time>
+				<desc>Vitesse : 200 kmh
+					Altitude : 4399 ft
+					Latitude : 43.253822
+					Longitude : 1.618942
+					Cap : 076°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.25522595" lon="1.62615447">
+				<ele>1316.3578</ele>
+				<time>2023-05-06T13:31:01Z</time>
+				<desc>Vitesse : 198 kmh
+					Altitude : 4319 ft
+					Latitude : 43.255226
+					Longitude : 1.626154
+					Cap : 074°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.25682118" lon="1.63337213">
+				<ele>1283.1534</ele>
+				<time>2023-05-06T13:31:12Z</time>
+				<desc>Vitesse : 200 kmh
+					Altitude : 4210 ft
+					Latitude : 43.256821
+					Longitude : 1.633372
+					Cap : 073°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.25856291" lon="1.64043730">
+				<ele>1262.4436</ele>
+				<time>2023-05-06T13:31:23Z</time>
+				<desc>Vitesse : 197 kmh
+					Altitude : 4142 ft
+					Latitude : 43.258563
+					Longitude : 1.640437
+					Cap : 070°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.26056672" lon="1.64791951">
+				<ele>1243.5215</ele>
+				<time>2023-05-06T13:31:35Z</time>
+				<desc>Vitesse : 192 kmh
+					Altitude : 4080 ft
+					Latitude : 43.260567
+					Longitude : 1.647920
+					Cap : 070°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.26255341" lon="1.65522389">
+				<ele>1227.7506</ele>
+				<time>2023-05-06T13:31:47Z</time>
+				<desc>Vitesse : 187 kmh
+					Altitude : 4028 ft
+					Latitude : 43.262553
+					Longitude : 1.655224
+					Cap : 069°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.26472494" lon="1.66247081">
+				<ele>1190.7665</ele>
+				<time>2023-05-06T13:31:59Z</time>
+				<desc>Vitesse : 193 kmh
+					Altitude : 3907 ft
+					Latitude : 43.264725
+					Longitude : 1.662471
+					Cap : 067°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.26694847" lon="1.66967520">
+				<ele>1170.4607</ele>
+				<time>2023-05-06T13:32:11Z</time>
+				<desc>Vitesse : 191 kmh
+					Altitude : 3840 ft
+					Latitude : 43.266948
+					Longitude : 1.669675
+					Cap : 068°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.26919179" lon="1.67686229">
+				<ele>1157.0566</ele>
+				<time>2023-05-06T13:32:23Z</time>
+				<desc>Vitesse : 187 kmh
+					Altitude : 3796 ft
+					Latitude : 43.269192
+					Longitude : 1.676862
+					Cap : 066°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.27153999" lon="1.68385328">
+				<ele>1129.1887</ele>
+				<time>2023-05-06T13:32:35Z</time>
+				<desc>Vitesse : 192 kmh
+					Altitude : 3705 ft
+					Latitude : 43.271540
+					Longitude : 1.683853
+					Cap : 065°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.27284434" lon="1.68810182">
+				<ele>1113.8416</ele>
+				<time>2023-05-06T13:32:42Z</time>
+				<desc>Vitesse : 192 kmh
+					Altitude : 3654 ft
+					Latitude : 43.272844
+					Longitude : 1.688102
+					Cap : 071°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.27415380" lon="1.69428609">
+				<ele>1102.0073</ele>
+				<time>2023-05-06T13:32:52Z</time>
+				<desc>Vitesse : 186 kmh
+					Altitude : 3616 ft
+					Latitude : 43.274154
+					Longitude : 1.694286
+					Cap : 076°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.27541234" lon="1.70169659">
+				<ele>1075.9860</ele>
+				<time>2023-05-06T13:33:04Z</time>
+				<desc>Vitesse : 188 kmh
+					Altitude : 3530 ft
+					Latitude : 43.275412
+					Longitude : 1.701697
+					Cap : 078°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.27648982" lon="1.70928028">
+				<ele>1054.0579</ele>
+				<time>2023-05-06T13:33:16Z</time>
+				<desc>Vitesse : 187 kmh
+					Altitude : 3458 ft
+					Latitude : 43.276490
+					Longitude : 1.709280
+					Cap : 079°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.27753370" lon="1.71676860">
+				<ele>1039.6327</ele>
+				<time>2023-05-06T13:33:28Z</time>
+				<desc>Vitesse : 184 kmh
+					Altitude : 3411 ft
+					Latitude : 43.277534
+					Longitude : 1.716769
+					Cap : 080°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.27856199" lon="1.72418590">
+				<ele>1021.5480</ele>
+				<time>2023-05-06T13:33:40Z</time>
+				<desc>Vitesse : 183 kmh
+					Altitude : 3352 ft
+					Latitude : 43.278562
+					Longitude : 1.724186
+					Cap : 078°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.27979662" lon="1.73145208">
+				<ele>1007.0580</ele>
+				<time>2023-05-06T13:33:52Z</time>
+				<desc>Vitesse : 181 kmh
+					Altitude : 3304 ft
+					Latitude : 43.279797
+					Longitude : 1.731452
+					Cap : 076°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.28111589" lon="1.73921084">
+				<ele>994.2574</ele>
+				<time>2023-05-06T13:34:05Z</time>
+				<desc>Vitesse : 178 kmh
+					Altitude : 3262 ft
+					Latitude : 43.281116
+					Longitude : 1.739211
+					Cap : 078°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.28238568" lon="1.74699587">
+				<ele>971.5399</ele>
+				<time>2023-05-06T13:34:18Z</time>
+				<desc>Vitesse : 180 kmh
+					Altitude : 3187 ft
+					Latitude : 43.282386
+					Longitude : 1.746996
+					Cap : 077°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.28369317" lon="1.75480041">
+				<ele>948.5790</ele>
+				<time>2023-05-06T13:34:31Z</time>
+				<desc>Vitesse : 179 kmh
+					Altitude : 3112 ft
+					Latitude : 43.283693
+					Longitude : 1.754800
+					Cap : 078°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.28498368" lon="1.76253938">
+				<ele>927.5422</ele>
+				<time>2023-05-06T13:34:44Z</time>
+				<desc>Vitesse : 178 kmh
+					Altitude : 3043 ft
+					Latitude : 43.284984
+					Longitude : 1.762539
+					Cap : 077°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.28624451" lon="1.77020724">
+				<ele>915.3118</ele>
+				<time>2023-05-06T13:34:57Z</time>
+				<desc>Vitesse : 177 kmh
+					Altitude : 3003 ft
+					Latitude : 43.286245
+					Longitude : 1.770207
+					Cap : 078°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.28743950" lon="1.77794520">
+				<ele>902.2009</ele>
+				<time>2023-05-06T13:35:10Z</time>
+				<desc>Vitesse : 179 kmh
+					Altitude : 2960 ft
+					Latitude : 43.287440
+					Longitude : 1.777945
+					Cap : 077°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.28869385" lon="1.78518166">
+				<ele>888.2068</ele>
+				<time>2023-05-06T13:35:22Z</time>
+				<desc>Vitesse : 182 kmh
+					Altitude : 2914 ft
+					Latitude : 43.288694
+					Longitude : 1.785182
+					Cap : 076°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.29003160" lon="1.79238638">
+				<ele>875.9241</ele>
+				<time>2023-05-06T13:35:34Z</time>
+				<desc>Vitesse : 182 kmh
+					Altitude : 2874 ft
+					Latitude : 43.290032
+					Longitude : 1.792386
+					Cap : 076°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.29143848" lon="1.79981140">
+				<ele>851.1376</ele>
+				<time>2023-05-06T13:35:46Z</time>
+				<desc>Vitesse : 186 kmh
+					Altitude : 2792 ft
+					Latitude : 43.291438
+					Longitude : 1.799811
+					Cap : 075°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.29296950" lon="1.80713444">
+				<ele>832.2346</ele>
+				<time>2023-05-06T13:35:58Z</time>
+				<desc>Vitesse : 186 kmh
+					Altitude : 2730 ft
+					Latitude : 43.292970
+					Longitude : 1.807134
+					Cap : 073°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.29421133" lon="1.81194845">
+				<ele>820.7617</ele>
+				<time>2023-05-06T13:36:06Z</time>
+				<desc>Vitesse : 192 kmh
+					Altitude : 2693 ft
+					Latitude : 43.294211
+					Longitude : 1.811948
+					Cap : 066°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.29527578" lon="1.81487245">
+				<ele>815.8345</ele>
+				<time>2023-05-06T13:36:11Z</time>
+				<desc>Vitesse : 191 kmh
+					Altitude : 2677 ft
+					Latitude : 43.295276
+					Longitude : 1.814872
+					Cap : 061°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.29654904" lon="1.81763892">
+				<ele>815.2920</ele>
+				<time>2023-05-06T13:36:16Z</time>
+				<desc>Vitesse : 191 kmh
+					Altitude : 2675 ft
+					Latitude : 43.296549
+					Longitude : 1.817639
+					Cap : 055°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.29864747" lon="1.82127747">
+				<ele>800.3806</ele>
+				<time>2023-05-06T13:36:23Z</time>
+				<desc>Vitesse : 197 kmh
+					Altitude : 2626 ft
+					Latitude : 43.298647
+					Longitude : 1.821277
+					Cap : 049°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.30069455" lon="1.82416984">
+				<ele>790.9792</ele>
+				<time>2023-05-06T13:36:29Z</time>
+				<desc>Vitesse : 198 kmh
+					Altitude : 2595 ft
+					Latitude : 43.300695
+					Longitude : 1.824170
+					Cap : 043°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.30261798" lon="1.82634578">
+				<ele>779.0979</ele>
+				<time>2023-05-06T13:36:34Z</time>
+				<desc>Vitesse : 204 kmh
+					Altitude : 2556 ft
+					Latitude : 43.302618
+					Longitude : 1.826346
+					Cap : 037°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.30434657" lon="1.82791355">
+				<ele>772.4370</ele>
+				<time>2023-05-06T13:36:38Z</time>
+				<desc>Vitesse : 208 kmh
+					Altitude : 2534 ft
+					Latitude : 43.304347
+					Longitude : 1.827914
+					Cap : 031°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.30709751" lon="1.82987242">
+				<ele>770.5616</ele>
+				<time>2023-05-06T13:36:44Z</time>
+				<desc>Vitesse : 205 kmh
+					Altitude : 2528 ft
+					Latitude : 43.307098
+					Longitude : 1.829872
+					Cap : 025°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.31224281" lon="1.83300677">
+				<ele>752.7500</ele>
+				<time>2023-05-06T13:36:55Z</time>
+				<desc>Vitesse : 204 kmh
+					Altitude : 2470 ft
+					Latitude : 43.312243
+					Longitude : 1.833007
+					Cap : 022°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.31613857" lon="1.83485744">
+				<ele>735.2017</ele>
+				<time>2023-05-06T13:37:03Z</time>
+				<desc>Vitesse : 208 kmh
+					Altitude : 2412 ft
+					Latitude : 43.316139
+					Longitude : 1.834857
+					Cap : 016°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.32020029" lon="1.83619394">
+				<ele>722.7571</ele>
+				<time>2023-05-06T13:37:11Z</time>
+				<desc>Vitesse : 208 kmh
+					Altitude : 2371 ft
+					Latitude : 43.320200
+					Longitude : 1.836194
+					Cap : 011°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.32430141" lon="1.83696719">
+				<ele>713.5745</ele>
+				<time>2023-05-06T13:37:19Z</time>
+				<desc>Vitesse : 206 kmh
+					Altitude : 2341 ft
+					Latitude : 43.324301
+					Longitude : 1.836967
+					Cap : 005°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.32793697" lon="1.83721453">
+				<ele>699.3881</ele>
+				<time>2023-05-06T13:37:26Z</time>
+				<desc>Vitesse : 208 kmh
+					Altitude : 2295 ft
+					Latitude : 43.327937
+					Longitude : 1.837215
+					Cap : 000°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.32897148" lon="1.83720816">
+				<ele>699.6882</ele>
+				<time>2023-05-06T13:37:28Z</time>
+				<desc>Vitesse : 208 kmh
+					Altitude : 2296 ft
+					Latitude : 43.328971
+					Longitude : 1.837208
+					Cap : 359°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.33469406" lon="1.83689922">
+				<ele>689.4980</ele>
+				<time>2023-05-06T13:37:39Z</time>
+				<desc>Vitesse : 208 kmh
+					Altitude : 2262 ft
+					Latitude : 43.334694
+					Longitude : 1.836899
+					Cap : 356°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.34040574" lon="1.83622422">
+				<ele>683.6606</ele>
+				<time>2023-05-06T13:37:50Z</time>
+				<desc>Vitesse : 213 kmh
+					Altitude : 2243 ft
+					Latitude : 43.340406
+					Longitude : 1.836224
+					Cap : 352°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.34620694" lon="1.83466391">
+				<ele>688.1199</ele>
+				<time>2023-05-06T13:38:01Z</time>
+				<desc>Vitesse : 215 kmh
+					Altitude : 2258 ft
+					Latitude : 43.346207
+					Longitude : 1.834664
+					Cap : 347°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.35190792" lon="1.83291547">
+				<ele>704.1946</ele>
+				<time>2023-05-06T13:38:12Z</time>
+				<desc>Vitesse : 212 kmh
+					Altitude : 2310 ft
+					Latitude : 43.351908
+					Longitude : 1.832915
+					Cap : 348°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.35722235" lon="1.83154592">
+				<ele>707.0875</ele>
+				<time>2023-05-06T13:38:22Z</time>
+				<desc>Vitesse : 223 kmh
+					Altitude : 2320 ft
+					Latitude : 43.357222
+					Longitude : 1.831546
+					Cap : 349°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.36272377" lon="1.82999130">
+				<ele>710.7827</ele>
+				<time>2023-05-06T13:38:32Z</time>
+				<desc>Vitesse : 221 kmh
+					Altitude : 2332 ft
+					Latitude : 43.362724
+					Longitude : 1.829991
+					Cap : 349°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.36809718" lon="1.82846316">
+				<ele>722.1947</ele>
+				<time>2023-05-06T13:38:42Z</time>
+				<desc>Vitesse : 218 kmh
+					Altitude : 2369 ft
+					Latitude : 43.368097
+					Longitude : 1.828463
+					Cap : 348°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.37341516" lon="1.82682495">
+				<ele>723.9115</ele>
+				<time>2023-05-06T13:38:52Z</time>
+				<desc>Vitesse : 222 kmh
+					Altitude : 2375 ft
+					Latitude : 43.373415
+					Longitude : 1.826825
+					Cap : 347°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.37884039" lon="1.82511189">
+				<ele>732.4019</ele>
+				<time>2023-05-06T13:39:02Z</time>
+				<desc>Vitesse : 221 kmh
+					Altitude : 2403 ft
+					Latitude : 43.378840
+					Longitude : 1.825112
+					Cap : 346°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.38417332" lon="1.82330190">
+				<ele>742.2679</ele>
+				<time>2023-05-06T13:39:12Z</time>
+				<desc>Vitesse : 219 kmh
+					Altitude : 2435 ft
+					Latitude : 43.384173
+					Longitude : 1.823302
+					Cap : 348°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.38944637" lon="1.82171686">
+				<ele>760.3906</ele>
+				<time>2023-05-06T13:39:22Z</time>
+				<desc>Vitesse : 214 kmh
+					Altitude : 2495 ft
+					Latitude : 43.389446
+					Longitude : 1.821717
+					Cap : 347°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.39472524" lon="1.82019644">
+				<ele>761.5216</ele>
+				<time>2023-05-06T13:39:32Z</time>
+				<desc>Vitesse : 216 kmh
+					Altitude : 2498 ft
+					Latitude : 43.394725
+					Longitude : 1.820196
+					Cap : 348°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.40053517" lon="1.81866177">
+				<ele>761.4922</ele>
+				<time>2023-05-06T13:39:43Z</time>
+				<desc>Vitesse : 216 kmh
+					Altitude : 2498 ft
+					Latitude : 43.400535
+					Longitude : 1.818662
+					Cap : 349°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.40588594" lon="1.81729830">
+				<ele>757.0867</ele>
+				<time>2023-05-06T13:39:53Z</time>
+				<desc>Vitesse : 218 kmh
+					Altitude : 2484 ft
+					Latitude : 43.405886
+					Longitude : 1.817298
+					Cap : 350°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.41132915" lon="1.81611468">
+				<ele>752.9722</ele>
+				<time>2023-05-06T13:40:03Z</time>
+				<desc>Vitesse : 222 kmh
+					Altitude : 2470 ft
+					Latitude : 43.411329
+					Longitude : 1.816115
+					Cap : 352°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.41680608" lon="1.81518749">
+				<ele>760.2043</ele>
+				<time>2023-05-06T13:40:13Z</time>
+				<desc>Vitesse : 215 kmh
+					Altitude : 2494 ft
+					Latitude : 43.416806
+					Longitude : 1.815187
+					Cap : 352°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.42258096" lon="1.81362139">
+				<ele>760.9171</ele>
+				<time>2023-05-06T13:40:24Z</time>
+				<desc>Vitesse : 217 kmh
+					Altitude : 2496 ft
+					Latitude : 43.422581
+					Longitude : 1.813621
+					Cap : 347°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.42788249" lon="1.81177273">
+				<ele>758.7815</ele>
+				<time>2023-05-06T13:40:34Z</time>
+				<desc>Vitesse : 220 kmh
+					Altitude : 2489 ft
+					Latitude : 43.427882
+					Longitude : 1.811773
+					Cap : 345°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.43307665" lon="1.80974057">
+				<ele>769.1597</ele>
+				<time>2023-05-06T13:40:44Z</time>
+				<desc>Vitesse : 213 kmh
+					Altitude : 2523 ft
+					Latitude : 43.433077
+					Longitude : 1.809741
+					Cap : 344°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.43855970" lon="1.80720508">
+				<ele>783.0898</ele>
+				<time>2023-05-06T13:40:55Z</time>
+				<desc>Vitesse : 207 kmh
+					Altitude : 2569 ft
+					Latitude : 43.438560
+					Longitude : 1.807205
+					Cap : 340°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.44395549" lon="1.80441268">
+				<ele>778.3367</ele>
+				<time>2023-05-06T13:41:06Z</time>
+				<desc>Vitesse : 210 kmh
+					Altitude : 2554 ft
+					Latitude : 43.443955
+					Longitude : 1.804413
+					Cap : 339°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.44934432" lon="1.80169394">
+				<ele>788.1937</ele>
+				<time>2023-05-06T13:41:17Z</time>
+				<desc>Vitesse : 207 kmh
+					Altitude : 2586 ft
+					Latitude : 43.449344
+					Longitude : 1.801694
+					Cap : 340°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.45467708" lon="1.79902918">
+				<ele>791.2563</ele>
+				<time>2023-05-06T13:41:28Z</time>
+				<desc>Vitesse : 206 kmh
+					Altitude : 2596 ft
+					Latitude : 43.454677
+					Longitude : 1.799029
+					Cap : 340°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.46003544" lon="1.79643535">
+				<ele>789.4612</ele>
+				<time>2023-05-06T13:41:39Z</time>
+				<desc>Vitesse : 207 kmh
+					Altitude : 2590 ft
+					Latitude : 43.460035
+					Longitude : 1.796435
+					Cap : 341°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.46548679" lon="1.79369662">
+				<ele>788.0613</ele>
+				<time>2023-05-06T13:41:50Z</time>
+				<desc>Vitesse : 211 kmh
+					Altitude : 2586 ft
+					Latitude : 43.465487
+					Longitude : 1.793697
+					Cap : 339°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.47093216" lon="1.79083493">
+				<ele>789.0952</ele>
+				<time>2023-05-06T13:42:01Z</time>
+				<desc>Vitesse : 213 kmh
+					Altitude : 2589 ft
+					Latitude : 43.470932
+					Longitude : 1.790835
+					Cap : 338°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.47639701" lon="1.78780596">
+				<ele>784.9954</ele>
+				<time>2023-05-06T13:42:12Z</time>
+				<desc>Vitesse : 214 kmh
+					Altitude : 2575 ft
+					Latitude : 43.476397
+					Longitude : 1.787806
+					Cap : 338°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.48181829" lon="1.78478385">
+				<ele>791.3118</ele>
+				<time>2023-05-06T13:42:23Z</time>
+				<desc>Vitesse : 211 kmh
+					Altitude : 2596 ft
+					Latitude : 43.481818
+					Longitude : 1.784784
+					Cap : 338°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.48717971" lon="1.78162969">
+				<ele>789.1602</ele>
+				<time>2023-05-06T13:42:34Z</time>
+				<desc>Vitesse : 214 kmh
+					Altitude : 2589 ft
+					Latitude : 43.487180
+					Longitude : 1.781630
+					Cap : 336°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.49214468" lon="1.77849224">
+				<ele>785.1848</ele>
+				<time>2023-05-06T13:42:44Z</time>
+				<desc>Vitesse : 221 kmh
+					Altitude : 2576 ft
+					Latitude : 43.492145
+					Longitude : 1.778492
+					Cap : 334°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.49704413" lon="1.77515161">
+				<ele>792.8726</ele>
+				<time>2023-05-06T13:42:54Z</time>
+				<desc>Vitesse : 216 kmh
+					Altitude : 2601 ft
+					Latitude : 43.497044
+					Longitude : 1.775152
+					Cap : 333°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.50187484" lon="1.77172165">
+				<ele>793.3694</ele>
+				<time>2023-05-06T13:43:04Z</time>
+				<desc>Vitesse : 218 kmh
+					Altitude : 2603 ft
+					Latitude : 43.501875
+					Longitude : 1.771722
+					Cap : 333°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.50666713" lon="1.76809113">
+				<ele>792.1104</ele>
+				<time>2023-05-06T13:43:14Z</time>
+				<desc>Vitesse : 219 kmh
+					Altitude : 2599 ft
+					Latitude : 43.506667
+					Longitude : 1.768091
+					Cap : 329°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.50990179" lon="1.76520652">
+				<ele>793.3156</ele>
+				<time>2023-05-06T13:43:21Z</time>
+				<desc>Vitesse : 221 kmh
+					Altitude : 2603 ft
+					Latitude : 43.509902
+					Longitude : 1.765207
+					Cap : 324°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.51162305" lon="1.76328708">
+				<ele>794.8831</ele>
+				<time>2023-05-06T13:43:25Z</time>
+				<desc>Vitesse : 222 kmh
+					Altitude : 2608 ft
+					Latitude : 43.511623
+					Longitude : 1.763287
+					Cap : 319°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.51279823" lon="1.76165401">
+				<ele>793.6575</ele>
+				<time>2023-05-06T13:43:28Z</time>
+				<desc>Vitesse : 223 kmh
+					Altitude : 2604 ft
+					Latitude : 43.512798
+					Longitude : 1.761654
+					Cap : 313°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.51421433" lon="1.75925856">
+				<ele>794.6072</ele>
+				<time>2023-05-06T13:43:32Z</time>
+				<desc>Vitesse : 225 kmh
+					Altitude : 2607 ft
+					Latitude : 43.514214
+					Longitude : 1.759259
+					Cap : 306°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.51606315" lon="1.75537569">
+				<ele>795.5347</ele>
+				<time>2023-05-06T13:43:38Z</time>
+				<desc>Vitesse : 225 kmh
+					Altitude : 2610 ft
+					Latitude : 43.516063
+					Longitude : 1.755376
+					Cap : 301°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.51872285" lon="1.74857211">
+				<ele>789.0286</ele>
+				<time>2023-05-06T13:43:48Z</time>
+				<desc>Vitesse : 226 kmh
+					Altitude : 2589 ft
+					Latitude : 43.518723
+					Longitude : 1.748572
+					Cap : 295°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.52091730" lon="1.74143358">
+				<ele>782.3439</ele>
+				<time>2023-05-06T13:43:58Z</time>
+				<desc>Vitesse : 227 kmh
+					Altitude : 2567 ft
+					Latitude : 43.520917
+					Longitude : 1.741434
+					Cap : 292°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.52296409" lon="1.73407506">
+				<ele>775.2145</ele>
+				<time>2023-05-06T13:44:08Z</time>
+				<desc>Vitesse : 230 kmh
+					Altitude : 2543 ft
+					Latitude : 43.522964
+					Longitude : 1.734075
+					Cap : 292°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.52506103" lon="1.72670705">
+				<ele>775.2065</ele>
+				<time>2023-05-06T13:44:18Z</time>
+				<desc>Vitesse : 230 kmh
+					Altitude : 2543 ft
+					Latitude : 43.525061
+					Longitude : 1.726707
+					Cap : 291°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.52724122" lon="1.71941924">
+				<ele>773.3848</ele>
+				<time>2023-05-06T13:44:28Z</time>
+				<desc>Vitesse : 230 kmh
+					Altitude : 2537 ft
+					Latitude : 43.527241
+					Longitude : 1.719419
+					Cap : 294°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.52966523" lon="1.71220592">
+				<ele>768.0583</ele>
+				<time>2023-05-06T13:44:38Z</time>
+				<desc>Vitesse : 233 kmh
+					Altitude : 2520 ft
+					Latitude : 43.529665
+					Longitude : 1.712206
+					Cap : 296°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.53217731" lon="1.70493299">
+				<ele>766.6052</ele>
+				<time>2023-05-06T13:44:48Z</time>
+				<desc>Vitesse : 236 kmh
+					Altitude : 2515 ft
+					Latitude : 43.532177
+					Longitude : 1.704933
+					Cap : 296°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.53475227" lon="1.69762934">
+				<ele>763.6810</ele>
+				<time>2023-05-06T13:44:58Z</time>
+				<desc>Vitesse : 235 kmh
+					Altitude : 2506 ft
+					Latitude : 43.534752
+					Longitude : 1.697629
+					Cap : 296°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.53733971" lon="1.69043041">
+				<ele>755.8431</ele>
+				<time>2023-05-06T13:45:08Z</time>
+				<desc>Vitesse : 232 kmh
+					Altitude : 2480 ft
+					Latitude : 43.537340
+					Longitude : 1.690430
+					Cap : 296°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.53998486" lon="1.68336942">
+				<ele>743.7834</ele>
+				<time>2023-05-06T13:45:18Z</time>
+				<desc>Vitesse : 231 kmh
+					Altitude : 2440 ft
+					Latitude : 43.539985
+					Longitude : 1.683369
+					Cap : 298°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.54253094" lon="1.67616208">
+				<ele>722.0997</ele>
+				<time>2023-05-06T13:45:28Z</time>
+				<desc>Vitesse : 234 kmh
+					Altitude : 2369 ft
+					Latitude : 43.542531
+					Longitude : 1.676162
+					Cap : 295°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.54498788" lon="1.66879278">
+				<ele>696.4902</ele>
+				<time>2023-05-06T13:45:38Z</time>
+				<desc>Vitesse : 236 kmh
+					Altitude : 2285 ft
+					Latitude : 43.544988
+					Longitude : 1.668793
+					Cap : 295°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.54742249" lon="1.66145447">
+				<ele>684.6484</ele>
+				<time>2023-05-06T13:45:48Z</time>
+				<desc>Vitesse : 234 kmh
+					Altitude : 2246 ft
+					Latitude : 43.547422
+					Longitude : 1.661454
+					Cap : 294°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.54979402" lon="1.65412883">
+				<ele>669.1057</ele>
+				<time>2023-05-06T13:45:58Z</time>
+				<desc>Vitesse : 232 kmh
+					Altitude : 2195 ft
+					Latitude : 43.549794
+					Longitude : 1.654129
+					Cap : 294°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.55212575" lon="1.64675829">
+				<ele>649.7329</ele>
+				<time>2023-05-06T13:46:08Z</time>
+				<desc>Vitesse : 237 kmh
+					Altitude : 2132 ft
+					Latitude : 43.552126
+					Longitude : 1.646758
+					Cap : 293°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.55453973" lon="1.63922138">
+				<ele>635.4539</ele>
+				<time>2023-05-06T13:46:18Z</time>
+				<desc>Vitesse : 239 kmh
+					Altitude : 2085 ft
+					Latitude : 43.554540
+					Longitude : 1.639221
+					Cap : 295°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.55701474" lon="1.63177127">
+				<ele>626.9344</ele>
+				<time>2023-05-06T13:46:28Z</time>
+				<desc>Vitesse : 239 kmh
+					Altitude : 2057 ft
+					Latitude : 43.557015
+					Longitude : 1.631771
+					Cap : 294°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.55932555" lon="1.62499299">
+				<ele>604.8047</ele>
+				<time>2023-05-06T13:46:37Z</time>
+				<desc>Vitesse : 240 kmh
+					Altitude : 1984 ft
+					Latitude : 43.559326
+					Longitude : 1.624993
+					Cap : 297°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56200067" lon="1.61825732">
+				<ele>625.2433</ele>
+				<time>2023-05-06T13:46:47Z</time>
+				<desc>Vitesse : 214 kmh
+					Altitude : 2051 ft
+					Latitude : 43.562001
+					Longitude : 1.618257
+					Cap : 300°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56504402" lon="1.61140498">
+				<ele>623.0105</ele>
+				<time>2023-05-06T13:46:58Z</time>
+				<desc>Vitesse : 209 kmh
+					Altitude : 2044 ft
+					Latitude : 43.565044
+					Longitude : 1.611405
+					Cap : 302°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.56809277" lon="1.60471113">
+				<ele>620.9321</ele>
+				<time>2023-05-06T13:47:09Z</time>
+				<desc>Vitesse : 210 kmh
+					Altitude : 2037 ft
+					Latitude : 43.568093
+					Longitude : 1.604711
+					Cap : 302°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.57123352" lon="1.59786748">
+				<ele>603.6836</ele>
+				<time>2023-05-06T13:47:20Z</time>
+				<desc>Vitesse : 216 kmh
+					Altitude : 1981 ft
+					Latitude : 43.571234
+					Longitude : 1.597867
+					Cap : 302°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.57406617" lon="1.59153116">
+				<ele>596.4799</ele>
+				<time>2023-05-06T13:47:30Z</time>
+				<desc>Vitesse : 219 kmh
+					Altitude : 1957 ft
+					Latitude : 43.574066
+					Longitude : 1.591531
+					Cap : 301°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.57692873" lon="1.58514027">
+				<ele>600.5090</ele>
+				<time>2023-05-06T13:47:40Z</time>
+				<desc>Vitesse : 212 kmh
+					Altitude : 1970 ft
+					Latitude : 43.576929
+					Longitude : 1.585140
+					Cap : 302°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.57996228" lon="1.57864764">
+				<ele>627.6868</ele>
+				<time>2023-05-06T13:47:51Z</time>
+				<desc>Vitesse : 196 kmh
+					Altitude : 2059 ft
+					Latitude : 43.579962
+					Longitude : 1.578648
+					Cap : 305°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.58340954" lon="1.57227578">
+				<ele>635.1030</ele>
+				<time>2023-05-06T13:48:03Z</time>
+				<desc>Vitesse : 191 kmh
+					Altitude : 2084 ft
+					Latitude : 43.583410
+					Longitude : 1.572276
+					Cap : 311°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.58439285" lon="1.57083015">
+				<ele>634.5038</ele>
+				<time>2023-05-06T13:48:06Z</time>
+				<desc>Vitesse : 193 kmh
+					Altitude : 2082 ft
+					Latitude : 43.584393
+					Longitude : 1.570830
+					Cap : 316°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.58686117" lon="1.56782445">
+				<ele>645.9395</ele>
+				<time>2023-05-06T13:48:13Z</time>
+				<desc>Vitesse : 186 kmh
+					Altitude : 2119 ft
+					Latitude : 43.586861
+					Longitude : 1.567824
+					Cap : 321°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.59140361" lon="1.56309270">
+				<ele>646.7987</ele>
+				<time>2023-05-06T13:48:25Z</time>
+				<desc>Vitesse : 193 kmh
+					Altitude : 2122 ft
+					Latitude : 43.591404
+					Longitude : 1.563093
+					Cap : 325°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.59600217" lon="1.55887541">
+				<ele>659.5344</ele>
+				<time>2023-05-06T13:48:37Z</time>
+				<desc>Vitesse : 178 kmh
+					Altitude : 2164 ft
+					Latitude : 43.596002
+					Longitude : 1.558875
+					Cap : 327°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.60085649" lon="1.55465051">
+				<ele>659.7010</ele>
+				<time>2023-05-06T13:48:50Z</time>
+				<desc>Vitesse : 177 kmh
+					Altitude : 2164 ft
+					Latitude : 43.600856
+					Longitude : 1.554651
+					Cap : 328°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.60570591" lon="1.55012781">
+				<ele>660.4017</ele>
+				<time>2023-05-06T13:49:03Z</time>
+				<desc>Vitesse : 185 kmh
+					Altitude : 2167 ft
+					Latitude : 43.605706
+					Longitude : 1.550128
+					Cap : 324°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.61002063" lon="1.54538441">
+				<ele>665.3428</ele>
+				<time>2023-05-06T13:49:15Z</time>
+				<desc>Vitesse : 185 kmh
+					Altitude : 2183 ft
+					Latitude : 43.610021
+					Longitude : 1.545384
+					Cap : 320°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.61421772" lon="1.54037511">
+				<ele>651.8766</ele>
+				<time>2023-05-06T13:49:27Z</time>
+				<desc>Vitesse : 185 kmh
+					Altitude : 2139 ft
+					Latitude : 43.614218
+					Longitude : 1.540375
+					Cap : 317°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.61815418" lon="1.53492365">
+				<ele>636.3828</ele>
+				<time>2023-05-06T13:49:39Z</time>
+				<desc>Vitesse : 187 kmh
+					Altitude : 2088 ft
+					Latitude : 43.618154
+					Longitude : 1.534924
+					Cap : 314°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62178356" lon="1.52921780">
+				<ele>626.9478</ele>
+				<time>2023-05-06T13:49:51Z</time>
+				<desc>Vitesse : 182 kmh
+					Altitude : 2057 ft
+					Latitude : 43.621784
+					Longitude : 1.529218
+					Cap : 310°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62432194" lon="1.52478597">
+				<ele>609.8240</ele>
+				<time>2023-05-06T13:50:00Z</time>
+				<desc>Vitesse : 184 kmh
+					Altitude : 2001 ft
+					Latitude : 43.624322
+					Longitude : 1.524786
+					Cap : 305°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62528647" lon="1.52263301">
+				<ele>596.7920</ele>
+				<time>2023-05-06T13:50:04Z</time>
+				<desc>Vitesse : 182 kmh
+					Altitude : 1958 ft
+					Latitude : 43.625286
+					Longitude : 1.522633
+					Cap : 299°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62605900" lon="1.52039834">
+				<ele>586.6219</ele>
+				<time>2023-05-06T13:50:08Z</time>
+				<desc>Vitesse : 177 kmh
+					Altitude : 1925 ft
+					Latitude : 43.626059
+					Longitude : 1.520398
+					Cap : 292°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62650330" lon="1.51868720">
+				<ele>576.6685</ele>
+				<time>2023-05-06T13:50:11Z</time>
+				<desc>Vitesse : 176 kmh
+					Altitude : 1892 ft
+					Latitude : 43.626503
+					Longitude : 1.518687
+					Cap : 287°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62693313" lon="1.51633189">
+				<ele>562.2791</ele>
+				<time>2023-05-06T13:50:15Z</time>
+				<desc>Vitesse : 174 kmh
+					Altitude : 1845 ft
+					Latitude : 43.626933
+					Longitude : 1.516332
+					Cap : 281°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62717670" lon="1.51398754">
+				<ele>550.0823</ele>
+				<time>2023-05-06T13:50:19Z</time>
+				<desc>Vitesse : 172 kmh
+					Altitude : 1805 ft
+					Latitude : 43.627177
+					Longitude : 1.513988
+					Cap : 275°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62725563" lon="1.51043437">
+				<ele>532.0251</ele>
+				<time>2023-05-06T13:50:25Z</time>
+				<desc>Vitesse : 170 kmh
+					Altitude : 1745 ft
+					Latitude : 43.627256
+					Longitude : 1.510434
+					Cap : 269°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62696614" lon="1.50520792">
+				<ele>498.7419</ele>
+				<time>2023-05-06T13:50:34Z</time>
+				<desc>Vitesse : 169 kmh
+					Altitude : 1636 ft
+					Latitude : 43.626966
+					Longitude : 1.505208
+					Cap : 264°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62605803" lon="1.49784038">
+				<ele>472.1076</ele>
+				<time>2023-05-06T13:50:47Z</time>
+				<desc>Vitesse : 172 kmh
+					Altitude : 1549 ft
+					Latitude : 43.626058
+					Longitude : 1.497840
+					Cap : 261°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62529052" lon="1.49027497">
+				<ele>441.0310</ele>
+				<time>2023-05-06T13:51:00Z</time>
+				<desc>Vitesse : 166 kmh
+					Altitude : 1447 ft
+					Latitude : 43.625291
+					Longitude : 1.490275
+					Cap : 260°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62464829" lon="1.48643549">
+				<ele>423.5773</ele>
+				<time>2023-05-06T13:51:07Z</time>
+				<desc>Vitesse : 162 kmh
+					Altitude : 1390 ft
+					Latitude : 43.624648
+					Longitude : 1.486435
+					Cap : 253°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62422522" lon="1.48487236">
+				<ele>411.5032</ele>
+				<time>2023-05-06T13:51:10Z</time>
+				<desc>Vitesse : 161 kmh
+					Altitude : 1350 ft
+					Latitude : 43.624225
+					Longitude : 1.484872
+					Cap : 246°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62384669" lon="1.48389048">
+				<ele>402.4609</ele>
+				<time>2023-05-06T13:51:12Z</time>
+				<desc>Vitesse : 161 kmh
+					Altitude : 1320 ft
+					Latitude : 43.623847
+					Longitude : 1.483890
+					Cap : 239°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62339362" lon="1.48298722">
+				<ele>394.4603</ele>
+				<time>2023-05-06T13:51:14Z</time>
+				<desc>Vitesse : 159 kmh
+					Altitude : 1294 ft
+					Latitude : 43.623394
+					Longitude : 1.482987
+					Cap : 230°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62283700" lon="1.48222019">
+				<ele>385.5359</ele>
+				<time>2023-05-06T13:51:16Z</time>
+				<desc>Vitesse : 157 kmh
+					Altitude : 1265 ft
+					Latitude : 43.622837
+					Longitude : 1.482220
+					Cap : 221°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62252972" lon="1.48189862">
+				<ele>379.5422</ele>
+				<time>2023-05-06T13:51:17Z</time>
+				<desc>Vitesse : 155 kmh
+					Altitude : 1245 ft
+					Latitude : 43.622530
+					Longitude : 1.481899
+					Cap : 214°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62219774" lon="1.48163253">
+				<ele>376.3868</ele>
+				<time>2023-05-06T13:51:18Z</time>
+				<desc>Vitesse : 152 kmh
+					Altitude : 1235 ft
+					Latitude : 43.622198
+					Longitude : 1.481633
+					Cap : 208°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62150210" lon="1.48122244">
+				<ele>368.4022</ele>
+				<time>2023-05-06T13:51:20Z</time>
+				<desc>Vitesse : 150 kmh
+					Altitude : 1209 ft
+					Latitude : 43.621502
+					Longitude : 1.481222
+					Cap : 198°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62114154" lon="1.48109174">
+				<ele>366.2229</ele>
+				<time>2023-05-06T13:51:21Z</time>
+				<desc>Vitesse : 147 kmh
+					Altitude : 1202 ft
+					Latitude : 43.621142
+					Longitude : 1.481092
+					Cap : 192°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.62040711" lon="1.48097290">
+				<ele>358.6206</ele>
+				<time>2023-05-06T13:51:23Z</time>
+				<desc>Vitesse : 142 kmh
+					Altitude : 1177 ft
+					Latitude : 43.620407
+					Longitude : 1.480973
+					Cap : 184°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.61970562" lon="1.48099755">
+				<ele>352.2289</ele>
+				<time>2023-05-06T13:51:25Z</time>
+				<desc>Vitesse : 140 kmh
+					Altitude : 1156 ft
+					Latitude : 43.619706
+					Longitude : 1.480998
+					Cap : 175°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.61830818" lon="1.48125297">
+				<ele>337.9874</ele>
+				<time>2023-05-06T13:51:29Z</time>
+				<desc>Vitesse : 141 kmh
+					Altitude : 1109 ft
+					Latitude : 43.618308
+					Longitude : 1.481253
+					Cap : 170°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.61567477" lon="1.48205104">
+				<ele>320.2493</ele>
+				<time>2023-05-06T13:51:37Z</time>
+				<desc>Vitesse : 125 kmh
+					Altitude : 1051 ft
+					Latitude : 43.615675
+					Longitude : 1.482051
+					Cap : 164°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.61104094" lon="1.48401186">
+				<ele>282.8002</ele>
+				<time>2023-05-06T13:51:54Z</time>
+				<desc>Vitesse : 108 kmh
+					Altitude : 928 ft
+					Latitude : 43.611041
+					Longitude : 1.484012
+					Cap : 159°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.60849151" lon="1.48552064">
+				<ele>262.9517</ele>
+				<time>2023-05-06T13:52:04Z</time>
+				<desc>Vitesse : 114 kmh
+					Altitude : 863 ft
+					Latitude : 43.608492
+					Longitude : 1.485521
+					Cap : 153°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.60352317" lon="1.48860052">
+				<ele>227.1391</ele>
+				<time>2023-05-06T13:52:22Z</time>
+				<desc>Vitesse : 123 kmh
+					Altitude : 745 ft
+					Latitude : 43.603523
+					Longitude : 1.488601
+					Cap : 154°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.59839283" lon="1.49191962">
+				<ele>195.4533</ele>
+				<time>2023-05-06T13:52:41Z</time>
+				<desc>Vitesse : 121 kmh
+					Altitude : 641 ft
+					Latitude : 43.598393
+					Longitude : 1.491920
+					Cap : 155°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.59342411" lon="1.49507908">
+				<ele>168.6165</ele>
+				<time>2023-05-06T13:52:59Z</time>
+				<desc>Vitesse : 122 kmh
+					Altitude : 553 ft
+					Latitude : 43.593424
+					Longitude : 1.495079
+					Cap : 156°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.58835082" lon="1.49826075">
+				<ele>144.2161</ele>
+				<time>2023-05-06T13:53:18Z</time>
+				<desc>Vitesse : 98 kmh
+					Altitude : 473 ft
+					Latitude : 43.588351
+					Longitude : 1.498261
+					Cap : 155°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.58484443" lon="1.50047896">
+				<ele>142.2700</ele>
+				<time>2023-05-06T13:53:40Z</time>
+				<desc>Vitesse : 23 kmh
+					Altitude : 467 ft
+					Latitude : 43.584844
+					Longitude : 1.500479
+					Cap : 152°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.58470555" lon="1.50080738">
+				<ele>144.3070</ele>
+				<time>2023-05-06T13:53:50Z</time>
+				<desc>Vitesse : 7 kmh
+					Altitude : 473 ft
+					Latitude : 43.584706
+					Longitude : 1.500807
+					Cap : 065°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.58486287" lon="1.50115487">
+				<ele>144.0525</ele>
+				<time>2023-05-06T13:54:01Z</time>
+				<desc>Vitesse : 11 kmh
+					Altitude : 473 ft
+					Latitude : 43.584863
+					Longitude : 1.501155
+					Cap : 064°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.58496478" lon="1.50151152">
+				<ele>146.7617</ele>
+				<time>2023-05-06T13:54:41Z</time>
+				<desc>Vitesse : 16 kmh
+					Altitude : 482 ft
+					Latitude : 43.584965
+					Longitude : 1.501512
+					Cap : 064°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.58507889" lon="1.50187532">
+				<ele>147.2230</ele>
+				<time>2023-05-06T13:54:48Z</time>
+				<desc>Vitesse : 16 kmh
+					Altitude : 483 ft
+					Latitude : 43.585079
+					Longitude : 1.501875
+					Cap : 067°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.58519800" lon="1.50224038">
+				<ele>146.1484</ele>
+				<time>2023-05-06T13:54:56Z</time>
+				<desc>Vitesse : 12 kmh
+					Altitude : 479 ft
+					Latitude : 43.585198
+					Longitude : 1.502240
+					Cap : 063°
+				</desc>
+			</trkpt>
+			<trkpt lat="43.58504088" lon="1.50255198">
+				<ele>144.2007</ele>
+				<time>2023-05-06T13:55:12Z</time>
+				<desc>Vitesse : 9 kmh
+					Altitude : 473 ft
+					Latitude : 43.585041
+					Longitude : 1.502552
+					Cap : 162°
+				</desc>
+			</trkpt>
+		</trkseg>
+	</trk>
+</gpx>

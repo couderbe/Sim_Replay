@@ -3,6 +3,7 @@ import csv
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItemModel, QStandardItem
 from PySide6.QtCore import Qt, QModelIndex
+from importer import import_gpx_file, import_gpx_file_interp, import_gpx_file_module
 from linechart import LineChart
 from record_window import RecordWindow
 from ui.main_window_ui import Ui_MainWindow
@@ -43,6 +44,8 @@ class MainWindow(QMainWindow):
         self.ui.actionStart_Recording.setShortcut('Ctrl+R')
         self.ui.actionStart_Recording.triggered.connect(self.record)
 
+        self.ui.actionImport.setShortcut('Ctrl+I')
+        self.ui.actionImport.triggered.connect(self.import_dialog)
         self.ui.actionView_Charts.triggered.connect(self.open_charts_window)
 
         self.ui.playPausePushButton.clicked.connect(self.play_pause)
@@ -271,7 +274,7 @@ class MainWindow(QMainWindow):
         fileName, _ = QFileDialog.getSaveFileName(
             self, 'Save record', '', 'Csv files (*.csv);;All files (*.*)')
         if fileName:
-            save_datas(fileName,self._mainTableModel)
+            save_datas(fileName, self._mainTableModel)
 
     def change_player_record(self, index: int):
         if self._time_column_id != None and (self._sim.is_opened() or self._mock.is_opened()):
@@ -312,6 +315,26 @@ class MainWindow(QMainWindow):
                     if header == "ZULU TIME":
                         self._time_column_id = i
             # Set time label initial value
+            self.ui.timeLabel.setText(
+                self._mainTableModel.item(0, self._time_column_id).text())
+            self.ui.horizontalSlider.setMinimum(1)
+            self.ui.horizontalSlider.setMaximum(
+                self._mainTableModel.rowCount())
+            self.change_player_record(0)
+
+    def import_dialog(self) -> None:
+        """
+        Manage file import
+        """
+        fileName, _ = QFileDialog.getOpenFileName(
+            self, 'Import file', '', 'gps files (*.gpx);;All files (*.*)')
+        if fileName:
+            self._mainTableModel.clear()
+            import_gpx_file_module(self._mainTableModel, fileName)
+            self._time_column_id = 0
+            # Set time label initial value
+            self.ui.timeLabel.setText(
+                self._mainTableModel.item(0, self._time_column_id).text())
             self.ui.horizontalSlider.setMinimum(1)
             self.ui.horizontalSlider.setMaximum(
                 self._mainTableModel.rowCount())

@@ -69,6 +69,7 @@
     <addaction name="actionSave"/>
     <addaction name="actionConnect_to_sim"/>
     <addaction name="actionConnect_to_mock"/>
+    <addaction name="actionImport"/>
    </widget>
    <widget class="QMenu" name="menuRecording">
     <property name="title">
@@ -115,6 +116,11 @@
   <action name="actionConnect_to_mock">
    <property name="text">
     <string>Connect to mock (Dev)</string>
+   </property>
+  </action>
+  <action name="actionImport">
+   <property name="text">
+    <string>Import</string>
    </property>
   </action>
   <action name="actionView_Charts">

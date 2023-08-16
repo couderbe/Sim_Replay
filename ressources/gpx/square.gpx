@@ -1,0 +1,43 @@
+<gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="SkyDreamSoft">
+	<metadata>
+		<name>Square test</name>
+		<author>
+			<name>SkyDreamSoft</name>
+		</author>
+		<time>2023-05-12T22:22:17.608Z</time>
+	</metadata>
+	<trk>
+		<trkseg>
+            <trkpt lat="42.9000000" lon="1.39000000">
+				<ele>130.0</ele>
+				<time>2023-05-12T12:26:32Z</time>
+				<desc>
+				</desc>
+			</trkpt>
+			<trkpt lat="43.00000000" lon="5.4000000">
+				<ele>100.0</ele>
+				<time>2023-05-12T12:27:32Z</time>
+				<desc>
+				</desc>
+			</trkpt>
+			<trkpt lat="44.00000000" lon="5.40000000">
+				<ele>125.0</ele>
+				<time>2023-05-12T12:28:32Z</time>
+				<desc>
+				</desc>
+			</trkpt>
+			<trkpt lat="44.00000000" lon="1.400000000">
+				<ele>150.0</ele>
+				<time>2023-05-12T12:29:32Z</time>
+				<desc>
+				</desc>
+			</trkpt>
+			<trkpt lat="43.10000" lon="1.40000000">
+				<ele>120.0</ele>
+				<time>2023-05-12T12:30:32Z</time>
+				<desc>
+				</desc>
+			</trkpt>
+		</trkseg>
+	</trk>
+</gpx>
