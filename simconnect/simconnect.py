@@ -1,12 +1,36 @@
+import threading
+
 from ctypes import *
 from ctypes import _SimpleCData
 from ctypes.wintypes import HANDLE, DWORD
+import time
+from simconnect.source import Source
 from simconnect.structs import *
 from simconnect.enums import *
 from simconnect.consts import *
 
+class Parameter():
+    def __init__(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD, define_id: int, request_id: int) -> None:
+        self.name = name
+        self.unit = unit
+        self.ctype = ctype
+        self.refresh_rate = refresh_rate
+        self.define_id = define_id
+        self.request_id = request_id
+        self._last_value = None
+        self._lock = threading.Lock()
 
-class Sim():
+    def value(self):
+        return self._last_value
+
+    def set_value(self, value):
+        with self._lock:
+            self._last_value = value
+
+    def __repr__(self) -> str:
+        return str(self.__dict__)
+
+class Sim(Source):
 
     def __init__(self, dll_path: str = "./SimConnect.dll") -> None:
         self._simconnect = WinDLL(dll_path)
@@ -14,18 +38,19 @@ class Sim():
         self._opened: bool = False
         self._listened_parameters: list[Parameter] = []
 
-    def update(self) -> None:
+    def update(self) -> int:
         if not (self._opened):
             print("Open communication before updating")
-            return
+            return -1
         err = self._simconnect.SimConnect_CallDispatch(
             self._hSimConnect, self._get_disptach_proc(), None)
 
         if err != 0:
             print(f"Unable to CallDispatch ErrorCode{err}")
-            return
+            return 1
+        return 0
 
-    def add_listened_parameter(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD = SIMCONNECT_PERIOD.SIMCONNECT_PERIOD_SECOND) -> None:
+    def add_listened_parameter(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD = SIMCONNECT_PERIOD.SIMCONNECT_PERIOD_SIM_FRAME) -> None:
         """
         All parameters must exist and be consistent with SimConnect APÏ reference
         """
@@ -53,35 +78,57 @@ class Sim():
         self._listened_parameters.append(
             Parameter(name, unit, ctype, refresh_rate, define_id, request_id))
 
-    def open(self) -> None:
+    def open(self) -> int:
         err = self._simconnect.SimConnect_Open(
             byref(self._hSimConnect), b"Sim Replay", None, 0, 0, 0)
         if err != 0:
             print("Error connecting to the simulation")
-            return
+            return err
         print("Connected to simulation")
         self._opened = True
+        return 0
 
     def close(self) -> None:
-        # TO IMPLEMENT
+        # TODO : test the method
+        self._simconnect.SimConnect_Close(self._hSimConnect)
         self._opened = False
 
-    def get_param(self, name: str):
+    def get_all_params(self):
+        return self._listened_parameters.copy()
+    
+    def is_opened(self) -> bool:
+        return self._opened
+
+    def get_param_value(self, name: str):
         """
         Shorter call
         """
-        return self.get_param_from_name(name)
+        return self.get_param_value_from_name(name)
 
-    def get_param_from_name(self, name: str):
+    def get_param_value_from_name(self, name: str):
+        return self._get_param_from_name(name).value()
+    
+    def is_param_listened(self, name:str):
+        return name in [param.name for param in self._listened_parameters]
+
+    def _get_param_from_name(self, name: str):
         for param in self._listened_parameters:
             if param.name == name:
-                return param.last_value
+                return param.value()
+        return None
 
-    def _get_param_from_id(self, id: int):
-        """
-        Useful ? 
-        """
-        return self._listened_parameters[id].last_value
+    def _get_param_from_name(self, name: str) -> Parameter:
+        for param in self._listened_parameters:
+            if param.name == name:
+                return param
+        return None
+
+    def set_param_value_from_name(self, name: str, value) -> None:
+        if (param := self._get_param_from_name(name)) == None:
+            print("Parameter must be listened before being settable")
+            return None
+        else:
+            self._simconnect.SimConnect_SetDataOnSimObject(self._hSimConnect, param.define_id, SIMCONNECT_OBJECT_ID_USER, 0,0, sizeof(param.ctype), byref(param.ctype(value)))
 
     def _get_disptach_proc(self):
         """
@@ -98,30 +145,34 @@ class Sim():
                 case SIMCONNECT_RECV_ID.SIMCONNECT_RECV_ID_SIMOBJECT_DATA.value:
                     pObjData = cast(pData, POINTER(
                         SIMCONNECT_RECV_SIMOBJECT_DATA))
-                    print(f"RequetsID {pObjData.contents.dwRequestID}")
+                    # print(f"RequetsID {pObjData.contents.dwRequestID}")
                     # How does ObjectID parameter work ?
-                    print(f"ObjectID {pObjData.contents.dwObjectID}")
-                    print(f"DefineID {pObjData.contents.dwDefineID}")
+                    # print(f"ObjectID {pObjData.contents.dwObjectID}")
+                    # print(f"DefineID {pObjData.contents.dwDefineID}")
                     # Access parameter using DefinedID or RequestID is equivalent as they are always the same in the current implementation
-                    param: Parameter = self._listened_parameters[pObjData.contents.dwDefineID]
-                    print(cast(pObjData.contents.dwData,
-                          POINTER(param.ctype)).contents.value)
-                    param.last_value = cast(pObjData.contents.dwData,
-                                            POINTER(param.ctype)).contents.value
+                    param = self._listened_parameters[pObjData.contents.dwDefineID]
+                 #   print(cast(pObjData.contents.dwData,
+                 #         POINTER(param.ctype)).contents.value)
+                    param.set_value(cast(pObjData.contents.dwData,
+                                            POINTER(param.ctype)).contents.value)
+                case SIMCONNECT_RECV_ID.SIMCONNECT_RECV_ID_QUIT.value:
+                    print("Sim has just closed")
+                    self._opened = False
             return 0
 
         return my_dispatch_proc
+    
+    def start(self):
+        self._thread = threading.Thread(
+        target=self._sim_connect_thread, daemon=True)
+        self._thread.start()
+    
+    def stop(self):
+        self.close()
+        self._thread.join()
 
-
-class Parameter():
-    def __init__(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD, define_id: int, request_id: int) -> None:
-        self.name = name
-        self.unit = unit
-        self.ctype = ctype
-        self.refresh_rate = refresh_rate
-        self.define_id = define_id
-        self.request_id = request_id
-        self.last_value = None
-
-    def __repr__(self) -> str:
-        return str(self.__dict__)
+    def _sim_connect_thread(self):
+        sim_opened = 0
+        while sim_opened>=0:
+            sim_opened = self.update()
+            time.sleep(0.1)

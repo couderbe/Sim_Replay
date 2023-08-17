@@ -8,7 +8,6 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
 develop-eggs/
 dist/
 downloads/
@@ -129,3 +128,12 @@ dmypy.json
 .pyre/
 
 SimConnect.dll
+
+# vscode config
+.vscode
+
+# intelliJ config
+.idea
+
+#generated ui py files
+ui_models/*.py
