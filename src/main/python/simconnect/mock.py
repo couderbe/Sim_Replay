@@ -4,10 +4,10 @@ import time
 
 from ctypes import _SimpleCData
 from typing_extensions import override
-from simconnect.source import Source
-from simconnect.structs import *
-from simconnect.enums import *
-from simconnect.consts import *
+from src.main.python.simconnect.source import Source
+from src.main.python.simconnect.structs import *
+from src.main.python.simconnect.enums import *
+from src.main.python.simconnect.consts import *
 
 class Mock_Value():
     def __init__(self, name: str, unit: str, val: float, min_val: float, max_val: float,is_loop=True) -> None:

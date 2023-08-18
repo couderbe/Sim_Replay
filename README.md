@@ -16,7 +16,7 @@ flowchart LR
 
 The main purpose of this application is to load a plane trajectory acquired via an external system (SDVFR, XPlane...) and replay it in the flight simulator FS2020 thanks to SimConnect API. It can also record a flight done directly from FS2020 and save it as a *.csv* file.
 
-![mainPage](img/mainPage.png)
+![mainPage](docs/img/mainPage.png)
 
 ## Startup
 

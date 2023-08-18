@@ -136,4 +136,4 @@ SimConnect.dll
 .idea
 
 #generated ui py files
-ui_models/*.py
+src/main/ui_models/*.py

@@ -1,11 +1,11 @@
 import re
 import time
 from behave import given, when, then
-from outputs import save_datas
-from recorder import Recorder
+from src.main.python.outputs import save_datas
+from src.main.python.recorder import Recorder
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QStandardItem, QStandardItemModel
-from simconnect.mock import Mock, Mock_Value
+from src.main.python.simconnect.mock import Mock, Mock_Value
 
 
 @given('The Application is started')
