@@ -135,8 +135,8 @@ SimConnect.dll
 # intelliJ config
 .idea
 
-#generated ui py files
+# generated ui py files
 src/main/ui_models/*.py
 
-#pybuilder generated files
+# pybuilder generated files
 target
