@@ -23,7 +23,6 @@ class Player():
         self._stop_flag = False
 
         self._proxy = PlayerProxy()
-        self.time_changed = self._proxy.time_changed
         self.record_changed = self._proxy.record_changed
         self.current_record = 0
 

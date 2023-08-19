@@ -26,6 +26,14 @@ To run the app, put the `SimConnect.dll` in the project folder and run `python -
 
 To run the UI app, run `python -m src.main.python.mainQt` with **PySide6** installed
 
+## Build Automation
+
+To fully build the project, the build automation tool named **PyBuilder** is necessary.
+
+You can install it with the command `pip install pybuilder`. You will also need **behave** that you can get with `pip install behave`
+
+To use it, simply run the command `pyb`. It will run unit tests, run **behave**, do a coverage analysis and create a building distribution.
+
 ## Usefull links
 
 [Simconnect API](https://docs.flightsimulator.com/)
