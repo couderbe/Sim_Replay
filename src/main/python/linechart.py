@@ -4,7 +4,7 @@ from PySide6.QtGui import QPainter, QStandardItemModel
 from PySide6.QtWidgets import QMainWindow, QGridLayout, QWidget
 from PySide6.QtCharts import QChart, QChartView, QSplineSeries, QLineSeries,QXYSeries,QScatterSeries, QValueAxis
 
-from tools.geometry import Point
+from src.main.python.tools.geometry import Point
 
 
 class LineChart(QMainWindow):

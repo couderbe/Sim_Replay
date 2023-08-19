@@ -1,4 +1,3 @@
-import math
 from PySide6.QtGui import QStandardItem, QStandardItemModel
 from PySide6.QtCore import Qt
 
@@ -6,9 +5,9 @@ import gpxpy
 import gpxpy.gpx
 
 from gpxpy.gpx import GPXTrackPoint
-from flight_model.flight_model import Attitude, compute_attitude_from_gpx
-from tools.gpx_interpolate import GPXData, gpx_interpolate, gpx_read
-from tools.geometry import DEG_2_RAD
+from src.main.python.flight_model.flight_model import Attitude, compute_attitude_from_gpx
+from src.main.python.tools.gpx_interpolate import GPXData, gpx_interpolate, gpx_read
+from src.main.python.tools.geometry import DEG_2_RAD
 
 M_TO_FT = 1/0.3048
 

@@ -14,4 +14,6 @@ default_task = "publish"
 
 @init
 def set_properties(project):
-    pass
+    project.build_depends_on("mockito")
+    project.set_property('dir_source_unittest_python', './')
+    project.set_property('source_dist_ignore_patterns',["*.pyc", ".hg*", ".svn", ".CVS","target/*"])

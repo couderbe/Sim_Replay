@@ -137,3 +137,6 @@ SimConnect.dll
 
 #generated ui py files
 src/main/ui_models/*.py
+
+#pybuilder generated files
+target

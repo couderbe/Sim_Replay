@@ -1,7 +1,7 @@
 import math
 from gpxpy.gpx import GPXTrackPoint
 
-from tools.geometry import DEG_2_RAD, Point3D, bound
+from src.main.python.tools.geometry import DEG_2_RAD, Point3D, bound
 
 G = 9.81
 NM_2_M = 1852
