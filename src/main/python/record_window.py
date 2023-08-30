@@ -3,8 +3,8 @@ from typing import Any, List, Sequence
 from PySide6.QtCore import QModelIndex, QObject, QPersistentModelIndex, Qt, QMimeData, Signal
 from PySide6.QtWidgets import QDialog, QWidget
 from PySide6.QtCore import QAbstractListModel
-from ui.record_window_ui import Ui_RecordWindow
-from qt_user_roles import UserRoles
+from src.main.python.ui.record_window_ui import Ui_RecordWindow
+from src.main.python.qt_user_roles import UserRoles
 
 
 class RecordWindow(QDialog):

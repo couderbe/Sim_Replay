@@ -2,13 +2,11 @@ import threading
 import time
 from PySide6.QtCore import Signal, QObject, Qt
 from PySide6.QtGui import QStandardItemModel
-from simconnect.source import Source
+from src.main.python.simconnect.source import Source
 
 
 class PlayerProxy(QObject):
-    # TODO Consider that time may not be in seconds
-    # Signal Emited when time change. The current time is sent as float in seconds
-    time_changed = Signal(float)
+    # Signal Emited when record changes. The current record is sent as integer
     record_changed = Signal(int)
 
 
@@ -25,7 +23,6 @@ class Player():
         self._stop_flag = False
 
         self._proxy = PlayerProxy()
-        self.time_changed = self._proxy.time_changed
         self.record_changed = self._proxy.record_changed
         self.current_record = 0
 
@@ -57,8 +54,6 @@ class Player():
                     self.stop()
         self.current_record += 1
 
-        # TODO Consider time may not be in seconds
-        self.time_changed.emit(self._current_time)
         self.record_changed.emit(self.current_record)
 
     def pause(self):

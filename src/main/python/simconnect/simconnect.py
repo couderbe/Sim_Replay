@@ -4,10 +4,10 @@ from ctypes import *
 from ctypes import _SimpleCData
 from ctypes.wintypes import HANDLE, DWORD
 import time
-from simconnect.source import Source
-from simconnect.structs import *
-from simconnect.enums import *
-from simconnect.consts import *
+from src.main.python.simconnect.source import Source
+from src.main.python.simconnect.structs import *
+from src.main.python.simconnect.enums import *
+from src.main.python.simconnect.consts import *
 
 class Parameter():
     def __init__(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD, define_id: int, request_id: int) -> None:

@@ -3,18 +3,18 @@ import csv
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItemModel, QStandardItem
 from PySide6.QtCore import Qt, QModelIndex
-from importer import import_gpx_file, import_gpx_file_interp, import_gpx_file_module
-from linechart import LineChart
-from record_window import RecordWindow
-from ui.main_window_ui import Ui_MainWindow
-from outputs import save_datas
-from player import Player
-from recorder import Recorder
-from simconnect.simconnect import Sim
-from simconnect.mock import Mock, Mock_Value
+from src.main.python.importer import import_gpx_file, import_gpx_file_interp, import_gpx_file_module
+from src.main.python.linechart import LineChart
+from src.main.python.record_window import RecordWindow
+from src.main.python.ui.main_window_ui import Ui_MainWindow
+from src.main.python.outputs import save_datas
+from src.main.python.player import Player
+from src.main.python.recorder import Recorder
+from src.main.python.simconnect.simconnect import Sim
+from src.main.python.simconnect.mock import Mock, Mock_Value
 from ctypes import c_double
 
-from simconnect.source import Source
+from src.main.python.simconnect.source import Source
 
 
 class MainWindow(QMainWindow):

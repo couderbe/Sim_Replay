@@ -1,9 +1,9 @@
 from ctypes import c_double
 import threading
 import time
-import utils
+from src.main.python.utils import get_var_unit
 
-from simconnect.source import Source
+from src.main.python.simconnect.source import Source
 from PySide6.QtGui import QStandardItemModel,QStandardItem
 
 class Recorder():
@@ -20,7 +20,7 @@ class Recorder():
         for param_name in self._parameters_to_record:
             if not(self._src.is_param_listened(param_name)):
                 #FIXME All parameters are listened as c_double
-                self._src.add_listened_parameter(param_name, utils.get_var_unit(param_name), c_double)
+                self._src.add_listened_parameter(param_name, get_var_unit(param_name), c_double)
 
     def start(self):
         """Start recording thread
