@@ -1,18 +1,35 @@
 import re
+import sys
 import time
 from behave import given, when, then
+from src.main.python.mainQt import MainWindow
 from src.main.python.outputs import save_datas
 from src.main.python.recorder import Recorder
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QStandardItem, QStandardItemModel
 from src.main.python.simconnect.mock import Mock, Mock_Value
 
+from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
+
+
+
+@given('The Application is fully started')
+def step_application_fully_started(context):
+    context.app = QApplication(sys.argv)
+
+    context.window = MainWindow()
+    #context.window.show()
+
+
+@then('The Application is stopped')
+def step_application_stopped(context):
+    sys.exit(context.app.exec())
+
 
 @given('The Application is started')
 def step_application_started(context):
     context.mock = Mock()
     pass
-
 
 @given('The Mock is connected')
 def step_mock_connected(context):
@@ -66,6 +83,10 @@ def step_time_has_passed(context, sec):
 def step_request_open_mock(context):
     context.mock.open()
 
+@when('The user requests to open the full Mock')
+def step_request_open_full_mock(context):
+    context.window.on_connect_mock()
+
 
 @when('The user requests to close the Mock')
 def step_request_close_mock(context):
@@ -86,6 +107,9 @@ def step_request_save_record(context):
 def step_mock_is_opened(context):
     assert context.mock._opened is True
 
+@then('The Mock is fully opened')
+def step_mock_is_fully_opened(context):
+    assert context.window._model._mock.is_opened() is True
 
 @then('The Mock is closed')
 def step_mock_is_closed(context):
