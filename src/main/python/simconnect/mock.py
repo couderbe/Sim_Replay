@@ -43,9 +43,11 @@ class Mock(Source):
             return -1
         for v in self._listened_parameters:
             if v.get_is_looped():
-                v.set_value(v.value()+5/100*math.fabs(v.max_val-v.min_val))
-                if v.value()>v.max_val:
+                new_v = v.value()+5/100*math.fabs(v.max_val-v.min_val)
+                if new_v>v.max_val:
                     v.set_value(v.min_val)
+                else:
+                    v.set_value(new_v)
             else:
                 v.set_value(v.value()+0.1)
         return 0
@@ -103,7 +105,7 @@ class Mock(Source):
         mock_opened = 0
         while mock_opened>=0:
             mock_opened = self.update()
-            time.sleep(0.2)
+            time.sleep(0.1)
 
     def is_param_listened(self, name:str):
         return name in [param.name for param in self._listened_parameters]

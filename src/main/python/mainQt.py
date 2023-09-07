@@ -132,13 +132,13 @@ class MainWindow(QMainWindow):
         match self._model.status:
             case ModelStatus.OFFLINE:
                 self._model.connect()
-                self._model._player.record_changed.connect(
-                    self.change_ui_record_number)
-
-                self.ui.horizontalSlider.setDisabled(False)
-
-                self.ui.actionConnect_to_sim.setText("Disconnect from sim")
-                self.ui.actionConnect_to_mock.setDisabled(True)
+                if self._model.status == ModelStatus.CONNECTED:
+                    self._model._player.record_changed.connect(
+                        self.change_ui_record_number)
+                    
+                    self.ui.actionConnect_to_sim.setText("Disconnect from sim")
+                    self.ui.actionConnect_to_mock.setDisabled(True)
+                    self.ui.horizontalSlider.setDisabled(False)
 
             case _:
                 self._model.disconnect()
@@ -156,12 +156,11 @@ class MainWindow(QMainWindow):
                 self._model._player.record_changed.connect(
                     self.change_ui_record_number)
 
-                self.ui.horizontalSlider.setDisabled(False)
-
                 self.ui.actionConnect_to_mock.setText("Disconnect from mock")
+                self.ui.horizontalSlider.setDisabled(False)
                 self.ui.actionConnect_to_sim.setDisabled(True)
             case _:
-                self._model.disconnect_mock
+                self._model.disconnect_mock()
                 self.ui.actionConnect_to_mock.setText("Connect to mock (Dev)")
                 self.ui.actionConnect_to_sim.setEnabled(True)
                 self.ui.horizontalSlider.setDisabled(True)
