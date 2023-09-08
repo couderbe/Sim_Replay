@@ -3,6 +3,7 @@ import threading
 import time
 
 from ctypes import _SimpleCData
+from src.main.python.datas.datas_manager import FlightDataset
 from src.main.python.simconnect.source import Source
 from src.main.python.simconnect.structs import *
 from src.main.python.simconnect.enums import *
@@ -51,6 +52,22 @@ class Mock(Source):
             else:
                 v.set_value(v.value()+0.1)
         return 0
+    
+    def add_dataset(self, flight_dataset:FlightDataset):
+        self.add_listened_parameter(
+            "ZULU TIME", "s", None, None, 1, 1, 1000000, False)
+        self.add_listened_parameter(
+            "Plane Latitude", "°", None, None, 40, 40, 60)
+        self.add_listened_parameter(
+            "Plane Longitude", "°", None, None, 0, 0, 10)
+        self.add_listened_parameter(
+            "Plane Altitude", "ft", None, None, 1000, 1000, 2000)
+        self.add_listened_parameter(
+            "Plane Bank Degrees", "°", None, None, -60, -60, 60)
+        self.add_listened_parameter(
+            "Plane Pitch Degrees", "°", None, None, -20, -20, 20)
+        self.add_listened_parameter(
+            "Plane Heading Degrees True", "°", None, None, 10, 10, 355)
 
     def add_listened_parameter(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD = SIMCONNECT_PERIOD.SIMCONNECT_PERIOD_SECOND, *args) -> None:
         """

@@ -47,8 +47,12 @@ class MainWindow(QMainWindow):
         self._slider_dragging = False
 
     def on_slider_pressed(self):
-        self._slider_dragging = True
-        self._model.pause_playing()
+        if self._model.has_timestamp():
+            self._slider_dragging = True
+            self._model.pause_playing()
+        else:
+            _ = QMessageBox.critical(
+            self, "Cannot play whithout timestamp", "You cannot play a record whithout a proper timestamp in datatable")
 
     def on_slider_moved(self, val):
         self._model.move_to_player_record(val)
@@ -68,8 +72,12 @@ class MainWindow(QMainWindow):
                 _ = QMessageBox.critical(
                     self, "Cannot play while recording", "You cannot play a record while recording")
             case ModelStatus.CONNECTED:
-                self._model.start_playing()
-                self.ui.playPausePushButton.setText("Stop")
+                if self._model.has_timestamp():
+                    self._model.start_playing()
+                    self.ui.playPausePushButton.setText("Stop")
+                else:
+                    _ = QMessageBox.critical(
+                    self, "Cannot play whithout timestamp", "You cannot play a record whithout a proper timestamp in datatable")
             case _:
                 _ = QMessageBox.critical(
                     self, "Not connected to the sim", "You must be connected to the sim before playing a record")
@@ -107,25 +115,15 @@ class MainWindow(QMainWindow):
             if ret == QMessageBox.No:
                 return
 
-        parameters_to_record = [
-            "ZULU TIME",
-            "Plane Longitude",
-            "Plane Latitude",
-            "Plane Altitude",
-            "Plane Bank Degrees",
-            "Plane Pitch Degrees",
-            "Plane Heading Degrees True"]
+        parameters_to_record = []
 
         self._record_window = RecordWindow(parent=self, f=Qt.WindowType.Dialog)
         self._record_window.accepted.connect(
             lambda data: parameters_to_record.extend([item['name'] for item in data]))
         self._record_window.exec()
 
-        self._model.start_record()
+        self._model.start_record(parameters_to_record)
         self.ui.actionStart_Recording.setText("Stop Recording")
-
-    def add_record(self, record: list[str]):
-        self._mainTableModel.appendRow([QStandardItem(elt) for elt in record])
 
     def on_connect(self) -> None:
         self.stop_playing()
@@ -178,7 +176,11 @@ class MainWindow(QMainWindow):
             self.change_ui_record_number(index+1)
 
     def on_item_clicked(self, index: QModelIndex):
-        self.change_player_record(index.row())
+        if self._model.has_timestamp():
+            self.change_player_record(index.row())
+        else:
+            _ = QMessageBox.critical(
+            self, "Cannot play whithout timestamp", "You cannot play a record whithout a proper timestamp in datatable")
 
     def change_ui_record_number(self, rec: int):
         self.ui.timeLabel.setText(

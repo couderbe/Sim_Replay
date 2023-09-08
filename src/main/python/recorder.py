@@ -8,7 +8,7 @@ from PySide6.QtGui import QStandardItemModel,QStandardItem
 
 class Recorder():
 
-    def __init__(self, src: Source,record_table:QStandardItemModel, parameters_to_record: list[str], rate: float = 1) -> None:
+    def __init__(self, src: Source,record_table:QStandardItemModel, parameters_to_record: set[str], rate: float = 1) -> None:
         super().__init__()
         self._src = src
         self._rate = rate
