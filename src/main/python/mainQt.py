@@ -2,6 +2,7 @@ import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItem, QStandardItemModel
 from PySide6.QtCore import Qt, QModelIndex
+from src.main.python.messages import *
 from src.main.python.model.model import Model, ModelStatus
 from src.main.python.linechart import LineChart
 from src.main.python.record_window import RecordWindow
@@ -52,7 +53,7 @@ class MainWindow(QMainWindow):
             self._model.pause_playing()
         else:
             _ = QMessageBox.critical(
-            self, "Cannot play whithout timestamp", "You cannot play a record whithout a proper timestamp in datatable")
+            self, PLAY_WITHOUT_TIMESTAMP_ERROR.title,PLAY_WITHOUT_TIMESTAMP_ERROR.message)
 
     def on_slider_moved(self, val):
         self._model.move_to_player_record(val)
@@ -70,17 +71,17 @@ class MainWindow(QMainWindow):
                 self.stop_playing()
             case ModelStatus.RECORDING:
                 _ = QMessageBox.critical(
-                    self, "Cannot play while recording", "You cannot play a record while recording")
+                    self, PLAY_DURING_RECORD_ERROR.title,PLAY_DURING_RECORD_ERROR.message)
             case ModelStatus.CONNECTED:
                 if self._model.has_timestamp():
                     self._model.start_playing()
                     self.ui.playPausePushButton.setText("Stop")
                 else:
                     _ = QMessageBox.critical(
-                    self, "Cannot play whithout timestamp", "You cannot play a record whithout a proper timestamp in datatable")
+                    self, PLAY_WITHOUT_TIMESTAMP_ERROR.title,PLAY_WITHOUT_TIMESTAMP_ERROR.message)
             case _:
                 _ = QMessageBox.critical(
-                    self, "Not connected to the sim", "You must be connected to the sim before playing a record")
+                    self, NOT_CONNECTED_SIM_ERROR.title,NOT_CONNECTED_SIM_ERROR.message)
 
     def record(self) -> None:
         match self._model.status:
@@ -94,7 +95,7 @@ class MainWindow(QMainWindow):
                 self.change_player_record(0)
             case ModelStatus.OFFLINE:
                 _ = QMessageBox.critical(
-                    self, "Not connected to the sim/mock", "You must be connected to the sim or the mock before recording")
+                    self,NOT_CONNECTED_SIM_ERROR.title,NOT_CONNECTED_SIM_ERROR.message)
             case _:
                 self.start_src_record()
                 self.stop_playing()
@@ -108,9 +109,8 @@ class MainWindow(QMainWindow):
         # Reset Model
 
         if self._model._mainTableModel.rowCount() > 0:
-            ret = QMessageBox.warning(self, "Warning",
-                                      "You are going to start recording. All the current data will be lost\n"
-                                      "Do you want to continue ?",
+            ret = QMessageBox.warning(self, DATA_LOST_WARNING.title,
+                                      DATA_LOST_WARNING.message,
                                       QMessageBox.Yes | QMessageBox.No)
             if ret == QMessageBox.No:
                 return
@@ -140,6 +140,7 @@ class MainWindow(QMainWindow):
 
             case _:
                 self._model.disconnect()
+                self.change_ui_record_number(1)
                 self.ui.actionConnect_to_sim.setText("Connect to sim")
                 self.ui.actionConnect_to_mock.setEnabled(True)
                 self.ui.horizontalSlider.setDisabled(True)
@@ -159,6 +160,7 @@ class MainWindow(QMainWindow):
                 self.ui.actionConnect_to_sim.setDisabled(True)
             case _:
                 self._model.disconnect_mock()
+                self.change_ui_record_number(1)
                 self.ui.actionConnect_to_mock.setText("Connect to mock (Dev)")
                 self.ui.actionConnect_to_sim.setEnabled(True)
                 self.ui.horizontalSlider.setDisabled(True)
@@ -171,7 +173,7 @@ class MainWindow(QMainWindow):
             self._model.save_file(fileName)
 
     def change_player_record(self, index: int):
-        if self._model._time_column_id != None and self._model.status!=ModelStatus.OFFLINE :
+        if self._model.status!=ModelStatus.OFFLINE :
             self._model.move_to_player_record(index)
             self.change_ui_record_number(index+1)
 
@@ -180,7 +182,7 @@ class MainWindow(QMainWindow):
             self.change_player_record(index.row())
         else:
             _ = QMessageBox.critical(
-            self, "Cannot play whithout timestamp", "You cannot play a record whithout a proper timestamp in datatable")
+            self, PLAY_WITHOUT_TIMESTAMP_ERROR.title,PLAY_WITHOUT_TIMESTAMP_ERROR.message)
 
     def change_ui_record_number(self, rec: int):
         self.ui.timeLabel.setText(
@@ -198,8 +200,6 @@ class MainWindow(QMainWindow):
             self.stop_playing()
             self._model.load_file(fileName)
             # Set time label initial value
-            self.ui.timeLabel.setText(
-                self._model._mainTableModel.item(0, self._model._time_column_id).text())
             self.ui.horizontalSlider.setMinimum(1)
             self.ui.horizontalSlider.setMaximum(
                 self._model._mainTableModel.rowCount())
@@ -214,8 +214,6 @@ class MainWindow(QMainWindow):
         if fileName:
             self._model.import_file(fileName)
             # Set time label initial value
-            self.ui.timeLabel.setText(
-                self._model._mainTableModel.item(0, self._model._time_column_id).text())
             self.ui.horizontalSlider.setMinimum(1)
             self.ui.horizontalSlider.setMaximum(
                 self._model._mainTableModel.rowCount())
