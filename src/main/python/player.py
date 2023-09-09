@@ -72,3 +72,6 @@ class Player():
     def go_to(self, rec: int):
         self.current_record = rec
         self.move_to_current_record()
+    
+    def reset(self):
+        self.current_record = 0

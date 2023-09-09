@@ -1,5 +1,4 @@
 import csv
-from ctypes import c_double
 from src.main.python.datas.datas_manager import FlightDatasManager
 from src.main.python.importer import import_gpx_file_module
 from src.main.python.outputs import save_datas
@@ -11,7 +10,6 @@ from PySide6.QtGui import QStandardItemModel, QStandardItem
 from PySide6.QtCore import Qt
 
 from enum import Enum
-
 
 class ModelStatus(Enum):
     OFFLINE = 0
@@ -41,7 +39,9 @@ class Model:
             for i, header in enumerate(headers):
                 self._mainTableModel.setHeaderData(i, Qt.Orientation.Horizontal, header)
 
-            if FlightDatasManager.STATE_FLIGHT_DATASET.get_keys().issubset(headers):
+            if set(FlightDatasManager.STATE_FLIGHT_DATASET.get_keys()).issubset(
+                headers
+            ):
                 FlightDatasManager.set_dataset_as_state()
             else:
                 FlightDatasManager.clean_dataset()
@@ -49,13 +49,18 @@ class Model:
                 # TODO : add unit in loaded files or manage them later
                 FlightDatasManager.add_data(h, None)
 
+            if self.status != ModelStatus.OFFLINE:
+                self._player.reset()
+
     def save_file(self, fileName):
         save_datas(fileName, self._mainTableModel)
 
     def import_file(self, fileName):
         self._mainTableModel.clear()
-        import_gpx_file_module(self._mainTableModel, fileName)
         FlightDatasManager.set_dataset_as_state()
+        import_gpx_file_module(self._mainTableModel, fileName)
+        if self.status != ModelStatus.OFFLINE:
+            self._player.reset()
 
     def start_playing(self):
         self._player.start()
@@ -118,6 +123,9 @@ class Model:
             parameters_to_record,
             0.1,
         )
+
+        if self.status != ModelStatus.OFFLINE:
+            self._player.reset()
 
         self.status = ModelStatus.RECORDING
         self._recorder.start()

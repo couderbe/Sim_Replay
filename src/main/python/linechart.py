@@ -4,6 +4,7 @@ from PySide6.QtGui import QPainter, QStandardItemModel
 from PySide6.QtWidgets import QMainWindow, QGridLayout, QWidget
 from PySide6.QtCharts import QChart, QChartView, QSplineSeries, QLineSeries,QXYSeries,QScatterSeries, QValueAxis
 
+from src.main.python.datas.datas_manager import FlightDatasManager
 from src.main.python.tools.geometry import Point
 
 
@@ -36,9 +37,9 @@ class LineChart(QMainWindow):
             _chart_view.setRenderHint(QPainter.Antialiasing)
 
             self.grid.addWidget(_chart_view, column % 3, column//3)
-
-        self.grid.addWidget(self.create_XY_line_chart(table, headers.index(
-            "Plane Longitude"), headers.index("Plane Latitude")))
+        if FlightDatasManager.has_positioning:
+            self.grid.addWidget(self.create_XY_line_chart(table, headers.index(
+                "Plane Longitude"), headers.index("Plane Latitude")))
         self.win.setLayout(self.grid)
         self.setCentralWidget(self.win)
 

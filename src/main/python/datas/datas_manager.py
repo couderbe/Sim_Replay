@@ -10,7 +10,7 @@ class FlightDataset:
         self.set = self.set | _set
     
     def get_keys(self):
-        return set(self.set.keys())
+        return self.set.keys()
     
 
 

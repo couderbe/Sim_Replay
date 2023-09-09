@@ -40,6 +40,7 @@ class MainWindow(QMainWindow):
         self.ui.mainTableView.clicked.connect(self.on_item_clicked)
 
         self.ui.horizontalSlider.setDisabled(True)
+        self.reset_ui_record_number()
 
         self.ui.horizontalSlider.sliderPressed.connect(self.on_slider_pressed)
         self.ui.horizontalSlider.sliderMoved.connect(self.on_slider_moved)
@@ -104,14 +105,16 @@ class MainWindow(QMainWindow):
                 self.ui.horizontalSlider.setMaximum(
                     self._model._mainTableModel.rowCount()
                 )
-                self.change_player_record(0)
+                self.change_ui_record_number(1)
+
             case ModelStatus.OFFLINE:
                 _ = QMessageBox.critical(
                     self, NOT_CONNECTED_SIM_ERROR.title, NOT_CONNECTED_SIM_ERROR.message
                 )
             case _:
-                self.start_src_record()
                 self.stop_playing()
+                self.start_src_record()
+                self.reset_ui_record_number()
                 self.ui.horizontalSlider.setDisabled(True)
 
     def start_src_record(self):
@@ -208,6 +211,10 @@ class MainWindow(QMainWindow):
         if not self._slider_dragging:
             self.ui.horizontalSlider.setValue(rec)
 
+    def reset_ui_record_number(self):
+        self.ui.timeLabel.setText("X/X")
+        self.ui.horizontalSlider.setValue(0)
+
     def open_dialog(self) -> None:
         """
         Manage file opening
@@ -221,7 +228,7 @@ class MainWindow(QMainWindow):
             # Set time label initial value
             self.ui.horizontalSlider.setMinimum(1)
             self.ui.horizontalSlider.setMaximum(self._model._mainTableModel.rowCount())
-            self.change_player_record(0)
+            self.change_ui_record_number(1)
 
     def import_dialog(self) -> None:
         """
@@ -231,11 +238,12 @@ class MainWindow(QMainWindow):
             self, "Import file", "", "gps files (*.gpx);;All files (*.*)"
         )
         if fileName:
+            self.stop_playing()
             self._model.import_file(fileName)
             # Set time label initial value
             self.ui.horizontalSlider.setMinimum(1)
             self.ui.horizontalSlider.setMaximum(self._model._mainTableModel.rowCount())
-            self.change_player_record(0)
+            self.change_ui_record_number(1)
 
     def stop_playing(self):
         self._model.stop_playing()
