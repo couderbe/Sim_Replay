@@ -39,8 +39,14 @@ class Recorder():
         """
         while not (self._stop_flag):
             record = []
+            record_failed = False
             for param in self._parameters_to_record:
-                record.append(QStandardItem(str(self._src.get_param_value_from_name(param))))
-            self._record_table.appendRow(record)
+                val = self._src.get_param_value_from_name(param)
+                if val==None:
+                    record_failed = True
+                    break
+                record.append(QStandardItem(str(val)))
+            if not record_failed:
+                self._record_table.appendRow(record)
             time.sleep(self._rate)
 
