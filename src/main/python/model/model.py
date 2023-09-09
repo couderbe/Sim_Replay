@@ -100,7 +100,7 @@ class Model:
         self._mock.stop()
         self.status = ModelStatus.OFFLINE
 
-    def start_record(self, _recorded_parameters):
+    def start_record(self, _recorded_parameters:list):
         for param in _recorded_parameters:
             FlightDatasManager.add_data(param, None)
         parameters_to_record = FlightDatasManager.get_current_keys()

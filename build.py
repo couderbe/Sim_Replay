@@ -20,4 +20,4 @@ def set_properties(project:Project):
 
 @after("run_unit_tests", only_once=True)
 def behave(project):
-    call(["behave"])
+    call(["behave","--color"])
