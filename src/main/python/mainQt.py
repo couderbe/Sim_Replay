@@ -2,6 +2,7 @@ import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItemModel
 from PySide6.QtCore import Qt, QModelIndex
+from src.main.python.gaugeschart import GaugesChart
 from src.main.python.messages import *
 from src.main.python.model.model import Model, ModelStatus
 from src.main.python.linechart import LineChart
@@ -82,6 +83,7 @@ class MainWindow(QMainWindow):
                 )
             case ModelStatus.CONNECTED:
                 if self._model.has_timestamp():
+                    self.open_charts_gauges()
                     self._model.start_playing()
                     self.ui.playPausePushButton.setText("Stop")
                 else:
@@ -255,6 +257,12 @@ class MainWindow(QMainWindow):
         window2 = LineChart(self._mainTableModel, self)
         window2.show()
         window2.setGeometry(30, 30, 1720, 920)
+    
+    def open_charts_gauges(self):
+        """method that opens the Window that contains gauges"""
+        window_gauges = GaugesChart(self._model,self)
+        window_gauges.show()
+        window_gauges.setGeometry(30, 30, 1720, 920)
 
 
 if __name__ == "__main__":
