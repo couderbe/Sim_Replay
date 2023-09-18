@@ -4,7 +4,7 @@ from PySide6.QtGui import QPainter, QColor, QPen
 
 from src.main.python.ui.gauges.gauge import Gauge
 
-class AttitudeIndicator(QWidget):
+class AttitudeIndicator(QWidget, Gauge):
     def __init__(self, parent: QWidget | None = None) -> None:
         super().__init__(parent)
         self.bank = 0
