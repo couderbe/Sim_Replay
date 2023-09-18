@@ -1,4 +1,4 @@
-from PySide6.QtCore import QRect, Qt
+from PySide6.QtCore import QRect, Qt, QPoint
 from PySide6.QtWidgets import QWidget
 from PySide6.QtGui import QPainter, QColor, QPen
 
@@ -25,7 +25,7 @@ class AttitudeIndicator(QWidget, Gauge):
         painter.setBrush(QColor(172, 86, 17, 255))
         painter.drawRect(0, 0, self._width, self._width)
         painter.setBrush(QColor(55, 128, 241, 255))
-        painter.drawRect(0, 0, self._width, self._width / 2 * (self.pitch + 90) / 90)
+        painter.drawRect(0, 0, self._width, self._width / 2 * (self.pitch + 50) / 50)
 
     def drawBird(self, ev, painter: QPainter):
         painter.setRenderHint(QPainter.Antialiasing)
@@ -43,6 +43,8 @@ class AttitudeIndicator(QWidget, Gauge):
         painter.drawLine(-self._width / 2, 0, self._width / 2, 0)
         painter.rotate(self.bank)
         painter.setPen(QPen(Qt.black, 9, Qt.SolidLine))
+        painter.drawEllipse(QPoint(0,0),8,8)
+        painter.drawLine(0,0,0,-50)
         painter.drawLine(-self._width / 2*0.9, 0, self._width / 2*0.9, 0)
 
     def updateValues(self,values:dict):

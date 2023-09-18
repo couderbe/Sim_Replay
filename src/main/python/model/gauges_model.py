@@ -1,19 +1,39 @@
 
 import signal
+from PySide6.QtCore import Qt
 from PySide6.QtCore import QObject
 
+from src.main.python.datas.datas_manager import FlightDatasManager
+
+from src.main.python.model.model import Model, ModelStatus
 from src.main.python.player import Player
-
-
-class GaugesModelProxy(QObject):
-    # Signal Emited when record changes. The current record is sent as integer
-    record_changed = signal(int)
 
 class GaugesModel:
 
-    def __init__(self,_mainTable) -> None:
-        self.mainTable = _mainTable
+    def __init__(self,_model:Model) -> None:
+        self.model = _model
 
 
-    def connect_player(self, _player:Player):
-        _player.record_changed.connect()
+    def connect_player(self, func):
+        if self.model.status != ModelStatus.OFFLINE:
+            self.model._player.record_changed.connect(func)
+
+    def get_values_in_row(self,row:int)-> dict|None:
+        if FlightDatasManager.has_positioning and row < self.model._mainTableModel.rowCount():
+            res = {}
+            for column, header in enumerate(
+                [
+                    self.model._mainTableModel.headerData(
+                        i, Qt.Orientation.Horizontal, Qt.ItemDataRole.DisplayRole
+                    )
+                    for i in range(self.model._mainTableModel.columnCount())
+                ]
+            ):
+                res[header] = float(
+                    self.model._mainTableModel.item(row, column).data(
+                        Qt.ItemDataRole.DisplayRole
+                    )
+                )
+            return res
+        else :
+            return None

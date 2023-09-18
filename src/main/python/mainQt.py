@@ -2,6 +2,7 @@ import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItemModel
 from PySide6.QtCore import Qt, QModelIndex
+from src.main.python.model.gauges_model import GaugesModel
 from src.main.python.gaugeschart import GaugesChart
 from src.main.python.messages import *
 from src.main.python.model.model import Model, ModelStatus
@@ -260,7 +261,8 @@ class MainWindow(QMainWindow):
     
     def open_charts_gauges(self):
         """method that opens the Window that contains gauges"""
-        window_gauges = GaugesChart(self._model,self)
+        gauges_model = GaugesModel(self._model)
+        window_gauges = GaugesChart(gauges_model,self)
         window_gauges.show()
         window_gauges.setGeometry(30, 30, 1720, 920)
 
