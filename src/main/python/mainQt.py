@@ -264,7 +264,7 @@ class MainWindow(QMainWindow):
         gauges_model = GaugesModel(self._model)
         window_gauges = GaugesChart(gauges_model,self)
         window_gauges.show()
-        window_gauges.setGeometry(30, 30, 1720, 920)
+        window_gauges.setGeometry(30, 30, 1720, 960)
 
 
 if __name__ == "__main__":
