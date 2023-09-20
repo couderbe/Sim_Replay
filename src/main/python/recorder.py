@@ -8,7 +8,7 @@ from PySide6.QtGui import QStandardItemModel,QStandardItem
 
 class Recorder():
 
-    def __init__(self, src: Source,record_table:QStandardItemModel, parameters_to_record: list[str], rate: float = 1) -> None:
+    def __init__(self, src: Source,record_table:QStandardItemModel, parameters_to_record: set[str], rate: float = 1) -> None:
         super().__init__()
         self._src = src
         self._rate = rate
@@ -39,8 +39,14 @@ class Recorder():
         """
         while not (self._stop_flag):
             record = []
+            record_failed = False
             for param in self._parameters_to_record:
-                record.append(QStandardItem(str(self._src.get_param_value_from_name(param))))
-            self._record_table.appendRow(record)
+                val = self._src.get_param_value_from_name(param)
+                if val==None:
+                    record_failed = True
+                    break
+                record.append(QStandardItem(str(val)))
+            if not record_failed:
+                self._record_table.appendRow(record)
             time.sleep(self._rate)
 

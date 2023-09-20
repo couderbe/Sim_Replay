@@ -56,7 +56,7 @@
    {
       "name": "AUTOPILOT ALTITUDE LOCK VAR",
       "description": "Set or get the slot index which the altitude hold mode will track when captured. See alt_mode_slot_index for more information.",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": true
    },
    {
@@ -686,7 +686,7 @@
    {
       "name": "CONTACT POINT WATER DEPTH:index",
       "description": "This returns the depth of the water for the indexed contact point. Index is from 0 - 19.",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
@@ -2858,31 +2858,31 @@
    {
       "name": "DECISION ALTITUDE MSL",
       "description": "Design decision altitude above mean sea level",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
       "name": "DECISION HEIGHT",
       "description": "Design decision height",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
       "name": "DESIGN CRUISE ALT",
       "description": "This design constant represents the optimal altitude the aircraft should maintain when in cruise. It is derived from the cruise_alt setting in the [REFERENCE SPEEDS] section of the flightmodel.cfg. Default is 1500ft.",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
       "name": "DESIGN SPAWN ALTITUDE CRUISE",
       "description": "This design constant represents the spawn altitude for the aircraft when spawning in cruise. It is derived from the spawn_cruise_altitude setting in the [REFERENCE SPEEDS] section of the flightmodel.cfg. Default is 1500ft.",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
       "name": "DESIGN SPAWN ALTITUDE DESCENT",
       "description": "This design constant represents the spawn altitude for the aircraft when spawning in descent. It is derived from the spawn_descent_altitude setting in the [REFERENCE SPEEDS] section of the flightmodel.cfg. Default is 500ft.",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
@@ -3026,7 +3026,7 @@
    {
       "name": "SIMULATED RADIUS",
       "description": "Simulated radius",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
@@ -3062,7 +3062,7 @@
    {
       "name": "WING SPAN",
       "description": "Total wing span",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
@@ -3092,37 +3092,37 @@
    {
       "name": "CG FEET",
       "description": "\nThe longitudinal CG position relative to the Reference Datum Position.\nNOTE: This is only valid for helicopters.\n",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
       "name": "CG FEET AFT LIMIT",
       "description": "\nThe aft\u00a0CG\u00a0limit position relative to the Reference Datum Position.\nNOTE: This is only valid for helicopters.\n",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
       "name": "CG FEET LATERAL",
       "description": "\nThe lateral\u00a0CG position relative to the Reference Datum Position.\nNOTE: This is only valid for helicopters.\n",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
       "name": "CG FEET LATERAL LEFT LIMIT",
       "description": "\nThe left hand lateral\u00a0CG position relative to the Reference Datum Position.\nNOTE: This is only valid for helicopters.\n",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
       "name": "CG FEET LATERAL RIGHT LIMIT",
       "description": "\nThe right hand lateral\u00a0CG position relative to the Reference Datum Position.\nNOTE: This is only valid for helicopters.\n",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
       "name": "CG FEET FWD LIMIT",
       "description": "\nThe forward\u00a0CG\u00a0limit position relative to the Reference Datum Position.\nNOTE: This is only valid for helicopters.\n",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
@@ -3158,7 +3158,7 @@
    {
       "name": "STATIC CG TO GROUND",
       "description": "\nStatic CG position with reference to the ground.\nNOTE: This is only valid for airplanes.\n",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
@@ -3230,19 +3230,19 @@
    {
       "name": "INTERACTIVE POINT POSX",
       "description": "Interactive Point X position relative to datum reference point",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
       "name": "INTERACTIVE POINT POSY",
       "description": "Interactive Point Y position relative to datum reference point",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
       "name": "INTERACTIVE POINT POSZ",
       "description": "Interactive Point Z position relative to datum reference point",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
@@ -3812,19 +3812,19 @@
    {
       "name": "PLANE ALTITUDE",
       "description": "Altitude of aircraft.",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": true
    },
    {
       "name": "PLANE ALT ABOVE GROUND",
       "description": "Altitude above the surface.",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": true
    },
    {
       "name": "PLANE ALT ABOVE GROUND MINUS CG",
       "description": "Altitude above the surface minus CG.",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
@@ -6866,7 +6866,7 @@
    {
       "name": "SLING CABLE EXTENDED LENGTH:index",
       "description": "The length of the indexed cable extending from the aircraft.",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": true
    },
    {
@@ -7820,19 +7820,19 @@
    {
       "name": "PUSHBACK CONTACTX",
       "description": "The towpoint position, relative to the aircrafts datum reference point.",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
       "name": "PUSHBACK CONTACTY",
       "description": "Pushback contact position in vertical direction.",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
       "name": "PUSHBACK CONTACTZ",
       "description": "Pushback contact position in fore/aft direction.",
-      "unit": "Feet (ft)",
+      "unit": "Feet",
       "settable": false
    },
    {
@@ -7881,6 +7881,12 @@
       "name": "WAGON FRONT LINK START POSZ",
       "description": "The \"Z\" axis position of the start of the link at the front of the vehicle used to be attached as wagon, relative to the ground.",
       "unit": "Meters",
+      "settable": false
+   },
+   {
+      "name": "ZULU TIME",
+      "description": "The Zulu Time used as timestamp.",
+      "unit": "Seconds",
       "settable": false
    }
 ]

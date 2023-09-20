@@ -1,3 +1,8 @@
+
+from ctypes import _SimpleCData
+
+from src.main.python.simconnect.enums import SIMCONNECT_PERIOD
+
 class Source:
 
     def get_param_value_from_name(self, param: str):
@@ -23,4 +28,12 @@ class Source:
         Raises:
             NotImplementedError
         """        
+        raise NotImplementedError("The method has to be implemented")
+    
+    def add_listened_parameter(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD, *args) -> None:
+        """Add a new listened parameter."""
+        raise NotImplementedError("The method has to be implemented")
+    
+    def is_param_listened(param_name):
+        """Check if a parameter is listened."""
         raise NotImplementedError("The method has to be implemented")

@@ -1,3 +1,4 @@
+import os
 import threading
 
 from ctypes import *
@@ -33,7 +34,11 @@ class Parameter():
 class Sim(Source):
 
     def __init__(self, dll_path: str = "./SimConnect.dll") -> None:
-        self._simconnect = WinDLL(dll_path)
+        if os.path.exists(dll_path):
+            self._simconnect = WinDLL(dll_path)
+        else:
+            self._simconnect = None
+            print("The SimConnect.dll file is missing, connection to FS2020 won't be possible")
         self._hSimConnect = HANDLE(None)
         self._opened: bool = False
         self._listened_parameters: list[Parameter] = []
@@ -79,6 +84,9 @@ class Sim(Source):
             Parameter(name, unit, ctype, refresh_rate, define_id, request_id))
 
     def open(self) -> int:
+        if self._simconnect==None:
+            print("Error missing SimConnect.dll")
+            return 1
         err = self._simconnect.SimConnect_Open(
             byref(self._hSimConnect), b"Sim Replay", None, 0, 0, 0)
         if err != 0:

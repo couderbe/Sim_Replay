@@ -5,6 +5,7 @@ import gpxpy
 import gpxpy.gpx
 
 from gpxpy.gpx import GPXTrackPoint
+from src.main.python.datas.datas_manager import FlightDatasManager
 from src.main.python.flight_model.flight_model import Attitude, compute_attitude_from_gpx
 from src.main.python.tools.gpx_interpolate import GPXData, gpx_interpolate, gpx_read
 from src.main.python.tools.geometry import DEG_2_RAD
@@ -146,14 +147,6 @@ def import_gpx_file_module(_mainTableModel:QStandardItemModel, fileName):
         _mainTableModel.appendRow(row)
         previous_interp_point = interp_point
         previous_attitude = attitude
-    headers = [
-                "ZULU TIME",
-                "Plane Longitude",
-                "Plane Latitude",
-                "Plane Altitude",
-                "Plane Bank Degrees",
-                "Plane Pitch Degrees",
-                "Plane Heading Degrees True"]
-    for i, header in enumerate(headers):
+    for i, header in enumerate(FlightDatasManager.get_current_keys()):
             _mainTableModel.setHeaderData(
                 i, Qt.Orientation.Horizontal, header)

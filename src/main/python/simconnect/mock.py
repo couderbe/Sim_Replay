@@ -3,7 +3,7 @@ import threading
 import time
 
 from ctypes import _SimpleCData
-from typing_extensions import override
+from src.main.python.datas.datas_manager import FlightDataset
 from src.main.python.simconnect.source import Source
 from src.main.python.simconnect.structs import *
 from src.main.python.simconnect.enums import *
@@ -44,12 +44,30 @@ class Mock(Source):
             return -1
         for v in self._listened_parameters:
             if v.get_is_looped():
-                v.set_value(v.value()+5/100*math.fabs(v.max_val-v.min_val))
-                if v.value()>v.max_val:
+                new_v = v.value()+5/100*math.fabs(v.max_val-v.min_val)
+                if new_v>v.max_val:
                     v.set_value(v.min_val)
+                else:
+                    v.set_value(new_v)
             else:
                 v.set_value(v.value()+0.1)
         return 0
+    
+    def add_dataset(self, flight_dataset:FlightDataset):
+        self.add_listened_parameter(
+            "ZULU TIME", "s", None, None, 1, 1, 1000000, False)
+        self.add_listened_parameter(
+            "Plane Latitude", "°", None, None, 40, 40, 60)
+        self.add_listened_parameter(
+            "Plane Longitude", "°", None, None, 0, 0, 10)
+        self.add_listened_parameter(
+            "Plane Altitude", "ft", None, None, 1000, 1000, 2000)
+        self.add_listened_parameter(
+            "Plane Bank Degrees", "°", None, None, -60, -60, 60)
+        self.add_listened_parameter(
+            "Plane Pitch Degrees", "°", None, None, -20, -20, 20)
+        self.add_listened_parameter(
+            "Plane Heading Degrees True", "°", None, None, 10, 10, 355)
 
     def add_listened_parameter(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD = SIMCONNECT_PERIOD.SIMCONNECT_PERIOD_SECOND, *args) -> None:
         """
@@ -81,14 +99,12 @@ class Mock(Source):
         """
         return self.get_param_value_from_name(name)
 
-    @override
     def get_param_value_from_name(self, name: str):
         return self._get_param_from_name(name).value()
 
     def _get_param_from_name(self, name: str):
         return next((x for x in self._listened_parameters if (x.name==name)), None)
     
-    @override
     def set_param_value_from_name(self, name: str, value: float) -> None:
         if(name == "ZULU TIME"):
             print("\rmock has sent value : "+name +" with : "+ str(value))
@@ -106,7 +122,7 @@ class Mock(Source):
         mock_opened = 0
         while mock_opened>=0:
             mock_opened = self.update()
-            time.sleep(0.2)
+            time.sleep(0.1)
 
     def is_param_listened(self, name:str):
         return name in [param.name for param in self._listened_parameters]
