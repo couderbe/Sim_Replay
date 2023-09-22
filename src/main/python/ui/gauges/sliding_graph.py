@@ -11,7 +11,7 @@ class SlidingGraph(QWidget, Gauge):
         super().__init__(parent)
         self.val_attr = _val_attr
 
-        self.length = 400
+        self.length = 500
         self.queue = Queue(self.length)
         self._width = 300
 
@@ -29,8 +29,8 @@ class SlidingGraph(QWidget, Gauge):
     def drawBackground(self, ev, painter: QPainter):
         painter.setRenderHint(QPainter.Antialiasing)
         painter.setPen(QPen(Qt.black, 5, Qt.SolidLine))
-        painter.drawLine(2, 0, 2, self._width)
-        painter.drawLine(0, self._width - 5, self._width, self._width - 5)
+        painter.drawLine(2, 0, 2, self._width-2)
+        painter.drawLine(0, self._width - 2, self._width, self._width - 2)
 
     def drawCurve(self, ev, painter: QPainter):
         painter.setPen(QPen(Qt.blue, 1, Qt.SolidLine))
@@ -43,16 +43,18 @@ class SlidingGraph(QWidget, Gauge):
                 QPointF(6.0, self._width - 10),
                 str(round(self.queue.m / 10) * 10),
             )
-            painter.drawPolyline(
-            [
-                QPointF(
-                    i * self._width / self.length,
-                    (1 - (v - self.queue.m) / res) * 0.95 * self._width,
-                )
-                for i, v in enumerate(self.queue.get_values())
-            ]
-            )
+            points = []
+            for i, v in enumerate(self.queue.get_values()):
+                if v != None:
+                    points.append(
+                        QPointF(
+                            i * self._width / self.length,
+                            (1 - (v - self.queue.m) / res) * self._width,
+                        )
+                    )
+            painter.drawPolyline(points)
 
     def updateValues(self, values: dict):
-        self.queue.add(values[self.val_attr])
-        self.repaint()
+        if self.val_attr in values:
+            self.queue.add(values.get(self.val_attr))
+            self.repaint()

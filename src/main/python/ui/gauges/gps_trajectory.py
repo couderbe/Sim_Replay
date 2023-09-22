@@ -10,7 +10,7 @@ from src.main.python.tools.geometry import Point
 class GpsTrajectory(QWidget, Gauge):
     def __init__(self, parent: QWidget | None = None) -> None:
         super().__init__(parent)
-        self.length = 4000
+        self.length = 3000
         self.queueX = Queue(self.length)
         self.queueY = Queue(self.length)
         self._width = 300
@@ -42,8 +42,7 @@ class GpsTrajectory(QWidget, Gauge):
                 QPointF(6.0, self._width - 10),
                 str(round(self.queueY.m ,1)),
             )
-            painter.drawPolyline(
-                [
+            points = [
                     QPointF(
                         (x - self.queueX.m) / res * self._width,
                         (1 - (self.queueY.get_values()[i] - self.queueY.m) / res)
@@ -51,17 +50,23 @@ class GpsTrajectory(QWidget, Gauge):
                     )
                     for (i, x) in enumerate(self.queueX.get_values())
                 ]
+            painter.drawPolyline(
+                points
             )
 
+            if len(points)>0:
+                painter.drawEllipse(points[-1],4.0,4.0)
+
     def updateValues(self, values: dict):
-        if self.queueX.get_size() <= 1:
-            self.pt0: Point = Point(values["Plane Longitude"], values["Plane Latitude"])
-            pt = (0.0,0.0)
-        else:
-            pt = Point(
-                values["Plane Longitude"], values["Plane Latitude"]
-            ).spherical_to_carthesian(self.pt0)
-        
-        self.queueX.add(pt[0])
-        self.queueY.add(pt[1])
-        self.repaint()
+        if values.get("Plane Longitude") and values.get("Plane Latitude"):
+            if self.queueX.get_size() <= 1:
+                self.pt0: Point = Point(values["Plane Longitude"], values["Plane Latitude"])
+                pt = (0.0,0.0)
+            else:
+                pt = Point(
+                    values["Plane Longitude"], values["Plane Latitude"]
+                ).spherical_to_carthesian(self.pt0)
+
+            self.queueX.add(pt[0])
+            self.queueY.add(pt[1])
+            self.repaint()

@@ -17,7 +17,10 @@ class Compass(QWidget, Gauge):
         qp = QPainter()
         qp.begin(self)
         self.drawBackground(event, qp)
-        self.drawCompass(event, qp)
+        if (self.heading!=None):
+            self.drawCompass(event, qp)
+        else:
+            self.drawNoValue(event, qp)
         qp.end()
 
     def drawBackground(self, ev, painter: QPainter):
@@ -50,5 +53,5 @@ class Compass(QWidget, Gauge):
             painter.rotate(5)
 
     def updateValues(self,values:dict):
-        self.heading = values['Plane Heading Degrees True']
+        self.heading = values.get('Plane Heading Degrees True')
         self.repaint()

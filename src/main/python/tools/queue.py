@@ -11,10 +11,11 @@ class Queue:
     def add(self, val) -> None:
         if(len(self.queue) >= self.size):
             self.queue.pop(0)
-        if(val>self.M):
-            self.M = val
-        if(val<self.m):
-            self.m = val
+        if val!=None:
+            if(val>self.M):
+                self.M = val
+            if(val<self.m):
+                self.m = val
         self.queue.append(val)
     
     def get_values(self)->list:

@@ -5,6 +5,7 @@ from src.main.python.ui.gauges.compass import Compass
 from src.main.python.ui.gauges.gauge import Gauge
 from src.main.python.ui.gauges.sliding_graph import SlidingGraph
 from src.main.python.ui.gauges.gps_trajectory import GpsTrajectory
+from src.main.python.ui.gauges.needle_gauge import NeedleGauge
 
 
 class GaugesChart(QMainWindow):
@@ -22,7 +23,8 @@ class GaugesChart(QMainWindow):
             Compass(),
             SlidingGraph("Plane Altitude"),
             #SlidingGraph("Speed"),
-            GpsTrajectory()
+            GpsTrajectory(),
+            NeedleGauge()
         ]
 
         for column,g in enumerate(self.gauges):
