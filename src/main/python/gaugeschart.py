@@ -6,6 +6,9 @@ from src.main.python.ui.gauges.gauge import Gauge
 from src.main.python.ui.gauges.sliding_graph import SlidingGraph
 from src.main.python.ui.gauges.gps_trajectory import GpsTrajectory
 from src.main.python.ui.gauges.needle_gauge import NeedleGauge
+from src.main.python.ui.gauges.stick_indicator import StickIndicator
+from src.main.python.ui.gauges.rudder_indicator import RudderIndicator
+from src.main.python.ui.gauges.throttle_indicator import ThrottleIndicator
 
 
 class GaugesChart(QMainWindow):
@@ -22,9 +25,12 @@ class GaugesChart(QMainWindow):
             AttitudeIndicator(),
             Compass(),
             SlidingGraph("Plane Altitude"),
-            #SlidingGraph("Speed"),
+           # SlidingGraph("Speed"),
             GpsTrajectory(),
-            NeedleGauge()
+            NeedleGauge(),
+            StickIndicator(),
+            RudderIndicator(),
+            ThrottleIndicator()
         ]
 
         for column,g in enumerate(self.gauges):

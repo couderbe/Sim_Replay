@@ -1,12 +1,8 @@
 
-import signal
 from PySide6.QtCore import Qt
-from PySide6.QtCore import QObject
 
 from src.main.python.datas.datas_manager import FlightDatasManager
-
 from src.main.python.model.model import Model, ModelStatus
-from src.main.python.player import Player
 
 class GaugesModel:
 
