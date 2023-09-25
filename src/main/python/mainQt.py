@@ -2,6 +2,8 @@ import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItemModel
 from PySide6.QtCore import Qt, QModelIndex
+from src.main.python.inputschart import InputsChart
+from src.main.python.model.inputs_model import InputsModel
 from src.main.python.model.gauges_model import GaugesModel
 from src.main.python.gaugeschart import GaugesChart
 from src.main.python.messages import *
@@ -178,6 +180,8 @@ class MainWindow(QMainWindow):
                 self.ui.actionConnect_to_mock.setText("Disconnect from mock")
                 self.ui.horizontalSlider.setDisabled(False)
                 self.ui.actionConnect_to_sim.setDisabled(True)
+
+                self.open_charts_inputs()
             case _:
                 self._model.disconnect_mock()
                 self.change_ui_record_number(1)
@@ -259,6 +263,13 @@ class MainWindow(QMainWindow):
         window2.show()
         window2.setGeometry(30, 30, 1720, 920)
     
+    def open_charts_inputs(self):
+        """method that opens the Window that contains inputs and gauges"""
+        gauges_model = InputsModel(self._model)
+        window_gauges = InputsChart(gauges_model,self)
+        window_gauges.show()
+        window_gauges.setGeometry(30, 30, 1720, 960)
+
     def open_charts_gauges(self):
         """method that opens the Window that contains gauges"""
         gauges_model = GaugesModel(self._model)

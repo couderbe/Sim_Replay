@@ -1,15 +1,18 @@
 from PySide6.QtCore import QRect, Qt, QPointF
 from PySide6.QtWidgets import QWidget
-from PySide6.QtGui import QPainter, QPen, QBrush
+from PySide6.QtGui import QPainter, QPen, QBrush, QMouseEvent
 
 from src.main.python.ui.gauges.gauge import Gauge
+from src.main.python.utils import between
+
 
 
 class RudderIndicator(QWidget, Gauge):
-    def __init__(self, parent: QWidget | None = None) -> None:
+    def __init__(self, _on_change=lambda x: None, parent: QWidget | None = None) -> None:
         super().__init__(parent)
         self.z_axis = 0.0
         self._width = 300
+        self.on_change = _on_change
         self.setGeometry(QRect(0, 0, self._width, self._width))
         self.setWindowTitle("rudder indicator")
         self.show()
@@ -49,3 +52,20 @@ class RudderIndicator(QWidget, Gauge):
     def updateValues(self, values: dict):
         self.z_axis = values.get("Rudder Position")
         self.repaint()
+
+    def mousePressEvent(self, event:QMouseEvent):
+        self.is_dragging = True
+        res = {"Rudder Position":between(event.x() / self._width - 0.5,-0.5,0.5 ) * 100 }
+        self.on_change(res)
+    
+    def mouseMoveEvent(self, event:QMouseEvent):
+        if self.is_dragging:
+            res = {"Rudder Position":between(event.x() / self._width - 0.5,-0.5,0.5 ) * 100 }
+            self.on_change(res)
+
+    def mouseReleaseEvent(self, event: QMouseEvent) -> None:
+        if self.is_dragging:
+            res = {"Rudder Position":0 }
+            self.on_change(res)
+            self.is_dragging = False
+

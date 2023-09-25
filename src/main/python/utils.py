@@ -7,3 +7,6 @@ def get_var_unit(name: str) -> str:
     for var in vars:
         if var["name"] == name.upper():
             return var["unit"]
+        
+def between(val, m, M):
+    return min(max(val, m),M)

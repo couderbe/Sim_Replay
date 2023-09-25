@@ -37,3 +37,12 @@ def compute_attitude(previous_attitude:Attitude,previous_point:Position,point:Po
     pitch = -(point.z-previous_point.z)*2.5
     return Attitude(bank,pitch,heading)
 
+class FlightModel:
+
+    def __init__(self) -> None:
+        self.pos = Position(0,0,1000)
+        self.attitude = Attitude(0,0,0)
+
+    def compute(self, c_x, c_y, th):
+        self.pos = Position(self.pos.x+th/10-5-abs(self.attitude.theta),self.pos.y-c_x/20,self.pos.z-self.attitude.theta/10)
+        self.attitude = Attitude(self.attitude.phi-c_x/20,self.attitude.theta-c_y/20,self.attitude.psi-self.attitude.phi/20)

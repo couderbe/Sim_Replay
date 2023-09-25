@@ -1,16 +1,17 @@
 from PySide6.QtCore import QRect, Qt, QPointF
 from PySide6.QtWidgets import QWidget
-from PySide6.QtGui import QPainter, QPen, QBrush
-
+from PySide6.QtGui import QPainter, QPen, QBrush, QMouseEvent
 from src.main.python.ui.gauges.gauge import Gauge
+from src.main.python.utils import between
 
 
 class StickIndicator(QWidget, Gauge):
-    def __init__(self, parent: QWidget | None = None) -> None:
+    def __init__(self, _on_change=lambda x: None, parent: QWidget | None = None) -> None:
         super().__init__(parent)
         self.x_axis = 0.0
         self.y_axis = 0.0
         self._width = 300
+        self.on_change = _on_change
         self.setGeometry(QRect(0, 0, self._width, self._width))
         self.setWindowTitle("stick indicator")
         self.show()
@@ -48,3 +49,25 @@ class StickIndicator(QWidget, Gauge):
         self.x_axis = values.get("Aileron Position")
         self.y_axis = values.get("Elevator Position")
         self.repaint()
+
+    def mousePressEvent(self, event:QMouseEvent):
+        self.is_dragging = True
+        res = {"Aileron Position":between(event.x() / self._width -0.5,-0.5,0.5) * 100,
+                "Elevator Position":between(event.y() / self._width-0.5,-0.5,0.5) * 100
+            }
+        self.on_change(res)
+    
+    def mouseMoveEvent(self, event:QMouseEvent):
+        if self.is_dragging:
+            res = {"Aileron Position":between(event.x() / self._width -0.5,-0.5,0.5) * 100,
+                    "Elevator Position":between( event.y() / self._width-0.5,-0.5,0.5) * 100
+                }
+            self.on_change(res)
+
+    def mouseReleaseEvent(self, event: QMouseEvent) -> None:
+        if self.is_dragging:
+            res = {"Aileron Position":0 * 100,
+                    "Elevator Position":0 * 100
+                }
+            self.on_change(res)
+            self.is_dragging = False

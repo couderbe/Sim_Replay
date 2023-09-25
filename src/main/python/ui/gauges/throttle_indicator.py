@@ -1,15 +1,18 @@
 from PySide6.QtCore import QRect, Qt, QPointF, QRectF
 from PySide6.QtWidgets import QWidget
-from PySide6.QtGui import QPainter, QPen, QBrush, QPainterPath
+from PySide6.QtGui import QPainter, QPen, QBrush, QPainterPath, QMouseEvent
 
 from src.main.python.ui.gauges.gauge import Gauge
+from src.main.python.utils import between
+
 
 
 class ThrottleIndicator(QWidget, Gauge):
-    def __init__(self, parent: QWidget | None = None) -> None:
+    def __init__(self, _on_change=lambda x: None, parent: QWidget | None = None) -> None:
         super().__init__(parent)
         self.z_axis = 0.0
         self._width = 300
+        self.on_change = _on_change
         self.setGeometry(QRect(0, 0, self._width, self._width))
         self.setWindowTitle("throttle indicator")
         self.show()
@@ -48,3 +51,18 @@ class ThrottleIndicator(QWidget, Gauge):
     def updateValues(self, values: dict):
         self.z_axis = values.get("General Eng Throttle Lever Position:1")
         self.repaint()
+
+    def mousePressEvent(self, event:QMouseEvent):
+        self.is_dragging = True
+        res = {"General Eng Throttle Lever Position:1":between(1-event.y() / self._width,0,1 ) * 100 }
+        self.on_change(res)
+    
+    def mouseMoveEvent(self, event:QMouseEvent):
+        if self.is_dragging:
+            res = {"General Eng Throttle Lever Position:1":between(1-event.y() / self._width,0, 1) * 100 }
+            self.on_change(res)
+
+    def mouseReleaseEvent(self, event: QMouseEvent) -> None:
+        if self.is_dragging:
+            self.is_dragging = False
+
