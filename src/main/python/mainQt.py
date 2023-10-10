@@ -25,7 +25,7 @@ class MainWindow(QMainWindow):
         self.ui.actionOpen.triggered.connect(self.open_dialog)
 
         self.ui.actionConnect_to_sim.triggered.connect(self.on_connect)
-        self.ui.actionConnect_to_mock.triggered.connect(self.on_connect_mock)
+        self.ui.actionConnect_to_mock.triggered.connect(lambda _:self.on_connect_mock())
 
         self.ui.actionSave.setShortcut("Ctrl+S")
         self.ui.actionSave.triggered.connect(self.save_dialog)
@@ -38,7 +38,7 @@ class MainWindow(QMainWindow):
 
         self.ui.actionView_Charts.triggered.connect(self.open_charts_window)
 
-        self.ui.playPausePushButton.clicked.connect(self.play_pause)
+        self.ui.playPausePushButton.clicked.connect(lambda _:self.play_pause())
 
         self.ui.mainTableView.setModel(self._model._mainTableModel)
         self.ui.mainTableView.clicked.connect(self.on_item_clicked)

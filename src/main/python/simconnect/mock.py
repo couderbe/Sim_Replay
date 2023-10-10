@@ -77,7 +77,7 @@ class Mock(Source, Emitter, Listener):
                                   self.command.get("General Eng Throttle Lever Position:1"))
         
             self.state = {
-                "ZULU TIME": calendar.timegm(time.gmtime()),
+                "ZULU TIME": int(time.time()*100)/100,
                 "Plane Latitude": 0.0,
                 "Plane Longitude": 0.0,
                 "Plane Altitude": self.flight_model.pos.z,
