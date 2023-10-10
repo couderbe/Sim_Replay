@@ -74,7 +74,7 @@ class MainWindow(QMainWindow):
         if self._model.status == ModelStatus.PLAYING:
             self._model.start_playing()
 
-    def play_pause(self) -> None:
+    def play_pause(self,is_inputs_chart_opened=True) -> None:
         match self._model.status:
             case ModelStatus.PLAYING:
                 self.stop_playing()
@@ -86,7 +86,8 @@ class MainWindow(QMainWindow):
                 )
             case ModelStatus.CONNECTED:
                 if self._model.has_timestamp():
-                    self.open_charts_gauges()
+                    if is_inputs_chart_opened:
+                        self.open_charts_gauges()
                     self._model.start_playing()
                     self.ui.playPausePushButton.setText("Stop")
                 else:
@@ -170,7 +171,7 @@ class MainWindow(QMainWindow):
                 self.ui.actionConnect_to_mock.setEnabled(True)
                 self.ui.horizontalSlider.setDisabled(True)
 
-    def on_connect_mock(self) -> None:
+    def on_connect_mock(self,is_inputs_chart_opened=True) -> None:
         self.stop_playing()
         match self._model.status:
             case ModelStatus.OFFLINE:
@@ -180,8 +181,8 @@ class MainWindow(QMainWindow):
                 self.ui.actionConnect_to_mock.setText("Disconnect from mock")
                 self.ui.horizontalSlider.setDisabled(False)
                 self.ui.actionConnect_to_sim.setDisabled(True)
-
-                self.open_charts_inputs()
+                if is_inputs_chart_opened:
+                    self.open_charts_inputs()
             case _:
                 self._model.disconnect_mock()
                 self.change_ui_record_number(1)
