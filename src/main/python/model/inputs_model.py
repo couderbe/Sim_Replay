@@ -1,7 +1,5 @@
-from PySide6.QtCore import Qt
 from src.main.python.simconnect.listener import Listener
 
-from src.main.python.datas.datas_manager import FlightDatasManager
 from src.main.python.model.model import Model, ModelStatus
 from src.main.python.ui.gauges.command import Emitter
 

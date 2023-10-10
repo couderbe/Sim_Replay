@@ -1,7 +1,8 @@
 import math
 from gpxpy.gpx import GPXTrackPoint
 
-from src.main.python.tools.geometry import DEG_2_RAD, Point3D, bound
+from src.main.python.tools.geometry import DEG_2_RAD, Point3D
+from src.main.python.utils import between
 
 G = 9.81
 NM_2_M = 1852
@@ -33,7 +34,7 @@ def compute_attitude_from_gpx(previous_attitude:Attitude,previous_point:GPXTrack
 def compute_attitude(previous_attitude:Attitude,previous_point:Position,point:Position,delta_t)->Attitude:
     heading = math.atan2(point.x-previous_point.x,point.y-previous_point.y)/DEG_2_RAD
     _d_y = math.sin((heading-previous_attitude.psi)*DEG_2_RAD)*math.hypot(point.x-previous_point.x,point.y-previous_point.y)*NM_2_M
-    bank = bound(-math.atan2(2 * _d_y, G * math.pow(delta_t,2))/DEG_2_RAD,previous_attitude.phi-ROLL_RATE*delta_t,previous_attitude.phi+ROLL_RATE*delta_t)
+    bank = between(-math.atan2(2 * _d_y, G * math.pow(delta_t,2))/DEG_2_RAD,previous_attitude.phi-ROLL_RATE*delta_t,previous_attitude.phi+ROLL_RATE*delta_t)
     pitch = -(point.z-previous_point.z)*2.5
     return Attitude(bank,pitch,heading)
 

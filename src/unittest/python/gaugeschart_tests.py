@@ -12,7 +12,7 @@ from src.main.python.gaugeschart import GaugesChart
 
 
 class GaugesChartTest(unittest.TestCase):
-    #@unittest.skip("Graphical tests, not automatic")
+    @unittest.skip("Graphical tests, not automatic")
     def test_open_gauges_chart(self):
         _gaugesmodel = mock()
         app = QApplication(sys.argv)

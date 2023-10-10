@@ -1,4 +1,3 @@
-from mockito import mock, verify
 from src.main.python.tools.queue import Queue
 import unittest
 
@@ -13,3 +12,4 @@ class QueueTest(unittest.TestCase):
         queue.add(4)
         queue.add(5)
         self.assertEqual(queue.get_values(),[1,2,3,4,5])
+        self.assertEqual(queue.get_size(),5)
