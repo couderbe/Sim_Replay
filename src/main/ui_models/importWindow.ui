@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ImportWindow</class>
+ <widget class="QWidget" name="ImportWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1051</width>
+    <height>616</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Import File</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QGroupBox" name="fileGroup">
+     <property name="title">
+      <string>File</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLineEdit" name="fileLineEdit"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="filePushButton">
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="fileFormatGroup">
+     <property name="title">
+      <string>File format</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QRadioButton" name="GPXRadioButton">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="text">
+         <string>GPX</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="CSVRadioButton">
+        <property name="text">
+         <string>CSV</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="encodingLabel">
+        <property name="text">
+         <string>Encoding</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="encodingComboBox">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="configurationGroup">
+     <property name="title">
+      <string>Configuration</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <layout class="QHBoxLayout" name="delimiterLayout">
+        <item>
+         <widget class="QLabel" name="delimiterLabel">
+          <property name="text">
+           <string>Delimiter :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="semiclonRadioButton">
+          <property name="text">
+           <string>Semicolon</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="commaRadioButton">
+          <property name="text">
+           <string>Comma</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="spaceRadioButton">
+          <property name="text">
+           <string>Space</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="tabulationRadioButton">
+          <property name="text">
+           <string>Tabulation</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="otherFieldConfigurationLayout">
+        <item>
+         <widget class="QLabel" name="ligneIgnoreLabel">
+          <property name="text">
+           <string>Number of line to ignore</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="ligneIgnoreSpinBox"/>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="columnFirstLineCheckBox">
+          <property name="text">
+           <string>Column names on the first line</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="parametersDefinitionGroup">
+     <property name="title">
+      <string>Parameters Definition</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="timeLayout">
+        <item>
+         <widget class="QLabel" name="timeLabel">
+          <property name="minimumSize">
+           <size>
+            <width>47</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Time</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="timeComboBox">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="timeFormatLabel">
+          <property name="minimumSize">
+           <size>
+            <width>39</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Format</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="timeFormatComboBox">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="timeFormatLineEdit">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>python format</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_6">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalPositionLayout">
+        <item>
+         <widget class="QLabel" name="longitudeLabel">
+          <property name="text">
+           <string>Longitude</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="longitudeComboBox">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="latitudeLabel">
+          <property name="text">
+           <string>Latitude</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="latitudeComboBox">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="horizFormatLabel">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Format</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="horizFormatComboBox">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="horizFormatlineEdit">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="verticalPositionLayout">
+        <item>
+         <widget class="QLabel" name="altitudeLabel">
+          <property name="minimumSize">
+           <size>
+            <width>47</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Altitude</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="altitudeComboBox">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="meterRadioButton">
+          <property name="text">
+           <string>m</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="feetRadioButton_2">
+          <property name="text">
+           <string>ft</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="attitudeLayout">
+        <item>
+         <widget class="QLabel" name="bankLabel">
+          <property name="minimumSize">
+           <size>
+            <width>47</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Bank</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="bankComboBox">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="pitchLabel">
+          <property name="minimumSize">
+           <size>
+            <width>39</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Pitch</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="pitchComboBox">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="headingLabel">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Heading</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="headingComboBox">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="degRadioButton">
+          <property name="text">
+           <string>deg</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radRadioButton">
+          <property name="text">
+           <string>rad</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="dataEnhancementGroup">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>Data Enhancement</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QCheckBox" name="interpolationCheckBox">
+        <property name="text">
+         <string>Interpolation</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTableView" name="tableView"/>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QPushButton" name="closeButton">
+       <property name="text">
+        <string>Close</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="importButton">
+       <property name="text">
+        <string>Import</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_7">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

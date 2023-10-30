@@ -11,6 +11,7 @@ from src.main.python.model.model import Model, ModelStatus
 from src.main.python.linechart import LineChart
 from src.main.python.record_window import RecordWindow
 from src.main.python.ui.main_window_ui import Ui_MainWindow
+from src.main.python.import_window import ImportWindow
 
 
 class MainWindow(QMainWindow):
@@ -34,7 +35,7 @@ class MainWindow(QMainWindow):
         self.ui.actionStart_Recording.triggered.connect(self.record)
 
         self.ui.actionImport.setShortcut("Ctrl+I")
-        self.ui.actionImport.triggered.connect(self.import_dialog)
+        self.ui.actionImport.triggered.connect(self.open_import_window)
 
         self.ui.actionView_Charts.triggered.connect(self.open_charts_window)
 
@@ -225,33 +226,20 @@ class MainWindow(QMainWindow):
 
     def open_dialog(self) -> None:
         """
-        Manage file opening
+        TODO : To be implemented
         """
-        fileName, _ = QFileDialog.getOpenFileName(
-            self, "Open file", "", "Csv files (*.csv);;All files (*.*)"
-        )
-        if fileName:
-            self.stop_playing()
-            self._model.load_file(fileName)
-            # Set time label initial value
+        pass
+
+    def open_import_window(self) -> None:
+        self._import_window = ImportWindow(self._model, parent=self, f=Qt.WindowType.Dialog)
+        self._import_window.exec()
+        self.stop_playing()
+        # Set time label initial value
+        if (row_count := self._model._mainTableModel.rowCount()) > 0:
             self.ui.horizontalSlider.setMinimum(1)
-            self.ui.horizontalSlider.setMaximum(self._model._mainTableModel.rowCount())
+            self.ui.horizontalSlider.setMaximum(row_count)
             self.change_ui_record_number(1)
 
-    def import_dialog(self) -> None:
-        """
-        Manage file import
-        """
-        fileName, _ = QFileDialog.getOpenFileName(
-            self, "Import file", "", "gps files (*.gpx);;All files (*.*)"
-        )
-        if fileName:
-            self.stop_playing()
-            self._model.import_file(fileName)
-            # Set time label initial value
-            self.ui.horizontalSlider.setMinimum(1)
-            self.ui.horizontalSlider.setMaximum(self._model._mainTableModel.rowCount())
-            self.change_ui_record_number(1)
 
     def stop_playing(self):
         self._model.stop_playing()
