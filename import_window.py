@@ -14,6 +14,9 @@ class ImportWindow(QDialog):
         self.ui.setupUi(self)
         self.setWindowModality(Qt.WindowModality.ApplicationModal)
         self.ui.fileFormatGroup.setEnabled(False)
+        self.ui.configurationGroup.setEnabled(False)
+        self.ui.parametersDefinitionGroup.setEnabled(False)
+        self.ui.dataEnhancementGroup.setEnabled(False)
 
         self._target_table_model = target_table_model
         self._file_path = ""
@@ -21,11 +24,21 @@ class ImportWindow(QDialog):
         self._openning_function = lambda : None
 
         self._tableModel = QStandardItemModel(self)
+        self._parameters_fieldname_choices = QStandardItemModel(self)
 
         self.ui.tableView.setModel(self._tableModel)
+        self.ui.timeComboBox.setModel(self._parameters_fieldname_choices)
+        self.ui.longitudeComboBox.setModel(self._parameters_fieldname_choices)
+        self.ui.latitudeComboBox.setModel(self._parameters_fieldname_choices)
+        self.ui.altitudeComboBox.setModel(self._parameters_fieldname_choices)
+        self.ui.headingComboBox.setModel(self._parameters_fieldname_choices)
+        self.ui.bankComboBox.setModel(self._parameters_fieldname_choices)
+        self.ui.pitchComboBox.setModel(self._parameters_fieldname_choices)
+
         self.ui.filePushButton.clicked.connect(self.choose_file)
         self.ui.fileLineEdit.editingFinished.connect(self.file_path_edited)
         self.ui.CSVRadioButton.toggled.connect(self.csv_toggled)
+        self.ui.GPXRadioButton.toggled.connect(self.gpx_toggled)
         self.ui.commaRadioButton.toggled.connect(self.comma_toggled)
         self.ui.tabulationRadioButton.toggled.connect(self.tabulation_toggled)
         self.ui.semiclonRadioButton.toggled.connect(self.semicolon_toggled)
@@ -75,12 +88,18 @@ class ImportWindow(QDialog):
             self.ui.GPXRadioButton.setChecked(False)
             self._openning_function = self.update_preview_csv
             self.update_preview_csv()
+            self.ui.configurationGroup.setEnabled(True)
+            self.ui.parametersDefinitionGroup.setEnabled(True)
+            self.ui.dataEnhancementGroup.setEnabled(True)
 
     def gpx_toggled(self):
         if self.ui.GPXRadioButton.isChecked():
             self.ui.CSVRadioButton.setChecked(False)
             self._openning_function = self.update_preview_gpx
             self.update_preview_gpx()
+            self.ui.configurationGroup.setEnabled(False)
+            self.ui.parametersDefinitionGroup.setEnabled(False)
+            self.ui.dataEnhancementGroup.setEnabled(True)
             
     def comma_toggled(self):
         if self.ui.commaRadioButton.isChecked():
@@ -119,10 +138,16 @@ class ImportWindow(QDialog):
 
     def update_preview_csv(self):
         self.csv_to_model(self._tableModel, 10)
+        self.update_parameters_fieldname_choices()
 
     def update_preview_gpx(self):
         self._tableModel.clear()
         import_gpx_file_module(self._tableModel,self._file_path)
+
+    def update_parameters_fieldname_choices(self):
+        self._parameters_fieldname_choices.clear()
+        headers = [self._tableModel.horizontalHeaderItem(i) for i in range(self._tableModel.columnCount())]
+        self._parameters_fieldname_choices.appendColumn(headers)
 
     def csv_to_model(self, model: QStandardItemModel, nbr_line: int = -1):
         model.clear()
@@ -130,10 +155,15 @@ class ImportWindow(QDialog):
                 reader = csv.reader(csvfile, delimiter=self._delimiter, 
                                     lineterminator="\n")
                 
-                if self.ui.columnFirstLineCheckBox.isChecked():
-                    headers = reader.__next__()
+                line_read = 1
+                
+                headers = reader.__next__()
+                if not(self.ui.columnFirstLineCheckBox.isChecked()):
+                    model.appendRow([QStandardItem(field) for field in headers])
+                    headers = [f"field_{i}" for i in range(len(headers))]
+                else:
+                    line_read = 0
 
-                line_read = 0
                 for i in range(self.ui.ligneIgnoreSpinBox.value()):
                     reader.__next__()
                 for row in reader:
@@ -143,11 +173,10 @@ class ImportWindow(QDialog):
                         line_read += 1
                         if line_read >= nbr_line:
                             break
-                        
-                if self.ui.columnFirstLineCheckBox.isChecked():
-                    for i, header in enumerate(headers):
-                        self._tableModel.setHeaderData(
-                            i, Qt.Orientation.Horizontal, header)
+                
+                for i, header in enumerate(headers):
+                    self._tableModel.setHeaderData(
+                        i, Qt.Orientation.Horizontal, header)
 
     def finish_import(self):
         # Checks of compatibility of the main parameters shall be performed before any import

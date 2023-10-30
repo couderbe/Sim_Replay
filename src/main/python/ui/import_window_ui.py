@@ -191,11 +191,11 @@ class Ui_ImportWindow(object):
 
         self.horizontalPositionLayout.addWidget(self.longitudeLabel)
 
-        self.lontitudeComboBox = QComboBox(self.parametersDefinitionGroup)
-        self.lontitudeComboBox.setObjectName(u"lontitudeComboBox")
-        self.lontitudeComboBox.setMinimumSize(QSize(200, 0))
+        self.longitudeComboBox = QComboBox(self.parametersDefinitionGroup)
+        self.longitudeComboBox.setObjectName(u"longitudeComboBox")
+        self.longitudeComboBox.setMinimumSize(QSize(200, 0))
 
-        self.horizontalPositionLayout.addWidget(self.lontitudeComboBox)
+        self.horizontalPositionLayout.addWidget(self.longitudeComboBox)
 
         self.latitudeLabel = QLabel(self.parametersDefinitionGroup)
         self.latitudeLabel.setObjectName(u"latitudeLabel")
@@ -325,18 +325,18 @@ class Ui_ImportWindow(object):
 
         self.verticalLayout_2.addWidget(self.parametersDefinitionGroup)
 
-        self.groupBox = QGroupBox(ImportWindow)
-        self.groupBox.setObjectName(u"groupBox")
-        self.groupBox.setEnabled(True)
-        self.horizontalLayout_4 = QHBoxLayout(self.groupBox)
+        self.dataEnhancementGroup = QGroupBox(ImportWindow)
+        self.dataEnhancementGroup.setObjectName(u"dataEnhancementGroup")
+        self.dataEnhancementGroup.setEnabled(True)
+        self.horizontalLayout_4 = QHBoxLayout(self.dataEnhancementGroup)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.checkBox = QCheckBox(self.groupBox)
-        self.checkBox.setObjectName(u"checkBox")
+        self.interpolationCheckBox = QCheckBox(self.dataEnhancementGroup)
+        self.interpolationCheckBox.setObjectName(u"interpolationCheckBox")
 
-        self.horizontalLayout_4.addWidget(self.checkBox)
+        self.horizontalLayout_4.addWidget(self.interpolationCheckBox)
 
 
-        self.verticalLayout_2.addWidget(self.groupBox)
+        self.verticalLayout_2.addWidget(self.dataEnhancementGroup)
 
         self.tableView = QTableView(ImportWindow)
         self.tableView.setObjectName(u"tableView")
@@ -399,8 +399,8 @@ class Ui_ImportWindow(object):
         self.headingLabel.setText(QCoreApplication.translate("ImportWindow", u"Heading", None))
         self.degRadioButton.setText(QCoreApplication.translate("ImportWindow", u"deg", None))
         self.radRadioButton.setText(QCoreApplication.translate("ImportWindow", u"rad", None))
-        self.groupBox.setTitle(QCoreApplication.translate("ImportWindow", u"Data Enhancement", None))
-        self.checkBox.setText(QCoreApplication.translate("ImportWindow", u"Interpolation", None))
+        self.dataEnhancementGroup.setTitle(QCoreApplication.translate("ImportWindow", u"Data Enhancement", None))
+        self.interpolationCheckBox.setText(QCoreApplication.translate("ImportWindow", u"Interpolation", None))
         self.closeButton.setText(QCoreApplication.translate("ImportWindow", u"Close", None))
         self.importButton.setText(QCoreApplication.translate("ImportWindow", u"Import", None))
     # retranslateUi

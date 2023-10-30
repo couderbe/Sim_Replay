@@ -269,7 +269,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="lontitudeComboBox">
+         <widget class="QComboBox" name="longitudeComboBox">
           <property name="minimumSize">
            <size>
             <width>200</width>
@@ -507,7 +507,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="dataEnhancementGroup">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -516,7 +516,7 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
-       <widget class="QCheckBox" name="checkBox">
+       <widget class="QCheckBox" name="interpolationCheckBox">
         <property name="text">
          <string>Interpolation</string>
         </property>
