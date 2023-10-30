@@ -3,6 +3,7 @@ from PySide6.QtCore import Qt
 
 import gpxpy
 import gpxpy.gpx
+import math
 
 from gpxpy.gpx import GPXTrackPoint
 from src.main.python.datas.datas_manager import FlightDatasManager
@@ -13,7 +14,7 @@ from src.main.python.tools.geometry import DEG_2_RAD
 M_TO_FT = 1/0.3048
 
 
-def import_gpx_file(tableModel: QStandardItemModel, fileName):
+def import_gpx_file(tableModel: QStandardItemModel, fileName, limit=math.inf):
     """Updates the table with the trajectory found in a given .gpx file
 
     Args:
@@ -40,8 +41,7 @@ def import_gpx_file(tableModel: QStandardItemModel, fileName):
             for segment in track.segments:
                 for i, point in enumerate(segment.points):
                     if i > 0:
-                        attitude = compute_attitude_from_gpx(
-                            previous_attitude, previous_point, point)
+                        attitude = Attitude(0, 0, 0)
                         row = [
                             QStandardItem(
                                 str(previous_point.time_difference(first_point))),
@@ -55,6 +55,14 @@ def import_gpx_file(tableModel: QStandardItemModel, fileName):
                         tableModel.appendRow(row)
                         previous_attitude = attitude
                     previous_point = point
+                    if i >= limit:
+                        break
+                else:
+                    continue
+                break
+            else:
+                continue
+            break
 
         for i, header in enumerate(headers):
             tableModel.setHeaderData(

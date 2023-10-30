@@ -5,9 +5,9 @@ from PySide6.QtCore import Qt
 from PySide6.QtGui import QStandardItem, QStandardItemModel
 from PySide6.QtWidgets import QDialog, QFileDialog, QMessageBox, QWidget
 
-import tools.gpx_interpolate
-from importer import *
-from ui.import_window_ui import Ui_ImportWindow
+from src.main.python.tools.gpx_interpolate import gpx_read
+from src.main.python.importer import *
+from src.main.python.ui.import_window_ui import Ui_ImportWindow
 from src.main.python.model.model import Model
 
 
@@ -151,22 +151,11 @@ class ImportWindow(QDialog):
     def update_preview_gpx(self):
         self._tableModel.clear()
         if self.ui.interpolationCheckBox.isChecked():
+            #TODO : To be implemented
             pass
         else:
-            gpx_datas = tools.gpx_interpolate.gpx_read(self._file_path)
-
-            for i in range(self.PREVIEW_ITEM_COUNT):
-                self._tableModel.appendRow(
-                    [QStandardItem(gpx_datas['tstamp'][i]), QStandardItem(gpx_datas['lon'][i]), QStandardItem(gpx_datas['lat'][i]), QStandardItem(gpx_datas['ele'][i])])
-            headers = [
-                "ZULU TIME",
-                "Plane Longitude",
-                "Plane Latitude",
-                "Plane Altitude"]
-            for i, header in enumerate(headers):
-                self._tableModel.setHeaderData(
-                    i, Qt.Orientation.Horizontal, header)
-        # import_gpx_file(self._tableModel, self._file_path)
+            gpx_datas = gpx_read(self._file_path)
+        import_gpx_file(self._tableModel, self._file_path, limit=self.PREVIEW_ITEM_COUNT)
 
     def update_parameters_fieldname_choices(self):
         self._parameters_fieldname_choices.clear()
