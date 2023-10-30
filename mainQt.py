@@ -354,7 +354,7 @@ class MainWindow(QMainWindow):
         window2.setGeometry(30, 30, 1720, 920)
 
     def open_import_window(self):
-        self._import_window = ImportWindow(parent=self, f=Qt.WindowType.Dialog)
+        self._import_window = ImportWindow(self._mainTableModel, parent=self, f=Qt.WindowType.Dialog)
         # self._import_window.accepted.connect(
             # lambda data: parameters_to_record.extend([item['name'] for item in data]))
         self._import_window.exec()

@@ -5,16 +5,17 @@ from ui.import_window_ui import Ui_ImportWindow
 from qt_user_roles import UserRoles
 import os
 import csv
-
+from importer import *
 
 class ImportWindow(QDialog):
 
-    def __init__(self, parent: QWidget | None = ..., f: Qt.WindowType = ...) -> None:
+    def __init__(self, target_table_model: QStandardItemModel, parent: QWidget | None = ..., f: Qt.WindowType = ...) -> None:
         super().__init__(parent, f)
         self.ui = Ui_ImportWindow()
         self.ui.setupUi(self)
         self.setWindowModality(Qt.WindowModality.ApplicationModal)
 
+        self._target_table_model = target_table_model
         self._file_path = ""
         self._delimiter = ","
         self._openning_function = None
@@ -29,6 +30,9 @@ class ImportWindow(QDialog):
         self.ui.tabulationRadioButton.toggled.connect(self.tabulation_toggled)
         self.ui.semiclonRadioButton.toggled.connect(self.semicolon_toggled)
         self.ui.spaceRadioButton.toggled.connect(self.space_toggled)
+        self.ui.ligneIgnoreSpinBox.valueChanged.connect(self.ligne_ignore_changed)
+        self.ui.importButton.clicked.connect(self.finish_import)
+        self.ui.closeButton.clicked.connect(self.close)
 
 
     def choose_file(self):
@@ -51,22 +55,29 @@ class ImportWindow(QDialog):
             self._file_path = file_path
             match file_path.split(".")[-1]:
                 case "gpx":
-                    pass
+                    self._openning_function = self.update_preview_gpx
+                    if not(self.ui.GPXRadioButton.isChecked()):
+                        self.ui.GPXRadioButton.setChecked(True)
+                    else:
+                        self.update_preview_gpx()
                 case "csv":
-                    self._openning_function = self.open_csv
+                    self._openning_function = self.update_preview_csv
                     if not(self.ui.CSVRadioButton.isChecked()):
                         self.ui.CSVRadioButton.setChecked(True)
                     else:
-                        self.open_csv()
+                        self.update_preview_csv()
 
     def csv_toggled(self):
         if self.ui.CSVRadioButton.isChecked():
             self.ui.GPXRadioButton.setChecked(False)
-            self.open_csv()
+            self._openning_function = self.update_preview_csv
+            self.update_preview_csv()
 
     def gpx_toggled(self):
         if self.ui.GPXRadioButton.isChecked():
             self.ui.CSVRadioButton.setChecked(False)
+            self._openning_function = self.update_preview_gpx
+            self.update_preview_gpx()
             
     def comma_toggled(self):
         if self.ui.commaRadioButton.isChecked():
@@ -100,16 +111,35 @@ class ImportWindow(QDialog):
             self._delimiter = "\t"
             self._openning_function()
 
-    def open_csv(self):
-        print("open csv")
+    def ligne_ignore_changed(self):
+        self._openning_function()
+
+    def update_preview_csv(self):
+        self.csv_to_model(self._tableModel, 10)
+
+    def update_preview_gpx(self):
         self._tableModel.clear()
+        import_gpx_file_module(self._tableModel,self._file_path)
+
+    def csv_to_model(self, model: QStandardItemModel, nbr_line: int = -1):
+        model.clear()
         with open(self._file_path, 'r') as csvfile:
                 reader = csv.reader(csvfile, delimiter=self._delimiter, 
                                     lineterminator="\n")
                 line_read = 0
+                for i in range(self.ui.ligneIgnoreSpinBox.value()):
+                    reader.__next__()
                 for row in reader:
                     items = [QStandardItem(field) for field in row]
-                    self._tableModel.appendRow(items)
-                    line_read += 1
-                    if line_read >= 10:
-                        break
+                    model.appendRow(items)
+                    if nbr_line > 0:
+                        line_read += 1
+                        if line_read >= nbr_line:
+                            break
+
+    def finish_import(self):
+        if self.ui.CSVRadioButton.isChecked():
+            self.csv_to_model(self._target_table_model)
+        elif self.ui.GPXRadioButton.isChecked():
+            import_gpx_file_module(self._target_table_model,self._file_path)
+        self.close()
