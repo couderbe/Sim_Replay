@@ -2,7 +2,6 @@ from PySide6.QtCore import Qt
 from PySide6.QtGui import QStandardItemModel, QStandardItem
 from PySide6.QtWidgets import QDialog, QWidget, QFileDialog, QMessageBox
 from ui.import_window_ui import Ui_ImportWindow
-from qt_user_roles import UserRoles
 import os
 import csv
 from importer import *
@@ -14,11 +13,12 @@ class ImportWindow(QDialog):
         self.ui = Ui_ImportWindow()
         self.ui.setupUi(self)
         self.setWindowModality(Qt.WindowModality.ApplicationModal)
+        self.ui.fileFormatGroup.setEnabled(False)
 
         self._target_table_model = target_table_model
         self._file_path = ""
         self._delimiter = ","
-        self._openning_function = None
+        self._openning_function = lambda : None
 
         self._tableModel = QStandardItemModel(self)
 
@@ -33,6 +33,7 @@ class ImportWindow(QDialog):
         self.ui.ligneIgnoreSpinBox.valueChanged.connect(self.ligne_ignore_changed)
         self.ui.importButton.clicked.connect(self.finish_import)
         self.ui.closeButton.clicked.connect(self.close)
+        self.ui.columnFirstLineCheckBox.stateChanged.connect(lambda x: self._openning_function())
 
 
     def choose_file(self):
@@ -40,12 +41,14 @@ class ImportWindow(QDialog):
             self, 'Import file', '', 'gps files (*.gpx);;csv files (*.csv);;All files (*.*)')
         if file_path:
             self.ui.fileLineEdit.setText(file_path)
+            self.ui.fileFormatGroup.setEnabled(True)
             self.open_file(file_path)
 
     def file_path_edited(self):
         file_path = self.ui.fileLineEdit.text()
         if os.path.isfile(file_path):
             self.open_file(file_path)
+            self.ui.fileFormatGroup.setEnabled(True)
         else:
             self.ui.fileLineEdit.setText(self._file_path)
             _ = QMessageBox.critical(
@@ -126,6 +129,10 @@ class ImportWindow(QDialog):
         with open(self._file_path, 'r') as csvfile:
                 reader = csv.reader(csvfile, delimiter=self._delimiter, 
                                     lineterminator="\n")
+                
+                if self.ui.columnFirstLineCheckBox.isChecked():
+                    headers = reader.__next__()
+
                 line_read = 0
                 for i in range(self.ui.ligneIgnoreSpinBox.value()):
                     reader.__next__()
@@ -136,8 +143,14 @@ class ImportWindow(QDialog):
                         line_read += 1
                         if line_read >= nbr_line:
                             break
+                        
+                if self.ui.columnFirstLineCheckBox.isChecked():
+                    for i, header in enumerate(headers):
+                        self._tableModel.setHeaderData(
+                            i, Qt.Orientation.Horizontal, header)
 
     def finish_import(self):
+        # Checks of compatibility of the main parameters shall be performed before any import
         if self.ui.CSVRadioButton.isChecked():
             self.csv_to_model(self._target_table_model)
         elif self.ui.GPXRadioButton.isChecked():

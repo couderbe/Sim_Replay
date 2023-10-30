@@ -156,6 +156,13 @@
          <widget class="QSpinBox" name="ligneIgnoreSpinBox"/>
         </item>
         <item>
+         <widget class="QCheckBox" name="columnFirstLineCheckBox">
+          <property name="text">
+           <string>Column names on the first line</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="horizontalSpacer_2">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>

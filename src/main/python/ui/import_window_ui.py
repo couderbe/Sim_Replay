@@ -126,6 +126,11 @@ class Ui_ImportWindow(object):
 
         self.otherFieldConfigurationLayout.addWidget(self.ligneIgnoreSpinBox)
 
+        self.columnFirstLineCheckBox = QCheckBox(self.configurationGroup)
+        self.columnFirstLineCheckBox.setObjectName(u"columnFirstLineCheckBox")
+
+        self.otherFieldConfigurationLayout.addWidget(self.columnFirstLineCheckBox)
+
         self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.otherFieldConfigurationLayout.addItem(self.horizontalSpacer_2)
@@ -378,6 +383,7 @@ class Ui_ImportWindow(object):
         self.spaceRadioButton.setText(QCoreApplication.translate("ImportWindow", u"Space", None))
         self.tabulationRadioButton.setText(QCoreApplication.translate("ImportWindow", u"Tabulation", None))
         self.ligneIgnoreLabel.setText(QCoreApplication.translate("ImportWindow", u"Number of line to ignore", None))
+        self.columnFirstLineCheckBox.setText(QCoreApplication.translate("ImportWindow", u"Column names on the first line", None))
         self.parametersDefinitionGroup.setTitle(QCoreApplication.translate("ImportWindow", u"Parameters Definition", None))
         self.timeLabel.setText(QCoreApplication.translate("ImportWindow", u"Time", None))
         self.timeFormatLabel.setText(QCoreApplication.translate("ImportWindow", u"Format", None))
