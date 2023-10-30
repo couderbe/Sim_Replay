@@ -1,13 +1,20 @@
+import calendar
 import math
 import threading
 import time
 
 from ctypes import _SimpleCData
+from src.main.python.flight_model.flight_model import FlightModel
+from src.main.python.simconnect.listener import Listener
+from src.main.python.ui.gauges.command import Emitter
 from src.main.python.datas.datas_manager import FlightDataset
 from src.main.python.simconnect.source import Source
 from src.main.python.simconnect.structs import *
 from src.main.python.simconnect.enums import *
 from src.main.python.simconnect.consts import *
+
+from PySide6.QtCore import Signal, QObject, Qt
+
 
 class Mock_Value():
     def __init__(self, name: str, unit: str, val: float, min_val: float, max_val: float,is_loop=True) -> None:
@@ -18,6 +25,7 @@ class Mock_Value():
         self.max_val = max_val
         self._is_loop = is_loop
         self._lock = threading.Lock()
+
 
     def value(self):
         return self.val
@@ -32,11 +40,23 @@ class Mock_Value():
     def __repr__(self) -> str:
         return str(self.__dict__)
 
-class Mock(Source):
+class MockProxy(QObject):
+    # Signal Emited when record changes. The current record is sent as integer
+    mock_changed = Signal(dict)
+
+class Mock(Source, Emitter, Listener):
 
     def __init__(self) -> None:
         self._opened: bool = False
         self._listened_parameters: list[Mock_Value] = []
+        self._proxy = MockProxy()
+        self.flight_model = FlightModel()
+        self.command = {  "Aileron Position": 0,
+                          "Elevator Position":  0,
+                          "Rudder Position":0,
+                          "General Eng Throttle Lever Position:1": 0
+                        } 
+        self.state = None
 
     def update(self) -> int:
         if not (self._opened):
@@ -51,6 +71,28 @@ class Mock(Source):
                     v.set_value(new_v)
             else:
                 v.set_value(v.value()+0.1)
+        if self.command != None:
+            self.flight_model.compute(self.command.get("Aileron Position"),
+                                  self.command.get("Elevator Position"),
+                                  self.command.get("General Eng Throttle Lever Position:1"))
+        
+            self.state = {
+                "ZULU TIME": int(time.time()*100)/100,
+                "Plane Latitude": 0.0,
+                "Plane Longitude": 0.0,
+                "Plane Altitude": self.flight_model.pos.z,
+                "Plane Bank Degrees": self.flight_model.attitude.phi,
+                "Plane Pitch Degrees":self.flight_model.attitude.theta,
+                "Plane Heading Degrees True":self.flight_model.attitude.psi,
+
+                "Aileron Position": self.command.get("Aileron Position"),
+                "Elevator Position":  self.command.get("Elevator Position"),
+                "Rudder Position": self.command.get("Rudder Position"),
+                "General Eng Throttle Lever Position:1": self.command.get("General Eng Throttle Lever Position:1")
+            }
+
+            self._proxy.mock_changed.emit(self.state)
+        #self._proxy.mock_changed.emit(self._listened_parameters)
         return 0
     
     def add_dataset(self, flight_dataset:FlightDataset):
@@ -100,7 +142,7 @@ class Mock(Source):
         return self.get_param_value_from_name(name)
 
     def get_param_value_from_name(self, name: str):
-        return self._get_param_from_name(name).value()
+        return self.state.get(name)
 
     def _get_param_from_name(self, name: str):
         return next((x for x in self._listened_parameters if (x.name==name)), None)
@@ -126,3 +168,9 @@ class Mock(Source):
 
     def is_param_listened(self, name:str):
         return name in [param.name for param in self._listened_parameters]
+
+    def connect(self, listener:Listener):
+        self._proxy.mock_changed.connect(listener.apply)
+    
+    def apply(self, params:dict):
+        self.command.update(params)

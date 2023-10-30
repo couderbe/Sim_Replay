@@ -1,6 +1,6 @@
 import csv
 from PySide6.QtGui import QStandardItemModel
-from PySide6.QtCore import Qt, QModelIndex
+from PySide6.QtCore import Qt
 
 def save_datas(fileName,mainTableModel:QStandardItemModel):
     with open(fileName, 'w') as csvfile:

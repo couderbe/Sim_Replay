@@ -1,10 +1,12 @@
 
+from abc import abstractmethod
 from ctypes import _SimpleCData
 
 from src.main.python.simconnect.enums import SIMCONNECT_PERIOD
 
 class Source:
 
+    @abstractmethod
     def get_param_value_from_name(self, param: str):
         """Getter of a data with a specific name.
             Has to be implemented.
@@ -17,6 +19,7 @@ class Source:
         """
         raise NotImplementedError("The method has to be implemented")
     
+    @abstractmethod
     def set_param_value_from_name(self, name: str, value: float) -> None:
         """Setter of a data with a specific name.
            Has to be implemented.

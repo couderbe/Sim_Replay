@@ -2,6 +2,10 @@ import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItemModel
 from PySide6.QtCore import Qt, QModelIndex
+from src.main.python.inputschart import InputsChart
+from src.main.python.model.inputs_model import InputsModel
+from src.main.python.model.gauges_model import GaugesModel
+from src.main.python.gaugeschart import GaugesChart
 from src.main.python.messages import *
 from src.main.python.model.model import Model, ModelStatus
 from src.main.python.linechart import LineChart
@@ -21,7 +25,7 @@ class MainWindow(QMainWindow):
         self.ui.actionOpen.triggered.connect(self.open_dialog)
 
         self.ui.actionConnect_to_sim.triggered.connect(self.on_connect)
-        self.ui.actionConnect_to_mock.triggered.connect(self.on_connect_mock)
+        self.ui.actionConnect_to_mock.triggered.connect(lambda _:self.on_connect_mock())
 
         self.ui.actionSave.setShortcut("Ctrl+S")
         self.ui.actionSave.triggered.connect(self.save_dialog)
@@ -34,7 +38,7 @@ class MainWindow(QMainWindow):
 
         self.ui.actionView_Charts.triggered.connect(self.open_charts_window)
 
-        self.ui.playPausePushButton.clicked.connect(self.play_pause)
+        self.ui.playPausePushButton.clicked.connect(lambda _:self.play_pause())
 
         self.ui.mainTableView.setModel(self._model._mainTableModel)
         self.ui.mainTableView.clicked.connect(self.on_item_clicked)
@@ -70,7 +74,7 @@ class MainWindow(QMainWindow):
         if self._model.status == ModelStatus.PLAYING:
             self._model.start_playing()
 
-    def play_pause(self) -> None:
+    def play_pause(self,is_inputs_chart_opened=True) -> None:
         match self._model.status:
             case ModelStatus.PLAYING:
                 self.stop_playing()
@@ -82,6 +86,8 @@ class MainWindow(QMainWindow):
                 )
             case ModelStatus.CONNECTED:
                 if self._model.has_timestamp():
+                    if is_inputs_chart_opened:
+                        self.open_charts_gauges()
                     self._model.start_playing()
                     self.ui.playPausePushButton.setText("Stop")
                 else:
@@ -165,7 +171,7 @@ class MainWindow(QMainWindow):
                 self.ui.actionConnect_to_mock.setEnabled(True)
                 self.ui.horizontalSlider.setDisabled(True)
 
-    def on_connect_mock(self) -> None:
+    def on_connect_mock(self,is_inputs_chart_opened=True) -> None:
         self.stop_playing()
         match self._model.status:
             case ModelStatus.OFFLINE:
@@ -175,6 +181,8 @@ class MainWindow(QMainWindow):
                 self.ui.actionConnect_to_mock.setText("Disconnect from mock")
                 self.ui.horizontalSlider.setDisabled(False)
                 self.ui.actionConnect_to_sim.setDisabled(True)
+                if is_inputs_chart_opened:
+                    self.open_charts_inputs()
             case _:
                 self._model.disconnect_mock()
                 self.change_ui_record_number(1)
@@ -255,6 +263,20 @@ class MainWindow(QMainWindow):
         window2 = LineChart(self._mainTableModel, self)
         window2.show()
         window2.setGeometry(30, 30, 1720, 920)
+    
+    def open_charts_inputs(self):
+        """method that opens the Window that contains inputs and gauges"""
+        gauges_model = InputsModel(self._model)
+        window_gauges = InputsChart(gauges_model,self)
+        window_gauges.show()
+        window_gauges.setGeometry(30, 30, 1720, 960)
+
+    def open_charts_gauges(self):
+        """method that opens the Window that contains gauges"""
+        gauges_model = GaugesModel(self._model)
+        window_gauges = GaugesChart(gauges_model,self)
+        window_gauges.show()
+        window_gauges.setGeometry(30, 30, 1720, 960)
 
 
 if __name__ == "__main__":

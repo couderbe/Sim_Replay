@@ -19,7 +19,7 @@ def step_application_started(context:ContextIF):
 
 @given('The Mock is connected')
 def step_mock_connected(context:ContextIF):
-    context.window.on_connect_mock()
+    context.window.on_connect_mock(False)
     assert context.window._model.status is ModelStatus.CONNECTED
 
 
@@ -41,12 +41,12 @@ def step_file_is_loaded(context:ContextIF):
 
 @given('the player is started')
 def step_player_is_started(context:ContextIF):
-    context.window.play_pause()
+    context.window.play_pause(False)
     assert context.window._model.status is ModelStatus.PLAYING
 
 @when('The user requests to open the Mock')
 def step_request_open_full_mock(context:ContextIF):
-    context.window.on_connect_mock()
+    context.window.on_connect_mock(False)
 
 
 @when('The user requests to close the Mock')

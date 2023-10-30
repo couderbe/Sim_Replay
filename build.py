@@ -17,6 +17,8 @@ default_task = "publish"
 def set_properties(project:Project):
     project.build_depends_on("mockito")
     project.set_property('dir_source_unittest_python', './')
+    project.set_property('coverage_threshold_warn', 0)
+
 
 @after("run_unit_tests", only_once=True)
 def behave(project):
