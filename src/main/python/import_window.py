@@ -8,13 +8,14 @@ from PySide6.QtWidgets import QDialog, QFileDialog, QMessageBox, QWidget
 import tools.gpx_interpolate
 from importer import *
 from ui.import_window_ui import Ui_ImportWindow
+from src.main.python.model.model import Model
 
 
 class ImportWindow(QDialog):
 
     PREVIEW_ITEM_COUNT = 10
 
-    def __init__(self, target_table_model: QStandardItemModel, parent: QWidget | None = ..., f: Qt.WindowType = ...) -> None:
+    def __init__(self, target_table_model: Model, parent: QWidget | None = ..., f: Qt.WindowType = ...) -> None:
         super().__init__(parent, f)
         self.ui = Ui_ImportWindow()
         self.ui.setupUi(self)
@@ -24,7 +25,7 @@ class ImportWindow(QDialog):
         self.ui.parametersDefinitionGroup.setEnabled(False)
         self.ui.dataEnhancementGroup.setEnabled(False)
 
-        self._target_table_model = target_table_model
+        self._target_table_model = target_table_model._mainTableModel
         self._file_path = ""
         self._delimiter = ","
         self._openning_function = lambda: None
