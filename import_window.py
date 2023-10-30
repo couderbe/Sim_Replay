@@ -1,13 +1,18 @@
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QStandardItemModel, QStandardItem
-from PySide6.QtWidgets import QDialog, QWidget, QFileDialog, QMessageBox
-from ui.import_window_ui import Ui_ImportWindow
-import os
 import csv
+import os
+
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QStandardItem, QStandardItemModel
+from PySide6.QtWidgets import QDialog, QFileDialog, QMessageBox, QWidget
+
+import tools.gpx_interpolate
 from importer import *
+from ui.import_window_ui import Ui_ImportWindow
 
 
 class ImportWindow(QDialog):
+
+    PREVIEW_ITEM_COUNT = 10
 
     def __init__(self, target_table_model: QStandardItemModel, parent: QWidget | None = ..., f: Qt.WindowType = ...) -> None:
         super().__init__(parent, f)
@@ -69,7 +74,7 @@ class ImportWindow(QDialog):
             _ = QMessageBox.critical(
                 self, "Invalid File", "Selected file does not exist")
 
-    def open_file(self, file_path):
+    def open_file(self, file_path: str):
         self._file_path = file_path
         match file_path.split(".")[-1]:
             case "gpx":
@@ -139,12 +144,28 @@ class ImportWindow(QDialog):
         self._openning_function()
 
     def update_preview_csv(self):
-        self.csv_to_model(self._tableModel, 10)
+        self.csv_to_model(self._tableModel, self.PREVIEW_ITEM_COUNT)
         self.update_parameters_fieldname_choices()
 
     def update_preview_gpx(self):
         self._tableModel.clear()
-        import_gpx_file_module(self._tableModel, self._file_path)
+        if self.ui.interpolationCheckBox.isChecked():
+            pass
+        else:
+            gpx_datas = tools.gpx_interpolate.gpx_read(self._file_path)
+
+            for i in range(self.PREVIEW_ITEM_COUNT):
+                self._tableModel.appendRow(
+                    [QStandardItem(gpx_datas['tstamp'][i]), QStandardItem(gpx_datas['lon'][i]), QStandardItem(gpx_datas['lat'][i]), QStandardItem(gpx_datas['ele'][i])])
+            headers = [
+                "ZULU TIME",
+                "Plane Longitude",
+                "Plane Latitude",
+                "Plane Altitude"]
+            for i, header in enumerate(headers):
+                self._tableModel.setHeaderData(
+                    i, Qt.Orientation.Horizontal, header)
+        # import_gpx_file(self._tableModel, self._file_path)
 
     def update_parameters_fieldname_choices(self):
         self._parameters_fieldname_choices.clear()
