@@ -20,14 +20,14 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QGroupBox,
     QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
     QSpinBox, QTableView, QVBoxLayout, QWidget)
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        if not Form.objectName():
-            Form.setObjectName(u"Form")
-        Form.resize(1051, 616)
-        self.verticalLayout_2 = QVBoxLayout(Form)
+class Ui_ImportWindow(object):
+    def setupUi(self, ImportWindow):
+        if not ImportWindow.objectName():
+            ImportWindow.setObjectName(u"ImportWindow")
+        ImportWindow.resize(1051, 616)
+        self.verticalLayout_2 = QVBoxLayout(ImportWindow)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.fileGroup = QGroupBox(Form)
+        self.fileGroup = QGroupBox(ImportWindow)
         self.fileGroup.setObjectName(u"fileGroup")
         self.horizontalLayout_2 = QHBoxLayout(self.fileGroup)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
@@ -44,7 +44,7 @@ class Ui_Form(object):
 
         self.verticalLayout_2.addWidget(self.fileGroup)
 
-        self.fileFormatGroup = QGroupBox(Form)
+        self.fileFormatGroup = QGroupBox(ImportWindow)
         self.fileFormatGroup.setObjectName(u"fileFormatGroup")
         self.horizontalLayout = QHBoxLayout(self.fileFormatGroup)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -79,7 +79,7 @@ class Ui_Form(object):
 
         self.verticalLayout_2.addWidget(self.fileFormatGroup)
 
-        self.configurationGroup = QGroupBox(Form)
+        self.configurationGroup = QGroupBox(ImportWindow)
         self.configurationGroup.setObjectName(u"configurationGroup")
         self.verticalLayout_3 = QVBoxLayout(self.configurationGroup)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -136,7 +136,7 @@ class Ui_Form(object):
 
         self.verticalLayout_2.addWidget(self.configurationGroup)
 
-        self.parametersDefinitionGroup = QGroupBox(Form)
+        self.parametersDefinitionGroup = QGroupBox(ImportWindow)
         self.parametersDefinitionGroup.setObjectName(u"parametersDefinitionGroup")
         self.verticalLayout = QVBoxLayout(self.parametersDefinitionGroup)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -320,7 +320,7 @@ class Ui_Form(object):
 
         self.verticalLayout_2.addWidget(self.parametersDefinitionGroup)
 
-        self.groupBox = QGroupBox(Form)
+        self.groupBox = QGroupBox(ImportWindow)
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setEnabled(True)
         self.horizontalLayout_4 = QHBoxLayout(self.groupBox)
@@ -333,19 +333,19 @@ class Ui_Form(object):
 
         self.verticalLayout_2.addWidget(self.groupBox)
 
-        self.tableView = QTableView(Form)
+        self.tableView = QTableView(ImportWindow)
         self.tableView.setObjectName(u"tableView")
 
         self.verticalLayout_2.addWidget(self.tableView)
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.closeButton = QPushButton(Form)
+        self.closeButton = QPushButton(ImportWindow)
         self.closeButton.setObjectName(u"closeButton")
 
         self.horizontalLayout_3.addWidget(self.closeButton)
 
-        self.importButton = QPushButton(Form)
+        self.importButton = QPushButton(ImportWindow)
         self.importButton.setObjectName(u"importButton")
 
         self.horizontalLayout_3.addWidget(self.importButton)
@@ -358,44 +358,44 @@ class Ui_Form(object):
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
 
 
-        self.retranslateUi(Form)
+        self.retranslateUi(ImportWindow)
 
-        QMetaObject.connectSlotsByName(Form)
+        QMetaObject.connectSlotsByName(ImportWindow)
     # setupUi
 
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
-        self.fileGroup.setTitle(QCoreApplication.translate("Form", u"File", None))
-        self.filePushButton.setText(QCoreApplication.translate("Form", u"...", None))
-        self.fileFormatGroup.setTitle(QCoreApplication.translate("Form", u"File format", None))
-        self.GPXRadioButton.setText(QCoreApplication.translate("Form", u"GPX", None))
-        self.CSVRadioButton.setText(QCoreApplication.translate("Form", u"CSV", None))
-        self.encodingLabel.setText(QCoreApplication.translate("Form", u"Encoding", None))
-        self.configurationGroup.setTitle(QCoreApplication.translate("Form", u"Configuration", None))
-        self.delimiterLabel.setText(QCoreApplication.translate("Form", u"Delimiter :", None))
-        self.semiclonRadioButton.setText(QCoreApplication.translate("Form", u"Semicolon", None))
-        self.commaRadioButton.setText(QCoreApplication.translate("Form", u"Comma", None))
-        self.spaceRadioButton.setText(QCoreApplication.translate("Form", u"Space", None))
-        self.tabulationRadioButton.setText(QCoreApplication.translate("Form", u"Tabulation", None))
-        self.ligneIgnoreLabel.setText(QCoreApplication.translate("Form", u"Number of line to ignore", None))
-        self.parametersDefinitionGroup.setTitle(QCoreApplication.translate("Form", u"Parameters Definition", None))
-        self.timeLabel.setText(QCoreApplication.translate("Form", u"Time", None))
-        self.timeFormatLabel.setText(QCoreApplication.translate("Form", u"Format", None))
-        self.timeFormatLineEdit.setText(QCoreApplication.translate("Form", u"python format", None))
-        self.longitudeLabel.setText(QCoreApplication.translate("Form", u"Longitude", None))
-        self.latitudeLabel.setText(QCoreApplication.translate("Form", u"Latitude", None))
-        self.horizFormatLabel.setText(QCoreApplication.translate("Form", u"Format", None))
-        self.altitudeLabel.setText(QCoreApplication.translate("Form", u"Altitude", None))
-        self.meterRadioButton.setText(QCoreApplication.translate("Form", u"m", None))
-        self.feetRadioButton_2.setText(QCoreApplication.translate("Form", u"ft", None))
-        self.bankLabel.setText(QCoreApplication.translate("Form", u"Bank", None))
-        self.pitchLabel.setText(QCoreApplication.translate("Form", u"Pitch", None))
-        self.headingLabel.setText(QCoreApplication.translate("Form", u"Heading", None))
-        self.degRadioButton.setText(QCoreApplication.translate("Form", u"deg", None))
-        self.radRadioButton.setText(QCoreApplication.translate("Form", u"rad", None))
-        self.groupBox.setTitle(QCoreApplication.translate("Form", u"Data Enhancement", None))
-        self.checkBox.setText(QCoreApplication.translate("Form", u"Interpolation", None))
-        self.closeButton.setText(QCoreApplication.translate("Form", u"Close", None))
-        self.importButton.setText(QCoreApplication.translate("Form", u"Import", None))
+    def retranslateUi(self, ImportWindow):
+        ImportWindow.setWindowTitle(QCoreApplication.translate("ImportWindow", u"Import File", None))
+        self.fileGroup.setTitle(QCoreApplication.translate("ImportWindow", u"File", None))
+        self.filePushButton.setText(QCoreApplication.translate("ImportWindow", u"...", None))
+        self.fileFormatGroup.setTitle(QCoreApplication.translate("ImportWindow", u"File format", None))
+        self.GPXRadioButton.setText(QCoreApplication.translate("ImportWindow", u"GPX", None))
+        self.CSVRadioButton.setText(QCoreApplication.translate("ImportWindow", u"CSV", None))
+        self.encodingLabel.setText(QCoreApplication.translate("ImportWindow", u"Encoding", None))
+        self.configurationGroup.setTitle(QCoreApplication.translate("ImportWindow", u"Configuration", None))
+        self.delimiterLabel.setText(QCoreApplication.translate("ImportWindow", u"Delimiter :", None))
+        self.semiclonRadioButton.setText(QCoreApplication.translate("ImportWindow", u"Semicolon", None))
+        self.commaRadioButton.setText(QCoreApplication.translate("ImportWindow", u"Comma", None))
+        self.spaceRadioButton.setText(QCoreApplication.translate("ImportWindow", u"Space", None))
+        self.tabulationRadioButton.setText(QCoreApplication.translate("ImportWindow", u"Tabulation", None))
+        self.ligneIgnoreLabel.setText(QCoreApplication.translate("ImportWindow", u"Number of line to ignore", None))
+        self.parametersDefinitionGroup.setTitle(QCoreApplication.translate("ImportWindow", u"Parameters Definition", None))
+        self.timeLabel.setText(QCoreApplication.translate("ImportWindow", u"Time", None))
+        self.timeFormatLabel.setText(QCoreApplication.translate("ImportWindow", u"Format", None))
+        self.timeFormatLineEdit.setText(QCoreApplication.translate("ImportWindow", u"python format", None))
+        self.longitudeLabel.setText(QCoreApplication.translate("ImportWindow", u"Longitude", None))
+        self.latitudeLabel.setText(QCoreApplication.translate("ImportWindow", u"Latitude", None))
+        self.horizFormatLabel.setText(QCoreApplication.translate("ImportWindow", u"Format", None))
+        self.altitudeLabel.setText(QCoreApplication.translate("ImportWindow", u"Altitude", None))
+        self.meterRadioButton.setText(QCoreApplication.translate("ImportWindow", u"m", None))
+        self.feetRadioButton_2.setText(QCoreApplication.translate("ImportWindow", u"ft", None))
+        self.bankLabel.setText(QCoreApplication.translate("ImportWindow", u"Bank", None))
+        self.pitchLabel.setText(QCoreApplication.translate("ImportWindow", u"Pitch", None))
+        self.headingLabel.setText(QCoreApplication.translate("ImportWindow", u"Heading", None))
+        self.degRadioButton.setText(QCoreApplication.translate("ImportWindow", u"deg", None))
+        self.radRadioButton.setText(QCoreApplication.translate("ImportWindow", u"rad", None))
+        self.groupBox.setTitle(QCoreApplication.translate("ImportWindow", u"Data Enhancement", None))
+        self.checkBox.setText(QCoreApplication.translate("ImportWindow", u"Interpolation", None))
+        self.closeButton.setText(QCoreApplication.translate("ImportWindow", u"Close", None))
+        self.importButton.setText(QCoreApplication.translate("ImportWindow", u"Import", None))
     # retranslateUi
 
