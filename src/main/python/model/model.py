@@ -1,7 +1,5 @@
-import csv
 from src.main.python.datas.datas_manager import FlightDatasManager
-from src.main.python.importer import import_gpx_file_module
-from src.main.python.file_managment import save_sr, open_sr
+from src.main.python.file_management import save_sr, open_sr
 from src.main.python.player import Player
 from src.main.python.recorder import Recorder
 from src.main.python.simconnect.mock import Mock
@@ -33,7 +31,17 @@ class Model:
     def open_file(self, fileName):
         self._mainTableModel.clear()
         open_sr(fileName, self._mainTableModel)
-        FlightDatasManager.set_dataset_as_state()
+        headers = [self._mainTableModel.headerData(
+            i, Qt.Orientation.Horizontal, Qt.ItemDataRole.DisplayRole) for i in range(self._mainTableModel.columnCount())]
+        if set(FlightDatasManager.STATE_FLIGHT_DATASET.get_keys()).issubset(
+            headers
+        ):
+            FlightDatasManager.set_dataset_as_state()
+        else:
+            FlightDatasManager.clean_dataset()
+        for h in headers:
+            # TODO : add unit in loaded files or manage them later
+            FlightDatasManager.add_data(h, None)
         if self.status != ModelStatus.OFFLINE:
             self._player.reset()
 
