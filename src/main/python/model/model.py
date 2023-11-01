@@ -78,6 +78,7 @@ class Model:
 
     def connect(self):
         if self._sim.open() == 0:
+            self._sim.add_dataset(FlightDatasManager.current_dataset)
             self._sim.start()
             # Create a Player object that runs in another thread
             self._player = Player(self._sim, self._mainTableModel)

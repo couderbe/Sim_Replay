@@ -18,12 +18,12 @@ class FlightDatasManager:
     STATE_FLIGHT_DATASET = FlightDataset(
         {
             "ZULU TIME": {"unit": "s", "type": c_double},
-            "Plane Latitude": {"unit": "°", "type": c_double},
-            "Plane Longitude": {"unit": "°", "type": c_double},
+            "Plane Latitude": {"unit": "Degrees", "type": c_double},
+            "Plane Longitude": {"unit": "Degrees", "type": c_double},
             "Plane Altitude": {"unit": "ft", "type": c_double},
-            "Plane Bank Degrees": {"unit": "°", "type": c_double},
-            "Plane Pitch Degrees": {"unit": "°", "type": c_double},
-            "Plane Heading Degrees True": {"unit": "°", "type": c_double},
+            "Plane Bank Degrees": {"unit": "Degrees", "type": c_double},
+            "Plane Pitch Degrees": {"unit": "Degrees", "type": c_double},
+            "Plane Heading Degrees True": {"unit": "Degrees", "type": c_double},
         },
         "ZULU TIME",
     )
