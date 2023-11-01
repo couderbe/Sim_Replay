@@ -38,7 +38,6 @@ def open_sr(fileName: str, model: QStandardItemModel) -> None:
         file_content = json.loads(file.read())
         reader = csv.reader(io.StringIO(file_content["data"]), delimiter=";")
         headers = reader.__next__()
-        model.appendRow([QStandardItem(field) for field in headers])
 
         for row in reader:
             items = [QStandardItem(field) for field in row]
