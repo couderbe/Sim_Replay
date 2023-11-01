@@ -193,7 +193,7 @@ class MainWindow(QMainWindow):
 
     def save_dialog(self) -> None:
         fileName, _ = QFileDialog.getSaveFileName(
-            self, "Save record", "", "Csv files (*.csv);;All files (*.*)"
+            self, "Save record", "", "Sim Replay files (*.sr);;All files (*.*)"
         )
         if fileName:
             self._model.save_file(fileName)
