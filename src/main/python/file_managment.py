@@ -16,7 +16,6 @@ def save_sr(fileName: str, model: QStandardItemModel) -> None:
     headers = [model.headerData(
         i, Qt.Orientation.Horizontal, Qt.ItemDataRole.DisplayRole) for i in range(model.columnCount())]
     writer = csv.DictWriter(csv_output, fieldnames=headers, delimiter=";")
-    writer.writeheader()
     for row in range(model.rowCount()):
         row_data = {}
         for column in range(model.columnCount()):
@@ -25,7 +24,7 @@ def save_sr(fileName: str, model: QStandardItemModel) -> None:
         writer.writerow(row_data)
     
     with open(fileName, 'w') as file:
-        file.write(json.dumps({"data": csv_output.getvalue()}))
+        file.write(json.dumps({"header": headers, "data": csv_output.getvalue()}))
 
 def open_sr(fileName: str, model: QStandardItemModel) -> None:
     """Open .sr file and save data into the model
@@ -37,12 +36,11 @@ def open_sr(fileName: str, model: QStandardItemModel) -> None:
     with open(fileName, "r") as file:
         file_content = json.loads(file.read())
         reader = csv.reader(io.StringIO(file_content["data"]), delimiter=";")
-        headers = reader.__next__()
 
         for row in reader:
             items = [QStandardItem(field) for field in row]
             model.appendRow(items)
 
-        for i, header in enumerate(headers):
+        for i, header in enumerate(file_content["header"]):
             model.setHeaderData(
                 i, Qt.Orientation.Horizontal, header)
