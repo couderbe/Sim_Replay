@@ -27,38 +27,13 @@ class Model:
 
         self._mainTableModel = mainTableModel
 
-    def load_file(self, fileName):
-        self._mainTableModel.clear()
-        # TODO : sync View with RecordTable
-        with open_sr(fileName, "r") as csvfile:
-            reader = csv.reader(csvfile, delimiter=";", lineterminator="\n")
-            headers = reader.__next__()
-            for row in reader:
-                items = [QStandardItem(field) for field in row]
-                self._mainTableModel.appendRow(items)
-            for i, header in enumerate(headers):
-                self._mainTableModel.setHeaderData(i, Qt.Orientation.Horizontal, header)
-
-            if set(FlightDatasManager.STATE_FLIGHT_DATASET.get_keys()).issubset(
-                headers
-            ):
-                FlightDatasManager.set_dataset_as_state()
-            else:
-                FlightDatasManager.clean_dataset()
-            for h in headers:
-                # TODO : add unit in loaded files or manage them later
-                FlightDatasManager.add_data(h, None)
-
-            if self.status != ModelStatus.OFFLINE:
-                self._player.reset()
-
     def save_file(self, fileName):
         save_sr(fileName, self._mainTableModel)
 
     def open_file(self, fileName):
-        open_sr(fileName)
         self._mainTableModel.clear()
-    # FlightDatasManager.set_dataset_as_state()
+        open_sr(fileName, self._mainTableModel)
+        FlightDatasManager.set_dataset_as_state()
         if self.status != ModelStatus.OFFLINE:
             self._player.reset()
 

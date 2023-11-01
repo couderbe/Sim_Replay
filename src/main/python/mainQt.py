@@ -225,7 +225,7 @@ class MainWindow(QMainWindow):
         self.ui.horizontalSlider.setValue(0)
 
     def open_dialog(self) -> None:
-        fileName, _ = QFileDialog.getSaveFileName(
+        fileName, _ = QFileDialog.getOpenFileName(
             self, "Open record", "", "Sim Replay files (*.sr);;All files (*.*)"
         )
         if fileName:
