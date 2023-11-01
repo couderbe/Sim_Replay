@@ -225,10 +225,11 @@ class MainWindow(QMainWindow):
         self.ui.horizontalSlider.setValue(0)
 
     def open_dialog(self) -> None:
-        """
-        TODO : To be implemented
-        """
-        pass
+        fileName, _ = QFileDialog.getSaveFileName(
+            self, "Open record", "", "Sim Replay files (*.sr);;All files (*.*)"
+        )
+        if fileName:
+            self._model.open_file(fileName)
 
     def open_import_window(self) -> None:
         self._import_window = ImportWindow(self._model, parent=self, f=Qt.WindowType.Dialog)

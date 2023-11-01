@@ -1,7 +1,7 @@
 import csv
 from src.main.python.datas.datas_manager import FlightDatasManager
 from src.main.python.importer import import_gpx_file_module
-from main.python.file_managment import save_datas
+from src.main.python.file_managment import save_sr, open_sr
 from src.main.python.player import Player
 from src.main.python.recorder import Recorder
 from src.main.python.simconnect.mock import Mock
@@ -30,7 +30,7 @@ class Model:
     def load_file(self, fileName):
         self._mainTableModel.clear()
         # TODO : sync View with RecordTable
-        with open(fileName, "r") as csvfile:
+        with open_sr(fileName, "r") as csvfile:
             reader = csv.reader(csvfile, delimiter=";", lineterminator="\n")
             headers = reader.__next__()
             for row in reader:
@@ -53,12 +53,12 @@ class Model:
                 self._player.reset()
 
     def save_file(self, fileName):
-        save_datas(fileName, self._mainTableModel)
+        save_sr(fileName, self._mainTableModel)
 
-    def import_file(self, fileName):
+    def open_file(self, fileName):
+        open_sr(fileName)
         self._mainTableModel.clear()
-        FlightDatasManager.set_dataset_as_state()
-        import_gpx_file_module(self._mainTableModel, fileName)
+    # FlightDatasManager.set_dataset_as_state()
         if self.status != ModelStatus.OFFLINE:
             self._player.reset()
 
