@@ -41,7 +41,7 @@ def step_file_is_loaded(context:ContextIF):
 
 @given('the player is started')
 def step_player_is_started(context:ContextIF):
-    context.window.play_pause(False)
+    context.window.play_pause()
     assert context.window._model.status is ModelStatus.PLAYING
 
 @when('The user requests to open the Mock')
