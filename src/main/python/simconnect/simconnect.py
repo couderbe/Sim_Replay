@@ -1,3 +1,4 @@
+import logging
 import os
 import threading
 
@@ -89,6 +90,7 @@ class Sim(Source):
 
         self._listened_parameters.append(
             Parameter(name, unit, ctype, refresh_rate, define_id, request_id))
+        logging.debug("parameter '"+name+ "' is listened by simconnect")
 
     def open(self) -> int:
         if self._simconnect==None:

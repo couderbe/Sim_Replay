@@ -1,3 +1,4 @@
+import logging
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItemModel
@@ -269,6 +270,8 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    if("DEBUG" in sys.argv):
+        logging.basicConfig(encoding='utf-8', level=logging.DEBUG)
     window = MainWindow()
     window.show()
     sys.exit(app.exec())
