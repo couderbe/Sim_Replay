@@ -195,6 +195,7 @@ class ImportWindow(QDialog):
     def finish_import(self):
         # Checks of compatibility of the main parameters shall be performed before any import
         if self.ui.CSVRadioButton.isChecked():
+            self._target_table_model.clear()
             self.csv_to_model(self._target_table_model)
             self._target_table_model.setHorizontalHeaderItem(
                 self.ui.timeComboBox.currentIndex(), QStandardItem("ZULU TIME"))
@@ -205,5 +206,9 @@ class ImportWindow(QDialog):
             self._target_table_model.setHorizontalHeaderItem(
                 self.ui.altitudeComboBox.currentIndex(), QStandardItem("Plane Altitude"))
         elif self.ui.GPXRadioButton.isChecked():
-            import_gpx_file_module(self._target_table_model, self._file_path)
+            self._target_table_model.clear()
+            if self.ui.interpolationCheckBox.isChecked():
+                import_gpx_file_module(self._target_table_model, self._file_path)
+            else:
+                import_gpx_file(self._target_table_model, self._file_path)
         self.close()
