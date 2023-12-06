@@ -28,7 +28,7 @@ class ImportWindow(QDialog):
         self._target_table_model = target_table_model._mainTableModel
         self._file_path = ""
         self._delimiter = ","
-        self._openning_function = lambda: None
+        self._opening_function = lambda: None
 
         self._tableModel = QStandardItemModel(self)
         self._parameters_fieldname_choices = QStandardItemModel(self)
@@ -55,7 +55,7 @@ class ImportWindow(QDialog):
         self.ui.importButton.clicked.connect(self.finish_import)
         self.ui.closeButton.clicked.connect(self.close)
         self.ui.columnFirstLineCheckBox.stateChanged.connect(
-            lambda x: self._openning_function())
+            lambda x: self._opening_function())
 
     def choose_file(self):
         file_path, _ = QFileDialog.getOpenFileName(
@@ -79,13 +79,13 @@ class ImportWindow(QDialog):
         self._file_path = file_path
         match file_path.split(".")[-1]:
             case "gpx":
-                self._openning_function = self.update_preview_gpx
+                self._opening_function = self.update_preview_gpx
                 if not (self.ui.GPXRadioButton.isChecked()):
                     self.ui.GPXRadioButton.setChecked(True)
                 else:
                     self.update_preview_gpx()
             case "csv":
-                self._openning_function = self.update_preview_csv
+                self._opening_function = self.update_preview_csv
                 if not (self.ui.CSVRadioButton.isChecked()):
                     self.ui.CSVRadioButton.setChecked(True)
                 else:
@@ -94,7 +94,7 @@ class ImportWindow(QDialog):
     def csv_toggled(self):
         if self.ui.CSVRadioButton.isChecked():
             self.ui.GPXRadioButton.setChecked(False)
-            self._openning_function = self.update_preview_csv
+            self._opening_function = self.update_preview_csv
             self.update_preview_csv()
             self.ui.configurationGroup.setEnabled(True)
             self.ui.parametersDefinitionGroup.setEnabled(True)
@@ -103,7 +103,7 @@ class ImportWindow(QDialog):
     def gpx_toggled(self):
         if self.ui.GPXRadioButton.isChecked():
             self.ui.CSVRadioButton.setChecked(False)
-            self._openning_function = self.update_preview_gpx
+            self._opening_function = self.update_preview_gpx
             self.update_preview_gpx()
             self.ui.configurationGroup.setEnabled(False)
             self.ui.parametersDefinitionGroup.setEnabled(False)
@@ -115,7 +115,7 @@ class ImportWindow(QDialog):
             self.ui.spaceRadioButton.setChecked(False)
             self.ui.tabulationRadioButton.setChecked(False)
             self._delimiter = ","
-            self._openning_function()
+            self._opening_function()
 
     def semicolon_toggled(self):
         if self.ui.semiclonRadioButton.isChecked():
@@ -123,7 +123,7 @@ class ImportWindow(QDialog):
             self.ui.spaceRadioButton.setChecked(False)
             self.ui.tabulationRadioButton.setChecked(False)
             self._delimiter = ";"
-            self._openning_function()
+            self._opening_function()
 
     def space_toggled(self):
         if self.ui.spaceRadioButton.isChecked():
@@ -131,7 +131,7 @@ class ImportWindow(QDialog):
             self.ui.commaRadioButton.setChecked(False)
             self.ui.tabulationRadioButton.setChecked(False)
             self._delimiter = " "
-            self._openning_function()
+            self._opening_function()
 
     def tabulation_toggled(self):
         if self.ui.tabulationRadioButton.isChecked():
@@ -139,10 +139,10 @@ class ImportWindow(QDialog):
             self.ui.spaceRadioButton.setChecked(False)
             self.ui.commaRadioButton.setChecked(False)
             self._delimiter = "\t"
-            self._openning_function()
+            self._opening_function()
 
     def ligne_ignore_changed(self):
-        self._openning_function()
+        self._opening_function()
 
     def update_preview_csv(self):
         self.csv_to_model(self._tableModel, self.PREVIEW_ITEM_COUNT)
