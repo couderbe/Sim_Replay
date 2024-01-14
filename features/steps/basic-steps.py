@@ -35,7 +35,7 @@ def step_time_has_passed(context, sec):
 
 @given('A file is loaded')
 def step_file_is_loaded(context:ContextIF):
-    context.window._model.load_file("./features/resources/flight_ex.csv")
+    context.window._model.open_file("./features/resources/example.sr")
     assert context.window._mainTableModel.rowCount() >= 10, "{} is less than {}".format(
         context.window._mainTableModel.rowCount(),10)
 

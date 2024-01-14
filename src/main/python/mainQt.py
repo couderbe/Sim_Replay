@@ -193,7 +193,7 @@ class MainWindow(QMainWindow):
 
     def save_dialog(self) -> None:
         fileName, _ = QFileDialog.getSaveFileName(
-            self, "Save record", "", "Csv files (*.csv);;All files (*.*)"
+            self, "Save record", "", "Sim Replay files (*.sr);;All files (*.*)"
         )
         if fileName:
             self._model.save_file(fileName)
@@ -225,10 +225,15 @@ class MainWindow(QMainWindow):
         self.ui.horizontalSlider.setValue(0)
 
     def open_dialog(self) -> None:
-        """
-        TODO : To be implemented
-        """
-        pass
+        fileName, _ = QFileDialog.getOpenFileName(
+            self, "Open record", "", "Sim Replay files (*.sr);;All files (*.*)"
+        )
+        if fileName:
+            self._model.open_file(fileName)
+            if (row_count := self._model._mainTableModel.rowCount()) > 0:
+                self.ui.horizontalSlider.setMinimum(1)
+                self.ui.horizontalSlider.setMaximum(row_count)
+                self.change_ui_record_number(1)
 
     def open_import_window(self) -> None:
         self._import_window = ImportWindow(self._model, parent=self, f=Qt.WindowType.Dialog)
