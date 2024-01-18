@@ -1,3 +1,4 @@
+import logging
 import os
 import threading
 
@@ -5,6 +6,7 @@ from ctypes import *
 from ctypes import _SimpleCData
 from ctypes.wintypes import HANDLE, DWORD
 import time
+from src.main.python.datas.datas_manager import FlightDataset
 from src.main.python.simconnect.source import Source
 from src.main.python.simconnect.structs import *
 from src.main.python.simconnect.enums import *
@@ -54,6 +56,12 @@ class Sim(Source):
             print(f"Unable to CallDispatch ErrorCode{err}")
             return 1
         return 0
+    
+    def add_dataset(self, flight_dataset:FlightDataset):
+
+        for param in flight_dataset.set.items():
+            self.add_listened_parameter(
+                param[0], param[1]["unit"], param[1]["type"])
 
     def add_listened_parameter(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD = SIMCONNECT_PERIOD.SIMCONNECT_PERIOD_SIM_FRAME) -> None:
         """
@@ -82,6 +90,7 @@ class Sim(Source):
 
         self._listened_parameters.append(
             Parameter(name, unit, ctype, refresh_rate, define_id, request_id))
+        logging.debug("parameter '"+name+ "' is listened by simconnect")
 
     def open(self) -> int:
         if self._simconnect==None:

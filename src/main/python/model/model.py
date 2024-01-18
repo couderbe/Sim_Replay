@@ -22,6 +22,7 @@ class Model:
         self.status = ModelStatus.OFFLINE
 
         self._mock = Mock()
+        self.is_mock_used = False
 
         self._mainTableModel = mainTableModel
 
@@ -61,6 +62,7 @@ class Model:
 
     def connect(self):
         if self._sim.open() == 0:
+            self._sim.add_dataset(FlightDatasManager.current_dataset)
             self._sim.start()
             # Create a Player object that runs in another thread
             self._player = Player(self._sim, self._mainTableModel)
@@ -72,6 +74,7 @@ class Model:
 
     def connect_mock(self):
         if self._mock.open() == 0:
+            self.is_mock_used = True
             self._mock.add_dataset(FlightDatasManager.current_dataset)
             self._mock.start()
 
@@ -80,6 +83,7 @@ class Model:
             self.status = ModelStatus.CONNECTED
 
     def disconnect_mock(self):
+        self.is_mock_used = True
         self._mock.stop()
         self.status = ModelStatus.OFFLINE
 

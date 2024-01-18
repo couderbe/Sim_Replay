@@ -1,6 +1,7 @@
 
 from abc import abstractmethod
 from ctypes import _SimpleCData
+from src.main.python.datas.datas_manager import FlightDataset
 
 from src.main.python.simconnect.enums import SIMCONNECT_PERIOD
 
@@ -37,6 +38,15 @@ class Source:
         """Add a new listened parameter."""
         raise NotImplementedError("The method has to be implemented")
     
+    @abstractmethod
+    def add_dataset(self, flight_dataset:FlightDataset):
+        """Listen all parameters contained in a given dataset.
+
+        Args:
+            flight_dataset (FlightDataset): the dataset that contains parameters to be listened
+        """
+        raise NotImplementedError("The method has to be implemented")
+
     def is_param_listened(param_name):
         """Check if a parameter is listened."""
         raise NotImplementedError("The method has to be implemented")

@@ -1,3 +1,4 @@
+import logging
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItemModel
@@ -75,7 +76,7 @@ class MainWindow(QMainWindow):
         if self._model.status == ModelStatus.PLAYING:
             self._model.start_playing()
 
-    def play_pause(self,is_inputs_chart_opened=True) -> None:
+    def play_pause(self) -> None:
         match self._model.status:
             case ModelStatus.PLAYING:
                 self.stop_playing()
@@ -87,7 +88,7 @@ class MainWindow(QMainWindow):
                 )
             case ModelStatus.CONNECTED:
                 if self._model.has_timestamp():
-                    if is_inputs_chart_opened:
+                    if self._model.is_mock_used:
                         self.open_charts_gauges()
                     self._model.start_playing()
                     self.ui.playPausePushButton.setText("Stop")
@@ -274,6 +275,8 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    if("DEBUG" in sys.argv):
+        logging.basicConfig(encoding='utf-8', level=logging.DEBUG)
     window = MainWindow()
     window.show()
     sys.exit(app.exec())

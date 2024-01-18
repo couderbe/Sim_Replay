@@ -9,13 +9,13 @@ class FlightDatasManagerTest(unittest.TestCase):
         self.assertEqual(
             FlightDatasManager.current_dataset.set,
             {
-                "ZULU TIME": {"unit": "s", "type": c_double},
-                "Plane Latitude": {"unit": "°", "type": c_double},
-                "Plane Longitude": {"unit": "°", "type": c_double},
-                "Plane Altitude": {"unit": "ft", "type": c_double},
-                "Plane Bank Degrees": {"unit": "°", "type": c_double},
-                "Plane Pitch Degrees": {"unit": "°", "type": c_double},
-                "Plane Heading Degrees True": {"unit": "°", "type": c_double},
+                "ZULU TIME": {"unit": "seconds", "type": c_double},
+                "Plane Latitude": {"unit": "degrees", "type": c_double},
+                "Plane Longitude": {"unit": "degrees", "type": c_double},
+                "Plane Altitude": {"unit": "feet", "type": c_double},
+                "Plane Bank Degrees": {"unit": "degrees", "type": c_double},
+                "Plane Pitch Degrees": {"unit": "degrees", "type": c_double},
+                "Plane Heading Degrees True": {"unit": "degrees", "type": c_double},
                 "TEST_DATA": {"unit": "rad", "type": c_double},
             },
         )

@@ -1,4 +1,4 @@
-import calendar
+import logging
 import math
 import threading
 import time
@@ -13,7 +13,7 @@ from src.main.python.simconnect.structs import *
 from src.main.python.simconnect.enums import *
 from src.main.python.simconnect.consts import *
 
-from PySide6.QtCore import Signal, QObject, Qt
+from PySide6.QtCore import Signal, QObject
 
 
 class Mock_Value():
@@ -119,6 +119,7 @@ class Mock(Source, Emitter, Listener):
         if len(args) < 3:
             args = (20, 0, 1000)
         self._listened_parameters.append(Mock_Value(name, unit, *args))
+        logging.debug("parameter '"+name+ "' is listened by simconnect")
 
     def open(self) -> int:
         print("Mock activated")
