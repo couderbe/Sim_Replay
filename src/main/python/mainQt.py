@@ -3,6 +3,7 @@ import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QStandardItemModel
 from PySide6.QtCore import Qt, QModelIndex
+from src.main.python.model.training_model import TrainingModel
 from src.main.python.inputschart import InputsChart
 from src.main.python.model.inputs_model import InputsModel
 from src.main.python.model.gauges_model import GaugesModel
@@ -13,6 +14,7 @@ from src.main.python.linechart import LineChart
 from src.main.python.record_window import RecordWindow
 from src.main.python.ui.main_window_ui import Ui_MainWindow
 from src.main.python.import_window import ImportWindow
+from src.main.python.trainingchart import TrainingChart
 
 
 class MainWindow(QMainWindow):
@@ -39,6 +41,8 @@ class MainWindow(QMainWindow):
         self.ui.actionImport.triggered.connect(self.open_import_window)
 
         self.ui.actionView_Charts.triggered.connect(self.open_charts_window)
+
+        self.ui.actionTraining_Charts.triggered.connect(self.open_charts_training)
 
         self.ui.playPausePushButton.clicked.connect(lambda _:self.play_pause())
 
@@ -269,6 +273,13 @@ class MainWindow(QMainWindow):
         """method that opens the Window that contains gauges"""
         gauges_model = GaugesModel(self._model)
         window_gauges = GaugesChart(gauges_model,self)
+        window_gauges.show()
+        window_gauges.setGeometry(30, 30, 1720, 960)
+    
+    def open_charts_training(self):
+        """method that opens the Window that contains gauges"""
+        t_model = TrainingModel(self._model)
+        window_gauges = TrainingChart(t_model,self)
         window_gauges.show()
         window_gauges.setGeometry(30, 30, 1720, 960)
 

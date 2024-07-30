@@ -47,7 +47,7 @@ def import_gpx_file(tableModel: QStandardItemModel, fileName, limit=math.inf):
                                 str(previous_point.time_difference(first_point))),
                             QStandardItem(str(previous_point.longitude)),
                             QStandardItem(str(previous_point.latitude)),
-                            QStandardItem(str(previous_point.elevation)),
+                            QStandardItem(str(previous_point.elevation*M_TO_FT)),
                             QStandardItem(str(attitude.phi)),
                             QStandardItem(str(attitude.theta)),
                             QStandardItem(str(attitude.psi))

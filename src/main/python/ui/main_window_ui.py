@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'mainWindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.2
+## Created by: Qt User Interface Compiler version 6.5.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -42,6 +42,8 @@ class Ui_MainWindow(object):
         self.actionImport.setObjectName(u"actionImport")
         self.actionView_Charts = QAction(MainWindow)
         self.actionView_Charts.setObjectName(u"actionView_Charts")
+        self.actionTraining_Charts = QAction(MainWindow)
+        self.actionTraining_Charts.setObjectName(u"actionTraining_Charts")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -103,6 +105,7 @@ class Ui_MainWindow(object):
         self.menuFile.addAction(self.actionImport)
         self.menuRecording.addAction(self.actionStart_Recording)
         self.menuView.addAction(self.actionView_Charts)
+        self.menuView.addAction(self.actionTraining_Charts)
 
         self.retranslateUi(MainWindow)
 
@@ -119,6 +122,7 @@ class Ui_MainWindow(object):
         self.actionConnect_to_mock.setText(QCoreApplication.translate("MainWindow", u"Connect to mock (Dev)", None))
         self.actionImport.setText(QCoreApplication.translate("MainWindow", u"Import", None))
         self.actionView_Charts.setText(QCoreApplication.translate("MainWindow", u"View Charts", None))
+        self.actionTraining_Charts.setText(QCoreApplication.translate("MainWindow", u"Training Charts", None))
         self.playPausePushButton.setText(QCoreApplication.translate("MainWindow", u"Play", None))
         self.timeLabel.setText(QCoreApplication.translate("MainWindow", u"00:00:00", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))

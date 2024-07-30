@@ -16,7 +16,7 @@ class GpsTrajectory(QWidget, Gauge):
         self._width = 300
 
         self.setGeometry(QRect(0, 0, self._width, self._width))
-        self.setWindowTitle("sliding graph")
+        self.setWindowTitle("gps traj")
         self.show()
 
     def paintEvent(self, event):

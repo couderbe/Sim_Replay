@@ -6,11 +6,17 @@ from ctypes import *
 from ctypes import _SimpleCData
 from ctypes.wintypes import HANDLE, DWORD
 import time
+from src.main.python.simconnect.listener import Listener
 from src.main.python.datas.datas_manager import FlightDataset
 from src.main.python.simconnect.source import Source
 from src.main.python.simconnect.structs import *
 from src.main.python.simconnect.enums import *
 from src.main.python.simconnect.consts import *
+
+from PySide6.QtCore import Signal, QObject
+
+from src.main.python.ui.gauges.command import Emitter
+
 
 class Parameter():
     def __init__(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD, define_id: int, request_id: int) -> None:
@@ -32,8 +38,12 @@ class Parameter():
 
     def __repr__(self) -> str:
         return str(self.__dict__)
+    
+class SimProxy(QObject):
+    # Signal Emited when record changes. The current record is sent as integer
+    sim_changed = Signal(dict)
 
-class Sim(Source):
+class Sim(Source, Emitter):
 
     def __init__(self, dll_path: str = "./SimConnect.dll") -> None:
         if os.path.exists(dll_path):
@@ -44,6 +54,8 @@ class Sim(Source):
         self._hSimConnect = HANDLE(None)
         self._opened: bool = False
         self._listened_parameters: list[Parameter] = []
+        self._proxy = SimProxy()
+        self.state = None
 
     def update(self) -> int:
         if not (self._opened):
@@ -55,6 +67,12 @@ class Sim(Source):
         if err != 0:
             print(f"Unable to CallDispatch ErrorCode{err}")
             return 1
+        
+        self.state = {}
+
+        for param in self._listened_parameters:
+            self.state[param.name] = param.value()
+        self._proxy.sim_changed.emit(self.state)
         return 0
     
     def add_dataset(self, flight_dataset:FlightDataset):
@@ -193,3 +211,6 @@ class Sim(Source):
         while sim_opened>=0:
             sim_opened = self.update()
             time.sleep(0.1)
+    
+    def connect(self, listener:Listener):
+        self._proxy.sim_changed.connect(listener.apply)

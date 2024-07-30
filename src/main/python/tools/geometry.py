@@ -3,6 +3,9 @@ import math
 
 DEG_2_RAD = math.pi/180
 
+NM_2_FEET = 1852/0.3048
+FEET_2_M = 0.3048
+
 class Point:
     """Class that defines a geographic point with a latitude and a longitude in degrees"""
 
@@ -21,6 +24,14 @@ class Point:
         """
         return (math.cos((other.lat+self.lat)*DEG_2_RAD/2)*(self.lon-other.lon)*60, (self.lat-other.lat)*60)
     
+    def relevement(self, other):
+        provi = self.spherical_to_carthesian(other)
+        return math.atan2(provi[0],provi[1])
+    
+    def absolute_dist(self, other):
+        provi = self.spherical_to_carthesian(other)
+        return math.hypot(provi[0], provi[1])
+    
 
 class Point3D(Point):
     
@@ -30,6 +41,9 @@ class Point3D(Point):
     
     def spherical_to_carthesian(self, other):
         return (super().spherical_to_carthesian(other)+(self.altitude-other.altitude,))
+    
+    def absolute_dist(self, other):
+        return math.hypot(super().absolute_dist(other),(self.altitude-other.altitude)/NM_2_FEET)
 
 
 def bound(x,m,M):

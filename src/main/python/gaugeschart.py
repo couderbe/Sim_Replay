@@ -9,6 +9,7 @@ from src.main.python.ui.gauges.needle_gauge import NeedleGauge
 from src.main.python.ui.gauges.stick_indicator import StickIndicator
 from src.main.python.ui.gauges.rudder_indicator import RudderIndicator
 from src.main.python.ui.gauges.throttle_indicator import ThrottleIndicator
+from src.main.python.ui.gauges.glide_graph import CrossGlideGraph
 
 
 class GaugesChart(QMainWindow):
@@ -25,10 +26,11 @@ class GaugesChart(QMainWindow):
             AttitudeIndicator(),
             Compass(),
             SlidingGraph("Plane Altitude"),
+            CrossGlideGraph(),
            # SlidingGraph("Speed"),
             GpsTrajectory(),
             NeedleGauge(),
-            StickIndicator(),
+          #  StickIndicator(),
             RudderIndicator(),
             ThrottleIndicator()
         ]
