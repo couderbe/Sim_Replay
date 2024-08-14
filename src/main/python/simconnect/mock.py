@@ -149,7 +149,7 @@ class Mock(Source, Emitter, Listener):
         return next((x for x in self._listened_parameters if (x.name==name)), None)
     
     def set_param_value_from_name(self, name: str, value: float) -> None:
-        if(name == "ZULU TIME"):
+        if(name != "ZULU TIME"):
             print("\rmock has sent value : "+name +" with : "+ str(value))
         return
 

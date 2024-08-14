@@ -160,10 +160,12 @@ class Sim(Source, Emitter):
 
     def set_param_value_from_name(self, name: str, value) -> None:
         if (param := self._get_param_from_name(name)) == None:
-            print("Parameter must be listened before being settable")
+            print("Parameter "+ name +" must be listened before being settable")
             return None
         else:
             self._simconnect.SimConnect_SetDataOnSimObject(self._hSimConnect, param.define_id, SIMCONNECT_OBJECT_ID_USER, 0,0, sizeof(param.ctype), byref(param.ctype(value)))
+            logging.info("Value "+param.name+" sent to simconnect : "+str(value))
+
 
     def _get_disptach_proc(self):
         """

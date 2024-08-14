@@ -83,6 +83,7 @@
     </property>
     <addaction name="actionView_Charts"/>
     <addaction name="actionTraining_Charts"/>
+    <addaction name="actionPattern_Training"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuRecording"/>
@@ -132,6 +133,11 @@
   <action name="actionTraining_Charts">
    <property name="text">
     <string>Training Charts</string>
+   </property>
+  </action>
+  <action name="actionPattern_Training">
+   <property name="text">
+    <string>Pattern Training</string>
    </property>
   </action>
  </widget>

@@ -44,6 +44,8 @@ class Ui_MainWindow(object):
         self.actionView_Charts.setObjectName(u"actionView_Charts")
         self.actionTraining_Charts = QAction(MainWindow)
         self.actionTraining_Charts.setObjectName(u"actionTraining_Charts")
+        self.actionPattern_Training = QAction(MainWindow)
+        self.actionPattern_Training.setObjectName(u"actionPattern_Training")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -106,6 +108,7 @@ class Ui_MainWindow(object):
         self.menuRecording.addAction(self.actionStart_Recording)
         self.menuView.addAction(self.actionView_Charts)
         self.menuView.addAction(self.actionTraining_Charts)
+        self.menuView.addAction(self.actionPattern_Training)
 
         self.retranslateUi(MainWindow)
 
@@ -123,6 +126,7 @@ class Ui_MainWindow(object):
         self.actionImport.setText(QCoreApplication.translate("MainWindow", u"Import", None))
         self.actionView_Charts.setText(QCoreApplication.translate("MainWindow", u"View Charts", None))
         self.actionTraining_Charts.setText(QCoreApplication.translate("MainWindow", u"Training Charts", None))
+        self.actionPattern_Training.setText(QCoreApplication.translate("MainWindow", u"Pattern Training", None))
         self.playPausePushButton.setText(QCoreApplication.translate("MainWindow", u"Play", None))
         self.timeLabel.setText(QCoreApplication.translate("MainWindow", u"00:00:00", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))

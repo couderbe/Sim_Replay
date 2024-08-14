@@ -1,3 +1,4 @@
+from src.main.python.simconnect.source import Source
 from src.main.python.datas.datas_manager import FlightDatasManager
 from src.main.python.file_management import save_sr, open_sr
 from src.main.python.player import Player
@@ -126,3 +127,9 @@ class Model:
 
     def has_timestamp(self) -> bool:
         return FlightDatasManager.timestamp != None
+    
+    def get_active_source(self)->Source:
+        if self.is_mock_used:
+            return self._mock
+        else:
+            return self._sim

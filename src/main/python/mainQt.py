@@ -15,6 +15,7 @@ from src.main.python.record_window import RecordWindow
 from src.main.python.ui.main_window_ui import Ui_MainWindow
 from src.main.python.import_window import ImportWindow
 from src.main.python.trainingchart import TrainingChart
+from src.main.python.training.pattern_training_window import PatternTrainingWindow
 
 
 class MainWindow(QMainWindow):
@@ -43,6 +44,8 @@ class MainWindow(QMainWindow):
         self.ui.actionView_Charts.triggered.connect(self.open_charts_window)
 
         self.ui.actionTraining_Charts.triggered.connect(self.open_charts_training)
+        
+        self.ui.actionPattern_Training.triggered.connect(self.open_charts_training)
 
         self.ui.playPausePushButton.clicked.connect(lambda _:self.play_pause())
 
@@ -277,11 +280,17 @@ class MainWindow(QMainWindow):
         window_gauges.setGeometry(30, 30, 1720, 960)
     
     def open_charts_training(self):
-        """method that opens the Window that contains gauges"""
+        """method that opens the Window that contains training charts"""
         t_model = TrainingModel(self._model)
         window_gauges = TrainingChart(t_model,self)
         window_gauges.show()
-        window_gauges.setGeometry(30, 30, 1720, 960)
+        window_gauges.setGeometry(30, 30, 700, 500)
+    
+    def open_charts_training(self):
+        """method that opens the Window that contains pattern training"""
+        t_model = TrainingModel(self._model)
+        window_gauges = PatternTrainingWindow(t_model,self)
+        window_gauges.show()
 
 
 if __name__ == "__main__":

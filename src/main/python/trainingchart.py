@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QMainWindow, QGridLayout, QWidget
+from PySide6.QtWidgets import QMainWindow, QGridLayout, QWidget, QVBoxLayout, QPushButton
 from src.main.python.model.training_model import TrainingModel
 from src.main.python.simconnect.listener import Listener
 from src.main.python.model.inputs_model import InputsModel
@@ -16,7 +16,9 @@ from PySide6.QtCore import Signal, QObject
 
 from src.main.python.ui.gauges.command import Emitter
 from src.main.python.ui.gauges.glide_graph import CrossGlideGraph, FinalGlideGraph
-
+from src.main.python.training.pattern_training_processor import Pattern, PatternStep, Runway, compute_init_direction, compute_init_position
+from src.main.python.tools.geometry import Point3D
+from src.main.python.airport_store import AIRPORT_SETTINGS
 
 class TrainingProxy(QObject):
     # Signal Emited when record changes. The current record is sent as a dictionary
@@ -29,6 +31,10 @@ class TrainingChart(QMainWindow, Emitter, Listener):
     def __init__(self, _training_model: TrainingModel, parent=None):
         super().__init__(parent)
         self.training_model = _training_model
+        self.mainWin = QWidget()
+        self.mainLayout = QVBoxLayout()
+        self.mainWin.setLayout(self.mainLayout)
+
         self.win = QWidget()
 
         self.grid = QGridLayout()
@@ -44,7 +50,16 @@ class TrainingChart(QMainWindow, Emitter, Listener):
             self.grid.addWidget(g,column % 2, column//2)
 
         self.win.setLayout(self.grid)
-        self.setCentralWidget(self.win)
+
+        self.mainLayout.addWidget(self.win)
+
+        self.button = QPushButton("TP for training")
+
+        self.mainLayout.addWidget(self.button)
+
+        self.button.clicked.connect(self.on_request_tp_clicked)
+
+        self.setCentralWidget(self.mainWin)
         self.connect_mock()
 
     def connect_mock(self):
@@ -66,3 +81,16 @@ class TrainingChart(QMainWindow, Emitter, Listener):
 
     def apply(self, params:dict):
         self.updateGauges(params)
+
+    def on_request_tp_clicked(self):
+        runway = Runway(AIRPORT_SETTINGS["point0"],AIRPORT_SETTINGS["point1"])
+
+        pattern = Pattern(runway,True, -0.1,0.1,2500)
+
+        pos = compute_init_position(pattern, PatternStep.BASE, True)
+        dir = compute_init_direction(pattern, PatternStep.BASE, True)
+
+        self.training_model.tp_to_pos(pos,dir,50)
+
+
+        

@@ -7,11 +7,7 @@ from src.main.python.flight_model.flight_model import NM_2_M
 from src.main.python.tools.queue import Queue
 from src.main.python.ui.gauges.gauge import Gauge
 from src.main.python.tools.geometry import DEG_2_RAD, FEET_2_M, NM_2_FEET, Point3D
-
-AIRPORT_SETTINGS = {
-    "point0": Point3D(2.0064941910496525,43.768835706514764,  575),
-    "point1": Point3D(2.014150946651791,43.768252580658775,  580),
-}
+from src.main.python.airport_store import AIRPORT_SETTINGS
 
 finesse = 10.0
 
