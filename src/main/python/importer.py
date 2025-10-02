@@ -26,14 +26,7 @@ def import_gpx_file(tableModel: QStandardItemModel, fileName, limit=math.inf):
     """
     with open(fileName, 'r') as gpxfile:
         reader_gpx = gpxpy.parse(gpxfile)
-        headers = [
-            "ZULU TIME",
-            "Plane Longitude",
-            "Plane Latitude",
-            "Plane Altitude",
-            "Plane Bank Degrees",
-            "Plane Pitch Degrees",
-            "Plane Heading Degrees True"]
+        headers = FlightDatasManager.get_current_keys()
         first_point = reader_gpx.tracks[0].segments[0].points[0]
         previous_point = first_point
         previous_attitude = Attitude(0, 0, 0)
@@ -45,8 +38,8 @@ def import_gpx_file(tableModel: QStandardItemModel, fileName, limit=math.inf):
                         row = [
                             QStandardItem(
                                 str(previous_point.time_difference(first_point))),
-                            QStandardItem(str(previous_point.longitude)),
                             QStandardItem(str(previous_point.latitude)),
+                            QStandardItem(str(previous_point.longitude)),
                             QStandardItem(str(previous_point.elevation)),
                             QStandardItem(str(attitude.phi)),
                             QStandardItem(str(attitude.theta)),
@@ -83,14 +76,7 @@ def import_gpx_file_interp(tableModel: QStandardItemModel, fileName):
     """
     with open(fileName, 'r') as gpxfile:
         reader_gpx = gpxpy.parse(gpxfile)
-        headers = [
-            "ZULU TIME",
-            "Plane Longitude",
-            "Plane Latitude",
-            "Plane Altitude",
-            "Plane Bank Degrees",
-            "Plane Pitch Degrees",
-            "Plane Heading Degrees True"]
+        headers = FlightDatasManager.get_current_keys()
         first_point = reader_gpx.tracks[0].segments[0].points[0]
         previous_point = first_point
         for track in reader_gpx.tracks:
@@ -115,10 +101,10 @@ def import_gpx_file_interp(tableModel: QStandardItemModel, fileName):
                                 previous_attitude, previous_interp_point, interp_point)
                             row = [
                                 QStandardItem(str(previous_interp_point.time)),
+                                  QStandardItem(
+                                    str(previous_interp_point.latitude)),
                                 QStandardItem(
                                     str(previous_interp_point.longitude)),
-                                QStandardItem(
-                                    str(previous_interp_point.latitude)),
                                 QStandardItem(
                                     str(previous_interp_point.elevation)),
                                 QStandardItem(str(attitude.phi)),
@@ -148,9 +134,10 @@ def import_gpx_file_module(tableModel: QStandardItemModel, fileName):
         Any: null
     """
     gpx_datas = gpx_interpolate(
-        gpx_read(fileName), 5)  #TODO resolution to be defined
+        gpx_read(fileName), 2)  #TODO resolution to be defined
     first_interp_point_time = GPXTrackPoint(
         gpx_datas['lat'][0], gpx_datas['lon'][0], gpx_datas['ele'][0], gpx_datas['tstamp'][0])
+    ref_tstamp = first_interp_point_time.time
     previous_interp_point = first_interp_point_time
     previous_attitude = Attitude(0, 0, 0)
     for j in range(1, len(gpx_datas['lat'])):
@@ -159,9 +146,9 @@ def import_gpx_file_module(tableModel: QStandardItemModel, fileName):
         attitude = compute_attitude_from_gpx(
             previous_attitude, previous_interp_point, interp_point)
         row = [
-            QStandardItem(str(previous_interp_point.time)),
-            QStandardItem(str(previous_interp_point.longitude)),
+            QStandardItem(str(previous_interp_point.time-ref_tstamp)),
             QStandardItem(str(previous_interp_point.latitude)),
+            QStandardItem(str(previous_interp_point.longitude)),
             QStandardItem(str(previous_interp_point.elevation*M_TO_FT)),
             QStandardItem(str(attitude.phi if (j > 1) else 0)),
             QStandardItem(str(attitude.theta)),
