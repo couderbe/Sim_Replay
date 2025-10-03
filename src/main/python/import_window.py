@@ -1,5 +1,6 @@
 import csv
 import os
+from datetime import datetime
 
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QStandardItem, QStandardItemModel
@@ -56,10 +57,15 @@ class ImportWindow(QDialog):
         self.ui.closeButton.clicked.connect(self.close)
         self.ui.columnFirstLineCheckBox.stateChanged.connect(
             lambda x: self._opening_function())
+        
+        self.TIME_FORMATS = {0:"seconds",1:"hh:mm:ss"}
+        self._time_format_model = QStandardItemModel(self)
+        self._time_format_model.appendColumn([QStandardItem(i) for i in self.TIME_FORMATS.values()])
+        self.ui.timeFormatComboBox.setModel(self._time_format_model)
 
     def choose_file(self):
         file_path, _ = QFileDialog.getOpenFileName(
-            self, 'Import file', '', 'gps files (*.gpx);;csv files (*.csv);;All files (*.*)')
+            self, 'Import file', '', 'All files (*.*)')
         if file_path:
             self.ui.fileLineEdit.setText(file_path)
             self.ui.fileFormatGroup.setEnabled(True)
@@ -165,32 +171,59 @@ class ImportWindow(QDialog):
 
     def csv_to_model(self, model: QStandardItemModel, nbr_line: int = -1):
         model.clear()
-        with open(self._file_path, 'r') as csvfile:
-            reader = csv.reader(csvfile, delimiter=self._delimiter,
-                                lineterminator="\n")
 
-            line_read = 1
+        converters = {}
 
-            headers = reader.__next__()
-            if not (self.ui.columnFirstLineCheckBox.isChecked()):
-                model.appendRow([QStandardItem(field) for field in headers])
-                headers = [f"field_{i}" for i in range(len(headers))]
-            else:
-                line_read = 0
+        try:
+            with open(self._file_path, 'r', newline='') as csvfile:
+                reader = csv.reader(csvfile, delimiter=self._delimiter)
 
-            for i in range(self.ui.ligneIgnoreSpinBox.value()):
-                reader.__next__()
-            for row in reader:
-                items = [QStandardItem(field) for field in row]
-                model.appendRow(items)
-                if nbr_line > 0:
-                    line_read += 1
-                    if line_read >= nbr_line:
+                # First line
+                try:
+                    headers = next(reader)
+                except StopIteration:
+                    return  # Empty file
+
+                if self.ui.timeFormatComboBox.currentIndex() == 1:
+                    converters = {self.ui.timeComboBox.currentText(): lambda t: datetime.strptime(t, "%H:%M:%S").hour*3600 + datetime.strptime(t, "%H:%M:%S").minute*60 + datetime.strptime(t, "%H:%M:%S").second}
+                # Header handling
+                if not self.ui.columnFirstLineCheckBox.isChecked():
+                    model.appendRow([QStandardItem(field) for field in headers])
+                    headers = [f"field_{i}" for i in range(len(headers))]
+
+                # Prepar conversion
+                header_to_index = {name: idx for idx, name in enumerate(headers)}
+                converters_idx = {
+                    header_to_index[name]: func
+                    for name, func in converters.items()
+                    if name in header_to_index
+                }
+
+                # Ignorer first lines if necessary
+                for _ in range(self.ui.ligneIgnoreSpinBox.value()):
+                    next(reader, None)
+
+                # Read lines
+                for i, row in enumerate(reader):
+                    if 0 <= nbr_line <= i:
                         break
 
-            for i, header in enumerate(headers):
-                self._tableModel.setHeaderData(
-                    i, Qt.Orientation.Horizontal, header)
+                    # Apply conversions
+                    for col_idx, func in converters_idx.items():
+                        try:
+                            row[col_idx] = func(row[col_idx])
+                        except Exception:
+                            raise Exception # TODO To improve with custom exception or handling
+
+                    model.appendRow([QStandardItem(str(field)) for field in row])
+
+                # Apply headers
+                for i, header in enumerate(headers):
+                    self._tableModel.setHeaderData(i, Qt.Orientation.Horizontal, header)
+
+        except FileNotFoundError:
+            print(f"Fichier introuvable : {self._file_path}")
+
 
     def finish_import(self):
         # Checks of compatibility of the main parameters shall be performed before any import
