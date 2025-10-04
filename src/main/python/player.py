@@ -25,19 +25,32 @@ class Player():
         self.record_changed = self._proxy.record_changed
         self.current_record = 0
 
+        self._interpolated = True
+
     def player_thread(self):
         self.headers = [self._record_table.headerData(
             i, Qt.Orientation.Horizontal, Qt.ItemDataRole.DisplayRole) for i in range(self._record_table.columnCount())]
         while not self._stop_flag:
             while self._pause_flag:
                 time.sleep(1)
-            self.move_to_current_record()
+                
+            self.move_to_current_record()            
+            
+            if not self._interpolated:
+                time.sleep(self._next_time - self._current_time)
+            else:
+                current_time_interpol = self._current_time
+                while(self._next_time - self._current_time > 0) and not self._stop_flag:
+                    computer_timeref = time.time_ns()
+                    time.sleep(0.001)
+                    self.interpolated_move(current_time_interpol, self._current_time, self._next_time)
+                    self._current_time = self._current_time + (time.time_ns() - computer_timeref)*10**-9
 
-            time.sleep(self._next_time - self._current_time)
+
 
     def move_to_current_record(self):
         for column, header in enumerate([self._record_table.headerData(
-            i, Qt.Orientation.Horizontal, Qt.ItemDataRole.DisplayRole) for i in range(self._record_table.columnCount())]): #-> need to have Dataset synchronized with table
+            i, Qt.Orientation.Horizontal, Qt.ItemDataRole.DisplayRole) for i in range(self._record_table.columnCount())]):
             self._src.set_param_value_from_name(
                 header, float(self._record_table.item(self.current_record, column).data(Qt.ItemDataRole.DisplayRole)))
             if header == FlightDatasManager.timestamp:
@@ -51,6 +64,16 @@ class Player():
         self.current_record += 1
 
         self.record_changed.emit(self.current_record)
+
+    def interpolated_move(self, previous_time, current_time, next_time):
+        for column, header in enumerate([self._record_table.headerData(
+            i, Qt.Orientation.Horizontal, Qt.ItemDataRole.DisplayRole) for i in range(self._record_table.columnCount())]):
+
+            # Linear interpolation
+            previous_value = float(self._record_table.item(self.current_record, column).data(Qt.ItemDataRole.DisplayRole))
+            next_value = float(self._record_table.item(self.current_record + 1, column).data(Qt.ItemDataRole.DisplayRole))
+            current_value = previous_value + ((next_value - previous_value)/(next_time - previous_time))*(current_time - previous_time)
+            self._src.set_param_value_from_name(header, float(current_value))
 
     def pause(self):
         self._pause_flag = True

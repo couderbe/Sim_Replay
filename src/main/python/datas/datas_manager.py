@@ -1,4 +1,4 @@
-from ctypes import c_double
+from ctypes import c_double, c_float
 
 
 class FlightDataset:
@@ -21,9 +21,9 @@ class FlightDatasManager:
             "Plane Latitude": {"unit": "degrees", "type": c_double},
             "Plane Longitude": {"unit": "degrees", "type": c_double},
             "Plane Altitude": {"unit": "feet", "type": c_double},
-            "Plane Bank Degrees": {"unit": "degrees", "type": c_double},
-            "Plane Pitch Degrees": {"unit": "degrees", "type": c_double},
-            "Plane Heading Degrees True": {"unit": "degrees", "type": c_double},
+            "Plane Bank Degrees": {"unit": "radians", "type": c_double},
+            "Plane Pitch Degrees": {"unit": "radians", "type": c_double},
+            "Plane Heading Degrees True": {"unit": "radians", "type": c_double},
         },
         "ZULU TIME",
     )

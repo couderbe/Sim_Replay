@@ -185,7 +185,10 @@ class ImportWindow(QDialog):
                     return  # Empty file
 
                 if self.ui.timeFormatComboBox.currentIndex() == 1:
-                    converters = {self.ui.timeComboBox.currentText(): lambda t: datetime.strptime(t, "%H:%M:%S").hour*3600 + datetime.strptime(t, "%H:%M:%S").minute*60 + datetime.strptime(t, "%H:%M:%S").second}
+                    converters = {self.ui.timeComboBox.currentText(): lambda t: datetime.strptime(t, "%H:%M:%S").hour*3600 + datetime.strptime(t, "%H:%M:%S").minute*60 + datetime.strptime(t, "%H:%M:%S").second,
+                                  self.ui.bankComboBox.currentText(): lambda deg: -float(deg) * math.pi / 180,
+                                  self.ui.pitchComboBox.currentText(): lambda deg: -float(deg) * math.pi / 180,
+                                  self.ui.headingComboBox.currentText():lambda deg: float(deg) * math.pi / 180}
                 # Header handling
                 if not self.ui.columnFirstLineCheckBox.isChecked():
                     model.appendRow([QStandardItem(field) for field in headers])
@@ -212,7 +215,9 @@ class ImportWindow(QDialog):
                     for col_idx, func in converters_idx.items():
                         try:
                             row[col_idx] = func(row[col_idx])
-                        except Exception:
+                        except Exception as e:
+                            print(row[col_idx])
+                            print(type(row[col_idx]))
                             raise Exception # TODO To improve with custom exception or handling
 
                     model.appendRow([QStandardItem(str(field)) for field in row])
@@ -238,6 +243,12 @@ class ImportWindow(QDialog):
                 self.ui.latitudeComboBox.currentIndex(), QStandardItem("Plane Latitude"))
             self._target_table_model.setHorizontalHeaderItem(
                 self.ui.altitudeComboBox.currentIndex(), QStandardItem("Plane Altitude"))
+            if (a := self.ui.bankComboBox.currentIndex()) >= 0:
+                self._target_table_model.setHorizontalHeaderItem(a, QStandardItem("Plane Bank Degrees"))
+            if (a := self.ui.pitchComboBox.currentIndex()) >= 0:
+                self._target_table_model.setHorizontalHeaderItem(a, QStandardItem("Plane Pitch Degrees"))
+            if (a := self.ui.headingComboBox.currentIndex()) >= 0:
+                self._target_table_model.setHorizontalHeaderItem(a, QStandardItem("Plane Heading Degrees True"))
         elif self.ui.GPXRadioButton.isChecked():
             self._target_table_model.clear()
             if self.ui.interpolationCheckBox.isChecked():
