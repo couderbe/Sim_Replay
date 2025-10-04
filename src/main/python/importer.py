@@ -1,3 +1,4 @@
+import re
 from PySide6.QtGui import QStandardItem, QStandardItemModel
 from PySide6.QtCore import Qt
 
@@ -28,8 +29,13 @@ def import_gpx_file(tableModel: QStandardItemModel, fileName, limit=math.inf):
         reader_gpx = gpxpy.parse(gpxfile)
         headers = FlightDatasManager.get_current_keys()
         first_point = reader_gpx.tracks[0].segments[0].points[0]
-        previous_point = first_point
-        previous_attitude = Attitude(0, 0, 0)
+        
+        previous_point = first_point        
+        
+        previous_speed = retrieve_SDVFR_speed(first_point.description)
+        is_speed_available = previous_speed != None
+        previous_heading = retrieve_SDVFR_heading(first_point.description)
+
         for track in reader_gpx.tracks:
             for segment in track.segments:
                 for i, point in enumerate(segment.points):
@@ -42,11 +48,21 @@ def import_gpx_file(tableModel: QStandardItemModel, fileName, limit=math.inf):
                             QStandardItem(str(previous_point.longitude)),
                             QStandardItem(str(previous_point.elevation)),
                             QStandardItem(str(attitude.phi)),
-                            QStandardItem(str(attitude.theta)),
-                            QStandardItem(str(attitude.psi))
+                            QStandardItem(str(attitude.theta))
                         ]
+
+                        if previous_heading!=None:
+                            row.append(QStandardItem(str(previous_heading)))
+                        else:
+                            row.append(QStandardItem(str(attitude.psi)))
+                        previous_heading = retrieve_SDVFR_heading(point.description)
+
+                        if is_speed_available:
+                            row.append(QStandardItem(str(previous_speed) if previous_speed!= None else 0))
+                            previous_speed = retrieve_SDVFR_speed(point.description)
+
                         tableModel.appendRow(row)
-                        previous_attitude = attitude
+                        
                     previous_point = point
                     if i >= limit:
                         break
@@ -60,6 +76,9 @@ def import_gpx_file(tableModel: QStandardItemModel, fileName, limit=math.inf):
         for i, header in enumerate(headers):
             tableModel.setHeaderData(
                 i, Qt.Orientation.Horizontal, header)
+        if is_speed_available:
+            tableModel.setHeaderData(
+                len(headers), Qt.Orientation.Horizontal, "Speed")
         # Set time label initial value
 
 
@@ -160,3 +179,23 @@ def import_gpx_file_module(tableModel: QStandardItemModel, fileName):
     for i, header in enumerate(FlightDatasManager.get_current_keys()):
             tableModel.setHeaderData(
                 i, Qt.Orientation.Horizontal, header)
+            
+def retrieve_SDVFR_speed(str: str) -> int|None:
+    if str!=None:
+        pattern = r"Vitesse\s*:\s*(\d+)\s*kmh"
+        matched = re.search(pattern, str)
+        if matched:
+            # Convert numbers when possible
+            return int(matched.group(1))
+    return None
+
+def retrieve_SDVFR_heading(str: str) -> int|None:
+    if str!=None:
+        pattern = r"Cap\s*:\s*(\d+)[^0-9]+"
+        matched = re.search(pattern, str)
+        if matched:
+            # Convert numbers when possible
+            return int(matched.group(1))
+    return None
+
+
