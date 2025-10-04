@@ -1,6 +1,7 @@
 import csv
 import os
 from datetime import datetime
+from typing import Callable, Union
 
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QStandardItem, QStandardItemModel
@@ -172,7 +173,7 @@ class ImportWindow(QDialog):
     def csv_to_model(self, model: QStandardItemModel, nbr_line: int = -1):
         model.clear()
 
-        converters = {}
+        converters: dict[str, Callable[[str], Union[int, float]]] = {}
 
         try:
             with open(self._file_path, 'r', newline='') as csvfile:
@@ -185,10 +186,16 @@ class ImportWindow(QDialog):
                     return  # Empty file
 
                 if self.ui.timeFormatComboBox.currentIndex() == 1:
-                    converters = {self.ui.timeComboBox.currentText(): lambda t: datetime.strptime(t, "%H:%M:%S").hour*3600 + datetime.strptime(t, "%H:%M:%S").minute*60 + datetime.strptime(t, "%H:%M:%S").second,
-                                  self.ui.bankComboBox.currentText(): lambda deg: -float(deg) * math.pi / 180,
-                                  self.ui.pitchComboBox.currentText(): lambda deg: -float(deg) * math.pi / 180,
-                                  self.ui.headingComboBox.currentText():lambda deg: float(deg) * math.pi / 180}
+                    converters = {self.ui.timeComboBox.currentText(): lambda t: datetime.strptime(t, "%H:%M:%S").hour*3600 + datetime.strptime(t, "%H:%M:%S").minute*60 + datetime.strptime(t, "%H:%M:%S").second}
+
+                if self.ui.degRadioButton.isChecked():
+                    converters[self.ui.bankComboBox.currentText()] = lambda deg: -float(deg) * math.pi / 180
+                    converters[self.ui.pitchComboBox.currentText()] = lambda deg: -float(deg) * math.pi / 180
+                    converters[self.ui.headingComboBox.currentText()] = lambda deg: float(deg) * math.pi / 180
+                elif self.ui.radRadioButton.isChecked():
+                    converters[self.ui.bankComboBox.currentText()] = lambda rad: -float(rad)
+                    converters[self.ui.pitchComboBox.currentText()] = lambda rad: -float(rad)
+
                 # Header handling
                 if not self.ui.columnFirstLineCheckBox.isChecked():
                     model.appendRow([QStandardItem(field) for field in headers])
