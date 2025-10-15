@@ -1,5 +1,5 @@
 from mockito import mock, verify
-from src.main.python.importer import import_gpx_file_module, retrieve_SDVFR_heading, retrieve_SDVFR_speed
+from src.main.python.importer.importer import import_gpx_file_module, retrieve_SDVFR_heading, retrieve_SDVFR_speed
 import unittest
 
 

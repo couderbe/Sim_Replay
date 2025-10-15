@@ -1,4 +1,5 @@
 import csv
+import math
 import os
 from datetime import datetime
 
@@ -6,8 +7,9 @@ from PySide6.QtCore import Qt
 from PySide6.QtGui import QStandardItem, QStandardItemModel
 from PySide6.QtWidgets import QDialog, QFileDialog, QMessageBox, QWidget
 
+from src.main.python.importer.importer import import_gpx_file, import_gpx_file_module
 from src.main.python.tools.gpx_interpolate import gpx_read
-from src.main.python.importer import *
+
 from src.main.python.ui.import_window_ui import Ui_ImportWindow
 from src.main.python.model.model import Model
 

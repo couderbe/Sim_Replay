@@ -3,7 +3,6 @@ from PySide6.QtGui import QStandardItem, QStandardItemModel
 from PySide6.QtCore import Qt
 
 import gpxpy
-import gpxpy.gpx
 import math
 
 from gpxpy.gpx import GPXTrackPoint
