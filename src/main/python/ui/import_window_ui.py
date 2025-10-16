@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'importWindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.2
+## Created by: Qt User Interface Compiler version 6.7.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -61,7 +61,7 @@ class Ui_ImportWindow(object):
 
         self.horizontalLayout.addWidget(self.CSVRadioButton)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
@@ -131,7 +131,7 @@ class Ui_ImportWindow(object):
 
         self.otherFieldConfigurationLayout.addWidget(self.columnFirstLineCheckBox)
 
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.otherFieldConfigurationLayout.addItem(self.horizontalSpacer_2)
 
@@ -177,7 +177,7 @@ class Ui_ImportWindow(object):
 
         self.timeLayout.addWidget(self.timeFormatLineEdit)
 
-        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.timeLayout.addItem(self.horizontalSpacer_6)
 
@@ -226,7 +226,7 @@ class Ui_ImportWindow(object):
 
         self.horizontalPositionLayout.addWidget(self.horizFormatlineEdit)
 
-        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalPositionLayout.addItem(self.horizontalSpacer_5)
 
@@ -259,7 +259,7 @@ class Ui_ImportWindow(object):
 
         self.verticalPositionLayout.addWidget(self.feetRadioButton_2)
 
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.verticalPositionLayout.addItem(self.horizontalSpacer_3)
 
@@ -315,7 +315,7 @@ class Ui_ImportWindow(object):
 
         self.attitudeLayout.addWidget(self.radRadioButton)
 
-        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.attitudeLayout.addItem(self.horizontalSpacer_4)
 
@@ -330,6 +330,11 @@ class Ui_ImportWindow(object):
         self.dataEnhancementGroup.setEnabled(True)
         self.horizontalLayout_4 = QHBoxLayout(self.dataEnhancementGroup)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.supplementaryParamscheckBox = QCheckBox(self.dataEnhancementGroup)
+        self.supplementaryParamscheckBox.setObjectName(u"supplementaryParamscheckBox")
+
+        self.horizontalLayout_4.addWidget(self.supplementaryParamscheckBox)
+
         self.interpolationCheckBox = QCheckBox(self.dataEnhancementGroup)
         self.interpolationCheckBox.setObjectName(u"interpolationCheckBox")
 
@@ -355,7 +360,7 @@ class Ui_ImportWindow(object):
 
         self.horizontalLayout_3.addWidget(self.importButton)
 
-        self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_3.addItem(self.horizontalSpacer_7)
 
@@ -400,6 +405,10 @@ class Ui_ImportWindow(object):
         self.degRadioButton.setText(QCoreApplication.translate("ImportWindow", u"deg", None))
         self.radRadioButton.setText(QCoreApplication.translate("ImportWindow", u"rad", None))
         self.dataEnhancementGroup.setTitle(QCoreApplication.translate("ImportWindow", u"Data Enhancement", None))
+#if QT_CONFIG(tooltip)
+        self.supplementaryParamscheckBox.setToolTip("")
+#endif // QT_CONFIG(tooltip)
+        self.supplementaryParamscheckBox.setText(QCoreApplication.translate("ImportWindow", u"Supplementary Parameters", None))
         self.interpolationCheckBox.setText(QCoreApplication.translate("ImportWindow", u"Interpolation", None))
         self.closeButton.setText(QCoreApplication.translate("ImportWindow", u"Close", None))
         self.importButton.setText(QCoreApplication.translate("ImportWindow", u"Import", None))

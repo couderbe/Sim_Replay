@@ -59,6 +59,7 @@ class ImportWindow(QDialog):
         self.ui.closeButton.clicked.connect(self.close)
         self.ui.columnFirstLineCheckBox.stateChanged.connect(
             lambda x: self._opening_function())
+        self.ui.supplementaryParamscheckBox.stateChanged.connect(self.update_preview_gpx)
         
         self.TIME_FORMATS = {0:"seconds",1:"hh:mm:ss"}
         self._time_format_model = QStandardItemModel(self)
@@ -163,7 +164,7 @@ class ImportWindow(QDialog):
             pass
         else:
             gpx_datas = gpx_read(self._file_path)
-        import_gpx_file(self._tableModel, self._file_path, limit=self.PREVIEW_ITEM_COUNT)
+        import_gpx_file(self._tableModel, self._file_path, limit=self.PREVIEW_ITEM_COUNT, with_supp_data=self.ui.supplementaryParamscheckBox.isChecked())
 
     def update_parameters_fieldname_choices(self):
         self._parameters_fieldname_choices.clear()
@@ -256,5 +257,5 @@ class ImportWindow(QDialog):
             if self.ui.interpolationCheckBox.isChecked():
                 import_gpx_file_module(self._target_table_model, self._file_path)
             else:
-                import_gpx_file(self._target_table_model, self._file_path)
+                import_gpx_file(self._target_table_model, self._file_path, with_supp_data=self.ui.supplementaryParamscheckBox.isChecked())
         self.close()

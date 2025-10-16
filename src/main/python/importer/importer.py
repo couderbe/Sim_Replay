@@ -1,4 +1,3 @@
-import re
 from PySide6.QtGui import QStandardItem, QStandardItemModel
 from PySide6.QtCore import Qt
 
@@ -6,6 +5,7 @@ import gpxpy
 import math
 
 from gpxpy.gpx import GPXTrackPoint
+from src.main.python.importer.specific_parsers import SpecificParser
 from src.main.python.datas.datas_manager import FlightDatasManager
 from src.main.python.flight_model.flight_model import Attitude, compute_attitude_from_gpx
 from src.main.python.tools.gpx_interpolate import GPXData, gpx_interpolate, gpx_read
@@ -14,12 +14,14 @@ from src.main.python.tools.geometry import DEG_2_RAD
 M_TO_FT = 1/0.3048
 
 
-def import_gpx_file(tableModel: QStandardItemModel, fileName, limit=math.inf):
+def import_gpx_file(tableModel: QStandardItemModel, fileName, limit=math.inf, with_supp_data=False):
     """Updates the table with the trajectory found in a given .gpx file
 
     Args:
         tableModel (QStandardItemModel): the table that displays the trajectory 
         fileName (String): the file name of the imported .gpx file
+        limit (int): an optional limit of imported rows
+        with_supp_data (bool): if supplementary data are retrieved from description tag
 
     Returns:
         Any: null
@@ -31,9 +33,9 @@ def import_gpx_file(tableModel: QStandardItemModel, fileName, limit=math.inf):
         
         previous_point = first_point        
         
-        previous_speed = retrieve_SDVFR_speed(first_point.description)
-        is_speed_available = previous_speed != None
-        previous_heading = retrieve_SDVFR_heading(first_point.description)
+        if with_supp_data:
+            spec_parser = SpecificParser(first_point.description)
+            previous_specific = spec_parser.parse_data(first_point.description)
 
         for track in reader_gpx.tracks:
             for segment in track.segments:
@@ -47,18 +49,15 @@ def import_gpx_file(tableModel: QStandardItemModel, fileName, limit=math.inf):
                             QStandardItem(str(previous_point.longitude)),
                             QStandardItem(str(previous_point.elevation)),
                             QStandardItem(str(attitude.phi)),
-                            QStandardItem(str(attitude.theta))
+                            QStandardItem(str(attitude.theta)),
+                            QStandardItem(str(attitude.psi))
                         ]
-
-                        if previous_heading!=None:
-                            row.append(QStandardItem(str(previous_heading)))
-                        else:
-                            row.append(QStandardItem(str(attitude.psi)))
-                        previous_heading = retrieve_SDVFR_heading(point.description)
-
-                        if is_speed_available:
-                            row.append(QStandardItem(str(previous_speed) if previous_speed!= None else 0))
-                            previous_speed = retrieve_SDVFR_speed(point.description)
+                        
+                        if with_supp_data:
+                            # Add and update specific values
+                            for v in previous_specific.values():
+                                row.append(QStandardItem(str(v)))
+                            previous_specific = spec_parser.parse_data(point.description)
 
                         tableModel.appendRow(row)
                         
@@ -75,9 +74,11 @@ def import_gpx_file(tableModel: QStandardItemModel, fileName, limit=math.inf):
         for i, header in enumerate(headers):
             tableModel.setHeaderData(
                 i, Qt.Orientation.Horizontal, header)
-        if is_speed_available:
-            tableModel.setHeaderData(
-                len(headers), Qt.Orientation.Horizontal, "Speed")
+            
+        if with_supp_data:
+            for i, header in enumerate(spec_parser.headers.keys()):
+                tableModel.setHeaderData(
+                    len(headers) + i, Qt.Orientation.Horizontal, header)
         # Set time label initial value
 
 
@@ -178,23 +179,3 @@ def import_gpx_file_module(tableModel: QStandardItemModel, fileName):
     for i, header in enumerate(FlightDatasManager.get_current_keys()):
             tableModel.setHeaderData(
                 i, Qt.Orientation.Horizontal, header)
-            
-def retrieve_SDVFR_speed(str: str) -> int|None:
-    if str!=None:
-        pattern = r"Vitesse\s*:\s*(\d+)\s*kmh"
-        matched = re.search(pattern, str)
-        if matched:
-            # Convert numbers when possible
-            return int(matched.group(1))
-    return None
-
-def retrieve_SDVFR_heading(str: str) -> int|None:
-    if str!=None:
-        pattern = r"Cap\s*:\s*(\d+)[^0-9]+"
-        matched = re.search(pattern, str)
-        if matched:
-            # Convert numbers when possible
-            return int(matched.group(1))
-    return None
-
-
