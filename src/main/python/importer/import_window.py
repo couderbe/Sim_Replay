@@ -18,17 +18,22 @@ class ImportWindow(QDialog):
 
     PREVIEW_ITEM_COUNT = 10
 
-    def __init__(self, target_table_model: Model, parent: QWidget | None = ..., f: Qt.WindowType = ...) -> None:
+    def __init__(
+        self,
+        target_table_model: Model,
+        parent: QWidget | None = ...,
+        f: Qt.WindowType = ...,
+    ) -> None:
         super().__init__(parent, f)
         self.ui = Ui_ImportWindow()
         self.ui.setupUi(self)
         self.setWindowModality(Qt.WindowModality.ApplicationModal)
         self.ui.fileFormatGroup.setEnabled(False)
-        self.ui.configurationGroup.setEnabled(False)
-        self.ui.parametersDefinitionGroup.setEnabled(False)
-        self.ui.dataEnhancementGroup.setEnabled(False)
+        self.ui.configurationGroup.setVisible(False)
+        self.ui.parametersDefinitionGroup.setVisible(False)
+        self.ui.dataEnhancementGroup.setVisible(False)
 
-        self.ui.setStartTimeAsOriginCheckBox.setVisible(False)
+        # self.ui.setStartTimeAsOriginCheckBox.setVisible(True)
 
         self._target_table_model = target_table_model._mainTableModel
         self._file_path = ""
@@ -55,23 +60,31 @@ class ImportWindow(QDialog):
         self.ui.tabulationRadioButton.toggled.connect(self.tabulation_toggled)
         self.ui.semiclonRadioButton.toggled.connect(self.semicolon_toggled)
         self.ui.spaceRadioButton.toggled.connect(self.space_toggled)
-        self.ui.ligneIgnoreSpinBox.valueChanged.connect(
-            self.ligne_ignore_changed)
+        self.ui.ligneIgnoreSpinBox.valueChanged.connect(self.ligne_ignore_changed)
         self.ui.importButton.clicked.connect(self.finish_import)
         self.ui.closeButton.clicked.connect(self.close)
         self.ui.columnFirstLineCheckBox.stateChanged.connect(
-            lambda x: self._opening_function())
-        self.ui.supplementaryParamscheckBox.stateChanged.connect(self.update_preview_gpx)
-        self.ui.interpolationCheckBox.stateChanged.connect(self.interpolation_toggled)
-        
-        self.TIME_FORMATS = {0:"seconds",1:"hh:mm:ss"}
+            lambda x: self._opening_function()
+        )
+        self.ui.supplementaryParamscheckBox.stateChanged.connect(
+            self.update_preview_gpx
+        )
+        self.ui.interpolationCheckBox.stateChanged.connect(self.update_preview_gpx)
+        self.ui.setStartTimeAsOriginCheckBox.stateChanged.connect(
+            self.update_preview_gpx
+        )
+
+        self.TIME_FORMATS = {0: "seconds", 1: "hh:mm:ss"}
         self._time_format_model = QStandardItemModel(self)
-        self._time_format_model.appendColumn([QStandardItem(i) for i in self.TIME_FORMATS.values()])
+        self._time_format_model.appendColumn(
+            [QStandardItem(i) for i in self.TIME_FORMATS.values()]
+        )
         self.ui.timeFormatComboBox.setModel(self._time_format_model)
 
     def choose_file(self):
         file_path, _ = QFileDialog.getOpenFileName(
-            self, 'Import file', '', 'All files (*.*)')
+            self, "Import file", "", "All files (*.*)"
+        )
         if file_path:
             self.ui.fileLineEdit.setText(file_path)
             self.ui.fileFormatGroup.setEnabled(True)
@@ -85,7 +98,8 @@ class ImportWindow(QDialog):
         else:
             self.ui.fileLineEdit.setText(self._file_path)
             _ = QMessageBox.critical(
-                self, "Invalid File", "Selected file does not exist")
+                self, "Invalid File", "Selected file does not exist"
+            )
 
     def open_file(self, file_path: str):
         self._file_path = file_path
@@ -108,18 +122,18 @@ class ImportWindow(QDialog):
             self.ui.GPXRadioButton.setChecked(False)
             self._opening_function = self.update_preview_csv
             self.update_preview_csv()
-            self.ui.configurationGroup.setEnabled(True)
-            self.ui.parametersDefinitionGroup.setEnabled(True)
-            self.ui.dataEnhancementGroup.setEnabled(False)
+            self.ui.configurationGroup.setVisible(True)
+            self.ui.parametersDefinitionGroup.setVisible(True)
+            self.ui.dataEnhancementGroup.setVisible(False)
 
     def gpx_toggled(self):
         if self.ui.GPXRadioButton.isChecked():
             self.ui.CSVRadioButton.setChecked(False)
             self._opening_function = self.update_preview_gpx
             self.update_preview_gpx()
-            self.ui.configurationGroup.setEnabled(False)
-            self.ui.parametersDefinitionGroup.setEnabled(False)
-            self.ui.dataEnhancementGroup.setEnabled(True)
+            self.ui.configurationGroup.setVisible(False)
+            self.ui.parametersDefinitionGroup.setVisible(False)
+            self.ui.dataEnhancementGroup.setVisible(True)
 
     def comma_toggled(self):
         if self.ui.commaRadioButton.isChecked():
@@ -154,7 +168,6 @@ class ImportWindow(QDialog):
             self._opening_function()
 
     def interpolation_toggled(self):
-        self.ui.setStartTimeAsOriginCheckBox.setVisible(self.ui.interpolationCheckBox.isChecked())
         self.update_preview_gpx()
 
     def ligne_ignore_changed(self):
@@ -165,20 +178,36 @@ class ImportWindow(QDialog):
         self.update_parameters_fieldname_choices()
 
     def update_preview_gpx(self):
+        self.ui.supplementaryParamscheckBox.setEnabled(
+            not self.ui.interpolationCheckBox.isChecked()
+        )
+        self.ui.interpolationCheckBox.setEnabled(
+            not self.ui.supplementaryParamscheckBox.isChecked()
+        )
+
         self._tableModel.clear()
         if self.ui.interpolationCheckBox.isChecked():
-            #TODO : To be implemented
-            pass
+            import_gpx_file_module(
+                self._tableModel,
+                self._file_path,
+                self.PREVIEW_ITEM_COUNT,
+                self.ui.setStartTimeAsOriginCheckBox.isChecked(),
+            )
         else:
-            gpx_datas = gpx_read(self._file_path)
-        import_gpx_file(self._tableModel, self._file_path, limit=self.PREVIEW_ITEM_COUNT,
-                        with_supp_data=self.ui.supplementaryParamscheckBox.isChecked(),
-                        ref_time_used=self.ui.setStartTimeAsOriginCheckBox.isChecked())
+            import_gpx_file(
+                self._tableModel,
+                self._file_path,
+                self.PREVIEW_ITEM_COUNT,
+                with_supp_data=self.ui.supplementaryParamscheckBox.isChecked(),
+                ref_time_used=self.ui.setStartTimeAsOriginCheckBox.isChecked(),
+            )
 
     def update_parameters_fieldname_choices(self):
         self._parameters_fieldname_choices.clear()
-        headers = [self._tableModel.horizontalHeaderItem(
-            i) for i in range(self._tableModel.columnCount())]
+        headers = [
+            self._tableModel.horizontalHeaderItem(i)
+            for i in range(self._tableModel.columnCount())
+        ]
         self._parameters_fieldname_choices.appendColumn(headers)
 
     def csv_to_model(self, model: QStandardItemModel, nbr_line: int = -1):
@@ -187,7 +216,7 @@ class ImportWindow(QDialog):
         converters = {}
 
         try:
-            with open(self._file_path, 'r', newline='') as csvfile:
+            with open(self._file_path, "r", newline="") as csvfile:
                 reader = csv.reader(csvfile, delimiter=self._delimiter)
 
                 # First line
@@ -197,10 +226,23 @@ class ImportWindow(QDialog):
                     return  # Empty file
 
                 if self.ui.timeFormatComboBox.currentIndex() == 1:
-                    converters = {self.ui.timeComboBox.currentText(): lambda t: datetime.strptime(t, "%H:%M:%S").hour*3600 + datetime.strptime(t, "%H:%M:%S").minute*60 + datetime.strptime(t, "%H:%M:%S").second,
-                                  self.ui.bankComboBox.currentText(): lambda deg: -float(deg) * math.pi / 180,
-                                  self.ui.pitchComboBox.currentText(): lambda deg: -float(deg) * math.pi / 180,
-                                  self.ui.headingComboBox.currentText():lambda deg: float(deg) * math.pi / 180}
+                    converters = {
+                        self.ui.timeComboBox.currentText(): lambda t: datetime.strptime(
+                            t, "%H:%M:%S"
+                        ).hour
+                        * 3600
+                        + datetime.strptime(t, "%H:%M:%S").minute * 60
+                        + datetime.strptime(t, "%H:%M:%S").second,
+                        self.ui.bankComboBox.currentText(): lambda deg: -float(deg)
+                        * math.pi
+                        / 180,
+                        self.ui.pitchComboBox.currentText(): lambda deg: -float(deg)
+                        * math.pi
+                        / 180,
+                        self.ui.headingComboBox.currentText(): lambda deg: float(deg)
+                        * math.pi
+                        / 180,
+                    }
                 # Header handling
                 if not self.ui.columnFirstLineCheckBox.isChecked():
                     model.appendRow([QStandardItem(field) for field in headers])
@@ -230,7 +272,7 @@ class ImportWindow(QDialog):
                         except Exception as e:
                             print(row[col_idx])
                             print(type(row[col_idx]))
-                            raise Exception # TODO To improve with custom exception or handling
+                            raise Exception  # TODO To improve with custom exception or handling
 
                     model.appendRow([QStandardItem(str(field)) for field in row])
 
@@ -241,30 +283,49 @@ class ImportWindow(QDialog):
         except FileNotFoundError:
             print(f"Fichier introuvable : {self._file_path}")
 
-
     def finish_import(self):
         # Checks of compatibility of the main parameters shall be performed before any import
         if self.ui.CSVRadioButton.isChecked():
             self._target_table_model.clear()
             self.csv_to_model(self._target_table_model)
             self._target_table_model.setHorizontalHeaderItem(
-                self.ui.timeComboBox.currentIndex(), QStandardItem("ZULU TIME"))
+                self.ui.timeComboBox.currentIndex(), QStandardItem("ZULU TIME")
+            )
             self._target_table_model.setHorizontalHeaderItem(
-                self.ui.longitudeComboBox.currentIndex(), QStandardItem("Plane Longitude"))
+                self.ui.longitudeComboBox.currentIndex(),
+                QStandardItem("Plane Longitude"),
+            )
             self._target_table_model.setHorizontalHeaderItem(
-                self.ui.latitudeComboBox.currentIndex(), QStandardItem("Plane Latitude"))
+                self.ui.latitudeComboBox.currentIndex(), QStandardItem("Plane Latitude")
+            )
             self._target_table_model.setHorizontalHeaderItem(
-                self.ui.altitudeComboBox.currentIndex(), QStandardItem("Plane Altitude"))
+                self.ui.altitudeComboBox.currentIndex(), QStandardItem("Plane Altitude")
+            )
             if (a := self.ui.bankComboBox.currentIndex()) >= 0:
-                self._target_table_model.setHorizontalHeaderItem(a, QStandardItem("Plane Bank Degrees"))
+                self._target_table_model.setHorizontalHeaderItem(
+                    a, QStandardItem("Plane Bank Degrees")
+                )
             if (a := self.ui.pitchComboBox.currentIndex()) >= 0:
-                self._target_table_model.setHorizontalHeaderItem(a, QStandardItem("Plane Pitch Degrees"))
+                self._target_table_model.setHorizontalHeaderItem(
+                    a, QStandardItem("Plane Pitch Degrees")
+                )
             if (a := self.ui.headingComboBox.currentIndex()) >= 0:
-                self._target_table_model.setHorizontalHeaderItem(a, QStandardItem("Plane Heading Degrees True"))
+                self._target_table_model.setHorizontalHeaderItem(
+                    a, QStandardItem("Plane Heading Degrees True")
+                )
         elif self.ui.GPXRadioButton.isChecked():
             self._target_table_model.clear()
             if self.ui.interpolationCheckBox.isChecked():
-                import_gpx_file_module(self._target_table_model, self._file_path, self.ui.setStartTimeAsOriginCheckBox.isChecked())
+                import_gpx_file_module(
+                    self._target_table_model,
+                    self._file_path,
+                    ref_time_used=self.ui.setStartTimeAsOriginCheckBox.isChecked(),
+                )
             else:
-                import_gpx_file(self._target_table_model, self._file_path, with_supp_data=self.ui.supplementaryParamscheckBox.isChecked())
+                import_gpx_file(
+                    self._target_table_model,
+                    self._file_path,
+                    with_supp_data=self.ui.supplementaryParamscheckBox.isChecked(),
+                    ref_time_used=self.ui.setStartTimeAsOriginCheckBox.isChecked(),
+                )
         self.close()

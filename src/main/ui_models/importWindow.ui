@@ -543,6 +543,13 @@
     </widget>
    </item>
    <item>
+    <widget class="QLabel" name="previewLabel">
+     <property name="text">
+      <string>Preview</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QTableView" name="tableView"/>
    </item>
    <item>

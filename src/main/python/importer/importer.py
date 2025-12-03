@@ -13,15 +13,15 @@ from src.main.python.tools.gpx_interpolate import GPXData, gpx_interpolate, gpx_
 M_TO_FT = 1/0.3048
 
 
-def import_gpx_file(tableModel: QStandardItemModel, fileName, limit=math.inf, ref_time_used=False, with_supp_data=False):
+def import_gpx_file(tableModel: QStandardItemModel, fileName, limit=math.inf, with_supp_data=False, ref_time_used=False):
     """Updates the table with the trajectory found in a given .gpx file
 
     Args:
         tableModel (QStandardItemModel): the table that displays the trajectory 
         fileName (String): the file name of the imported .gpx file
         limit (int): an optional limit of imported rows
-        ref_time_used (Boolean): whether the first time point is used as reference
         with_supp_data (bool): if supplementary data are retrieved from description tag
+        ref_time_used (Boolean): whether the first time point is used as reference
 
     Returns:
         Any: null
@@ -81,13 +81,14 @@ def import_gpx_file(tableModel: QStandardItemModel, fileName, limit=math.inf, re
                     len(headers) + i, Qt.Orientation.Horizontal, header)
         # Set time label initial value
 
-def import_gpx_file_module(tableModel: QStandardItemModel, fileName, ref_time_used=False):
+def import_gpx_file_module(tableModel: QStandardItemModel, fileName, limit=math.inf, ref_time_used=False):
     """Updates the table with the trajectory found in a given .gpx file with interpolation
     computed globally by module
 
     Args:
         tableModel (QStandardItemModel): the table that displays the trajectory 
         fileName (String): the file name of the imported .gpx file
+        limit (int): an optional limit of imported rows
         ref_time_used (Boolean): whether the first time point is used as reference
 
     Returns:
@@ -100,7 +101,7 @@ def import_gpx_file_module(tableModel: QStandardItemModel, fileName, ref_time_us
     ref_tstamp = first_interp_point_time.time if ref_time_used else 0.0
     previous_interp_point = first_interp_point_time
     previous_attitude = Attitude(0, 0, 0)
-    for j in range(1, len(gpx_datas['lat'])):
+    for j in range(1, min(len(gpx_datas['lat']), limit)):
         interp_point = GPXTrackPoint(
             gpx_datas['lat'][j], gpx_datas['lon'][j], gpx_datas['ele'][j], gpx_datas['tstamp'][j])
         attitude = compute_attitude_from_gpx(

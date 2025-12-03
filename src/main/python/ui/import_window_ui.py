@@ -348,6 +348,11 @@ class Ui_ImportWindow(object):
 
         self.verticalLayout_2.addWidget(self.dataEnhancementGroup)
 
+        self.previewLabel = QLabel(ImportWindow)
+        self.previewLabel.setObjectName(u"previewLabel")
+
+        self.verticalLayout_2.addWidget(self.previewLabel)
+
         self.tableView = QTableView(ImportWindow)
         self.tableView.setObjectName(u"tableView")
 
@@ -416,6 +421,7 @@ class Ui_ImportWindow(object):
         self.supplementaryParamscheckBox.setText(QCoreApplication.translate("ImportWindow", u"Supplementary Parameters", None))
         self.interpolationCheckBox.setText(QCoreApplication.translate("ImportWindow", u"Interpolation", None))
         self.setStartTimeAsOriginCheckBox.setText(QCoreApplication.translate("ImportWindow", u"Set Start Time As Origin", None))
+        self.previewLabel.setText(QCoreApplication.translate("ImportWindow", u"Preview", None))
         self.closeButton.setText(QCoreApplication.translate("ImportWindow", u"Close", None))
         self.importButton.setText(QCoreApplication.translate("ImportWindow", u"Import", None))
     # retranslateUi
