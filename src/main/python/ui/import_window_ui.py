@@ -340,6 +340,11 @@ class Ui_ImportWindow(object):
 
         self.horizontalLayout_4.addWidget(self.interpolationCheckBox)
 
+        self.setStartTimeAsOriginCheckBox = QCheckBox(self.dataEnhancementGroup)
+        self.setStartTimeAsOriginCheckBox.setObjectName(u"setStartTimeAsOriginCheckBox")
+
+        self.horizontalLayout_4.addWidget(self.setStartTimeAsOriginCheckBox)
+
 
         self.verticalLayout_2.addWidget(self.dataEnhancementGroup)
 
@@ -410,6 +415,7 @@ class Ui_ImportWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.supplementaryParamscheckBox.setText(QCoreApplication.translate("ImportWindow", u"Supplementary Parameters", None))
         self.interpolationCheckBox.setText(QCoreApplication.translate("ImportWindow", u"Interpolation", None))
+        self.setStartTimeAsOriginCheckBox.setText(QCoreApplication.translate("ImportWindow", u"Set Start Time As Origin", None))
         self.closeButton.setText(QCoreApplication.translate("ImportWindow", u"Close", None))
         self.importButton.setText(QCoreApplication.translate("ImportWindow", u"Import", None))
     # retranslateUi

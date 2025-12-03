@@ -532,6 +532,13 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QCheckBox" name="setStartTimeAsOriginCheckBox">
+        <property name="text">
+         <string>Set Start Time As Origin</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>

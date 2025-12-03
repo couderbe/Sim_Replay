@@ -28,6 +28,8 @@ class ImportWindow(QDialog):
         self.ui.parametersDefinitionGroup.setEnabled(False)
         self.ui.dataEnhancementGroup.setEnabled(False)
 
+        self.ui.setStartTimeAsOriginCheckBox.setVisible(False)
+
         self._target_table_model = target_table_model._mainTableModel
         self._file_path = ""
         self._delimiter = ","
@@ -60,6 +62,7 @@ class ImportWindow(QDialog):
         self.ui.columnFirstLineCheckBox.stateChanged.connect(
             lambda x: self._opening_function())
         self.ui.supplementaryParamscheckBox.stateChanged.connect(self.update_preview_gpx)
+        self.ui.interpolationCheckBox.stateChanged.connect(self.interpolation_toggled)
         
         self.TIME_FORMATS = {0:"seconds",1:"hh:mm:ss"}
         self._time_format_model = QStandardItemModel(self)
@@ -107,7 +110,7 @@ class ImportWindow(QDialog):
             self.update_preview_csv()
             self.ui.configurationGroup.setEnabled(True)
             self.ui.parametersDefinitionGroup.setEnabled(True)
-            self.ui.dataEnhancementGroup.setEnabled(True)
+            self.ui.dataEnhancementGroup.setEnabled(False)
 
     def gpx_toggled(self):
         if self.ui.GPXRadioButton.isChecked():
@@ -150,6 +153,10 @@ class ImportWindow(QDialog):
             self._delimiter = "\t"
             self._opening_function()
 
+    def interpolation_toggled(self):
+        self.ui.setStartTimeAsOriginCheckBox.setVisible(self.ui.interpolationCheckBox.isChecked())
+        self.update_preview_gpx()
+
     def ligne_ignore_changed(self):
         self._opening_function()
 
@@ -164,7 +171,9 @@ class ImportWindow(QDialog):
             pass
         else:
             gpx_datas = gpx_read(self._file_path)
-        import_gpx_file(self._tableModel, self._file_path, limit=self.PREVIEW_ITEM_COUNT, with_supp_data=self.ui.supplementaryParamscheckBox.isChecked())
+        import_gpx_file(self._tableModel, self._file_path, limit=self.PREVIEW_ITEM_COUNT,
+                        with_supp_data=self.ui.supplementaryParamscheckBox.isChecked(),
+                        ref_time_used=self.ui.setStartTimeAsOriginCheckBox.isChecked())
 
     def update_parameters_fieldname_choices(self):
         self._parameters_fieldname_choices.clear()
@@ -255,7 +264,7 @@ class ImportWindow(QDialog):
         elif self.ui.GPXRadioButton.isChecked():
             self._target_table_model.clear()
             if self.ui.interpolationCheckBox.isChecked():
-                import_gpx_file_module(self._target_table_model, self._file_path)
+                import_gpx_file_module(self._target_table_model, self._file_path, self.ui.setStartTimeAsOriginCheckBox.isChecked())
             else:
                 import_gpx_file(self._target_table_model, self._file_path, with_supp_data=self.ui.supplementaryParamscheckBox.isChecked())
         self.close()
