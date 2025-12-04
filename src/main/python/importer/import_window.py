@@ -33,7 +33,8 @@ class ImportWindow(QDialog):
         self.ui.parametersDefinitionGroup.setVisible(False)
         self.ui.dataEnhancementGroup.setVisible(False)
 
-        # self.ui.setStartTimeAsOriginCheckBox.setVisible(True)
+        self.ui.interpLengthLabel.setEnabled(False)
+        self.ui.interpDoubleSpinBox.setEnabled(False)
 
         self._target_table_model = target_table_model._mainTableModel
         self._file_path = ""
@@ -73,6 +74,7 @@ class ImportWindow(QDialog):
         self.ui.setStartTimeAsOriginCheckBox.stateChanged.connect(
             self.update_preview_gpx
         )
+        self.ui.interpDoubleSpinBox.valueChanged.connect(self.update_preview_gpx)
 
         self.TIME_FORMATS = {0: "seconds", 1: "hh:mm:ss"}
         self._time_format_model = QStandardItemModel(self)
@@ -187,13 +189,18 @@ class ImportWindow(QDialog):
 
         self._tableModel.clear()
         if self.ui.interpolationCheckBox.isChecked():
+            self.ui.interpLengthLabel.setEnabled(True)
+            self.ui.interpDoubleSpinBox.setEnabled(True)
             import_gpx_file_module(
                 self._tableModel,
                 self._file_path,
                 self.PREVIEW_ITEM_COUNT,
-                self.ui.setStartTimeAsOriginCheckBox.isChecked(),
+                ref_time_used=self.ui.setStartTimeAsOriginCheckBox.isChecked(),
+                interp_length=self.ui.interpDoubleSpinBox.value(),
             )
         else:
+            self.ui.interpLengthLabel.setEnabled(False)
+            self.ui.interpDoubleSpinBox.setEnabled(False)
             import_gpx_file(
                 self._tableModel,
                 self._file_path,
@@ -320,6 +327,7 @@ class ImportWindow(QDialog):
                     self._target_table_model,
                     self._file_path,
                     ref_time_used=self.ui.setStartTimeAsOriginCheckBox.isChecked(),
+                    interp_length=self.ui.interpDoubleSpinBox.value(),
                 )
             else:
                 import_gpx_file(
