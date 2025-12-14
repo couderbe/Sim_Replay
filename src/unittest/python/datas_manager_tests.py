@@ -13,9 +13,9 @@ class FlightDatasManagerTest(unittest.TestCase):
                 "Plane Latitude": {"unit": "degrees", "type": c_double},
                 "Plane Longitude": {"unit": "degrees", "type": c_double},
                 "Plane Altitude": {"unit": "feet", "type": c_double},
-                "Plane Bank Degrees": {"unit": "degrees", "type": c_double},
-                "Plane Pitch Degrees": {"unit": "degrees", "type": c_double},
-                "Plane Heading Degrees True": {"unit": "degrees", "type": c_double},
+                "Plane Bank Degrees": {"unit": "radians", "type": c_double},
+                "Plane Pitch Degrees": {"unit": "radians", "type": c_double},
+                "Plane Heading Degrees True": {"unit": "radians", "type": c_double},
                 "TEST_DATA": {"unit": "rad", "type": c_double},
             },
         )

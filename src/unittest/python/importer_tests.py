@@ -1,5 +1,5 @@
-from mockito import mock, verify
-from src.main.python.importer import import_gpx_file_module
+from mockito import mock
+from src.main.python.importer.importer import import_gpx_file_module
 import unittest
 
 

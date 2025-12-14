@@ -12,7 +12,7 @@ from src.main.python.model.model import Model, ModelStatus
 from src.main.python.linechart import LineChart
 from src.main.python.record_window import RecordWindow
 from src.main.python.ui.main_window_ui import Ui_MainWindow
-from src.main.python.import_window import ImportWindow
+from src.main.python.importer.import_window import ImportWindow
 
 
 class MainWindow(QMainWindow):
