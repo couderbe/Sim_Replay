@@ -44,16 +44,17 @@ class Sim(Source):
         self._hSimConnect = HANDLE(None)
         self._opened: bool = False
         self._listened_parameters: list[Parameter] = []
+        self._dispatch_proc = self._get_disptach_proc()
 
     def update(self) -> int:
         if not (self._opened):
             print("Open communication before updating")
             return -1
         err = self._simconnect.SimConnect_CallDispatch(
-            self._hSimConnect, self._get_disptach_proc(), None)
+            self._hSimConnect, self._dispatch_proc, c_void_p(0))
 
         if err != 0:
-            print(f"Unable to CallDispatch ErrorCode{err}")
+            print(f"Unable to CallDispatch ErrorCode {err:#x}")
             return 1
         return 0
     
@@ -65,7 +66,7 @@ class Sim(Source):
 
     def add_listened_parameter(self, name: str, unit: str, ctype: _SimpleCData, refresh_rate: SIMCONNECT_PERIOD = SIMCONNECT_PERIOD.SIMCONNECT_PERIOD_SIM_FRAME) -> None:
         """
-        All parameters must exist and be consistent with SimConnect APÏ reference
+        All parameters must exist and be consistent with SimConnect API reference
         """
 
         # Considering no parameter is ever removed from _listened_parameters
@@ -150,26 +151,15 @@ class Sim(Source):
     def _get_disptach_proc(self):
         """
         Instead of using my_disptach_proc in SimConnect_CallDispatch it is needed to create a function to allow accessing self in the callback.
-        Performance cost of creating a function at every callback must be assessed.
-        TO TEST: Create call _get_dispatch_proc only once. Store it in class variable and use this class variable in update.
         """
-        @WINFUNCTYPE(None, POINTER(SIMCONNECT_RECV), DWORD, c_void_p)
+        @WINFUNCTYPE(None, POINTER(SIMCONNECT_RECV), c_ulong, c_void_p)
         def my_dispatch_proc(pData: SIMCONNECT_RECV, cbData, pContext):
-            # print(pData.contents.dwID)
-            # print(cbData)
-            # print(pContext)
             match pData.contents.dwID:
                 case SIMCONNECT_RECV_ID.SIMCONNECT_RECV_ID_SIMOBJECT_DATA.value:
                     pObjData = cast(pData, POINTER(
                         SIMCONNECT_RECV_SIMOBJECT_DATA))
-                    # print(f"RequetsID {pObjData.contents.dwRequestID}")
-                    # How does ObjectID parameter work ?
-                    # print(f"ObjectID {pObjData.contents.dwObjectID}")
-                    # print(f"DefineID {pObjData.contents.dwDefineID}")
                     # Access parameter using DefinedID or RequestID is equivalent as they are always the same in the current implementation
                     param = self._listened_parameters[pObjData.contents.dwDefineID]
-                 #   print(cast(pObjData.contents.dwData,
-                 #         POINTER(param.ctype)).contents.value)
                     param.set_value(cast(pObjData.contents.dwData,
                                             POINTER(param.ctype)).contents.value)
                 case SIMCONNECT_RECV_ID.SIMCONNECT_RECV_ID_QUIT.value:

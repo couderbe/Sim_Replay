@@ -42,7 +42,7 @@ class Player():
                 current_time_interpol = self._current_time
                 while(self._next_time - self._current_time > 0) and not self._stop_flag:
                     computer_timeref = time.time_ns()
-                    time.sleep(0.001)
+                    time.sleep(0.001) # Freqency must be caped ortherwise Simconnect seems unable to manage
                     self.interpolated_move(current_time_interpol, self._current_time, self._next_time)
                     self._current_time = self._current_time + (time.time_ns() - computer_timeref)*10**-9
 

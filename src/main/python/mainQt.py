@@ -136,9 +136,9 @@ class MainWindow(QMainWindow):
                 self,
                 DATA_LOST_WARNING.title,
                 DATA_LOST_WARNING.message,
-                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.Yes | QMessageBox.No, # type: ignore
             )
-            if ret == QMessageBox.No:
+            if ret == QMessageBox.No: # type: ignore
                 return
 
         parameters_to_record = []
