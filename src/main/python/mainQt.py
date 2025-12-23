@@ -276,7 +276,9 @@ class MainWindow(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     if("DEBUG" in sys.argv):
-        logging.basicConfig(encoding='utf-8', level=logging.DEBUG)
+        logging.basicConfig(encoding='utf-8', level=logging.DEBUG, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
+    else:
+        logging.basicConfig(encoding='utf-8', level=logging.WARNING, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
     window = MainWindow()
     window.show()
     sys.exit(app.exec())
