@@ -136,9 +136,9 @@ class MainWindow(QMainWindow):
                 self,
                 DATA_LOST_WARNING.title,
                 DATA_LOST_WARNING.message,
-                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.Yes | QMessageBox.No, # type: ignore
             )
-            if ret == QMessageBox.No:
+            if ret == QMessageBox.No: # type: ignore
                 return
 
         parameters_to_record = []
@@ -276,7 +276,9 @@ class MainWindow(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     if("DEBUG" in sys.argv):
-        logging.basicConfig(encoding='utf-8', level=logging.DEBUG)
+        logging.basicConfig(encoding='utf-8', level=logging.DEBUG, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
+    else:
+        logging.basicConfig(encoding='utf-8', level=logging.WARNING, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
     window = MainWindow()
     window.show()
     sys.exit(app.exec())
