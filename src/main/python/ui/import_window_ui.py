@@ -15,16 +15,17 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QGroupBox,
-    QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
-    QSpinBox, QTableView, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDoubleSpinBox,
+    QGroupBox, QHBoxLayout, QHeaderView, QLabel,
+    QLineEdit, QPushButton, QRadioButton, QSizePolicy,
+    QSpacerItem, QSpinBox, QTableView, QVBoxLayout,
+    QWidget)
 
 class Ui_ImportWindow(object):
     def setupUi(self, ImportWindow):
         if not ImportWindow.objectName():
             ImportWindow.setObjectName(u"ImportWindow")
-        ImportWindow.resize(1051, 616)
+        ImportWindow.resize(1051, 617)
         self.verticalLayout_2 = QVBoxLayout(ImportWindow)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.fileGroup = QGroupBox(ImportWindow)
@@ -335,13 +336,49 @@ class Ui_ImportWindow(object):
 
         self.horizontalLayout_4.addWidget(self.supplementaryParamscheckBox)
 
+        self.setStartTimeAsOriginCheckBox = QCheckBox(self.dataEnhancementGroup)
+        self.setStartTimeAsOriginCheckBox.setObjectName(u"setStartTimeAsOriginCheckBox")
+
+        self.horizontalLayout_4.addWidget(self.setStartTimeAsOriginCheckBox)
+
+        self.interpolationVerticalLayout = QVBoxLayout()
+        self.interpolationVerticalLayout.setObjectName(u"interpolationVerticalLayout")
         self.interpolationCheckBox = QCheckBox(self.dataEnhancementGroup)
         self.interpolationCheckBox.setObjectName(u"interpolationCheckBox")
 
-        self.horizontalLayout_4.addWidget(self.interpolationCheckBox)
+        self.interpolationVerticalLayout.addWidget(self.interpolationCheckBox)
+
+        self.interpolationHorizontalLayout = QHBoxLayout()
+        self.interpolationHorizontalLayout.setObjectName(u"interpolationHorizontalLayout")
+        self.interpLengthLabel = QLabel(self.dataEnhancementGroup)
+        self.interpLengthLabel.setObjectName(u"interpLengthLabel")
+
+        self.interpolationHorizontalLayout.addWidget(self.interpLengthLabel)
+
+        self.interpDoubleSpinBox = QDoubleSpinBox(self.dataEnhancementGroup)
+        self.interpDoubleSpinBox.setObjectName(u"interpDoubleSpinBox")
+        self.interpDoubleSpinBox.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.interpDoubleSpinBox.setDecimals(1)
+        self.interpDoubleSpinBox.setMinimum(0.100000000000000)
+        self.interpDoubleSpinBox.setMaximum(100.000000000000000)
+        self.interpDoubleSpinBox.setSingleStep(0.500000000000000)
+        self.interpDoubleSpinBox.setValue(2.000000000000000)
+
+        self.interpolationHorizontalLayout.addWidget(self.interpDoubleSpinBox)
+
+
+        self.interpolationVerticalLayout.addLayout(self.interpolationHorizontalLayout)
+
+
+        self.horizontalLayout_4.addLayout(self.interpolationVerticalLayout)
 
 
         self.verticalLayout_2.addWidget(self.dataEnhancementGroup)
+
+        self.previewLabel = QLabel(ImportWindow)
+        self.previewLabel.setObjectName(u"previewLabel")
+
+        self.verticalLayout_2.addWidget(self.previewLabel)
 
         self.tableView = QTableView(ImportWindow)
         self.tableView.setObjectName(u"tableView")
@@ -409,7 +446,10 @@ class Ui_ImportWindow(object):
         self.supplementaryParamscheckBox.setToolTip("")
 #endif // QT_CONFIG(tooltip)
         self.supplementaryParamscheckBox.setText(QCoreApplication.translate("ImportWindow", u"Supplementary Parameters", None))
+        self.setStartTimeAsOriginCheckBox.setText(QCoreApplication.translate("ImportWindow", u"Set Start Time As Origin", None))
         self.interpolationCheckBox.setText(QCoreApplication.translate("ImportWindow", u"Interpolation", None))
+        self.interpLengthLabel.setText(QCoreApplication.translate("ImportWindow", u"Interpolation Length (m) :", None))
+        self.previewLabel.setText(QCoreApplication.translate("ImportWindow", u"Preview", None))
         self.closeButton.setText(QCoreApplication.translate("ImportWindow", u"Close", None))
         self.importButton.setText(QCoreApplication.translate("ImportWindow", u"Import", None))
     # retranslateUi

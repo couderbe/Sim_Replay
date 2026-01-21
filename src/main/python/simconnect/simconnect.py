@@ -216,7 +216,7 @@ class Sim(Source):
         """
         return name in [param.name for param in self._listened_parameters]
 
-    def _get_param_from_name(self, name: str) -> Union[Parameter,None]:
+    def _get_param_from_name(self, name: str):
         """
         Gets `Parameter` object from name from tht listened parameters list. Returns `None` if no matching parameter is found.
         

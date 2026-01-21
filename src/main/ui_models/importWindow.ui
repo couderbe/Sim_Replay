@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1051</width>
-    <height>616</height>
+    <height>617</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -526,13 +526,64 @@
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="interpolationCheckBox">
+       <widget class="QCheckBox" name="setStartTimeAsOriginCheckBox">
         <property name="text">
-         <string>Interpolation</string>
+         <string>Set Start Time As Origin</string>
         </property>
        </widget>
       </item>
+      <item>
+       <layout class="QVBoxLayout" name="interpolationVerticalLayout">
+        <item>
+         <widget class="QCheckBox" name="interpolationCheckBox">
+          <property name="text">
+           <string>Interpolation</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="interpolationHorizontalLayout">
+          <item>
+           <widget class="QLabel" name="interpLengthLabel">
+            <property name="text">
+             <string>Interpolation Length (m) :</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDoubleSpinBox" name="interpDoubleSpinBox">
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+            </property>
+            <property name="decimals">
+             <number>1</number>
+            </property>
+            <property name="minimum">
+             <double>0.100000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>100.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.500000000000000</double>
+            </property>
+            <property name="value">
+             <double>2.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
      </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="previewLabel">
+     <property name="text">
+      <string>Preview</string>
+     </property>
     </widget>
    </item>
    <item>
