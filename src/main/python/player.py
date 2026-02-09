@@ -2,6 +2,7 @@ import threading
 import time
 from PySide6.QtCore import Signal, QObject, Qt
 from PySide6.QtGui import QStandardItemModel
+from src.main.python.functional_interpoler import FunctionalInterpoler, InterpolationType
 from src.main.python.datas.datas_manager import FlightDatasManager
 from src.main.python.simconnect.source import Source
 
@@ -24,7 +25,7 @@ class Player():
         self._proxy = PlayerProxy()
         self.record_changed = self._proxy.record_changed
         self.current_record = 0
-
+        self._interpolator = FunctionalInterpoler(InterpolationType.LINEAR,record_table)
         self._interpolated = True
 
     def player_thread(self):
@@ -39,11 +40,12 @@ class Player():
             if not self._interpolated:
                 time.sleep(self._next_time - self._current_time)
             else:
-                current_time_interpol = self._current_time
                 while(self._next_time - self._current_time > 0) and not self._stop_flag:
                     computer_timeref = time.time_ns()
                     time.sleep(0.001) # Freqency must be caped ortherwise Simconnect seems unable to manage
-                    self.interpolated_move(current_time_interpol, self._current_time, self._next_time)
+                    res = self._interpolator.compute_interpolation(self.current_record, self._current_time)
+                    for k,v in res.items():
+                        self._src.set_param_value_from_name(k,v)
                     self._current_time = self._current_time + (time.time_ns() - computer_timeref)*10**-9
 
 
